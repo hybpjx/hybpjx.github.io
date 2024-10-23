@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="流转">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://hybpjx.cn/2023/05/26/常见的循环方式总结/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="在Javascript中有很多种循环方式。有多种循环方式可以用来遍历数组、对象、以及执行一些重复性任务但是有很多方式甚至从未用过，所以简单来总结一下JS中的循环 for循环for 循环是在您希望创建循环时经常使用的工具。 例： 123for (let i &#x3D; 0; i &lt; 5; i++) &#123;    console.log(&#96;第$&#123;i + 1&#125;次循环遍历&#96;)&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见的循环方式总结">
+<meta property="og:url" content="https://hybpjx.cn/2023/05/26/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BE%AA%E7%8E%AF%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="在Javascript中有很多种循环方式。有多种循环方式可以用来遍历数组、对象、以及执行一些重复性任务但是有很多方式甚至从未用过，所以简单来总结一下JS中的循环 for循环for 循环是在您希望创建循环时经常使用的工具。 例： 123for (let i &#x3D; 0; i &lt; 5; i++) &#123;    console.log(&#96;第$&#123;i + 1&#125;次循环遍历&#96;)&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/aIXyfYNPknOws2b.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/WhvroJ96L1fxD3V.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/Lf6raEnemSPudKT.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/aVIe54tKG16HLuJ.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/Ti758SE6pQ4groa.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/SDE1oqAQxwfe2JB.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/UVAELG7gnPkWabm.png">
+<meta property="og:image" content="https://img2023.cnblogs.com/blog/2721529/202305/2721529-20230518174323044-1084795998.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/gXwcHoNVGIUQ5be.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/QqKu6hwHDnRcUgP.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/HZAvBc5yNROwaJC.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/PwGEDJyBmpSvxF6.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/26/vuGKBIpcnq4PUSf.png">
+<meta property="article:published_time" content="2023-05-26T08:55:49.000Z">
+<meta property="article:modified_time" content="2024-10-23T04:45:18.160Z">
+<meta property="article:author" content="hybpjx">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/08/26/aIXyfYNPknOws2b.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/hybpjx.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/hybpjx.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/hybpjx.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            常见的循环方式总结 -
+        
+        流转&#39;s 博客
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+
+    
+        
+<script src="/js/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"hybpjx.cn","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":true,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"文章推荐","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.jpeg","dark":"/images/dark.jpeg"},"title":"流转の日常纪录","subtitle":{"text":["这个世界","你","我","都只是过客"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"http://github.com/hybpjx","weixin":"https://mp.weixin.qq.com/s/U1F7nCYSaeuNY5YLxWFOGg","zhihu":"https://www.zhihu.com/people/liu-zhuan-i","bilibili":"https://space.bilibili.com/481309876","weibo":"https://weibo.com/5868422298","email":"hybpjx@163.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":"Something Just Like This","artist":"Coldplay","url":"https://evan.beee.top/music/Something%20Just%20Like%20This%20-%20The%20Chainsmokers%E3%80%81Coldplay.mp3","cover":"https://evan.beee.top/music/covers/Something_Just_Like_This.png.org/"}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.4","navbar":{"auto_hide":true,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Status":{"path":"https://zichliang.top/","icon":"fa fa-globe"},"Essays":{"path":"/essays","icon":"fa-regular fa-chart-bar"},"Masonry":{"path":"/masonry/","icon":"fa-solid fa-image"},"About":{"icon":"fa-regular fa-user","submenus":{"我":"/about","个人博客":"https://cnblogs.com/zichliang","Friends":"/friends"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"文章":{"path":"/archives","icon":"fa-regular fa-archive"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/8/22 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+    <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        流转&#39;s 博客
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [40,0],
+                translateZ: 0,
+                opacity: [0,1],
+                filter: ['blur(5px)', 'blur(0px)'], // Starting from blurred to unblurred
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i,
+            }).add({
+                targets: '.ml13 .letter',
+                translateY: [0,-40],
+                opacity: [1,0],
+                filter: ['blur(0px)', 'blur(5px)'], // Ending from unblurred to blurred
+                easing: "easeInExpo",
+                duration: 1200,
+                delay: (el, i) => 100 + 30 * i,
+                complete: function() {
+                    hidePreloader(); // Call hidePreloader after the animation completes
+                }
+            });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                流转&#39;s 博客
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   target="_blank" rel="noopener" href="https://zichliang.top/"
+                                        >
+                                    <i class="fa fa-globe fa-fw"></i>
+                                    个人
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/essays"
+                                        >
+                                    <i class="fa-regular fa-chart-bar fa-fw"></i>
+                                    说说
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/masonry/"
+                                        >
+                                    <i class="fa-solid fa-image fa-fw"></i>
+                                    相册
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    我
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://cnblogs.com/zichliang">
+                                                    个人博客
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/friends">
+                                                    友情链接
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           target="_blank" rel="noopener" href="https://zichliang.top/"
+                        >
+                            <span>
+                                个人
+                            </span>
+                            
+                                <i class="fa fa-globe fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/essays"
+                        >
+                            <span>
+                                说说
+                            </span>
+                            
+                                <i class="fa-regular fa-chart-bar fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/masonry/"
+                        >
+                            <span>
+                                相册
+                            </span>
+                            
+                                <i class="fa-solid fa-image fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">我</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://cnblogs.com/zichliang">个人博客</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/friends">友情链接</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
+                        >
+                            <span>文章</span>
+                            <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>标签</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>分类</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">26</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">常见的循环方式总结</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/hybpjx.svg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">流转</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-05-26 16:55:49</span>
+        <span class="mobile">2023-05-26 16:55:49</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-10-23 12:45:18</span>
+            <span class="mobile">2024-10-23 12:45:18</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/JS%E5%9F%BA%E7%A1%80/">JS基础</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/JavaScript/">JavaScript</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.5k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>6 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <!-- toc -->
+<hr>
+<p>在Javascript中有很多种循环方式。有多种循环方式可以用来遍历数组、对象、以及执行一些重复性任务<br>但是有很多方式甚至从未用过，所以简单来总结一下JS中的循环</p>
+<h1 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h1><p>for 循环是在您希望创建循环时经常使用的工具。</p>
+<p>例：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`第<span class="subst">$&#123;i + <span class="number">1</span>&#125;</span>次循环遍历`</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/aIXyfYNPknOws2b.png"
+                     
+                ></p>
+<h1 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h1><p> While语句包括一个循环条件和一段代码块，只要条件为真，就不断循环执行代码块。</p>
+<p>例：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">100</span>) &#123;</span><br><span class="line">    i = i + <span class="number">1</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`第<span class="subst">$&#123;i&#125;</span>次循环遍历`</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/WhvroJ96L1fxD3V.png"
+                     
+                ></p>
+<h1 id="do……while循环"><a href="#do……while循环" class="headerlink" title="do……while循环"></a>do……while循环</h1><p>先运行循环代码 再执行判断条件</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;打印b的值&gt;&gt;&gt;&gt;&gt;&quot;</span>,b);</span><br><span class="line">    b++;</span><br><span class="line">&#125; <span class="keyword">while</span> (b &lt; a); <span class="comment">// 当a小于等于b的时候终止她。</span></span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/Lf6raEnemSPudKT.png"
+                      alt="img"
+                ></p>
+<ul>
+<li>while：先判断后执行；</li>
+<li>do-while：先执行再判断，即使初始条件不成立；do-while循环至少执行一次；</li>
+</ul>
+<h1 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h1><p>fo…in循环一般用于对象的遍历</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> kj = &#123;</span><br><span class="line">    <span class="string">&quot;a&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;b&quot;</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">&quot;c&quot;</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//使用for-in遍历这个对象</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> kj) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(k, kj[k])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/aVIe54tKG16HLuJ.png"
+                      alt="img"
+                ><br>注！ <code>最好不要用for in遍历数组</code></p>
+<h1 id="for-of循环"><a href="#for-of循环" class="headerlink" title="for-of循环"></a>for-of循环</h1><p>for…of 循环是 ES6 中新增的一种循环类型，它允许您遍历可迭代对象（例如数组、字符串、Map 或 Set）中的每个元素，并对其执行指定的操作。<br>for-of 可以更方便的循环遍历数组等</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> v <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/Ti758SE6pQ4groa.png"
+                      alt="img"
+                ></p>
+<ul>
+<li>for in遍历的是数组的索引（即键名）for in更适合遍历对象，不要使用for in遍历数组</li>
+<li>for of遍历的是数组元素值。</li>
+</ul>
+<p><code>使用for in会遍历数组所有的可枚举属性，包括原型。例如上栗的原型方法method和name属性</code></p>
+<h1 id="map-循环"><a href="#map-循环" class="headerlink" title="map()循环"></a>map()循环</h1><p>map()是一种常用的数组方法，它可以将一个数组中的每个元素按照一定规则映射为一个新的数组</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> originalArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> newArray = originalArray.<span class="title function_">map</span>(<span class="function">(<span class="params">number</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(number)</span><br><span class="line">  <span class="keyword">return</span> number * <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray); <span class="comment">// Output: [2, 4, 6, 8, 10]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/SDE1oqAQxwfe2JB.png"
+                      alt="img"
+                ></p>
+<h1 id="forEach循环"><a href="#forEach循环" class="headerlink" title="forEach循环"></a>forEach循环</h1><p>forEach()是一种常用的数组方法，可以帮助我们遍历一个数组并对其中的每个元素执行指定的操作。<br>例子</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> originalArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">originalArray.<span class="title function_">forEach</span>(<span class="function">(<span class="params">number</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(number * <span class="number">2</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/UVAELG7gnPkWabm.png"
+                      alt="img"
+                ></p>
+<p>forEach()方法没有返回值，因此我们不能将其运行结果赋值给其他变量</p>
+<h1 id="filter-过滤循环"><a href="#filter-过滤循环" class="headerlink" title="filter()过滤循环"></a>filter()过滤循环</h1><p>filter()是一种常用的数组方法，它可以帮助我们按照特定条件筛选出一个数组中的部分元素并返回一个新的数组</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> originalArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> filteredArray = originalArray.<span class="title function_">filter</span>(<span class="function">(<span class="params">number</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 只返回能被2整除的数 也就是偶数</span></span><br><span class="line">  <span class="keyword">return</span> number % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(filteredArray);</span><br></pre></td></tr></table></figure></div>
+<p>结果</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img2023.cnblogs.com/blog/2721529/202305/2721529-20230518174323044-1084795998.png"
+                      alt="img"
+                ></p>
+<p><code>filter()方法不会修改原始数组，而是返回一个新的数组作为其运行结果。因此，如果我们需要在原始数组中删除一些元素，那么就应该使用splice()方法</code></p>
+<h1 id="JS实现Python中的zip循环"><a href="#JS实现Python中的zip循环" class="headerlink" title="JS实现Python中的zip循环"></a>JS实现Python中的zip循环</h1><p>熟悉python的都知道ZIP循环面对循环两个数组很好用 那么在python中如何实现呢？</p>
+<p>例子</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">zip</span>(<span class="params">...arrays</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> minLength = <span class="title class_">Math</span>.<span class="title function_">min</span>(...arrays.<span class="title function_">map</span>(<span class="function"><span class="params">arr</span> =&gt;</span> arr.<span class="property">length</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; minLength; i++) &#123;</span><br><span class="line">        <span class="keyword">yield</span> arrays.<span class="title function_">map</span>(<span class="function"><span class="params">arr</span> =&gt;</span> arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> aList = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> bList = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [a, b] <span class="keyword">of</span> <span class="title function_">zip</span>(aList, bList)) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/gXwcHoNVGIUQ5be.png"
+                      alt="img"
+                ></p>
+<h1 id="some-和every"><a href="#some-和every" class="headerlink" title="some()和every()"></a>some()和every()</h1><p>some() 和 every() 方法是很有用的数组方法，它们都是用来遍历数组并返回布尔值。</p>
+<h2 id="some-方法"><a href="#some-方法" class="headerlink" title="some() 方法"></a>some() 方法</h2><p>some() 方法用来检测数组中是否有至少一个元素满足指定条件。当任意一个元素满足条件，则该方法返回 true；否则，返回 false。</p>
+<p>例子：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">12</span>];</span><br><span class="line"><span class="keyword">const</span> hasLargeNumber = numbers.<span class="title function_">some</span>(<span class="keyword">function</span>(<span class="params">element</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> element &gt; <span class="number">10</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hasLargeNumber); </span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/QqKu6hwHDnRcUgP.png"
+                      alt="img"
+                ><br><code>很显然 只要有一个结果满足了 大于10的条件 就返回了true</code></p>
+<h2 id="every-方法"><a href="#every-方法" class="headerlink" title="every() 方法"></a>every() 方法</h2><p>every() 方法与 some() 方法类似，不过它要求所有元素都满足指定条件。当所有元素都满足条件，则该方法返回 true；否则，返回 false。<br>例子</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">12</span>];</span><br><span class="line"><span class="keyword">const</span> hasLargeNumber = numbers.<span class="title function_">every</span>(<span class="keyword">function</span>(<span class="params">element</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> element &gt; <span class="number">10</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hasLargeNumber);</span><br></pre></td></tr></table></figure></div>
+
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/HZAvBc5yNROwaJC.png"
+                      alt="img"
+                ><br><code>很显然 只要有一个结果不满足 大于10的条件 就返回了false 和some方法相反</code></p>
+<h1 id="reduce-和-reduceRight"><a href="#reduce-和-reduceRight" class="headerlink" title="reduce() 和 reduceRight()"></a>reduce() 和 reduceRight()</h1><p>是 JavaScript 数组中常用的两个方法，它们都是用于将数组中的元素归纳为单个值。<br>它们可以帮助您迭代和聚合数组中的元素</p>
+<h2 id="reduce-方法"><a href="#reduce-方法" class="headerlink" title="reduce() 方法"></a>reduce() 方法</h2><p>reduce() 方法对数组中的每个元素执行一个由您提供的函数，并将其结果汇总为单个返回值。该方法需要传入两个参数：一个回调函数和一个可选的初始值。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment">//accumulator： 表示当前已经累积的值初始值是0 currentValue 表示当前正在被遍历的数组元素。</span></span><br><span class="line"><span class="keyword">const</span> sum = numbers.<span class="title function_">reduce</span>(<span class="keyword">function</span>(<span class="params">accumulator, currentValue</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(accumulator,currentValue)</span><br><span class="line">  <span class="keyword">return</span> accumulator + currentValue;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sum)</span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/PwGEDJyBmpSvxF6.png"
+                      alt="img"
+                ></p>
+<ul>
+<li>accumulator： 表示当前已经累积的值初始值是0</li>
+<li>currentValue 表示当前正在被遍历的数组元素。</li>
+</ul>
+<h2 id="reduceRight-方法"><a href="#reduceRight-方法" class="headerlink" title="reduceRight() 方法"></a>reduceRight() 方法</h2><p>reduceRight() 方法与 reduce() 方法类似，不过它是从数组的末尾开始遍历数组并执行回调函数。该方法也需要传入两个参数：一个回调函数和一个可选的初始值。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment">//accumulator： 表示当前已经累积的值初始值是0 currentValue 表示当前正在被遍历的数组元素。</span></span><br><span class="line"><span class="keyword">const</span> sum = numbers.<span class="title function_">reduceRight</span>(<span class="keyword">function</span>(<span class="params">accumulator, currentValue</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(accumulator,currentValue)</span><br><span class="line">  <span class="keyword">return</span> accumulator + currentValue;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sum)</span><br></pre></td></tr></table></figure></div>
+
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/vuGKBIpcnq4PUSf.png"
+                      alt="img"
+                ></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 常见的循环方式总结</li>
+        <li><strong>作者:</strong> 流转</li>
+        <li><strong>创建于
+                :</strong> 2023-05-26 16:55:49</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-10-23 12:45:18
+            </li>
+        
+        <li>
+            <strong>链接:</strong> http://hybpjx.github.io/2023/05/26/常见的循环方式总结/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/JavaScript/">#JavaScript</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2023/06/26/Ja3%E6%8C%87%E7%BA%B9%E5%AD%A6%E4%B9%A0/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Ja3指纹学习</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/04/26/Golang%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93%E4%B9%8BGoRequests/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">GoRequests库</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="giscus-container"></div>
+    <script data-swup-reload-script defer>
+        async function loadGiscus() {
+            const giscusConfig = {
+                'src': 'https://giscus.app/client.js',
+                'data-repo': 'hybpjx/giscus',
+                'data-repo-id': 'R_kgDOMo7cQg',
+                'data-category': 'Announcements',
+                'data-category-id': 'DIC_kwDOMo7cQs4Ch9bl',
+                'data-mapping': 'pathname',
+                'data-strict': '0',
+                'data-reactions-enabled': '1',
+                'data-emit-metadata': '1',
+                'data-theme': 'preferred_color_scheme',
+                'data-lang': 'zh-CN',
+                'data-input-position': 'bottom',
+                'data-loading': 'lazy',
+                'crossorigin': 'anonymous',
+                'async': true
+            }
+            const giscusScript = document.createElement('script');
+            for (const key in giscusConfig) {
+                giscusScript.setAttribute(key, giscusConfig[key]);
+            }
+            document.getElementById('giscus-container').appendChild(giscusScript);
+        }
+        if ('true') {
+            let loadGiscusTimeout = setTimeout(() => {
+                loadGiscus();
+                clearTimeout(loadGiscusTimeout);
+            }, 1000);
+        } else {
+            document.addEventListener('DOMContentLoaded', loadGiscus);
+        }
+    </script>
+
+
+        
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">常见的循环方式总结</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#while-%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.</span> <span class="nav-text">while 循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#do%E2%80%A6%E2%80%A6while%E5%BE%AA%E7%8E%AF"><span class="nav-number">3.</span> <span class="nav-text">do……while循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-in%E5%BE%AA%E7%8E%AF"><span class="nav-number">4.</span> <span class="nav-text">for-in循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-of%E5%BE%AA%E7%8E%AF"><span class="nav-number">5.</span> <span class="nav-text">for-of循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#map-%E5%BE%AA%E7%8E%AF"><span class="nav-number">6.</span> <span class="nav-text">map()循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forEach%E5%BE%AA%E7%8E%AF"><span class="nav-number">7.</span> <span class="nav-text">forEach循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#filter-%E8%BF%87%E6%BB%A4%E5%BE%AA%E7%8E%AF"><span class="nav-number">8.</span> <span class="nav-text">filter()过滤循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JS%E5%AE%9E%E7%8E%B0Python%E4%B8%AD%E7%9A%84zip%E5%BE%AA%E7%8E%AF"><span class="nav-number">9.</span> <span class="nav-text">JS实现Python中的zip循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#some-%E5%92%8Cevery"><span class="nav-number">10.</span> <span class="nav-text">some()和every()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#some-%E6%96%B9%E6%B3%95"><span class="nav-number">10.1.</span> <span class="nav-text">some() 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-%E6%96%B9%E6%B3%95"><span class="nav-number">10.2.</span> <span class="nav-text">every() 方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reduce-%E5%92%8C-reduceRight"><span class="nav-number">11.</span> <span class="nav-text">reduce() 和 reduceRight()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce-%E6%96%B9%E6%B3%95"><span class="nav-number">11.1.</span> <span class="nav-text">reduce() 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduceRight-%E6%96%B9%E6%B3%95"><span class="nav-number">11.2.</span> <span class="nav-text">reduceRight() 方法</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">流转</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 26 篇文章
+                    </span>
+                    
+                        <span>
+                            共 31.9k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.4</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+
+
+<!-- Highlight.js -->
+<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css">
+<script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/plugins/masonry.js" type="module"></script>
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
