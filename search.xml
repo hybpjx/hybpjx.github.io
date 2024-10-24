@@ -1061,151 +1061,6 @@
       </tags>
   </entry>
   <entry>
-    <title>常见的循环方式总结</title>
-    <url>/2023/05/26/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BE%AA%E7%8E%AF%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<!-- toc -->
-<hr>
-<p>在Javascript中有很多种循环方式。有多种循环方式可以用来遍历数组、对象、以及执行一些重复性任务<br>但是有很多方式甚至从未用过，所以简单来总结一下JS中的循环</p>
-<h1 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h1><p>for 循环是在您希望创建循环时经常使用的工具。</p>
-<p>例：</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`第<span class="subst">$&#123;i + <span class="number">1</span>&#125;</span>次循环遍历`</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/aIXyfYNPknOws2b.png"
-                     
-                ></p>
-<h1 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h1><p> While语句包括一个循环条件和一段代码块，只要条件为真，就不断循环执行代码块。</p>
-<p>例：</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">100</span>) &#123;</span><br><span class="line">    i = i + <span class="number">1</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`第<span class="subst">$&#123;i&#125;</span>次循环遍历`</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/WhvroJ96L1fxD3V.png"
-                     
-                ></p>
-<h1 id="do……while循环"><a href="#do……while循环" class="headerlink" title="do……while循环"></a>do……while循环</h1><p>先运行循环代码 再执行判断条件</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;打印b的值&gt;&gt;&gt;&gt;&gt;&quot;</span>,b);</span><br><span class="line">    b++;</span><br><span class="line">&#125; <span class="keyword">while</span> (b &lt; a); <span class="comment">// 当a小于等于b的时候终止她。</span></span><br></pre></td></tr></table></figure></div>
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/Lf6raEnemSPudKT.png"
-                      alt="img"
-                ></p>
-<ul>
-<li>while：先判断后执行；</li>
-<li>do-while：先执行再判断，即使初始条件不成立；do-while循环至少执行一次；</li>
-</ul>
-<h1 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h1><p>fo…in循环一般用于对象的遍历</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> kj = &#123;</span><br><span class="line">    <span class="string">&quot;a&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;b&quot;</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">&quot;c&quot;</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//使用for-in遍历这个对象</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> kj) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(k, kj[k])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/aVIe54tKG16HLuJ.png"
-                      alt="img"
-                ><br>注！ <code>最好不要用for in遍历数组</code></p>
-<h1 id="for-of循环"><a href="#for-of循环" class="headerlink" title="for-of循环"></a>for-of循环</h1><p>for…of 循环是 ES6 中新增的一种循环类型，它允许您遍历可迭代对象（例如数组、字符串、Map 或 Set）中的每个元素，并对其执行指定的操作。<br>for-of 可以更方便的循环遍历数组等</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> v <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/Ti758SE6pQ4groa.png"
-                      alt="img"
-                ></p>
-<ul>
-<li>for in遍历的是数组的索引（即键名）for in更适合遍历对象，不要使用for in遍历数组</li>
-<li>for of遍历的是数组元素值。</li>
-</ul>
-<p><code>使用for in会遍历数组所有的可枚举属性，包括原型。例如上栗的原型方法method和name属性</code></p>
-<h1 id="map-循环"><a href="#map-循环" class="headerlink" title="map()循环"></a>map()循环</h1><p>map()是一种常用的数组方法，它可以将一个数组中的每个元素按照一定规则映射为一个新的数组</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> originalArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> newArray = originalArray.<span class="title function_">map</span>(<span class="function">(<span class="params">number</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(number)</span><br><span class="line">  <span class="keyword">return</span> number * <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray); <span class="comment">// Output: [2, 4, 6, 8, 10]</span></span><br></pre></td></tr></table></figure></div>
-
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/SDE1oqAQxwfe2JB.png"
-                      alt="img"
-                ></p>
-<h1 id="forEach循环"><a href="#forEach循环" class="headerlink" title="forEach循环"></a>forEach循环</h1><p>forEach()是一种常用的数组方法，可以帮助我们遍历一个数组并对其中的每个元素执行指定的操作。<br>例子</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> originalArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">originalArray.<span class="title function_">forEach</span>(<span class="function">(<span class="params">number</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(number * <span class="number">2</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/UVAELG7gnPkWabm.png"
-                      alt="img"
-                ></p>
-<p>forEach()方法没有返回值，因此我们不能将其运行结果赋值给其他变量</p>
-<h1 id="filter-过滤循环"><a href="#filter-过滤循环" class="headerlink" title="filter()过滤循环"></a>filter()过滤循环</h1><p>filter()是一种常用的数组方法，它可以帮助我们按照特定条件筛选出一个数组中的部分元素并返回一个新的数组</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> originalArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> filteredArray = originalArray.<span class="title function_">filter</span>(<span class="function">(<span class="params">number</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 只返回能被2整除的数 也就是偶数</span></span><br><span class="line">  <span class="keyword">return</span> number % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(filteredArray);</span><br></pre></td></tr></table></figure></div>
-<p>结果</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img2023.cnblogs.com/blog/2721529/202305/2721529-20230518174323044-1084795998.png"
-                      alt="img"
-                ></p>
-<p><code>filter()方法不会修改原始数组，而是返回一个新的数组作为其运行结果。因此，如果我们需要在原始数组中删除一些元素，那么就应该使用splice()方法</code></p>
-<h1 id="JS实现Python中的zip循环"><a href="#JS实现Python中的zip循环" class="headerlink" title="JS实现Python中的zip循环"></a>JS实现Python中的zip循环</h1><p>熟悉python的都知道ZIP循环面对循环两个数组很好用 那么在python中如何实现呢？</p>
-<p>例子</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">zip</span>(<span class="params">...arrays</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> minLength = <span class="title class_">Math</span>.<span class="title function_">min</span>(...arrays.<span class="title function_">map</span>(<span class="function"><span class="params">arr</span> =&gt;</span> arr.<span class="property">length</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; minLength; i++) &#123;</span><br><span class="line">        <span class="keyword">yield</span> arrays.<span class="title function_">map</span>(<span class="function"><span class="params">arr</span> =&gt;</span> arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> aList = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> bList = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [a, b] <span class="keyword">of</span> <span class="title function_">zip</span>(aList, bList)) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/gXwcHoNVGIUQ5be.png"
-                      alt="img"
-                ></p>
-<h1 id="some-和every"><a href="#some-和every" class="headerlink" title="some()和every()"></a>some()和every()</h1><p>some() 和 every() 方法是很有用的数组方法，它们都是用来遍历数组并返回布尔值。</p>
-<h2 id="some-方法"><a href="#some-方法" class="headerlink" title="some() 方法"></a>some() 方法</h2><p>some() 方法用来检测数组中是否有至少一个元素满足指定条件。当任意一个元素满足条件，则该方法返回 true；否则，返回 false。</p>
-<p>例子：</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">12</span>];</span><br><span class="line"><span class="keyword">const</span> hasLargeNumber = numbers.<span class="title function_">some</span>(<span class="keyword">function</span>(<span class="params">element</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> element &gt; <span class="number">10</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hasLargeNumber); </span><br></pre></td></tr></table></figure></div>
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/QqKu6hwHDnRcUgP.png"
-                      alt="img"
-                ><br><code>很显然 只要有一个结果满足了 大于10的条件 就返回了true</code></p>
-<h2 id="every-方法"><a href="#every-方法" class="headerlink" title="every() 方法"></a>every() 方法</h2><p>every() 方法与 some() 方法类似，不过它要求所有元素都满足指定条件。当所有元素都满足条件，则该方法返回 true；否则，返回 false。<br>例子</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">12</span>];</span><br><span class="line"><span class="keyword">const</span> hasLargeNumber = numbers.<span class="title function_">every</span>(<span class="keyword">function</span>(<span class="params">element</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> element &gt; <span class="number">10</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hasLargeNumber);</span><br></pre></td></tr></table></figure></div>
-
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/HZAvBc5yNROwaJC.png"
-                      alt="img"
-                ><br><code>很显然 只要有一个结果不满足 大于10的条件 就返回了false 和some方法相反</code></p>
-<h1 id="reduce-和-reduceRight"><a href="#reduce-和-reduceRight" class="headerlink" title="reduce() 和 reduceRight()"></a>reduce() 和 reduceRight()</h1><p>是 JavaScript 数组中常用的两个方法，它们都是用于将数组中的元素归纳为单个值。<br>它们可以帮助您迭代和聚合数组中的元素</p>
-<h2 id="reduce-方法"><a href="#reduce-方法" class="headerlink" title="reduce() 方法"></a>reduce() 方法</h2><p>reduce() 方法对数组中的每个元素执行一个由您提供的函数，并将其结果汇总为单个返回值。该方法需要传入两个参数：一个回调函数和一个可选的初始值。</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment">//accumulator： 表示当前已经累积的值初始值是0 currentValue 表示当前正在被遍历的数组元素。</span></span><br><span class="line"><span class="keyword">const</span> sum = numbers.<span class="title function_">reduce</span>(<span class="keyword">function</span>(<span class="params">accumulator, currentValue</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(accumulator,currentValue)</span><br><span class="line">  <span class="keyword">return</span> accumulator + currentValue;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sum)</span><br></pre></td></tr></table></figure></div>
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/PwGEDJyBmpSvxF6.png"
-                      alt="img"
-                ></p>
-<ul>
-<li>accumulator： 表示当前已经累积的值初始值是0</li>
-<li>currentValue 表示当前正在被遍历的数组元素。</li>
-</ul>
-<h2 id="reduceRight-方法"><a href="#reduceRight-方法" class="headerlink" title="reduceRight() 方法"></a>reduceRight() 方法</h2><p>reduceRight() 方法与 reduce() 方法类似，不过它是从数组的末尾开始遍历数组并执行回调函数。该方法也需要传入两个参数：一个回调函数和一个可选的初始值。</p>
-<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment">//accumulator： 表示当前已经累积的值初始值是0 currentValue 表示当前正在被遍历的数组元素。</span></span><br><span class="line"><span class="keyword">const</span> sum = numbers.<span class="title function_">reduceRight</span>(<span class="keyword">function</span>(<span class="params">accumulator, currentValue</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(accumulator,currentValue)</span><br><span class="line">  <span class="keyword">return</span> accumulator + currentValue;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sum)</span><br></pre></td></tr></table></figure></div>
-
-<p>结果<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/vuGKBIpcnq4PUSf.png"
-                      alt="img"
-                ></p>
-]]></content>
-      <categories>
-        <category>JS基础</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ja3指纹学习</title>
     <url>/2023/06/26/Ja3%E6%8C%87%E7%BA%B9%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<!-- toc -->
@@ -1738,6 +1593,151 @@
 <script data-swup-reload-script src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
         <tag>JSVMP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见的循环方式总结</title>
+    <url>/2023/05/26/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BE%AA%E7%8E%AF%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<!-- toc -->
+<hr>
+<p>在Javascript中有很多种循环方式。有多种循环方式可以用来遍历数组、对象、以及执行一些重复性任务<br>但是有很多方式甚至从未用过，所以简单来总结一下JS中的循环</p>
+<h1 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h1><p>for 循环是在您希望创建循环时经常使用的工具。</p>
+<p>例：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`第<span class="subst">$&#123;i + <span class="number">1</span>&#125;</span>次循环遍历`</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/aIXyfYNPknOws2b.png"
+                     
+                ></p>
+<h1 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h1><p> While语句包括一个循环条件和一段代码块，只要条件为真，就不断循环执行代码块。</p>
+<p>例：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">100</span>) &#123;</span><br><span class="line">    i = i + <span class="number">1</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`第<span class="subst">$&#123;i&#125;</span>次循环遍历`</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/WhvroJ96L1fxD3V.png"
+                     
+                ></p>
+<h1 id="do……while循环"><a href="#do……while循环" class="headerlink" title="do……while循环"></a>do……while循环</h1><p>先运行循环代码 再执行判断条件</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;打印b的值&gt;&gt;&gt;&gt;&gt;&quot;</span>,b);</span><br><span class="line">    b++;</span><br><span class="line">&#125; <span class="keyword">while</span> (b &lt; a); <span class="comment">// 当a小于等于b的时候终止她。</span></span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/Lf6raEnemSPudKT.png"
+                      alt="img"
+                ></p>
+<ul>
+<li>while：先判断后执行；</li>
+<li>do-while：先执行再判断，即使初始条件不成立；do-while循环至少执行一次；</li>
+</ul>
+<h1 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h1><p>fo…in循环一般用于对象的遍历</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> kj = &#123;</span><br><span class="line">    <span class="string">&quot;a&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;b&quot;</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">&quot;c&quot;</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//使用for-in遍历这个对象</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> kj) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(k, kj[k])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/aVIe54tKG16HLuJ.png"
+                      alt="img"
+                ><br>注！ <code>最好不要用for in遍历数组</code></p>
+<h1 id="for-of循环"><a href="#for-of循环" class="headerlink" title="for-of循环"></a>for-of循环</h1><p>for…of 循环是 ES6 中新增的一种循环类型，它允许您遍历可迭代对象（例如数组、字符串、Map 或 Set）中的每个元素，并对其执行指定的操作。<br>for-of 可以更方便的循环遍历数组等</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> v <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/Ti758SE6pQ4groa.png"
+                      alt="img"
+                ></p>
+<ul>
+<li>for in遍历的是数组的索引（即键名）for in更适合遍历对象，不要使用for in遍历数组</li>
+<li>for of遍历的是数组元素值。</li>
+</ul>
+<p><code>使用for in会遍历数组所有的可枚举属性，包括原型。例如上栗的原型方法method和name属性</code></p>
+<h1 id="map-循环"><a href="#map-循环" class="headerlink" title="map()循环"></a>map()循环</h1><p>map()是一种常用的数组方法，它可以将一个数组中的每个元素按照一定规则映射为一个新的数组</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> originalArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> newArray = originalArray.<span class="title function_">map</span>(<span class="function">(<span class="params">number</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(number)</span><br><span class="line">  <span class="keyword">return</span> number * <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray); <span class="comment">// Output: [2, 4, 6, 8, 10]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/SDE1oqAQxwfe2JB.png"
+                      alt="img"
+                ></p>
+<h1 id="forEach循环"><a href="#forEach循环" class="headerlink" title="forEach循环"></a>forEach循环</h1><p>forEach()是一种常用的数组方法，可以帮助我们遍历一个数组并对其中的每个元素执行指定的操作。<br>例子</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> originalArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">originalArray.<span class="title function_">forEach</span>(<span class="function">(<span class="params">number</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(number * <span class="number">2</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/UVAELG7gnPkWabm.png"
+                      alt="img"
+                ></p>
+<p>forEach()方法没有返回值，因此我们不能将其运行结果赋值给其他变量</p>
+<h1 id="filter-过滤循环"><a href="#filter-过滤循环" class="headerlink" title="filter()过滤循环"></a>filter()过滤循环</h1><p>filter()是一种常用的数组方法，它可以帮助我们按照特定条件筛选出一个数组中的部分元素并返回一个新的数组</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> originalArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> filteredArray = originalArray.<span class="title function_">filter</span>(<span class="function">(<span class="params">number</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 只返回能被2整除的数 也就是偶数</span></span><br><span class="line">  <span class="keyword">return</span> number % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(filteredArray);</span><br></pre></td></tr></table></figure></div>
+<p>结果</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img2023.cnblogs.com/blog/2721529/202305/2721529-20230518174323044-1084795998.png"
+                      alt="img"
+                ></p>
+<p><code>filter()方法不会修改原始数组，而是返回一个新的数组作为其运行结果。因此，如果我们需要在原始数组中删除一些元素，那么就应该使用splice()方法</code></p>
+<h1 id="JS实现Python中的zip循环"><a href="#JS实现Python中的zip循环" class="headerlink" title="JS实现Python中的zip循环"></a>JS实现Python中的zip循环</h1><p>熟悉python的都知道ZIP循环面对循环两个数组很好用 那么在python中如何实现呢？</p>
+<p>例子</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">zip</span>(<span class="params">...arrays</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> minLength = <span class="title class_">Math</span>.<span class="title function_">min</span>(...arrays.<span class="title function_">map</span>(<span class="function"><span class="params">arr</span> =&gt;</span> arr.<span class="property">length</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; minLength; i++) &#123;</span><br><span class="line">        <span class="keyword">yield</span> arrays.<span class="title function_">map</span>(<span class="function"><span class="params">arr</span> =&gt;</span> arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> aList = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> bList = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [a, b] <span class="keyword">of</span> <span class="title function_">zip</span>(aList, bList)) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/gXwcHoNVGIUQ5be.png"
+                      alt="img"
+                ></p>
+<h1 id="some-和every"><a href="#some-和every" class="headerlink" title="some()和every()"></a>some()和every()</h1><p>some() 和 every() 方法是很有用的数组方法，它们都是用来遍历数组并返回布尔值。</p>
+<h2 id="some-方法"><a href="#some-方法" class="headerlink" title="some() 方法"></a>some() 方法</h2><p>some() 方法用来检测数组中是否有至少一个元素满足指定条件。当任意一个元素满足条件，则该方法返回 true；否则，返回 false。</p>
+<p>例子：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">12</span>];</span><br><span class="line"><span class="keyword">const</span> hasLargeNumber = numbers.<span class="title function_">some</span>(<span class="keyword">function</span>(<span class="params">element</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> element &gt; <span class="number">10</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hasLargeNumber); </span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/QqKu6hwHDnRcUgP.png"
+                      alt="img"
+                ><br><code>很显然 只要有一个结果满足了 大于10的条件 就返回了true</code></p>
+<h2 id="every-方法"><a href="#every-方法" class="headerlink" title="every() 方法"></a>every() 方法</h2><p>every() 方法与 some() 方法类似，不过它要求所有元素都满足指定条件。当所有元素都满足条件，则该方法返回 true；否则，返回 false。<br>例子</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">12</span>];</span><br><span class="line"><span class="keyword">const</span> hasLargeNumber = numbers.<span class="title function_">every</span>(<span class="keyword">function</span>(<span class="params">element</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> element &gt; <span class="number">10</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hasLargeNumber);</span><br></pre></td></tr></table></figure></div>
+
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/HZAvBc5yNROwaJC.png"
+                      alt="img"
+                ><br><code>很显然 只要有一个结果不满足 大于10的条件 就返回了false 和some方法相反</code></p>
+<h1 id="reduce-和-reduceRight"><a href="#reduce-和-reduceRight" class="headerlink" title="reduce() 和 reduceRight()"></a>reduce() 和 reduceRight()</h1><p>是 JavaScript 数组中常用的两个方法，它们都是用于将数组中的元素归纳为单个值。<br>它们可以帮助您迭代和聚合数组中的元素</p>
+<h2 id="reduce-方法"><a href="#reduce-方法" class="headerlink" title="reduce() 方法"></a>reduce() 方法</h2><p>reduce() 方法对数组中的每个元素执行一个由您提供的函数，并将其结果汇总为单个返回值。该方法需要传入两个参数：一个回调函数和一个可选的初始值。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment">//accumulator： 表示当前已经累积的值初始值是0 currentValue 表示当前正在被遍历的数组元素。</span></span><br><span class="line"><span class="keyword">const</span> sum = numbers.<span class="title function_">reduce</span>(<span class="keyword">function</span>(<span class="params">accumulator, currentValue</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(accumulator,currentValue)</span><br><span class="line">  <span class="keyword">return</span> accumulator + currentValue;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sum)</span><br></pre></td></tr></table></figure></div>
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/PwGEDJyBmpSvxF6.png"
+                      alt="img"
+                ></p>
+<ul>
+<li>accumulator： 表示当前已经累积的值初始值是0</li>
+<li>currentValue 表示当前正在被遍历的数组元素。</li>
+</ul>
+<h2 id="reduceRight-方法"><a href="#reduceRight-方法" class="headerlink" title="reduceRight() 方法"></a>reduceRight() 方法</h2><p>reduceRight() 方法与 reduce() 方法类似，不过它是从数组的末尾开始遍历数组并执行回调函数。该方法也需要传入两个参数：一个回调函数和一个可选的初始值。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment">//accumulator： 表示当前已经累积的值初始值是0 currentValue 表示当前正在被遍历的数组元素。</span></span><br><span class="line"><span class="keyword">const</span> sum = numbers.<span class="title function_">reduceRight</span>(<span class="keyword">function</span>(<span class="params">accumulator, currentValue</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(accumulator,currentValue)</span><br><span class="line">  <span class="keyword">return</span> accumulator + currentValue;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sum)</span><br></pre></td></tr></table></figure></div>
+
+<p>结果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/vuGKBIpcnq4PUSf.png"
+                      alt="img"
+                ></p>
+]]></content>
+      <categories>
+        <category>JS基础</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -2321,7 +2321,7 @@
   <entry>
     <title>安卓逆向基础之Java</title>
     <url>/2024/10/18/APP%E9%80%86%E5%90%91%E4%B9%8BJava%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<p>相同的语法，例如：静态成员无需实例就可以调用这些共同性不写</p>
+    <content><![CDATA[<h2 id="title-安卓逆向基础之Javatags-APP逆向date-2024-10-18-22-45-28"><a href="#title-安卓逆向基础之Javatags-APP逆向date-2024-10-18-22-45-28" class="headerlink" title="title: 安卓逆向基础之Javatags: APP逆向date: 2024-10-18 22:45:28"></a>title: 安卓逆向基础之Java<br>tags: APP逆向<br>date: 2024-10-18 22:45:28</h2><p>相同的语法，例如：静态成员无需实例就可以调用这些共同性不写</p>
 <h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><p>类成员描述符：<br>public:只要有权访问类，在任意情况下都可以调用<br>private:只允许自己类调用，在其他类中无法调用到<br>default:只允许自己家族(即包内成员)调用<br>protected:允许自己家族(即包内成员)调用，子类也可以访问(继承,不是一个包)</p>
 <p>返回值：<br>void:无返回值<br>int:返回一个整数<br>String:返回一个字符串<br>boolean:返回一个布尔值</p>
 <p>变量:<br>变量类型 变量名 &#x3D; 变量值</p>
@@ -2361,7 +2361,19 @@
 
 <h2 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;我是大帅哥&quot;</span>;</span><br><span class="line">Base64.<span class="type">Encoder</span> <span class="variable">encoder</span> <span class="operator">=</span> Base64.getEncoder();</span><br><span class="line"><span class="type">String</span> <span class="variable">res</span> <span class="operator">=</span> encoder.encodeToString(name.getBytes());</span><br><span class="line">System.out.println(res);</span><br><span class="line"></span><br><span class="line">Base64.<span class="type">Decoder</span> <span class="variable">decoder</span> <span class="operator">=</span> Base64.getDecoder();</span><br><span class="line"><span class="type">byte</span>[] origin = decoder.decode(res);</span><br><span class="line"><span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(origin);</span><br><span class="line">System.out.println(data);</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="md5"><a href="#md5" class="headerlink" title="md5"></a>md5</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;我是大帅哥&quot;</span>;</span><br><span class="line"><span class="type">MessageDigest</span> <span class="variable">instance</span> <span class="operator">=</span> MessageDigest.getInstance(<span class="string">&quot;MD5&quot;</span>);</span><br><span class="line"><span class="type">byte</span>[] nameBytes = instance.digest(name.getBytes());</span><br><span class="line">System.out.println(Arrays.toString(nameBytes));</span><br><span class="line"><span class="type">String</span> <span class="variable">res</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(nameBytes);</span><br></pre></td></tr></table></figure></div>]]></content>
+<h2 id="md5"><a href="#md5" class="headerlink" title="md5"></a>md5</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">MessageDigest</span> <span class="variable">md5</span> <span class="operator">=</span> MessageDigest.getInstance(<span class="string">&quot;MD5&quot;</span>);</span><br><span class="line"><span class="type">byte</span>[] digest = md5.digest(str.getBytes(<span class="string">&quot;utf-8&quot;</span>));</span><br><span class="line">hexStr = ByteUtils.toHexString(digest);</span><br></pre></td></tr></table></figure></div>
+
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">v5</span>  <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="keyword">new</span> <span class="title class_">byte</span>[]&#123;-<span class="number">50</span>,-<span class="number">28</span>,-<span class="number">59</span>,-<span class="number">26</span>,-<span class="number">58</span>,-<span class="number">21</span>&#125;,<span class="string">&quot;GBK&quot;</span>);</span><br><span class="line">System.out.println(v5);</span><br><span class="line"><span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">sb.append(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;lzc&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;&amp;&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;and&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;you&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">v6</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(sb);</span><br><span class="line">System.out.println(v6);</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组类型 [] 数组名 &#x3D; {em1,em2,em3,…,emN};&#x2F;&#x2F;声明数组的时候初始化，一共N个元素，</p>
+<p>例如：<br>int[] array &#x3D; {3,5,4,8,12,5};&#x2F;&#x2F;一共六个元素</p>
+<p>数组类型[] 数组名 &#x3D; new 数组类型[N]&#x2F;&#x2F;用new关键字声明数组的同时指定数组长度，</p>
+<p>例如：<br>String[] str &#x3D; new String[6]; 数组长度为6，即数组有六个元素</p>
+<p>数组类型[] 数组名 &#x3D; new 数组类型[] {em1,em2,em3,…,emN};用new关键字声明数组的同时初始化数组，</p>
+<p>例如：<br>int[] array &#x3D; new int[] {2,4,5,6,8,9};array数组一共五个元素。</p>
+<p>数组一旦声明，数组长度就已经确定。每个数组都有一个length属性，不可改变。可以改变数组元素。</p>
+]]></content>
       <tags>
         <tag>APP逆向</tag>
       </tags>
