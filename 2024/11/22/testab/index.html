@@ -13,23 +13,47 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://hybpjx.cn/2024/10/18/app逆向之java基础教程/"/>
+    <link rel="canonical" href="https://hybpjx.cn/2024/11/22/testab/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="title: 安卓逆向基础之Javatags: APP逆向date: 2024-10-18 22:45:28相同的语法，例如：静态成员无需实例就可以调用这些共同性不写 基础语法类成员描述符：public:只要有权访问类，在任意情况下都可以调用private:只允许自己类调用，在其他类中无法调用到default:只允许自己家族(即包内成员)调用protected:允许自己家族(即包内成员)调用，子类">
+        <meta name="description" content="前言好久不更新,就随便水一下. 感觉这个东西也比较烂大街. 大佬路过的直接跳过 目标逆向如下参数，哪个网站就不说了。懂得都懂  断点分析这里就直接搜索 然后断点 断在这个地方 就OK了。  然后就发现进到了一个JSVMP里面  剩下的就是直接分析。 PS： 细节部分动态的 就不多说了。就是一个请求里返回出来的VM代码 补环境这里找到apply调用处  在这里打印下 args 输出一下传参的值。 对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安卓逆向基础之Java">
-<meta property="og:url" content="https://hybpjx.cn/2024/10/18/APP%E9%80%86%E5%90%91%E4%B9%8BJava%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:title" content="testab 逆向流程分析">
+<meta property="og:url" content="https://hybpjx.cn/2024/11/22/testab/index.html">
 <meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="title: 安卓逆向基础之Javatags: APP逆向date: 2024-10-18 22:45:28相同的语法，例如：静态成员无需实例就可以调用这些共同性不写 基础语法类成员描述符：public:只要有权访问类，在任意情况下都可以调用private:只允许自己类调用，在其他类中无法调用到default:只允许自己家族(即包内成员)调用protected:允许自己家族(即包内成员)调用，子类">
+<meta property="og:description" content="前言好久不更新,就随便水一下. 感觉这个东西也比较烂大街. 大佬路过的直接跳过 目标逆向如下参数，哪个网站就不说了。懂得都懂  断点分析这里就直接搜索 然后断点 断在这个地方 就OK了。  然后就发现进到了一个JSVMP里面  剩下的就是直接分析。 PS： 细节部分动态的 就不多说了。就是一个请求里返回出来的VM代码 补环境这里找到apply调用处  在这里打印下 args 输出一下传参的值。 对">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-10-18T14:45:00.000Z">
-<meta property="article:modified_time" content="2024-10-31T05:17:45.382Z">
+<meta property="og:image" content="https://s2.loli.net/2024/07/17/blTAj1k2QHNmdgM.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/05/Uthiv1CBoMejKLa.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/05/AF7ubjtTSJzmIch.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/FHmMed1AgxIzi8J.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/RApbSwDYmj9eK7h.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/spzmiRLS32Ix4BV.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/zsKiVTHxy8QCfd4.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/Dof1q6AGQjuFvpi.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/08/IQWXOx7srVUYMwA.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/08/iYbgluAkcJ4xp7D.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/08/rEIlO7hfJ5QBLAN.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/ogeAEsZRunlwktx.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/06/wEtSmiHeZu7pKbG.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/06/BP4ySvqJKaxjYoV.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/NZrvyeco3YS2pHx.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/wuLyaoCiS3A4OJR.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/fSbsWxRGThY67lo.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/3rMJ26d7eLxZInl.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/YCnmrZqpM1y6Sc7.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/D7WoQ4MYrZXt9Fv.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/mOhYIPwoULju7Ac.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/SbGKzpOFh1xqs4i.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/HXxIzROqhAm1dGM.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/FfQIXqz9hyaeg1d.png">
+<meta property="article:published_time" content="2024-11-22T03:33:00.000Z">
+<meta property="article:modified_time" content="2024-11-22T03:34:40.374Z">
 <meta property="article:author" content="hybpjx">
-<meta property="article:tag" content="APP逆向">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/07/17/blTAj1k2QHNmdgM.png">
     
     
     <!--- Icon Part-->
@@ -41,7 +65,7 @@
     
     <title>
         
-            安卓逆向基础之Java -
+            testab 逆向流程分析 -
         
         流转&#39;s 博客
     </title>
@@ -656,7 +680,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">安卓逆向基础之Java</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">testab 逆向流程分析</h1>
                 </div>
             
             </div>
@@ -668,7 +692,7 @@
                 </div>
                 <div class="info flex flex-col justify-between">
                     <div class="author flex items-center">
-                        <span class="name text-default-text-color text-lg font-semibold">流转</span>
+                        <span class="name text-default-text-color text-lg font-semibold">hybpjx</span>
                         
                             <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
                         
@@ -677,42 +701,47 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-10-18 22:45</span>
-        <span class="mobile">2024-10-18 22:45</span>
+        <span class="desktop">2024-11-22 11:33</span>
+        <span class="mobile">2024-11-22 11:33</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-10-31 13:17:45</span>
-            <span class="mobile">2024-10-31 13:17:45</span>
+            <span class="desktop">2024-11-22 11:34:40</span>
+            <span class="mobile">2024-11-22 11:34:40</span>
             <span class="hover-info">更新</span>
         </span>
     
 
     
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
             <ul>
                 
-                    <li>
-                        <a href="/tags/APP%E9%80%86%E5%90%91/">APP逆向</a>&nbsp;
-                    </li>
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/JS%E9%80%86%E5%90%91/">JS逆向</a>&nbsp;
+                        </li>
+                    
+                    
                 
             </ul>
         </span>
+    
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.2k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>953 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>5 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 分钟</span>
         </span>
     
     
@@ -731,77 +760,235 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h2 id="title-安卓逆向基础之Javatags-APP逆向date-2024-10-18-22-45-28"><a href="#title-安卓逆向基础之Javatags-APP逆向date-2024-10-18-22-45-28" class="headerlink" title="title: 安卓逆向基础之Javatags: APP逆向date: 2024-10-18 22:45:28"></a>title: 安卓逆向基础之Java<br>tags: APP逆向<br>date: 2024-10-18 22:45:28</h2><p>相同的语法，例如：静态成员无需实例就可以调用这些共同性不写</p>
-<h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><p>类成员描述符：<br>public:只要有权访问类，在任意情况下都可以调用<br>private:只允许自己类调用，在其他类中无法调用到<br>default:只允许自己家族(即包内成员)调用<br>protected:允许自己家族(即包内成员)调用，子类也可以访问(继承,不是一个包)</p>
-<p>返回值：<br>void:无返回值<br>int:返回一个整数<br>String:返回一个字符串<br>boolean:返回一个布尔值</p>
-<p>变量:<br>变量类型 变量名 &#x3D; 变量值</p>
-<p>输入与输出:</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">system.out.println(<span class="string">&quot;请输入一个字符串：&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> sc.nextLine(); <span class="comment">// 将输入的类型转换</span></span><br><span class="line">system.out.println(<span class="string">&quot;请输入一个整数：&quot;</span>);</span><br><span class="line"><span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line"><span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> String.format(<span class="string">&quot;输入的字符串是：%s,输入的整数是：%d&quot;</span>,str,num);</span><br><span class="line">system.out.println(message);</span><br><span class="line"></span><br><span class="line">基本数据类型:</span><br><span class="line"><span class="type">byte</span>:<span class="number">1</span>个字节 -<span class="number">128</span>——-<span class="number">127</span></span><br><span class="line"><span class="type">short</span>:<span class="number">2</span>个字节</span><br><span class="line"><span class="type">int</span>:<span class="number">4</span>个字节</span><br><span class="line"><span class="type">long</span>:<span class="number">8</span>个字节</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好久不更新,就随便水一下. 感觉这个东西也比较烂大街. 大佬路过的直接跳过</p>
+<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>逆向如下参数，哪个网站就不说了。懂得都懂</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/07/17/blTAj1k2QHNmdgM.png"
+                     
+                ></p>
+<h1 id="断点分析"><a href="#断点分析" class="headerlink" title="断点分析"></a>断点分析</h1><p>这里就直接搜索 然后断点 断在这个地方 就OK了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/05/Uthiv1CBoMejKLa.png"
+                     
+                ></p>
+<p>然后就发现进到了一个JSVMP里面</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/05/AF7ubjtTSJzmIch.png"
+                     
+                ></p>
+<p>剩下的就是直接分析。</p>
+<p>PS： 细节部分动态的 就不多说了。就是一个请求里返回出来的VM代码</p>
+<h1 id="补环境"><a href="#补环境" class="headerlink" title="补环境"></a>补环境</h1><p>这里找到apply调用处</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/FHmMed1AgxIzi8J.png"
+                     
+                ></p>
+<p>在这里打印下 args 输出一下传参的值。</p>
+<p>对比上面的64位大数组 和浏览器中的大数组 值一致 就代表补OK了。</p>
+<p>然后直接打印日志。</p>
+<p>发现日志点还是太少了。这里就得找运算过程中产生的一些信息了。</p>
+<p>日志打印这里。输出val的值。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/RApbSwDYmj9eK7h.png"
+                     
+                ></p>
+<p>这里打印出来  val有一堆异常的值。</p>
+<p>这里说下 手补的话 要保证环境不能跑错。一步错 步步错。</p>
+<p>第一步就是要赋值</p>
+<p>self &#x3D; top &#x3D; window;</p>
+<p>window.self &#x3D; window.top &#x3D; window;</p>
+<p>到这一步就能生成一个错误的值了。</p>
+<p>然后往下走就能看到一堆环境 也全部补上。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/spzmiRLS32Ix4BV.png"
+                     
+                ></p>
+<p><strong>Process检测</strong></p>
+<p>如下图还有process检测。所以在开头也要删除掉process。这里可以把global buffer的一些Node检测全部删除。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/zsKiVTHxy8QCfd4.png"
+                     
+                ></p>
+<p>继续往下看。</p>
+<p>appendChild检测</p>
+<p>这里就是appendChild先后的问题。如果这个不会补。可以不补。你实现的乱七八糟可能不一定对。反正最后都是false.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/Dof1q6AGQjuFvpi.png"
+                     
+                ></p>
+<p>继续往下追。</p>
+<p><strong>Createlement</strong></p>
+<p>这里应该也是创建一个标签 拿到css的标签值。</p>
+<p>这里也要对比。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/08/IQWXOx7srVUYMwA.png"
+                     
+                ></p>
+<p>继续走 也是</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/08/iYbgluAkcJ4xp7D.png"
+                     
+                ></p>
+<p>到这里 如果还是不成功。可以额外多插一插</p>
+<p>如下图所示位置。这里的话 逻辑打印的很全 即使纯算 也可以以这个为参考 然后去上层取值打断点。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/08/rEIlO7hfJ5QBLAN.png"
+                     
+                ></p>
+<p>简单说下 还有一堆的原型链的检测 和 toString()检测 其中包含 Image Screen HTML WINDOW等…</p>
+<p>更方便的方法 直接用v-jstools 吐一下 改一下process 还有一些其他的环境值。 一会儿就出来了。</p>
+<p>改完如下图所示，一模一样 就代表成功了.</p>
+<p>对比值一样的就行了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/ogeAEsZRunlwktx.png"
+                     
+                ></p>
+<h1 id="纯算"><a href="#纯算" class="headerlink" title="纯算"></a>纯算</h1><p>如下图位置打好断点</p>
+<p>直接单步入栈</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/06/wEtSmiHeZu7pKbG.png"
+                     
+                ></p>
+<p>这里搜索下apply调用函数</p>
+<p>然后瞎GG插装一波</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/06/BP4ySvqJKaxjYoV.png"
+                     
+                ></p>
+<p>这里我们从下往上去看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/NZrvyeco3YS2pHx.png"
+                     
+                ></p>
+<p>可以看到 生成的最后一个值 用来 .join 拼接</p>
+<p>然后这个数组的生成 我们就可以简易的还原一下。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> last_arr = [</span><br><span class="line">    <span class="number">51</span>, <span class="number">50</span>, <span class="number">98</span>, <span class="number">50</span>, <span class="number">56</span>, <span class="number">50</span>, <span class="number">55</span>, <span class="number">51</span>, <span class="number">52</span>, <span class="number">56</span>, <span class="number">54</span>, <span class="number">52</span>,</span><br><span class="line">    <span class="number">51</span>, <span class="number">97</span>, <span class="number">55</span>, <span class="number">51</span>, <span class="number">97</span>, <span class="number">48</span>, <span class="number">56</span>, <span class="number">49</span>, <span class="number">97</span>, <span class="number">49</span>, <span class="number">101</span>, <span class="number">101</span>,</span><br><span class="line">    <span class="number">100</span>, <span class="number">51</span>, <span class="number">53</span>, <span class="number">102</span>, <span class="number">99</span>, <span class="number">56</span>, <span class="number">54</span>, <span class="number">53</span>, <span class="number">49</span>, <span class="number">55</span>, <span class="number">100</span>, <span class="number">51</span>,</span><br><span class="line">    <span class="number">54</span>, <span class="number">52</span>, <span class="number">52</span>, <span class="number">54</span>, <span class="number">48</span>, <span class="number">102</span>, <span class="number">53</span>, <span class="number">97</span>, <span class="number">52</span>, <span class="number">56</span>, <span class="number">48</span>, <span class="number">53</span>,</span><br><span class="line">    <span class="number">97</span>, <span class="number">52</span>, <span class="number">55</span>, <span class="number">99</span>, <span class="number">57</span>, <span class="number">102</span>, <span class="number">101</span>, <span class="number">54</span>, <span class="number">57</span>, <span class="number">99</span>, <span class="number">49</span>, <span class="number">53</span>,</span><br><span class="line">    <span class="number">48</span>, <span class="number">99</span>, <span class="number">49</span>, <span class="number">100</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> testab = last_arr.<span class="title function_">map</span>(<span class="function"><span class="params">val</span> =&gt;</span> <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(val)).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(testab)</span><br></pre></td></tr></table></figure></div>
 
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String [] args)</span>&#123;</span><br><span class="line">       <span class="type">byte</span> <span class="variable">v1</span> <span class="operator">=</span> <span class="number">32</span>;</span><br><span class="line">       <span class="type">short</span> <span class="variable">v2</span> <span class="operator">=</span> <span class="number">10000</span>;</span><br><span class="line">       <span class="type">int</span> <span class="variable">v3</span> <span class="operator">=</span> <span class="number">2222131</span>;</span><br><span class="line">       <span class="type">long</span> <span class="variable">v4</span> <span class="operator">=</span> <span class="number">554534353424L</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>然后继续网上看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/wuLyaoCiS3A4OJR.png"
+                     
+                ></p>
+<p>这里发现永远是外面一层大数组 包着一个最后的一个值。</p>
+<p>然后把最后一个值 添加到里面的这个数组。</p>
+<p>这里再细细观察 可以发现 他是又好几个数组生成。然后最终再生成这个testab</p>
+<p>其实这里有个很简单 却 很笨的方法。</p>
+<ol>
+<li>先找出生成的某个值。然后去看逻辑。</li>
+<li>然后把逻辑处持续插装打值。</li>
+<li>基于值分析。</li>
+</ol>
+<p>这里简单说下定位和分析的流程吧。</p>
+<p>找到定位点。 然后挨个追栈 基于返回的指令集的索引去挨个对。</p>
+<p>如下图所示</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/fSbsWxRGThY67lo.png"
+                     
+                ></p>
+<p><strong>生成数组</strong></p>
+<p>如下图位置。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/3rMJ26d7eLxZInl.png"
+                     
+                ></p>
+<p><strong>第一组</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/YCnmrZqpM1y6Sc7.png"
+                     
+                ></p>
+<p><strong>第二组</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/D7WoQ4MYrZXt9Fv.png"
+                     
+                ></p>
+<p><strong>第三组</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/mOhYIPwoULju7Ac.png"
+                     
+                ></p>
+<p>转置</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/SbGKzpOFh1xqs4i.png"
+                     
+                ></p>
+<p><strong>最后</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/HXxIzROqhAm1dGM.png"
+                     
+                ></p>
+<p>fromcharcode</p>
+<p><strong>结果</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/FfQIXqz9hyaeg1d.png"
+                     
+                ></p>
 
-<p>强制转换</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String [] args)</span>&#123;</span><br><span class="line">       <span class="type">short</span> <span class="variable">v1</span> <span class="operator">=</span> <span class="number">32</span>;</span><br><span class="line">       <span class="comment">// 强制类型转换</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">v2</span> <span class="operator">=</span> (<span class="type">int</span>)v1;</span><br><span class="line">        System.out.println(v2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>Java python字节数组转换python</p>
-<p>python脚本</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">byte_list = [-<span class="number">50</span>, -<span class="number">28</span>, -<span class="number">59</span>, -<span class="number">26</span>, -<span class="number">58</span>, -<span class="number">21</span>]</span><br><span class="line"></span><br><span class="line">bs = <span class="built_in">bytearray</span>()</span><br><span class="line"><span class="keyword">for</span> byte <span class="keyword">in</span> byte_list:</span><br><span class="line">    <span class="keyword">if</span> byte &lt; <span class="number">0</span>:</span><br><span class="line">        byte = byte + <span class="number">256</span></span><br><span class="line">    bs.append(byte)</span><br><span class="line">str_data = bs.decode(<span class="string">&quot;gbk&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(str_data)</span><br></pre></td></tr></table></figure></div>
-
-<p>基础不记录了</p>
-<h1 id="逆向中的问题"><a href="#逆向中的问题" class="headerlink" title="逆向中的问题"></a>逆向中的问题</h1><h2 id="接口中常见的方法"><a href="#接口中常见的方法" class="headerlink" title="接口中常见的方法"></a>接口中常见的方法</h2><p>找到接口中的方法了</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IRequest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">send</span><span class="params">(String URL)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Context</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> IRequest req;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Context</span><span class="params">(IRequest req)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.req = req;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doRequest</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;/click/android2/&quot;</span>;</span><br><span class="line">        <span class="built_in">this</span>.req.send(url);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>思路1：寻找实现IRequest 接口的类</p>
-<p>思路2：谁传入了Req？ 找到调用栈。</p>
-<h2 id="隐藏的字节"><a href="#隐藏的字节" class="headerlink" title="隐藏的字节"></a>隐藏的字节</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">v4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="keyword">new</span> <span class="title class_">byte</span>[]&#123;-<span class="number">26</span>,-<span class="number">83</span>,-<span class="number">90</span>,-<span class="number">26</span>,-<span class="number">78</span>,-<span class="number">101</span>,-<span class="number">23</span>,-<span class="number">67</span>,-<span class="number">122</span>&#125;);</span><br></pre></td></tr></table></figure></div>
-
-<p>隐藏的字符串 要注意</p>
-<h2 id="UUID"><a href="#UUID" class="headerlink" title="UUID"></a>UUID</h2><p>抖音UUID</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.UUID;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">uuid</span> <span class="operator">=</span> UUID.randomUUID().toString();</span><br><span class="line">        System.out.println(uuid);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="随机值"><a href="#随机值" class="headerlink" title="随机值"></a>随机值</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"><span class="keyword">import</span> java.security.SecureRandom;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">v4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">80</span>, <span class="keyword">new</span> <span class="title class_">SecureRandom</span>());</span><br><span class="line">        <span class="comment">// 让字节以16进制展示</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">res</span> <span class="operator">=</span> v4.toString(<span class="number">16</span>);</span><br><span class="line">        System.out.println(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>python中</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">open_uid = <span class="string">&#x27;&#x27;</span>.join([<span class="built_in">hex</span>(i)[<span class="number">2</span>:]<span class="keyword">for</span> i <span class="keyword">in</span> random.randbytes(<span class="number">10</span>)])</span><br><span class="line"><span class="built_in">print</span>(open_uid)</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(String.valueOf(System.currentTimeMillis()/<span class="number">1000</span>));</span><br><span class="line">        System.out.println(String.valueOf(System.currentTimeMillis()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="十六进制字符串"><a href="#十六进制字符串" class="headerlink" title="十六进制字符串"></a>十六进制字符串</h2><p>转换</p>
-<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;我叫大帅哥&quot;</span>;</span><br><span class="line">        <span class="type">byte</span>[] nameBytes = name.getBytes();</span><br><span class="line">        <span class="comment">// [-26, -120, -111, -27, -113, -85, -27, -92, -89, -27, -72, -123, -27, -109, -91]</span></span><br><span class="line">        System.out.println(Arrays.toString(nameBytes));</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nameBytes.length; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">val</span> <span class="operator">=</span> nameBytes[i] &amp; <span class="number">255</span>; <span class="comment">// 负数转换成正数</span></span><br><span class="line">            <span class="keyword">if</span> (val &lt; <span class="number">16</span>) &#123;</span><br><span class="line">                sb.append(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            sb.append(Integer.toHexString(val));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">String</span> <span class="variable">res</span> <span class="operator">=</span> sb.toString();</span><br><span class="line">        System.out.println(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;我是大帅哥&quot;</span>;</span><br><span class="line">Base64.<span class="type">Encoder</span> <span class="variable">encoder</span> <span class="operator">=</span> Base64.getEncoder();</span><br><span class="line"><span class="type">String</span> <span class="variable">res</span> <span class="operator">=</span> encoder.encodeToString(name.getBytes());</span><br><span class="line">System.out.println(res);</span><br><span class="line"></span><br><span class="line">Base64.<span class="type">Decoder</span> <span class="variable">decoder</span> <span class="operator">=</span> Base64.getDecoder();</span><br><span class="line"><span class="type">byte</span>[] origin = decoder.decode(res);</span><br><span class="line"><span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(origin);</span><br><span class="line">System.out.println(data);</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="md5"><a href="#md5" class="headerlink" title="md5"></a>md5</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">MessageDigest</span> <span class="variable">md5</span> <span class="operator">=</span> MessageDigest.getInstance(<span class="string">&quot;MD5&quot;</span>);</span><br><span class="line"><span class="type">byte</span>[] digest = md5.digest(str.getBytes(<span class="string">&quot;utf-8&quot;</span>));</span><br><span class="line">hexStr = ByteUtils.toHexString(digest);</span><br></pre></td></tr></table></figure></div>
-
-
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">v5</span>  <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="keyword">new</span> <span class="title class_">byte</span>[]&#123;-<span class="number">50</span>,-<span class="number">28</span>,-<span class="number">59</span>,-<span class="number">26</span>,-<span class="number">58</span>,-<span class="number">21</span>&#125;,<span class="string">&quot;GBK&quot;</span>);</span><br><span class="line">System.out.println(v5);</span><br><span class="line"><span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">sb.append(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;lzc&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;&amp;&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;and&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;you&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">v6</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(sb);</span><br><span class="line">System.out.println(v6);</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组类型 [] 数组名 &#x3D; {em1,em2,em3,…,emN};&#x2F;&#x2F;声明数组的时候初始化，一共N个元素，</p>
-<p>例如：<br>int[] array &#x3D; {3,5,4,8,12,5};&#x2F;&#x2F;一共六个元素</p>
-<p>数组类型[] 数组名 &#x3D; new 数组类型[N]&#x2F;&#x2F;用new关键字声明数组的同时指定数组长度，</p>
-<p>例如：<br>String[] str &#x3D; new String[6]; 数组长度为6，即数组有六个元素</p>
-<p>数组类型[] 数组名 &#x3D; new 数组类型[] {em1,em2,em3,…,emN};用new关键字声明数组的同时初始化数组，</p>
-<p>例如：<br>int[] array &#x3D; new int[] {2,4,5,6,8,9};array数组一共五个元素。</p>
-<p>数组一旦声明，数组长度就已经确定。每个数组都有一个length属性，不可改变。可以改变数组元素。</p>
-<h1 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h1><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.crypto.Cipher;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.spec.IvParameterSpec;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.spec.SecretKeySpec;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;测试数据&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> <span class="string">&quot;fd6b639dbcff0c2a1b03b389ec763c4b&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">iv</span> <span class="operator">=</span> <span class="string">&quot;77b07a672d57d64c&quot;</span>;</span><br><span class="line">        <span class="comment">// 加密</span></span><br><span class="line">        <span class="type">byte</span> [] raw = key.getBytes();</span><br><span class="line">        <span class="type">SecretKeySpec</span> <span class="variable">skeySpec</span>  <span class="operator">=</span>  <span class="keyword">new</span> <span class="title class_">SecretKeySpec</span>(raw,<span class="string">&quot;AES&quot;</span>);</span><br><span class="line">        <span class="type">IvParameterSpec</span> <span class="variable">ivSpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IvParameterSpec</span>(iv.getBytes());</span><br><span class="line"></span><br><span class="line">        <span class="type">Cipher</span> <span class="variable">cipher</span> <span class="operator">=</span> Cipher.getInstance(<span class="string">&quot;AES/CBC/PKCS5Padding&quot;</span>);</span><br><span class="line">        cipher.init(Cipher.ENCRYPT_MODE,skeySpec,ivSpec);</span><br><span class="line">        <span class="type">byte</span> [] encrypted = cipher.doFinal(data.getBytes());</span><br><span class="line">        System.out.println(Arrays.toString(encrypted));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
         </div>
 
         
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> 安卓逆向基础之Java</li>
-        <li><strong>作者:</strong> 流转</li>
+        <li><strong>标题:</strong> testab 逆向流程分析</li>
+        <li><strong>作者:</strong> hybpjx</li>
         <li><strong>创建于
-                :</strong> 2024-10-18 22:45:00</li>
+                :</strong> 2024-11-22 11:33:00</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-10-31 13:17:45
+                    :</strong> 2024-11-22 11:34:40
             </li>
         
         <li>
-            <strong>链接:</strong> http://hybpjx.github.io/2024/10/18/APP逆向之Java基础教程/
+            <strong>链接:</strong> http://hybpjx.github.io/2024/11/22/testab/
         </li>
         <li>
             <strong>
@@ -820,43 +1007,20 @@
         
 
         
-            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/APP%E9%80%86%E5%90%91/">#APP逆向</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
 
         
 
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/10/25/Pm2%E4%B9%8B%E8%BF%90%E8%A1%8CHexo%E6%96%B9%E6%A1%88/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Pm2之运行Hexo方案</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"
+                        href="/2024/11/04/Requests%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85%E4%BB%A5%E5%8F%8AAPI/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">APP逆向之Frida基础教程</span>
+                                <span class="post-nav-title-item">Requests请求封装以及API</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -931,8 +1095,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">安卓逆向基础之Java</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80%E4%B9%8BJavatags-APP%E9%80%86%E5%90%91date-2024-10-18-22-45-28"><span class="nav-number">1.</span> <span class="nav-text">title: 安卓逆向基础之Javatags: APP逆向date: 2024-10-18 22:45:28</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">基础语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%86%E5%90%91%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number"></span> <span class="nav-text">逆向中的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">接口中常见的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E7%9A%84%E5%AD%97%E8%8A%82"><span class="nav-number">2.</span> <span class="nav-text">隐藏的字节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UUID"><span class="nav-number">3.</span> <span class="nav-text">UUID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">随机值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3"><span class="nav-number">5.</span> <span class="nav-text">时间戳</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">6.</span> <span class="nav-text">十六进制字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#base64"><span class="nav-number">7.</span> <span class="nav-text">base64</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#md5"><span class="nav-number">8.</span> <span class="nav-text">md5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">9.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">10.</span> <span class="nav-text">数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AES"><span class="nav-number"></span> <span class="nav-text">AES</span></a>
+        <div class="page-title">testab 逆向流程分析</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%AD%E7%82%B9%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">断点分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A5%E7%8E%AF%E5%A2%83"><span class="nav-number">4.</span> <span class="nav-text">补环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%AF%E7%AE%97"><span class="nav-number">5.</span> <span class="nav-text">纯算</span></a></li></ol>
 
     </div>
 </div>

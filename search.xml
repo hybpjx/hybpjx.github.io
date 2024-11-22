@@ -70,6 +70,224 @@
       </tags>
   </entry>
   <entry>
+    <title>testab 逆向流程分析</title>
+    <url>/2024/11/22/testab/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好久不更新,就随便水一下. 感觉这个东西也比较烂大街. 大佬路过的直接跳过</p>
+<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>逆向如下参数，哪个网站就不说了。懂得都懂</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/07/17/blTAj1k2QHNmdgM.png"
+                     
+                ></p>
+<h1 id="断点分析"><a href="#断点分析" class="headerlink" title="断点分析"></a>断点分析</h1><p>这里就直接搜索 然后断点 断在这个地方 就OK了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/05/Uthiv1CBoMejKLa.png"
+                     
+                ></p>
+<p>然后就发现进到了一个JSVMP里面</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/05/AF7ubjtTSJzmIch.png"
+                     
+                ></p>
+<p>剩下的就是直接分析。</p>
+<p>PS： 细节部分动态的 就不多说了。就是一个请求里返回出来的VM代码</p>
+<h1 id="补环境"><a href="#补环境" class="headerlink" title="补环境"></a>补环境</h1><p>这里找到apply调用处</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/FHmMed1AgxIzi8J.png"
+                     
+                ></p>
+<p>在这里打印下 args 输出一下传参的值。</p>
+<p>对比上面的64位大数组 和浏览器中的大数组 值一致 就代表补OK了。</p>
+<p>然后直接打印日志。</p>
+<p>发现日志点还是太少了。这里就得找运算过程中产生的一些信息了。</p>
+<p>日志打印这里。输出val的值。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/RApbSwDYmj9eK7h.png"
+                     
+                ></p>
+<p>这里打印出来  val有一堆异常的值。</p>
+<p>这里说下 手补的话 要保证环境不能跑错。一步错 步步错。</p>
+<p>第一步就是要赋值</p>
+<p>self &#x3D; top &#x3D; window;</p>
+<p>window.self &#x3D; window.top &#x3D; window;</p>
+<p>到这一步就能生成一个错误的值了。</p>
+<p>然后往下走就能看到一堆环境 也全部补上。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/spzmiRLS32Ix4BV.png"
+                     
+                ></p>
+<p><strong>Process检测</strong></p>
+<p>如下图还有process检测。所以在开头也要删除掉process。这里可以把global buffer的一些Node检测全部删除。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/zsKiVTHxy8QCfd4.png"
+                     
+                ></p>
+<p>继续往下看。</p>
+<p>appendChild检测</p>
+<p>这里就是appendChild先后的问题。如果这个不会补。可以不补。你实现的乱七八糟可能不一定对。反正最后都是false.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/Dof1q6AGQjuFvpi.png"
+                     
+                ></p>
+<p>继续往下追。</p>
+<p><strong>Createlement</strong></p>
+<p>这里应该也是创建一个标签 拿到css的标签值。</p>
+<p>这里也要对比。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/08/IQWXOx7srVUYMwA.png"
+                     
+                ></p>
+<p>继续走 也是</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/08/iYbgluAkcJ4xp7D.png"
+                     
+                ></p>
+<p>到这里 如果还是不成功。可以额外多插一插</p>
+<p>如下图所示位置。这里的话 逻辑打印的很全 即使纯算 也可以以这个为参考 然后去上层取值打断点。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/08/rEIlO7hfJ5QBLAN.png"
+                     
+                ></p>
+<p>简单说下 还有一堆的原型链的检测 和 toString()检测 其中包含 Image Screen HTML WINDOW等…</p>
+<p>更方便的方法 直接用v-jstools 吐一下 改一下process 还有一些其他的环境值。 一会儿就出来了。</p>
+<p>改完如下图所示，一模一样 就代表成功了.</p>
+<p>对比值一样的就行了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/ogeAEsZRunlwktx.png"
+                     
+                ></p>
+<h1 id="纯算"><a href="#纯算" class="headerlink" title="纯算"></a>纯算</h1><p>如下图位置打好断点</p>
+<p>直接单步入栈</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/06/wEtSmiHeZu7pKbG.png"
+                     
+                ></p>
+<p>这里搜索下apply调用函数</p>
+<p>然后瞎GG插装一波</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/06/BP4ySvqJKaxjYoV.png"
+                     
+                ></p>
+<p>这里我们从下往上去看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/NZrvyeco3YS2pHx.png"
+                     
+                ></p>
+<p>可以看到 生成的最后一个值 用来 .join 拼接</p>
+<p>然后这个数组的生成 我们就可以简易的还原一下。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> last_arr = [</span><br><span class="line">    <span class="number">51</span>, <span class="number">50</span>, <span class="number">98</span>, <span class="number">50</span>, <span class="number">56</span>, <span class="number">50</span>, <span class="number">55</span>, <span class="number">51</span>, <span class="number">52</span>, <span class="number">56</span>, <span class="number">54</span>, <span class="number">52</span>,</span><br><span class="line">    <span class="number">51</span>, <span class="number">97</span>, <span class="number">55</span>, <span class="number">51</span>, <span class="number">97</span>, <span class="number">48</span>, <span class="number">56</span>, <span class="number">49</span>, <span class="number">97</span>, <span class="number">49</span>, <span class="number">101</span>, <span class="number">101</span>,</span><br><span class="line">    <span class="number">100</span>, <span class="number">51</span>, <span class="number">53</span>, <span class="number">102</span>, <span class="number">99</span>, <span class="number">56</span>, <span class="number">54</span>, <span class="number">53</span>, <span class="number">49</span>, <span class="number">55</span>, <span class="number">100</span>, <span class="number">51</span>,</span><br><span class="line">    <span class="number">54</span>, <span class="number">52</span>, <span class="number">52</span>, <span class="number">54</span>, <span class="number">48</span>, <span class="number">102</span>, <span class="number">53</span>, <span class="number">97</span>, <span class="number">52</span>, <span class="number">56</span>, <span class="number">48</span>, <span class="number">53</span>,</span><br><span class="line">    <span class="number">97</span>, <span class="number">52</span>, <span class="number">55</span>, <span class="number">99</span>, <span class="number">57</span>, <span class="number">102</span>, <span class="number">101</span>, <span class="number">54</span>, <span class="number">57</span>, <span class="number">99</span>, <span class="number">49</span>, <span class="number">53</span>,</span><br><span class="line">    <span class="number">48</span>, <span class="number">99</span>, <span class="number">49</span>, <span class="number">100</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> testab = last_arr.<span class="title function_">map</span>(<span class="function"><span class="params">val</span> =&gt;</span> <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(val)).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(testab)</span><br></pre></td></tr></table></figure></div>
+
+<p>然后继续网上看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/wuLyaoCiS3A4OJR.png"
+                     
+                ></p>
+<p>这里发现永远是外面一层大数组 包着一个最后的一个值。</p>
+<p>然后把最后一个值 添加到里面的这个数组。</p>
+<p>这里再细细观察 可以发现 他是又好几个数组生成。然后最终再生成这个testab</p>
+<p>其实这里有个很简单 却 很笨的方法。</p>
+<ol>
+<li>先找出生成的某个值。然后去看逻辑。</li>
+<li>然后把逻辑处持续插装打值。</li>
+<li>基于值分析。</li>
+</ol>
+<p>这里简单说下定位和分析的流程吧。</p>
+<p>找到定位点。 然后挨个追栈 基于返回的指令集的索引去挨个对。</p>
+<p>如下图所示</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/fSbsWxRGThY67lo.png"
+                     
+                ></p>
+<p><strong>生成数组</strong></p>
+<p>如下图位置。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/3rMJ26d7eLxZInl.png"
+                     
+                ></p>
+<p><strong>第一组</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/YCnmrZqpM1y6Sc7.png"
+                     
+                ></p>
+<p><strong>第二组</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/D7WoQ4MYrZXt9Fv.png"
+                     
+                ></p>
+<p><strong>第三组</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/mOhYIPwoULju7Ac.png"
+                     
+                ></p>
+<p>转置</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/SbGKzpOFh1xqs4i.png"
+                     
+                ></p>
+<p><strong>最后</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/HXxIzROqhAm1dGM.png"
+                     
+                ></p>
+<p>fromcharcode</p>
+<p><strong>结果</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/11/21/FfQIXqz9hyaeg1d.png"
+                     
+                ></p>
+]]></content>
+      <categories>
+        <category>JS逆向</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ubuntu安装anconda3 与Miniconda</title>
     <url>/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/</url>
     <content><![CDATA[<h1 id="ubuntu-安装anaconda3"><a href="#ubuntu-安装anaconda3" class="headerlink" title="ubuntu 安装anaconda3"></a>ubuntu 安装anaconda3</h1><p>官网:<a class="link"   href="https://www.anaconda.com/" >https://www.anaconda.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>下载:<a class="link"   href="https://www.anaconda.com/products/individual#Downloads" >https://www.anaconda.com/products/individual#Downloads <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>MiniAndonda:  <a class="link"   href="https://docs.anaconda.com/miniconda/" >https://docs.anaconda.com/miniconda/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
