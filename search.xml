@@ -22,6 +22,14 @@
       </categories>
   </entry>
   <entry>
+    <title>Python小技巧</title>
+    <url>/2024/11/26/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<h1 id="引包方式"><a href="#引包方式" class="headerlink" title="引包方式"></a>引包方式</h1><p>在引包 部署时 总会出现路径问题，包括execjs的路径</p>
+<h2 id="万能导入引包"><a href="#万能导入引包" class="headerlink" title="万能导入引包"></a>万能导入引包</h2><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">sys.path.append(os.path.join(os.path.dirname(__file__), <span class="string">&quot;..&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> script_path <span class="keyword">not</span> <span class="keyword">in</span> sys.path:</span><br><span class="line">    sys.path.append(script_path)</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="万能路径"><a href="#万能路径" class="headerlink" title="万能路径"></a>万能路径</h2><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"><span class="comment"># 获取当前工作目录</span></span><br><span class="line">current_path = Path.cwd()</span><br><span class="line">file_path = current_path / <span class="string">&quot;aaaa&quot;</span> / <span class="string">&quot;bbb.js&quot;</span></span><br></pre></td></tr></table></figure></div>]]></content>
+  </entry>
+  <entry>
     <title>Requests请求封装以及API</title>
     <url>/2024/11/04/Requests%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85%E4%BB%A5%E5%8F%8AAPI/</url>
     <content><![CDATA[<h1 id="使用代理"><a href="#使用代理" class="headerlink" title="使用代理"></a>使用代理</h1><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">proxies = &#123;</span><br><span class="line">    <span class="string">&quot;http&quot;</span>: <span class="string">&quot;http://xxx:xxx&amp;@xxx.xxx.xxx.cn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https&quot;</span>: <span class="string">&quot;http://xxx:xxx&amp;@xxx.xxx.xxx.cn&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">res = requests.get(<span class="string">&quot;http://127.0.0.1:8110&quot;</span>, proxies=proxies)</span><br><span class="line"><span class="built_in">print</span>(res.text)</span><br></pre></td></tr></table></figure></div>
@@ -401,6 +409,161 @@
       </categories>
   </entry>
   <entry>
+    <title>安装NVM与构建vue项目</title>
+    <url>/2022/05/26/%E5%AE%89%E8%A3%85NVM%E4%B8%8E%E6%9E%84%E5%BB%BAvue%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<!-- toc -->
+<hr>
+<h1 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h1><h2 id="windows-安装"><a href="#windows-安装" class="headerlink" title="windows 安装"></a>windows 安装</h2><p>去github 上下载 <a class="link"   href="https://github.com/coreybutler/nvm-windows" >https://github.com/coreybutler/nvm-windows <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>安装包地址： <a class="link"   href="https://github.com/coreybutler/nvm-windows/releases" >https://github.com/coreybutler/nvm-windows/releases <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/WR9AbqNfsMw7juL.png"
+                     
+                ><br>直接下载安装即可。</p>
+<p>安装完了 持续下一步<br>进入目录中<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/OaKlCvAH39IGu42.png"
+                     
+                ></p>
+<p>然后修改settings中<br>添加如下内容</p>
+<div class="highlight-container" data-rel="Avrasm"><figure class="iseeu highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">node_mirror:</span> https://npm.taobao<span class="meta">.org</span>/mirrors/node/</span><br><span class="line"><span class="symbol">npm_mirror:</span> https://npm.taobao<span class="meta">.org</span>/mirrors/npm/</span><br></pre></td></tr></table></figure></div>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>验证NVM是否安装成功<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/87RNqO9Mmlh61kj.png"
+                     
+                ><br>以上代表已经安装成功了。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/1qJDrX6IRvxpU7u.png"
+                     
+                ></p>
+<h2 id="ubuntu-安装"><a href="#ubuntu-安装" class="headerlink" title="ubuntu 安装"></a>ubuntu 安装</h2><p><a class="link"   href="https://github.com/nvm-sh/nvm" >https://github.com/nvm-sh/nvm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>执行如下命令即可。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/FS7CDXsr8LuzQa1.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">curl -<span class="keyword">o</span>- https://raw.githubusercontent.<span class="keyword">com</span>/nvm-<span class="keyword">sh</span>/nvm/v0.<span class="number">39.3</span>/install.<span class="keyword">sh</span> | bash</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.<span class="keyword">com</span>/nvm-<span class="keyword">sh</span>/nvm/v0.<span class="number">39.3</span>/install.<span class="keyword">sh</span> | bash</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="修改hosts"><a href="#修改hosts" class="headerlink" title="修改hosts"></a>修改hosts</h3><div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">sudo <span class="keyword">vim</span> /etc/hosts</span><br><span class="line"><span class="number">199.232</span>.<span class="number">96.133</span> raw.githubusercontent.<span class="keyword">com</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="重启网卡"><a href="#重启网卡" class="headerlink" title="重启网卡"></a>重启网卡</h3><blockquote>
+<p>systemctl restart NetworkManager.service</p>
+</blockquote>
+<p>这样就算安装成功了</p>
+<h3 id="更换淘宝源"><a href="#更换淘宝源" class="headerlink" title="更换淘宝源"></a>更换淘宝源</h3><p>在安装nodejs的时候特别慢，安装了好久都安装不上去，网速实在是太慢了，需要将nvm的默认下载地址改为国内的，我使用了淘宝的镜像,在.bashrc文件中追加如下内容</p>
+<div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="keyword">vim</span> ~/.bashrc</span><br><span class="line"></span><br><span class="line"># nvm淘宝镜像</span><br><span class="line">export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node</span><br></pre></td></tr></table></figure></div>
+
+
+<h1 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h1><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org </span><br></pre></td></tr></table></figure></div>
+
+
+
+<h1 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h1><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nvm install v16.13.0</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="卸载node"><a href="#卸载node" class="headerlink" title="卸载node"></a>卸载node</h1><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nvm uninstall v16.13.0</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="使用nvm"><a href="#使用nvm" class="headerlink" title="使用nvm"></a>使用nvm</h1><h2 id="使用-16-13-0"><a href="#使用-16-13-0" class="headerlink" title="使用 16.13.0"></a>使用 16.13.0</h2><blockquote>
+<p>nvm use v16.13.0</p>
+</blockquote>
+<p><strong>注意： 如果在windows下 要使用超级管理员 不然会出现错误</strong></p>
+<h2 id="查看安装环境"><a href="#查看安装环境" class="headerlink" title="查看安装环境"></a>查看安装环境</h2><blockquote>
+<p>nvm current<br>nvm list</p>
+</blockquote>
+<h2 id="更换默认环境"><a href="#更换默认环境" class="headerlink" title="更换默认环境"></a>更换默认环境</h2><blockquote>
+<p>nvm alias default v16.13.0</p>
+</blockquote>
+<h1 id="安装yarn"><a href="#安装yarn" class="headerlink" title="安装yarn"></a>安装yarn</h1><h2 id="安装源添加镜像"><a href="#安装源添加镜像" class="headerlink" title="安装源添加镜像"></a>安装源添加镜像</h2><div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">curl -sS https://<span class="keyword">dl</span>.yarnpkg.<span class="keyword">com</span>/debian/pubkey.gpg | sudo apt-key <span class="built_in">add</span> -</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span> | sudo tee /etc/apt/sources.<span class="keyword">list</span>.d/yarn.<span class="keyword">list</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="更新源并且安装"><a href="#更新源并且安装" class="headerlink" title="更新源并且安装"></a>更新源并且安装</h2><div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">sudo apt <span class="keyword">update</span> &amp;&amp; sudo apt install yarn</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="built_in">remove</span> yarn</span><br><span class="line">sudo apt-<span class="built_in">get</span> autoremove</span><br></pre></td></tr></table></figure></div>
+<h2 id="添加淘宝源"><a href="#添加淘宝源" class="headerlink" title="添加淘宝源"></a>添加淘宝源</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry http://registry.npm.taobao.org/</span><br></pre></td></tr></table></figure></div>
+
+<p>安装完毕 后 输入</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">yarn -v </span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/bkS6gd1snZyJzfm.png"
+                     
+                ><br>代表安装成功！！！</p>
+<h2 id="初始化一个yarn项目"><a href="#初始化一个yarn项目" class="headerlink" title="初始化一个yarn项目"></a>初始化一个yarn项目</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">yarn init</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="vue-cli"><a href="#vue-cli" class="headerlink" title="vue-cli"></a>vue-cli</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 速度不行可以考虑换源 npm</span></span><br><span class="line">npm install -g @vue/cli</span><br><span class="line"></span><br><span class="line">yarn add global @vue-cli</span><br></pre></td></tr></table></figure></div>
+
+
+<h2 id="常规安装"><a href="#常规安装" class="headerlink" title="常规安装"></a>常规安装</h2><blockquote>
+<p>vue create vueproject</p>
+</blockquote>
+<h1 id="vite"><a href="#vite" class="headerlink" title="vite"></a>vite</h1><h2 id="安装vite"><a href="#安装vite" class="headerlink" title="安装vite"></a>安装vite</h2><p>中文文档： <a class="link"   href="https://cn.vitejs.dev/guide/" >https://cn.vitejs.dev/guide/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>使用 NPM:</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm create vite@latest</span><br></pre></td></tr></table></figure></div>
+<p>使用 Yarn:</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn create vite</span><br></pre></td></tr></table></figure></div>
+
+<p>结果如下<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/dxMni1cpNw3TVZE.png"
+                     
+                ></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>然后使用vscode中的project manager 来对我们的项目进行管理<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/LFhB1V8M4XRrgJi.png"
+                     
+                ><br>然后修改project.json<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/2NQdc7WsVG5g8Bb.png"
+                     
+                ></p>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line"> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;kyfly_client&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;rootPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;E:\\Golang\\github.com\\hybpjx\\kyfly_client&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tags&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>执行yarn 命令 安装资源包</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">yarn</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/Wr4ibtQ2YoM9eAq.png"
+                     
+                ></p>
+<p>然后执行yarn dev </p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">yarn dev</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/WonxGITwkDpv4ys.png"
+                     
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/HXT1glJmraRy8LK.png"
+                     
+                ></p>
+<p>启动成功！！<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/Xz291aoQPh3VY7I.png"
+                     
+                ></p>
+<p>然后置空所有其他无用的东西<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/08/26/oiWUVlOQxmRkF5D.png"
+                     
+                ><br>效果如上图</p>
+]]></content>
+      <categories>
+        <category>快速安装</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Andorid模拟器与开发工具的安装与使用</title>
     <url>/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h1 id="前言——准备"><a href="#前言——准备" class="headerlink" title="前言——准备"></a>前言——准备</h1><p><strong>安装SDK前的准备工作</strong><br>首先为了实现 移动端的自动化控制 还需要一些工具来支持<br>需要设置好<a class="link"   href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif" >Proxy SwitchyOmega <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
@@ -735,161 +898,6 @@
 <p>注意： 不能直接pull到根目录</p>
 <p><strong>adb 远程截图</strong><br><code>adb shell screencap /sdcard/test.png</code></p>
 <p>故 adb 可以通过 远程对我们手机进行一系列的操作</p>
-]]></content>
-      <categories>
-        <category>快速安装</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>安装NVM与构建vue项目</title>
-    <url>/2022/05/26/%E5%AE%89%E8%A3%85NVM%E4%B8%8E%E6%9E%84%E5%BB%BAvue%E9%A1%B9%E7%9B%AE/</url>
-    <content><![CDATA[<!-- toc -->
-<hr>
-<h1 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h1><h2 id="windows-安装"><a href="#windows-安装" class="headerlink" title="windows 安装"></a>windows 安装</h2><p>去github 上下载 <a class="link"   href="https://github.com/coreybutler/nvm-windows" >https://github.com/coreybutler/nvm-windows <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>安装包地址： <a class="link"   href="https://github.com/coreybutler/nvm-windows/releases" >https://github.com/coreybutler/nvm-windows/releases <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/WR9AbqNfsMw7juL.png"
-                     
-                ><br>直接下载安装即可。</p>
-<p>安装完了 持续下一步<br>进入目录中<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/OaKlCvAH39IGu42.png"
-                     
-                ></p>
-<p>然后修改settings中<br>添加如下内容</p>
-<div class="highlight-container" data-rel="Avrasm"><figure class="iseeu highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">node_mirror:</span> https://npm.taobao<span class="meta">.org</span>/mirrors/node/</span><br><span class="line"><span class="symbol">npm_mirror:</span> https://npm.taobao<span class="meta">.org</span>/mirrors/npm/</span><br></pre></td></tr></table></figure></div>
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>验证NVM是否安装成功<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/87RNqO9Mmlh61kj.png"
-                     
-                ><br>以上代表已经安装成功了。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/1qJDrX6IRvxpU7u.png"
-                     
-                ></p>
-<h2 id="ubuntu-安装"><a href="#ubuntu-安装" class="headerlink" title="ubuntu 安装"></a>ubuntu 安装</h2><p><a class="link"   href="https://github.com/nvm-sh/nvm" >https://github.com/nvm-sh/nvm <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>执行如下命令即可。<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/FS7CDXsr8LuzQa1.png"
-                     
-                ></p>
-<div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">curl -<span class="keyword">o</span>- https://raw.githubusercontent.<span class="keyword">com</span>/nvm-<span class="keyword">sh</span>/nvm/v0.<span class="number">39.3</span>/install.<span class="keyword">sh</span> | bash</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.<span class="keyword">com</span>/nvm-<span class="keyword">sh</span>/nvm/v0.<span class="number">39.3</span>/install.<span class="keyword">sh</span> | bash</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="修改hosts"><a href="#修改hosts" class="headerlink" title="修改hosts"></a>修改hosts</h3><div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">sudo <span class="keyword">vim</span> /etc/hosts</span><br><span class="line"><span class="number">199.232</span>.<span class="number">96.133</span> raw.githubusercontent.<span class="keyword">com</span></span><br></pre></td></tr></table></figure></div>
-<h3 id="重启网卡"><a href="#重启网卡" class="headerlink" title="重启网卡"></a>重启网卡</h3><blockquote>
-<p>systemctl restart NetworkManager.service</p>
-</blockquote>
-<p>这样就算安装成功了</p>
-<h3 id="更换淘宝源"><a href="#更换淘宝源" class="headerlink" title="更换淘宝源"></a>更换淘宝源</h3><p>在安装nodejs的时候特别慢，安装了好久都安装不上去，网速实在是太慢了，需要将nvm的默认下载地址改为国内的，我使用了淘宝的镜像,在.bashrc文件中追加如下内容</p>
-<div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="keyword">vim</span> ~/.bashrc</span><br><span class="line"></span><br><span class="line"># nvm淘宝镜像</span><br><span class="line">export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node</span><br></pre></td></tr></table></figure></div>
-
-
-<h1 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h1><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org </span><br></pre></td></tr></table></figure></div>
-
-
-
-<h1 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h1><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nvm install v16.13.0</span><br></pre></td></tr></table></figure></div>
-
-<h1 id="卸载node"><a href="#卸载node" class="headerlink" title="卸载node"></a>卸载node</h1><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">nvm uninstall v16.13.0</span><br></pre></td></tr></table></figure></div>
-
-<h1 id="使用nvm"><a href="#使用nvm" class="headerlink" title="使用nvm"></a>使用nvm</h1><h2 id="使用-16-13-0"><a href="#使用-16-13-0" class="headerlink" title="使用 16.13.0"></a>使用 16.13.0</h2><blockquote>
-<p>nvm use v16.13.0</p>
-</blockquote>
-<p><strong>注意： 如果在windows下 要使用超级管理员 不然会出现错误</strong></p>
-<h2 id="查看安装环境"><a href="#查看安装环境" class="headerlink" title="查看安装环境"></a>查看安装环境</h2><blockquote>
-<p>nvm current<br>nvm list</p>
-</blockquote>
-<h2 id="更换默认环境"><a href="#更换默认环境" class="headerlink" title="更换默认环境"></a>更换默认环境</h2><blockquote>
-<p>nvm alias default v16.13.0</p>
-</blockquote>
-<h1 id="安装yarn"><a href="#安装yarn" class="headerlink" title="安装yarn"></a>安装yarn</h1><h2 id="安装源添加镜像"><a href="#安装源添加镜像" class="headerlink" title="安装源添加镜像"></a>安装源添加镜像</h2><div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">curl -sS https://<span class="keyword">dl</span>.yarnpkg.<span class="keyword">com</span>/debian/pubkey.gpg | sudo apt-key <span class="built_in">add</span> -</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span> | sudo tee /etc/apt/sources.<span class="keyword">list</span>.d/yarn.<span class="keyword">list</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="更新源并且安装"><a href="#更新源并且安装" class="headerlink" title="更新源并且安装"></a>更新源并且安装</h2><div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">sudo apt <span class="keyword">update</span> &amp;&amp; sudo apt install yarn</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><div class="highlight-container" data-rel="Vim"><figure class="iseeu highlight vim"><table><tr><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="built_in">remove</span> yarn</span><br><span class="line">sudo apt-<span class="built_in">get</span> autoremove</span><br></pre></td></tr></table></figure></div>
-<h2 id="添加淘宝源"><a href="#添加淘宝源" class="headerlink" title="添加淘宝源"></a>添加淘宝源</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry http://registry.npm.taobao.org/</span><br></pre></td></tr></table></figure></div>
-
-<p>安装完毕 后 输入</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">yarn -v </span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/bkS6gd1snZyJzfm.png"
-                     
-                ><br>代表安装成功！！！</p>
-<h2 id="初始化一个yarn项目"><a href="#初始化一个yarn项目" class="headerlink" title="初始化一个yarn项目"></a>初始化一个yarn项目</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">yarn init</span><br></pre></td></tr></table></figure></div>
-
-<h1 id="vue-cli"><a href="#vue-cli" class="headerlink" title="vue-cli"></a>vue-cli</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 速度不行可以考虑换源 npm</span></span><br><span class="line">npm install -g @vue/cli</span><br><span class="line"></span><br><span class="line">yarn add global @vue-cli</span><br></pre></td></tr></table></figure></div>
-
-
-<h2 id="常规安装"><a href="#常规安装" class="headerlink" title="常规安装"></a>常规安装</h2><blockquote>
-<p>vue create vueproject</p>
-</blockquote>
-<h1 id="vite"><a href="#vite" class="headerlink" title="vite"></a>vite</h1><h2 id="安装vite"><a href="#安装vite" class="headerlink" title="安装vite"></a>安装vite</h2><p>中文文档： <a class="link"   href="https://cn.vitejs.dev/guide/" >https://cn.vitejs.dev/guide/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>使用 NPM:</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm create vite@latest</span><br></pre></td></tr></table></figure></div>
-<p>使用 Yarn:</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn create vite</span><br></pre></td></tr></table></figure></div>
-
-<p>结果如下<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/dxMni1cpNw3TVZE.png"
-                     
-                ></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>然后使用vscode中的project manager 来对我们的项目进行管理<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/LFhB1V8M4XRrgJi.png"
-                     
-                ><br>然后修改project.json<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/2NQdc7WsVG5g8Bb.png"
-                     
-                ></p>
-<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line"> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;kyfly_client&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;rootPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;E:\\Golang\\github.com\\hybpjx\\kyfly_client&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tags&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure></div>
-
-<p>执行yarn 命令 安装资源包</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">yarn</span><br></pre></td></tr></table></figure></div>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/Wr4ibtQ2YoM9eAq.png"
-                     
-                ></p>
-<p>然后执行yarn dev </p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">yarn dev</span><br></pre></td></tr></table></figure></div>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/WonxGITwkDpv4ys.png"
-                     
-                ><br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/HXT1glJmraRy8LK.png"
-                     
-                ></p>
-<p>启动成功！！<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/Xz291aoQPh3VY7I.png"
-                     
-                ></p>
-<p>然后置空所有其他无用的东西<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/08/26/oiWUVlOQxmRkF5D.png"
-                     
-                ><br>效果如上图</p>
 ]]></content>
       <categories>
         <category>快速安装</category>
