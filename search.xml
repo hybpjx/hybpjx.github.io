@@ -80,6 +80,68 @@
       </tags>
   </entry>
   <entry>
+    <title>Scrapyd简易食用教程</title>
+    <url>/2024/12/02/Scrapyd%E7%AE%80%E6%98%93%E9%A3%9F%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="Scrapyd安装"><a href="#Scrapyd安装" class="headerlink" title="Scrapyd安装:"></a>Scrapyd安装:</h1><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">#服务端</span><br><span class="line">pip install scrapyd  </span><br><span class="line">#客户端</span><br><span class="line">pip install scrapyd-client</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>打开命令行，输入</p>
+<div class="highlight-container" data-rel="Ebnf"><figure class="iseeu highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">scrapyd</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>访问<a href="127.0.0.1:6800">127.0.0.1:6800</a>即可看到web界面</p>
+<h1 id="部署scrapy项目"><a href="#部署scrapy项目" class="headerlink" title="部署scrapy项目"></a>部署scrapy项目</h1><p>在scrapy项目目录下，有一个scrapy.cfg的配置文件：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Automatically created by: scrapy startproject</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># For more information about the [deploy] section see:</span></span><br><span class="line"><span class="comment"># https://scrapyd.readthedocs.io/en/latest/deploy.html</span></span><br><span class="line"></span><br><span class="line">[settings]</span><br><span class="line">default = xxx.settings</span><br><span class="line"></span><br><span class="line">[deploy:<span class="built_in">test</span>]</span><br><span class="line">url = http://localhost:6800/</span><br><span class="line">project = xxx</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>test——项目名 （随便）</p>
+<p>project 工程名 （你创建 项目时使用的名字）</p>
+<h2 id="windows环境下配置："><a href="#windows环境下配置：" class="headerlink" title="windows环境下配置："></a>windows环境下配置：</h2><p>到python虚拟环境下找到 Scripts&#x2F;scrapyd-deploy</p>
+<p>新建scrapyd-deploy.bat</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">&quot;E:\python_venv\envTest\Scripts\python.exe&quot; &quot;E:\python_venv\envTest\Scripts\scrapyd-deploy&quot; %1 %2 %3 %4 %5 %6 %7 %8 %9</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>然后，进入到我们爬虫的根目录，运行scrapyd-deploy</p>
+<h1 id="把爬虫项目上传到服务端"><a href="#把爬虫项目上传到服务端" class="headerlink" title="把爬虫项目上传到服务端"></a>把爬虫项目上传到服务端</h1><p>准备工作：查看当前目录下的 spider</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">(base) $ scrapy list</span><br><span class="line">xxxx1  xxxx2</span><br></pre></td></tr></table></figure></div>
+
+
+
+<ul>
+<li>执行打包命令<br>  <code>scrapyd-deploy 部署名称 -p 项目名称</code><br>  如<code>scrapyd-deploy bushu -p test</code><br>  可以去网页中127.0.0.1:6800查看爬虫运行状态</li>
+<li>停止爬虫<br>  <code>curl http://localhost:6800/cancel.json -d project=scrapy项目名称 -d job=运行ID</code> </li>
+<li>删除scrapy项目<br>  curl <a class="link"   href="http://localhost:6800/delproject.json" >http://localhost:6800/delproject.json <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> -d project&#x3D;scrapy项目名称 </li>
+<li>查看有多少个scrapy项目在api中<br>  curl <a class="link"   href="http://localhost:6800/listprojects.json" >http://localhost:6800/listprojects.json <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </li>
+<li>查看指定的scrapy项目中有多少个爬虫<br>  curl <a class="link"   href="http://localhost:6800/listspiders.json?project=scrapy%E9%A1%B9%E7%9B%AE%E5%90%8D%E7%A7%B0" >http://localhost:6800/listspiders.json?project=scrapy项目名称 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>  总结几个请求url</li>
+</ul>
+<p>1、获取状态</p>
+<p><a class="link"   href="http://127.0.0.1:6800/daemonstatus.json" >http://127.0.0.1:6800/daemonstatus.json <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>2、获取项目列表</p>
+<p><a class="link"   href="http://127.0.0.1:6800/listprojects.json" >http://127.0.0.1:6800/listprojects.json <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>3、获取项目下已发布的爬虫列表</p>
+<p><a class="link"   href="http://127.0.0.1:6800/listspiders.json?project=myproject" >http://127.0.0.1:6800/listspiders.json?project=myproject <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>4、获取项目下已发布的爬虫版本列表</p>
+<p><a class="link"   href="http://127.0.0.1:6800/listversions.json?project=myproject" >http://127.0.0.1:6800/listversions.json?project=myproject <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>5、获取爬虫运行状态</p>
+<p><a class="link"   href="http://127.0.0.1:6800/listjobs.json?project=myproject" >http://127.0.0.1:6800/listjobs.json?project=myproject <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>6、启动服务器上某一爬虫（必须是已发布到服务器的爬虫）</p>
+<p><a class="link"   href="http://127.0.0.1:6800/schedule.json" >http://127.0.0.1:6800/schedule.json <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </p>
+<p>（post方式，data&#x3D;{“project”:myproject,”spider”:myspider}）</p>
+<p>7、删除某一版本爬虫</p>
+<p><a class="link"   href="http://127.0.0.1:6800/delversion.json" >http://127.0.0.1:6800/delversion.json <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>（post方式，data&#x3D;{“project”:myproject,”version”:myversion}）</p>
+<p>8、删除某一工程，包括该工程下的各版本爬虫</p>
+<p><a class="link"   href="http://127.0.0.1:6800/delproject.json%EF%BC%88post%E6%96%B9%E5%BC%8F%EF%BC%8Cdata=%7B%22project%22:myproject%7D%EF%BC%89" >http://127.0.0.1:6800/delproject.json（post方式，data={&quot;project&quot;:myproject}） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>testab 逆向流程分析</title>
     <url>/2024/11/22/testab/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好久不更新,就随便水一下. 感觉这个东西也比较烂大街. 大佬路过的直接跳过</p>
