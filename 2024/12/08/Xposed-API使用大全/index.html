@@ -13,22 +13,21 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://hybpjx.cn/2024/11/04/requests请求封装以及api/"/>
+    <link rel="canonical" href="https://hybpjx.cn/2024/12/08/xposed-api使用大全/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="使用代理123456789import requestsproxies &#x3D; &#123;    &quot;http&quot;: &quot;http:&#x2F;&#x2F;xxx:xxx&amp;@xxx.xxx.xxx.cn&quot;,    &quot;https&quot;: &quot;http:&#x2F;&#x2F;xxx:xxx&amp;@xxx.xxx.xxx.cn&quot;,&#125;res &#x3D; reque">
+        <meta name="description" content="Xposed常用HOOK方法不讲废话 hook修改静态方法123XposedHelpers.setBooleanField(&quot;对象&quot;, &quot;名称&quot;, false);XposedHelpers.setIntField(&quot;对象&quot;, &quot;名称&quot;, 1);XposedHelpers.setObjectField(&quot;对象&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Requests请求封装以及API">
-<meta property="og:url" content="https://hybpjx.cn/2024/11/04/Requests%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85%E4%BB%A5%E5%8F%8AAPI/index.html">
+<meta property="og:title" content="Xposed API使用大全">
+<meta property="og:url" content="https://hybpjx.cn/2024/12/08/Xposed-API%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8/index.html">
 <meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="使用代理123456789import requestsproxies &#x3D; &#123;    &quot;http&quot;: &quot;http:&#x2F;&#x2F;xxx:xxx&amp;@xxx.xxx.xxx.cn&quot;,    &quot;https&quot;: &quot;http:&#x2F;&#x2F;xxx:xxx&amp;@xxx.xxx.xxx.cn&quot;,&#125;res &#x3D; reque">
+<meta property="og:description" content="Xposed常用HOOK方法不讲废话 hook修改静态方法123XposedHelpers.setBooleanField(&quot;对象&quot;, &quot;名称&quot;, false);XposedHelpers.setIntField(&quot;对象&quot;, &quot;名称&quot;, 1);XposedHelpers.setObjectField(&quot;对象&amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-04T04:13:00.000Z">
-<meta property="article:modified_time" content="2024-11-04T06:20:47.132Z">
+<meta property="article:published_time" content="2024-12-08T14:49:41.000Z">
+<meta property="article:modified_time" content="2024-12-08T14:49:42.086Z">
 <meta property="article:author" content="hybpjx">
-<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
     
     
@@ -41,7 +40,7 @@
     
     <title>
         
-            Requests请求封装以及API -
+            Xposed API使用大全 -
         
         流转&#39;s 博客
     </title>
@@ -656,7 +655,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Requests请求封装以及API</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Xposed API使用大全</h1>
                 </div>
             
             </div>
@@ -677,42 +676,31 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-11-04 12:13</span>
-        <span class="mobile">2024-11-04 12:13</span>
+        <span class="desktop">2024-12-08 22:49:41</span>
+        <span class="mobile">2024-12-08 22:49:41</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-11-04 14:20:47</span>
-            <span class="mobile">2024-11-04 14:20:47</span>
+            <span class="desktop">2024-12-08 22:49:42</span>
+            <span class="mobile">2024-12-08 22:49:42</span>
             <span class="hover-info">更新</span>
         </span>
     
 
     
     
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/python/">python</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>496 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>763 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>4 分钟</span>
         </span>
     
     
@@ -731,65 +719,69 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="使用代理"><a href="#使用代理" class="headerlink" title="使用代理"></a>使用代理</h1><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">proxies = &#123;</span><br><span class="line">    <span class="string">&quot;http&quot;</span>: <span class="string">&quot;http://xxx:xxx&amp;@xxx.xxx.xxx.cn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https&quot;</span>: <span class="string">&quot;http://xxx:xxx&amp;@xxx.xxx.xxx.cn&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">res = requests.get(<span class="string">&quot;http://127.0.0.1:8110&quot;</span>, proxies=proxies)</span><br><span class="line"><span class="built_in">print</span>(res.text)</span><br></pre></td></tr></table></figure></div>
+            <h1 id="Xposed常用HOOK方法"><a href="#Xposed常用HOOK方法" class="headerlink" title="Xposed常用HOOK方法"></a>Xposed常用HOOK方法</h1><p>不讲废话</p>
+<h1 id="hook修改静态方法"><a href="#hook修改静态方法" class="headerlink" title="hook修改静态方法"></a>hook修改静态方法</h1><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">XposedHelpers.setBooleanField(<span class="string">&quot;对象&quot;</span>, <span class="string">&quot;名称&quot;</span>, <span class="literal">false</span>);</span><br><span class="line">XposedHelpers.setIntField(<span class="string">&quot;对象&quot;</span>, <span class="string">&quot;名称&quot;</span>, <span class="number">1</span>);</span><br><span class="line">XposedHelpers.setObjectField(<span class="string">&quot;对象&quot;</span>, <span class="string">&quot;名称&quot;</span>, <span class="string">&quot;值&quot;</span>);</span><br></pre></td></tr></table></figure></div>
 
 
-<h1 id="重试机制"><a href="#重试机制" class="headerlink" title="重试机制"></a>重试机制</h1><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> requests.adapters <span class="keyword">import</span> HTTPAdapter</span><br><span class="line"><span class="keyword">from</span> urllib3.util.retry <span class="keyword">import</span> Retry</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line"></span><br><span class="line">retry = Retry(</span><br><span class="line">            total=<span class="number">5</span>,</span><br><span class="line">            read=<span class="number">5</span>,</span><br><span class="line">            connect=<span class="number">5</span>,</span><br><span class="line">            backoff_factor=<span class="number">0.3</span>,</span><br><span class="line">            status_forcelist=(<span class="number">500</span>, <span class="number">502</span>, <span class="number">504</span>),</span><br><span class="line">        )</span><br><span class="line">adapter = HTTPAdapter(max_retries=retry)</span><br><span class="line">session.mount(<span class="string">&quot;http://&quot;</span>, adapter)</span><br><span class="line">session.mount(<span class="string">&quot;https://&quot;</span>, adapter)</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="hook-构造函数"><a href="#hook-构造函数" class="headerlink" title="hook 构造函数"></a>hook 构造函数</h1><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 找到类名方法</span></span><br><span class="line">Class&lt;?&gt; clazz = XposedHelpers.findClass(<span class="string">&quot;xxx.xxx.类名&quot;</span>, lpparam.classLoader);</span><br><span class="line">XposedHelpers.findAndHookConstructor(clazz, <span class="keyword">new</span> <span class="title class_">XC_MethodHook</span>() &#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">      <span class="built_in">super</span>.beforeHookedMethod(param);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line">XposedHelpers.findAndHookConstructor(clazz, String.class, <span class="keyword">new</span> <span class="title class_">XC_MethodHook</span>() &#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">      <span class="built_in">super</span>.beforeHookedMethod(param);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="hook-普通方法"><a href="#hook-普通方法" class="headerlink" title="hook 普通方法"></a>hook 普通方法</h1><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 找到类名方法</span></span><br><span class="line">Class&lt;?&gt; clazz = XposedHelpers.findClass(<span class="string">&quot;xxx.xxx.类名&quot;</span>, lpparam.classLoader);</span><br><span class="line">XposedHelpers.findAndHookMethod(clazz, <span class="string">&quot;方法名&quot;</span>, <span class="keyword">new</span> <span class="title class_">XC_MethodHook</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        <span class="built_in">super</span>.beforeHookedMethod(param);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">afterHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        <span class="built_in">super</span>.afterHookedMethod(param);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
 
 
-<h1 id="添加Cookie"><a href="#添加Cookie" class="headerlink" title="添加Cookie"></a>添加Cookie</h1><h2 id="常规添加"><a href="#常规添加" class="headerlink" title="常规添加"></a>常规添加</h2><p><strong>headers</strong></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">headers = &#123;<span class="string">&quot;Cookie&quot;</span>:<span class="string">&quot;test=111;test1=2222&quot;</span>&#125;</span><br><span class="line">res = requests.get(<span class="string">&quot;https://xxxx-xxx.xxxx/get&quot;</span>,headers=headers)</span><br><span class="line"><span class="built_in">print</span>(res.text)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
-<p><strong>cookies</strong></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cookies = &#123;<span class="string">&quot;test&quot;</span>:<span class="string">&quot;111&quot;</span>,<span class="string">&quot;test1&quot;</span>:<span class="string">&quot;222&quot;</span>&#125;</span><br><span class="line">res = requests.get(<span class="string">&quot;https://xxxx-xxx.xxxx/get&quot;</span>,cookies=cookies)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(res.text)</span><br></pre></td></tr></table></figure></div>
+<h1 id="hook-复杂函数"><a href="#hook-复杂函数" class="headerlink" title="hook 复杂函数"></a>hook 复杂函数</h1><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 找到类名方法</span></span><br><span class="line">Class&lt;?&gt; clazz = XposedHelpers.findClass(<span class="string">&quot;xxx.xxx.类名&quot;</span>, lpparam.classLoader);</span><br><span class="line">XposedHelpers.findAndHookMethod(clazz, <span class="string">&quot;方法名&quot;</span>,</span><br><span class="line">        String[][].class,</span><br><span class="line">        String.class,</span><br><span class="line">        Map.class,</span><br><span class="line">        ArrayList.class,</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">XC_MethodHook</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                <span class="built_in">super</span>.beforeHookedMethod(param);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">afterHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                <span class="built_in">super</span>.afterHookedMethod(param);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="session添加"><a href="#session添加" class="headerlink" title="session添加"></a>session添加</h2><ol>
-<li><strong>自动设置</strong></li>
-<li><strong>直接赋值</strong>（一般情况不好用 不推荐）  <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.cookies[<span class="string">&quot;test&quot;</span>]=<span class="string">&quot;111&quot;</span></span><br><span class="line">session.cookies[<span class="string">&quot;test2&quot;</span>]=<span class="string">&quot;222&quot;</span></span><br></pre></td></tr></table></figure></div>
-  or  <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session.cookies.<span class="built_in">set</span>(<span class="string">&quot;test&quot;</span>,<span class="string">&quot;111&quot;</span>,path=<span class="string">&quot;/&quot;</span>,domain=<span class="string">&quot;xxx.xxx.cn&quot;</span>)</span><br></pre></td></tr></table></figure></div></li>
-<li><strong>add_dict_to_cookiejar</strong> (推荐)</li>
+<p>或者</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 找到类名方法</span></span><br><span class="line"> </span><br><span class="line">XposedHelpers.findAndHookMethod(clazz, <span class="string">&quot;方法名&quot;</span>,</span><br><span class="line">        <span class="string">&quot;[[Ljava.lang.String&quot;</span>,</span><br><span class="line">        <span class="string">&quot;java.lang.String&quot;</span>,</span><br><span class="line">        Class.forName(<span class="string">&quot;java.utils.Map&quot;</span>),</span><br><span class="line">        Class.forName(<span class="string">&quot;java.util.ArrayList&quot;</span>),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">XC_MethodHook</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                <span class="built_in">super</span>.beforeHookedMethod(param);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">afterHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                <span class="built_in">super</span>.afterHookedMethod(param);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="hook-自定义类参数"><a href="#hook-自定义类参数" class="headerlink" title="hook 自定义类参数"></a>hook 自定义类参数</h1><p>获取类的方式</p>
+<blockquote>
+<ol>
+<li>类名.class  </li>
+<li>对象.getClass()  </li>
+<li>class.forName()  </li>
+<li>xposedHelpers.findClass(“”,””)</li>
+<li>new DexClassLoader(“”,””,””,””).loadClass() .&#x2F;&#x2F; 加载类 用于脱壳加固</li>
 </ol>
-  <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line">cookies = &#123;<span class="string">&quot;test&quot;</span>:<span class="string">&quot;111&quot;</span>,<span class="string">&quot;test1&quot;</span>:<span class="string">&quot;222&quot;</span>&#125;</span><br><span class="line">requests.utils.add_dict_to_cookiejar(session.cookies,cookie_dict=cookie_dict)</span><br><span class="line"></span><br><span class="line">res = session.get(<span class="string">&quot;https://xxx-xxx.xxx/get&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(session.cookies)</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类名.class  对象.getClass()  class.forName()  xposedHelpers.findClass(&quot;&quot;,&quot;&quot;)</span></span><br><span class="line">Class&lt;?&gt; JiaZaiClazz = lpparam.classLoader.loadClass(<span class="string">&quot;xxxx.xxx.xxx.类名&quot;</span>);</span><br><span class="line">Class&lt;?&gt; clazz = XposedHelpers.findClass(<span class="string">&quot;xxx.xxx.类名&quot;</span>, lpparam.classLoader);</span><br><span class="line">XposedHelpers.findAndHookMethod(clazz, <span class="string">&quot;方法名&quot;</span>, </span><br><span class="line">        <span class="string">&quot;[[Ljava.lang.String&quot;</span>,</span><br><span class="line">        <span class="string">&quot;java.lang.String&quot;</span>,</span><br><span class="line">        JiaZaiClazz,<span class="comment">// 加载的自定义类</span></span><br><span class="line">        Class.forName(<span class="string">&quot;java.utils.Map&quot;</span>),</span><br><span class="line">        Class.forName(<span class="string">&quot;java.util.ArrayList&quot;</span>),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">XC_MethodHook</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                <span class="built_in">super</span>.beforeHookedMethod(param);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure></div>
 
-<ol start="4">
-<li><strong>RequestsCookieJar 对象设置</strong></li>
-</ol>
-  <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line"></span><br><span class="line">test = requests.sessions.RequestsCookieJar()</span><br><span class="line">test.<span class="built_in">set</span>(<span class="string">&#x27;test&#x27;</span>, <span class="string">&#x27;111&#x27;</span>, path=<span class="string">&#x27;/&#x27;</span>, domain=<span class="string">&#x27;xxx-xxx.cn&#x27;</span>)</span><br><span class="line">session.cookies.update(test)</span><br><span class="line"></span><br><span class="line">res = session.get(<span class="string">&quot;https://xxx-xxx.cn/get&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(session.cookies)</span><br></pre></td></tr></table></figure></div>
-<ol start="5">
-<li><strong>cookiejar_from_dict</strong></li>
-</ol>
-  <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line">cookie_dict = &#123;<span class="string">&quot;test&quot;</span>:<span class="string">&quot;111&quot;</span>,<span class="string">&quot;test2&quot;</span>:<span class="string">&quot;222&quot;</span>&#125;</span><br><span class="line">test = requests.utils.cookiejar_from_dict(cookie_dict=cookie_dict)</span><br><span class="line">session.cookies.update(test)</span><br><span class="line"></span><br><span class="line">res = session.get(<span class="string">&quot;https://xxx-xxx.cn/get&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(session.cookies)</span><br></pre></td></tr></table></figure></div>
-<h1 id="忽略SSL证书以及错误警告"><a href="#忽略SSL证书以及错误警告" class="headerlink" title="忽略SSL证书以及错误警告"></a>忽略SSL证书以及错误警告</h1><p>报错SSL</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">requests.get(<span class="string">&quot;https://xxx.xxx.com&quot;</span> , verify=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure></div>
-<p>此时会报错警告</p>
-<div class="highlight-container" data-rel="Text"><figure class="iseeu highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings</span><br><span class="line">  InsecureRequestWarning)</span><br></pre></td></tr></table></figure></div>
-<p>全局添加以下代码</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requests.packages.urllib3.disable_warnings()</span><br></pre></td></tr></table></figure></div>
+<p>或者用上面的前四种的方法。</p>
+<p>简单示例</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; JiaZaiClazz = Class.forName(<span class="string">&quot;xxxx.xxx.xxx.类名&quot;</span>, <span class="comment">// 路径类名</span></span><br><span class="line">                                     <span class="literal">false</span>,<span class="comment">// 是否初始化，一般都是false</span></span><br><span class="line">                                     lpparam.classLoader<span class="comment">// 这个意思是用哪个加载器加载这个类</span></span><br><span class="line">                                    );</span><br></pre></td></tr></table></figure></div>
 
-<h1 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h1><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">requests.get(<span class="string">&quot;https://xxx.xxx.com&quot;</span> , allow_redirects=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure></div>
-<p>allow_redirects</p>
-<p>为False ： 禁止重定向<br>为True： 允许重定向</p>
-<p>一般返回的response.url 为正确URL</p>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>剩下的params | data | cookies | files | auth | timeout | hooks | stream | cert | json<br>要不就是太简单 要不就是很少用。这里不讲了。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; JiaZaiClazz = XposedHelpers.findClass(<span class="string">&quot;xxxx.xxx.xxx.类名&quot;</span>,<span class="string">&quot;lpparam.classLoader&quot;</span>);</span><br></pre></td></tr></table></figure></div>
 
+<p>还有一种特殊的</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;xxxx.xxx.xxx.类名&quot;</span> <span class="comment">// 直接输入即可</span></span><br></pre></td></tr></table></figure></div>
+
+<h1 id="hook-替换函数"><a href="#hook-替换函数" class="headerlink" title="hook 替换函数"></a>hook 替换函数</h1><p>即改掉整个函数，不在提前或者之后hook</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz = XposedHelpers.findClass(<span class="string">&quot;xxx.xxx.类名&quot;</span>, lpparam.classLoader);</span><br><span class="line">XposedHelpers.findAndHookMethod(clazz, <span class="string">&quot;方法名&quot;</span>, <span class="keyword">new</span> <span class="title class_">XC_MethodReplacement</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Object <span class="title function_">replaceHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;替换的函数输出&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="hook内部类"><a href="#hook内部类" class="headerlink" title="hook内部类"></a>hook内部类</h1><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">XposedHelpers.findAndHookMethod(XposedHelpers.findClass(<span class="string">&quot;xxx.xxx.xxx.类名$内部类名&quot;</span>, lpparam.classLoader),</span><br><span class="line">                <span class="string">&quot;内部类的方法名&quot;</span>,</span><br><span class="line">                String.class,</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">XC_MethodHook</span>() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                        <span class="built_in">super</span>.beforeHookedMethod(param);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        );</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="主动调用"><a href="#主动调用" class="headerlink" title="主动调用"></a>主动调用</h1><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Class&lt;?&gt; clazz = XposedHelpers.findClass(<span class="string">&quot;xxx.xxx.类名&quot;</span>, lpparam.classLoader);</span><br><span class="line">XposedHelpers.findAndHookMethod(XposedHelpers.findClass(<span class="string">&quot;xxx.xxx.xxx.类名$内部类名&quot;</span>, lpparam.classLoader),</span><br><span class="line">        <span class="string">&quot;内部类的方法名&quot;</span>,</span><br><span class="line">        String.class,</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">XC_MethodHook</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                XposedHelpers.callMethod(clazz.newInstance(),<span class="string">&quot;具体方法&quot;</span>,<span class="string">&quot;值&quot;</span>);</span><br><span class="line">                <span class="built_in">super</span>.beforeHookedMethod(param);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="Java-反射大法"><a href="#Java-反射大法" class="headerlink" title="Java 反射大法"></a>Java 反射大法</h1>
         </div>
 
         
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> Requests请求封装以及API</li>
+        <li><strong>标题:</strong> Xposed API使用大全</li>
         <li><strong>作者:</strong> hybpjx</li>
         <li><strong>创建于
-                :</strong> 2024-11-04 12:13:00</li>
+                :</strong> 2024-12-08 22:49:41</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-11-04 14:20:47
+                    :</strong> 2024-12-08 22:49:42
             </li>
         
         <li>
-            <strong>链接:</strong> http://hybpjx.github.io/2024/11/04/Requests请求封装以及API/
+            <strong>链接:</strong> http://hybpjx.github.io/2024/12/08/Xposed-API使用大全/
         </li>
         <li>
             <strong>
@@ -808,43 +800,20 @@
         
 
         
-            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/python/">#python</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
 
         
 
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/11/22/testab/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">testab 逆向流程分析</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/10/25/Pm2%E4%B9%8B%E8%BF%90%E8%A1%8CHexo%E6%96%B9%E6%A1%88/"
+                        href="/2024/12/02/Scrapyd%E7%AE%80%E6%98%93%E9%A3%9F%E7%94%A8%E6%95%99%E7%A8%8B/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Pm2之运行Hexo方案</span>
+                                <span class="post-nav-title-item">Scrapyd简易食用教程</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -919,8 +888,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">Requests请求封装以及API</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">使用代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E8%AF%95%E6%9C%BA%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">重试机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0Cookie"><span class="nav-number">3.</span> <span class="nav-text">添加Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E6%B7%BB%E5%8A%A0"><span class="nav-number">3.1.</span> <span class="nav-text">常规添加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session%E6%B7%BB%E5%8A%A0"><span class="nav-number">3.2.</span> <span class="nav-text">session添加</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5SSL%E8%AF%81%E4%B9%A6%E4%BB%A5%E5%8F%8A%E9%94%99%E8%AF%AF%E8%AD%A6%E5%91%8A"><span class="nav-number">4.</span> <span class="nav-text">忽略SSL证书以及错误警告</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">5.</span> <span class="nav-text">重定向</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li></ol>
+        <div class="page-title">Xposed API使用大全</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Xposed%E5%B8%B8%E7%94%A8HOOK%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Xposed常用HOOK方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hook%E4%BF%AE%E6%94%B9%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">hook修改静态方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hook-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">hook 构造函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hook-%E6%99%AE%E9%80%9A%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">hook 普通方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hook-%E5%A4%8D%E6%9D%82%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">hook 复杂函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hook-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%8F%82%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">hook 自定义类参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hook-%E6%9B%BF%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="nav-number">7.</span> <span class="nav-text">hook 替换函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hook%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-number">8.</span> <span class="nav-text">hook内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E8%B0%83%E7%94%A8"><span class="nav-number">9.</span> <span class="nav-text">主动调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E5%8F%8D%E5%B0%84%E5%A4%A7%E6%B3%95"><span class="nav-number">10.</span> <span class="nav-text">Java 反射大法</span></a></li></ol>
 
     </div>
 </div>
