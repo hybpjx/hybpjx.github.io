@@ -207,7 +207,8 @@
 <p>获取参数</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (md.getName().contains(<span class="string">&quot;xxxx&quot;</span>)) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; param.args.length; i++) &#123;</span><br><span class="line">        Log.d(TAG, param.args[i].getClass().getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h1 id="自吐算法模块开发"><a href="#自吐算法模块开发" class="headerlink" title="自吐算法模块开发"></a>自吐算法模块开发</h1>]]></content>
+<h1 id="自吐算法模块开发"><a href="#自吐算法模块开发" class="headerlink" title="自吐算法模块开发"></a>自吐算法模块开发</h1><p>私人仓库： <a class="link"   href="https://github.com/hybpjx/HookEncryptXposed" >https://github.com/hybpjx/HookEncryptXposed <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
   </entry>
   <entry>
     <title>testab 逆向流程分析</title>
