@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 7.3.0">
+
+  
+
+  
+
+  
+    <meta name="author" content="hybpjx">
+  
+
+  
+
+  
+
+  <title>Python加密解密算法 | 始識’s 博客</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@1.1.13/index.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/monokai.min.css">
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(https://2.gravatar.com/userimage/270018464/cb7d2c874b4084b9c549c2473eb0219d?size=512)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          始識’s 博客
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a href="/archives">归档</a></li>
+        
+          <li class="navbar-list-item"><a href="/friends">友链</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">Python加密解密算法</h1>
+          <h2 class="title-sub-wrap">
+            <strong>hybpjx</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2022-11-04T09:05:55.000Z" itemprop="datePublished">2022-11-04</time>
+          </h2>
+          
+            <h2 class="last-time">
+              <span>最后更新于</span>
+              <time  class="article-updated" datetime="2025-08-13T17:08:34.158Z" itemprop="dateUpdated">2025-08-14</time>
+            </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+    <li><a href="/categories/%E8%AF%AD%E8%A8%80%E5%8A%A0%E8%A7%A3%E5%AF%86/">📒 语言加解密</a></li>
+    
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/Python/">🏷️ Python</a></li>
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h1 id="url-encode加密"><a href="#url-encode加密" class="headerlink" title="url encode加密"></a>url encode加密</h1><p>简介：当url地址含有中文，或者参数有中文的时候，这个算是很正常了，但是把这样的url作为参数传递的时候（最常见的callback）<br>，需要把一些中文甚至’&#x2F;‘做一下编码转换。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> urllib.parse<br><br><br>text = <span class="hljs-string">&quot;我爱吃鸡腿&quot;</span><br>s = urllib.parse.quote(text)<br><span class="hljs-built_in">print</span>(s) <span class="hljs-comment"># %E6%88%91%E7%88%B1%E5%90%83%E9%B8%A1%E8%85%BF</span><br>u = urllib.parse.unquote(s)<br><span class="hljs-built_in">print</span>(u) <span class="hljs-comment">#我爱吃鸡腿</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="unicode-加密"><a href="#unicode-加密" class="headerlink" title="unicode 加密"></a>unicode 加密</h1><p>其实这应该不算一种加密 更多的应该算是一种编码与解码<br>但是由于运用很广泛 我也加进去了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2023/2/28 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br>str1 = <span class="hljs-string">&quot;你好&quot;</span><br><br><span class="hljs-comment"># 编码</span><br>enStr1 = str1.encode(<span class="hljs-string">&#x27;unicode-escape&#x27;</span>).decode()<br><span class="hljs-built_in">print</span>(enStr1) <span class="hljs-comment"># \u4f60\u597d</span><br><br><span class="hljs-comment"># 解码</span><br>deStr1 = enStr1.encode().decode(<span class="hljs-string">&#x27;unicode-escape&#x27;</span>)<br><span class="hljs-built_in">print</span>(deStr1) <span class="hljs-comment"># 你好</span><br></code></pre></td></tr></table></figure>
+
+
+<h1 id="Base64-加密"><a href="#Base64-加密" class="headerlink" title="Base64 加密"></a>Base64 加密</h1><p>简介：Base64 是一种用 64 个字符来表示任意二进制数据的方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> base64<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">base64_encode</span>(<span class="hljs-params">text</span>):<br>    encode_data = base64.b64encode(text.encode())<br>    <span class="hljs-keyword">return</span> encode_data<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">base64_decode</span>(<span class="hljs-params">encode_data</span>):<br>    decode_data = base64.b64decode(encode_data)<br>    <span class="hljs-keyword">return</span> decode_data<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    text = <span class="hljs-string">&#x27;I love Python!&#x27;</span><br>    encode_data = base64_encode(text)<br>    decode_data = base64_decode(encode_data)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Base64 编码：&#x27;</span>, encode_data)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Base64 解码：&#x27;</span>, decode_data)<br>    <br>    <span class="hljs-comment"># Base64 编码： b&#x27;SSBsb3ZlIFB5dGhvbiE=&#x27;</span><br><span class="hljs-comment"># Base64 解码： b&#x27;I love Python!&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h1><p>简介：全称 MD5 消息摘要算法（英文名称：MD5 Message-Digest Algorithm），又称哈希算法、散列算法，<br>由美国密码学家罗纳德·李维斯特（Ronald Linn Rivest）设计，于 1992 年作为 RFC 1321 被公布，<br>用以取代 MD4 算法。摘要算法是单向加密的，也就是说明文通过摘要算法加密之后，是不能解密的。<br>摘要算法的第二个特点密文是固定长度的，它通过一个函数，把任意长度的数据转换为一个长度固定的数据串<br>（通常用16进制的字符串表示）。之所以叫摘要算法，它的算法就是提取明文重要的特征。所以，<br>两个不同的明文，使用了摘要算法之后，有可能他们的密文是一样的，不过这个概率非常的低。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> hashlib<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">md5_test1</span>():<br>    md5 = hashlib.new(<span class="hljs-string">&#x27;md5&#x27;</span>, <span class="hljs-string">&#x27;I love python!&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>    <span class="hljs-built_in">print</span>(md5.hexdigest())<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">md5_test2</span>():<br>    md5 = hashlib.md5()<br>    md5.update(<span class="hljs-string">&#x27;I love &#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>    md5.update(<span class="hljs-string">&#x27;python!&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>    <span class="hljs-built_in">print</span>(md5.hexdigest())<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    md5_test1()  <span class="hljs-comment"># 21169ee3acd4a24e1fcb4322cfd9a2b8</span><br>    md5_test2()  <span class="hljs-comment"># 21169ee3acd4a24e1fcb4322cfd9a2b8</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="PBKDF2"><a href="#PBKDF2" class="headerlink" title="PBKDF2"></a>PBKDF2</h1><p>简介：英文名称：Password-Based Key Derivation Function 2，<br>PBKDF2 是 RSA 实验室的公钥加密标准（PKCS）系列的一部分，<br>2017 年发布的 RFC 8018 （PKCS #5 v2.1）推荐使用 PBKDF2 进行密码散列。<br>PBKDF2 将伪随机函数（例如 HMAC），<br>把明文和一个盐值（salt）作为输入参数，然后进行重复运算，并最终产生密钥，<br>如果重复的次数足够大，破解的成本就会变得很高。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> binascii<br><span class="hljs-keyword">from</span> Cryptodome.Hash <span class="hljs-keyword">import</span> SHA1<br><span class="hljs-keyword">from</span> Cryptodome.Protocol.KDF <span class="hljs-keyword">import</span> PBKDF2<br><br><br>text = <span class="hljs-string">&#x27;I love Python!&#x27;</span><br>salt = <span class="hljs-string">b&#x27;43215678&#x27;</span><br>result = PBKDF2(text,  salt, count=<span class="hljs-number">10</span>, hmac_hash_module=SHA1)<br>result = binascii.hexlify(result)<br><span class="hljs-built_in">print</span>(result)<br><span class="hljs-comment"># b&#x27;7fee6e8350cfe96314c76aaa6e853a50&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="SHA"><a href="#SHA" class="headerlink" title="SHA"></a>SHA</h1><p>简介：全称安全哈希算法（英文名称：Secure Hash Algorithm），<br>由美国国家安全局（NSA）所设计，主要适用于数字签名标准<br>（Digital Signature Standard DSS）里面定义的数字签名算法（<br>Digital Signature Algorithm DSA），SHA 通常指 SHA 家族的五个算法，<br>分别是 SHA-1、SHA-224、SHA-256、SHA-384、SHA-512，<br>后四者有时并称为 SHA-2，SHA 是比 MD5 更安全一点的摘要算法，<br>MD5 的密文是 32 位，而 SHA-1 是 40 位，<br>版本越强，密文越长，代价是速度越慢。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> hashlib<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">sha1_test1</span>():<br>    sha1 = hashlib.new(<span class="hljs-string">&#x27;sha1&#x27;</span>, <span class="hljs-string">&#x27;I love python!&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>    <span class="hljs-built_in">print</span>(sha1.hexdigest())<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">sha1_test2</span>():<br>    sha1 = hashlib.sha1()<br>    sha1.update(<span class="hljs-string">&#x27;I love python!&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>    <span class="hljs-built_in">print</span>(sha1.hexdigest())<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    sha1_test1()  <span class="hljs-comment"># 23c02b203bd2e2ca19da911f1d270a06d86719fb</span><br>    sha1_test2()  <span class="hljs-comment"># 23c02b203bd2e2ca19da911f1d270a06d86719fb</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="HMAC"><a href="#HMAC" class="headerlink" title="HMAC"></a>HMAC</h1><p>简介：全称散列消息认证码、密钥相关的哈希运算消息认证码<br>（英文名称：Hash-based Message Authentication Code 或者 Keyed-hash Message Authentication Code），<br>于 1996 年提出，1997 年作为 RFC 2104 被公布，HMAC 加密算法是一种安全的基于加密 Hash<br>函数和共享密钥的消息认证协议，它要求通信双方共享密钥 key、约定算法、<br>对报文进行 Hash 运算，形成固定长度的认证码。通信双方<br>通过认证码的校验来确定报文的合法性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hmac<br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">hmac_test1</span>():<br>    message = <span class="hljs-string">b&#x27;I love python!&#x27;</span><br>    key = <span class="hljs-string">b&#x27;secret&#x27;</span><br>    md5 = hmac.new(key, message, digestmod=<span class="hljs-string">&#x27;MD5&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(md5.hexdigest())<br>    <br>    <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">hmac_test2</span>():<br>    key = <span class="hljs-string">&#x27;secret&#x27;</span>.encode(<span class="hljs-string">&#x27;utf8&#x27;</span>)<br>    sha1 = hmac.new(key, digestmod=<span class="hljs-string">&#x27;sha1&#x27;</span>)<br>    sha1.update(<span class="hljs-string">&#x27;I love &#x27;</span>.encode(<span class="hljs-string">&#x27;utf8&#x27;</span>))<br>    sha1.update(<span class="hljs-string">&#x27;Python!&#x27;</span>.encode(<span class="hljs-string">&#x27;utf8&#x27;</span>))<br>    <span class="hljs-built_in">print</span>(sha1.hexdigest())<br>        <br>        <br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    hmac_test1()  <span class="hljs-comment"># 9c503a1f852edcc3526ea56976c38edf</span><br>    hmac_test2()  <span class="hljs-comment"># 2d8449a4292d4bbeed99ce9ea570880d6e19b61a</span><br><br></code></pre></td></tr></table></figure>
+<h1 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h1><p>简介：全称数据加密标准（英文名称：Data Encryption Standard），加密与解密使用同一密钥，<br>属于对称加密算法，1977 年被美国联邦政府的国家标准局确定为联邦资料处理标准（FIPS），<br>DES 是一个分组加密算法，使用 56 位的密钥（一般认为密钥是 64 位，<br>但是密钥的每个第 8 位设置为奇偶校验位，所以实际上有效位只有 56 位），<br>由于 56 位密钥长度相对较短，所以 DES 是不安全的，现在基本上已被更高级的加密标准 AES 取代。</p>
+<p>mode 支持：CBC，CFB，CTR，CTRGladman，ECB，OFB 等。<br>padding 支持：ZeroPadding，NoPadding，AnsiX923，Iso10126，Iso97971，Pkcs7 等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> binascii<br><span class="hljs-comment"># 加密模式 CBC，填充方式 PAD_PKCS5</span><br><span class="hljs-keyword">from</span> pyDes <span class="hljs-keyword">import</span> des, CBC, PAD_PKCS5<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">des_encrypt</span>(<span class="hljs-params">key, text, iv</span>):<br>    k = des(key, CBC, iv, pad=<span class="hljs-literal">None</span>, padmode=PAD_PKCS5)<br>    en = k.encrypt(text, padmode=PAD_PKCS5)<br>    <span class="hljs-keyword">return</span> binascii.b2a_hex(en)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">des_decrypt</span>(<span class="hljs-params">key, text, iv</span>):<br>    k = des(key, CBC, iv, pad=<span class="hljs-literal">None</span>, padmode=PAD_PKCS5)<br>    de = k.decrypt(binascii.a2b_hex(text), padmode=PAD_PKCS5)<br>    <span class="hljs-keyword">return</span> de<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    secret_key = <span class="hljs-string">&#x27;12345678&#x27;</span>   <span class="hljs-comment"># 密钥</span><br>    text = <span class="hljs-string">&#x27;I love Python!&#x27;</span>   <span class="hljs-comment"># 加密对象</span><br>    iv = secret_key           <span class="hljs-comment"># 偏移量</span><br>    secret_str = des_encrypt(secret_key, text, iv)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;加密字符串：&#x27;</span>, secret_str)<br>    clear_str = des_decrypt(secret_key, secret_str, iv)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;解密字符串：&#x27;</span>, clear_str)<br>    <br>    <br>    <span class="hljs-comment"># 加密字符串： b&#x27;302d3abf2421169239f829b38a9545f1&#x27;</span><br>    <span class="hljs-comment"># 解密字符串： b&#x27;I love Python!&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<h1 id="3DES"><a href="#3DES" class="headerlink" title="3DES"></a>3DES</h1><p>简介：全称三重数据加密算法（英文名称：Triple Data Encryption Standard、<br>Triple Data Encryption Algorithm、TDES、TDEA），是对称加密算法中的一种。<br>70 年代初由 IBM 研发，后 1977 年被美国国家标准局采纳为数据加密标准，<br>它相当于是对每个数据块应用三次 DES 加密算法。由于计算机运算能力的增强，<br>原版 DES 密码的密钥长度变得容易被暴力破解；3DES 即是设计用来提供一种相对简单的方法，<br>即通过增加 DES 的密钥长度来避免破解，所以严格来说 3DES 不是设计一种全新的块密码算法。</p>
+<p>mode 支持：CBC，CFB，CTR，CTRGladman，ECB，OFB 等。<br>padding 支持：ZeroPadding，NoPadding，AnsiX923，Iso10126，Iso97971，Pkcs7 等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">from</span> Cryptodome.Cipher <span class="hljs-keyword">import</span> DES3<br><span class="hljs-keyword">from</span> Cryptodome <span class="hljs-keyword">import</span> Random<br><br><br><span class="hljs-comment"># 需要补位，str不是16的倍数那就补足为16的倍数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add_to_16</span>(<span class="hljs-params">value</span>):<br>    <span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(value) % <span class="hljs-number">16</span> != <span class="hljs-number">0</span>:<br>        value += <span class="hljs-string">&#x27;\0&#x27;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">str</span>.encode(value)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">des_encrypt</span>(<span class="hljs-params">key, text, iv</span>):<br>    <span class="hljs-comment"># 加密模式 OFB</span><br>    cipher_encrypt = DES3.new(add_to_16(key), DES3.MODE_OFB, iv)<br>    encrypted_text = cipher_encrypt.encrypt(text.encode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br>    <span class="hljs-keyword">return</span> encrypted_text<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">des_decrypt</span>(<span class="hljs-params">key, text, iv</span>):<br>    <span class="hljs-comment"># 加密模式 OFB</span><br>    cipher_decrypt = DES3.new(add_to_16(key), DES3.MODE_OFB, iv)<br>    decrypted_text = cipher_decrypt.decrypt(text)<br>    <span class="hljs-keyword">return</span> decrypted_text<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    key = <span class="hljs-string">&#x27;12345678&#x27;</span>            <span class="hljs-comment"># 密钥，16 位</span><br>    text = <span class="hljs-string">&#x27;I love Python!&#x27;</span>     <span class="hljs-comment"># 加密对象</span><br>    iv = Random.new().read(DES3.block_size)  <span class="hljs-comment"># DES3.block_size == 8</span><br>    secret_str = des_encrypt(key, text, iv)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;加密字符串：&#x27;</span>, secret_str)<br>    clear_str = des_decrypt(key, secret_str, iv)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;解密字符串：&#x27;</span>, clear_str)<br><br><br><span class="hljs-comment"># 加密字符串： b&#x27;\xa5\x8a\xd4R\x99\x16j\xba?vg\xf2\xb6\xa9&#x27;</span><br><span class="hljs-comment"># 解密字符串： b&#x27;I love Python!&#x27;</span><br></code></pre></td></tr></table></figure>
+<h1 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h1><p>简介：全称高级加密标准（英文名称：Advanced Encryption Standard），<br>在密码学中又称 Rijndael 加密法，由美国国家标准与技术研究院 （NIST）于 2001 年发布，<br>并在 2002 年成为有效的标准，是美国联邦政府采用的一种区块加密标准。<br>这个标准用来替代原先的 DES，已经被多方分析且广为全世界所使用，<br>它本身只有一个密钥，即用来实现加密，也用于解密。</p>
+<p>mode 支持：CBC，CFB，CTR，CTRGladman，ECB，OFB 等。<br>padding 支持：ZeroPadding，NoPadding，AnsiX923，Iso10126，Iso97971，Pkcs7 等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">from</span> Cryptodome.Cipher <span class="hljs-keyword">import</span> AES<br><br><br><span class="hljs-comment"># 需要补位，str不是16的倍数那就补足为16的倍数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add_to_16</span>(<span class="hljs-params">value</span>):<br>    <span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(value) % <span class="hljs-number">16</span> != <span class="hljs-number">0</span>:<br>        value += <span class="hljs-string">&#x27;\0&#x27;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">str</span>.encode(value)<br><br><br><span class="hljs-comment"># 加密方法</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">aes_encrypt</span>(<span class="hljs-params">key, t, iv</span>):<br>    aes = AES.new(add_to_16(key), AES.MODE_CBC, add_to_16(iv))  <span class="hljs-comment"># 初始化加密器</span><br>    encrypt_aes = aes.encrypt(add_to_16(t)) <span class="hljs-comment"># 先进行 aes 加密</span><br>    <span class="hljs-comment"># 执行加密并转码返回 bytes</span><br>    encrypted_text = <span class="hljs-built_in">str</span>(base64.encodebytes(encrypt_aes), encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)  <br>    <span class="hljs-keyword">return</span> encrypted_text<br><br><br><span class="hljs-comment"># 解密方法</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">aes_decrypt</span>(<span class="hljs-params">key, t, iv</span>):<br>    <span class="hljs-comment"># 初始化加密器</span><br>    aes = AES.new(add_to_16(key), AES.MODE_CBC, add_to_16(iv))     <br>    <span class="hljs-comment"># 优先逆向解密 base64 成 bytes   </span><br>    base64_decrypted = base64.decodebytes(t.encode(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)) <br>    <span class="hljs-comment"># 执行解密密并转码返回str </span><br>    decrypted_text = <span class="hljs-built_in">str</span>(aes.decrypt(base64_decrypted), encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>).replace(<span class="hljs-string">&#x27;\0&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>)  <br>    <span class="hljs-keyword">return</span> decrypted_text<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">aes_decrypt</span>(<span class="hljs-params">t,key,iv</span>):<br>    <span class="hljs-comment"># 初始化加密器</span><br>    aes = AES.new(add_to_16(key), AES.MODE_CBC, add_to_16(iv))<br>    <span class="hljs-comment"># 优先逆向解密 base64 成 bytes</span><br>    base64_decrypted = base64.b64decode(t.encode(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>    <span class="hljs-comment"># 执行解密密并转码返回str</span><br>    decrypted_text = <span class="hljs-built_in">str</span>(unpad(aes.decrypt(base64_decrypted), AES.block_size), encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>).replace(<span class="hljs-string">&#x27;\0&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>)<br>    <span class="hljs-keyword">return</span> decrypted_text<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    secret_key = <span class="hljs-string">&#x27;12345678&#x27;</span>   <span class="hljs-comment"># 密钥</span><br>    text = <span class="hljs-string">&#x27;I love Python!&#x27;</span>   <span class="hljs-comment"># 加密对象</span><br>    iv = secret_key           <span class="hljs-comment"># 初始向量</span><br>    encrypted_str = aes_encrypt(secret_key, text, iv)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;加密字符串：&#x27;</span>, encrypted_str)<br>    decrypted_str = aes_decrypt(secret_key, encrypted_str, iv)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;解密字符串：&#x27;</span>, decrypted_str)<br><br><br><span class="hljs-comment"># 加密字符串： lAVKvkQh+GtdNpoKf4/mHA==</span><br><span class="hljs-comment"># 解密字符串： I love Python!</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>AES ECB PKC7 模式</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Cryptodome.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">from</span> Cryptodome.Util.Padding <span class="hljs-keyword">import</span> pad<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">aes_cipher</span>(<span class="hljs-params">key, aes_str</span>):<br>    <span class="hljs-comment"># 使用key,选择加密方式</span><br>    aes = AES.new(key.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), AES.MODE_ECB)<br>    pad_pkcs7 = pad(aes_str.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), AES.block_size, style=<span class="hljs-string">&#x27;pkcs7&#x27;</span>)  <span class="hljs-comment"># 选择pkcs7补全</span><br>    encrypt_aes = aes.encrypt(pad_pkcs7)<br>    <span class="hljs-comment"># 加密结果</span><br>    encrypted_text = <span class="hljs-built_in">str</span>(base64.encodebytes(encrypt_aes), encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)  <span class="hljs-comment"># 解码</span><br>    encrypted_text_str = encrypted_text.replace(<span class="hljs-string">&quot;\n&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-comment"># 此处我的输出结果老有换行符，所以用了临时方法将它剔除</span><br>    <span class="hljs-keyword">return</span> encrypted_text_str<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="RC4"><a href="#RC4" class="headerlink" title="RC4"></a>RC4</h1><p>简介：英文名称：Rivest Cipher 4，也称为 ARC4 或 ARCFOUR，是一种流加密算法，<br>密钥长度可变。它加解密使用相同的密钥，因此也属于对称加密算法。<br>RC4 是有线等效加密（WEP）中采用的加密算法，也曾经是 TLS 可采用的算法之一，<br>该算法的速度可以达到 DES 加密的 10 倍左右，且具有很高级别的非线性，<br>虽然它在软件方面的简单性和速度非常出色，但在 RC4 中发现了多个漏洞，<br>它特别容易受到攻击，RC4 作为一种老旧的验证和加密算法易于受到黑客攻击，<br>现在逐渐不推荐使用了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">from</span> Cryptodome.Cipher <span class="hljs-keyword">import</span> ARC4<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_encrypt</span>(<span class="hljs-params">key, t</span>):<br>    enc = ARC4.new(key.encode(<span class="hljs-string">&#x27;utf8&#x27;</span>))<br>    res = enc.encrypt(t.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>    res = base64.b64encode(res)<br>    <span class="hljs-keyword">return</span> res<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_decrypt</span>(<span class="hljs-params">key, t</span>):<br>    data = base64.b64decode(t)<br>    enc = ARC4.new(key.encode(<span class="hljs-string">&#x27;utf8&#x27;</span>))<br>    res = enc.decrypt(data)<br>    <span class="hljs-keyword">return</span> res<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    secret_key = <span class="hljs-string">&#x27;12345678&#x27;</span>   <span class="hljs-comment"># 密钥</span><br>    text = <span class="hljs-string">&#x27;I love Python!&#x27;</span>   <span class="hljs-comment"># 加密对象</span><br>    encrypted_str = rc4_encrypt(secret_key, text)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;加密字符串：&#x27;</span>, encrypted_str)<br>    decrypted_str = rc4_decrypt(secret_key, encrypted_str)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;解密字符串：&#x27;</span>, decrypted_str)<br><br><br><span class="hljs-comment"># 加密字符串： b&#x27;8tNVu3/U/veJR2KgyBw=&#x27;</span><br><span class="hljs-comment"># 解密字符串： b&#x27;I love Python!&#x27;</span><br></code></pre></td></tr></table></figure>
+<h1 id="Rabbit"><a href="#Rabbit" class="headerlink" title="Rabbit"></a>Rabbit</h1><p>简介：Rabbit 加密算法是一个高性能的流密码加密方式，<br>2003 年首次被提出，它从 128 位密钥和 64 位初始向量（iv）创建一个密钥流。</p>
+<p>目前没有找到有第三方库可以直接实现 Rabbit 算法，<br>在 Python 中实现可以参考：<a target="_blank" rel="noopener" href="https://asecuritysite.com/encryption/rabbit2">https://asecuritysite.com/encryption/rabbit2</a></p>
+<h1 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h1><p>简介：英文名称：Rivest-Shamir-Adleman，是 1977 年由罗纳德·李维斯特（Ron Rivest）、<br>阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）一起提出的，<br>RSA 就是他们三人姓氏开头字母拼在一起组成的，RSA 加密算法是一种非对称加密算法。<br>在公开密钥加密和电子商业中RSA被广泛使用。它被普遍认为是目前比较优秀的公钥方案之一。<br>RSA是第一个能同时用于加密和数字签名的算法，它能够抵抗到目前为止已知的所有密码攻击。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> rsa<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rsa_encrypt</span>(<span class="hljs-params">pu_key, t</span>):<br>    <span class="hljs-comment"># 公钥加密</span><br>    rsa = rsa.encrypt(t.encode(<span class="hljs-string">&quot;utf-8&quot;</span>), pu_key)<br>    <span class="hljs-keyword">return</span> rsa<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rsa_decrypt</span>(<span class="hljs-params">pr_key, t</span>):<br>    <span class="hljs-comment"># 私钥解密</span><br>    rsa = rsa.decrypt(t, pr_key).decode(<span class="hljs-string">&quot;utf-8&quot;</span>)<br>    <span class="hljs-keyword">return</span> rsa<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    public_key, private_key = rsa.newkeys(<span class="hljs-number">512</span>)   <span class="hljs-comment"># 生成公钥、私钥</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;公钥：&#x27;</span>, public_key)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;私钥：&#x27;</span>, private_key)<br>    text = <span class="hljs-string">&#x27;I love Python!&#x27;</span>  <span class="hljs-comment"># 加密对象</span><br>    encrypted_str = rsa_encrypt(public_key, text)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;加密字符串：&#x27;</span>, encrypted_str)<br>    decrypted_str = rsa_decrypt(private_key, encrypted_str)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;解密字符串：&#x27;</span>, decrypted_str)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">公钥： PublicKey(7636479066127060956100056267701318377455704072072698049978592945665550579944731953431504993757594103617537700972424661030900303472123028864161050235168613, 65537)</span><br><span class="hljs-string">私钥： PrivateKey(7636479066127060956100056267701318377455704072072698049978592945665550579944731953431504993757594103617537700972424661030900303472123028864161050235168613, 65537, 3850457767980968449796700480128630632818465005441846698224554128042451115530564586537997896922067523638756079019054611200173122138274839877369624069360253, 4713180694194659323798858305046043997526301456820208338158979730140812744181638767, 1620238976946735819854194349514460863335347861649166352709029254680140139)</span><br><span class="hljs-string">加密字符串： b&quot;\x1aaeps\xa0c&#125;\xb6\xcf\xa3\xb0\xbb\xedA\x7f&#125;\x03\xdc\xd5\x1c\x9b\xdb\xda\xf9q\x80[=\xf5\x91\r\xd0&#x27;f\xce\x1f\x01\xef\xa5\xdb3\x96\t0qIxF\xbd\x11\xd6\xb25\xc5\xe1pM\xb4M\xc2\xd4\x03\xa6&quot;</span><br><span class="hljs-string">解密字符串： I love Python!</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="模块-Cryptodome："><a href="#模块-Cryptodome：" class="headerlink" title="模块 Cryptodome："></a>模块 Cryptodome：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">from</span> Cryptodome.PublicKey <span class="hljs-keyword">import</span> RSA<br><span class="hljs-keyword">from</span> Cryptodome.Cipher <span class="hljs-keyword">import</span> PKCS1_v1_5<br><br><br>data = <span class="hljs-string">&quot;cKK8B2rWwfwWeXhz&quot;</span><br>public_key = <span class="hljs-string">&quot;MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAM1xhOWaThSMpfxFsjV5YaWOFHt+6RvS+zH2Pa47VVr8PkZYnRaaKKy2MYBuEh7mZfM/R1dUXTgu0gp6VTNeNQkCAwEAAQ==&quot;</span><br>rsa_key = RSA.import_key(base64.b64decode(public_key))  <span class="hljs-comment"># 导入读取到的公钥</span><br>cipher = PKCS1_v1_5.new(rsa_key)                        <span class="hljs-comment"># 生成对象</span><br>cipher_text = base64.b64encode(cipher.encrypt(data.encode(encoding=<span class="hljs-string">&quot;utf-8&quot;</span>)))<br><span class="hljs-built_in">print</span>(cipher_text)<br></code></pre></td></tr></table></figure>
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+    <div class="card-text">
+      
+        <a href="/2022/11/26/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85redis%E5%B9%B6%E4%B8%94%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86%E5%92%8C%E5%AF%86%E7%A0%81/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Ubuntu下安装redis并且设置远程登陆和密码</h2>
+        </a>
+      
+      <div class="card-text--row">Newer</div>
+    </div>
+  </article>
+</div>
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+    <div class="card-text">
+      
+        <a href="/2022/09/26/Golang%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Golang加密解密算法</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="https://2.gravatar.com/userimage/270018464/cb7d2c874b4084b9c549c2473eb0219d?size=512" class="soft-size--round soft-style--box" alt="流转">
+    
+    
+      <h2>流转</h2>
+    
+    
+      <p>贵在坚持</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>38</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        9
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        9
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>公告</span>
+  </div>
+  <div class="widget-body">
+    <p>这里是流转‘s blog，记录学习历程。</p>
+  </div>
+</section>
+
+
+      <section class="widget-categories widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+      <span>分类</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categories-list">
+      
+        <li class="categories-list-item">
+          <a href="/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/">
+            快速安装 (10)
+          </a>
+        </li>
+        
+        <li class="categories-list-item">
+          <a href="/categories/JS%E9%80%86%E5%90%91/">
+            JS逆向 (4)
+          </a>
+        </li>
+        
+        <li class="categories-list-item">
+          <a href="/categories/%E8%AF%AD%E8%A8%80%E5%8A%A0%E8%A7%A3%E5%AF%86/">
+            语言加解密 (3)
+          </a>
+        </li>
+        
+        <li class="categories-list-item">
+          <a href="/categories/Gin%E9%80%9F%E7%94%A8/">
+            Gin速用 (2)
+          </a>
+        </li>
+        
+        <li class="categories-list-item">
+          <a href="/categories/AST%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/">
+            AST学习日记 (1)
+          </a>
+        </li>
+        
+        <li class="categories-list-item">
+          <a href="/categories/%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B/">
+            项目流程 (1)
+          </a>
+        </li>
+        
+        <li class="categories-list-item">
+          <a href="/categories/%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93/">
+            一日一库 (2)
+          </a>
+        </li>
+        
+        <li class="categories-list-item">
+          <a href="/categories/JS%E5%9F%BA%E7%A1%80/">
+            JS基础 (1)
+          </a>
+        </li>
+        
+        <li class="categories-list-item">
+          <a href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91/">
+            浏览器开发 (2)
+          </a>
+        </li>
+        
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>标签</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      <a href="/tags/APP%E9%80%86%E5%90%91/" style="font-size: 15px;" class="tags-cloud-5">APP逆向</a> <a href="/tags/AST/" style="font-size: 10px;" class="tags-cloud-0">AST</a> <a href="/tags/Golang/" style="font-size: 20px;" class="tags-cloud-10">Golang</a> <a href="/tags/JSVMP/" style="font-size: 15px;" class="tags-cloud-5">JSVMP</a> <a href="/tags/JS%E9%80%86%E5%90%91/" style="font-size: 10px;" class="tags-cloud-0">JS逆向</a> <a href="/tags/Ja3/" style="font-size: 10px;" class="tags-cloud-0">Ja3</a> <a href="/tags/JavaScript/" style="font-size: 15px;" class="tags-cloud-5">JavaScript</a> <a href="/tags/Python/" style="font-size: 15px;" class="tags-cloud-5">Python</a> <a href="/tags/python/" style="font-size: 10px;" class="tags-cloud-0">python</a>
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+          <a href="https://www.zhihu.com/people/liu-zhuan-i" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg t="1587373160860" class="icon icon-zhihu" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M544.949 561.422s0-71.387-34.779-75.050c-34.779-3.663-142.775 0-142.775 0v-219.654h161.078s-1.83-73.219-32.949-73.219h-261.755l43.93-117.148s-65.897 3.663-89.692 45.761-98.844 252.604-98.844 252.604 25.627 10.983 67.726-20.134c42.101-31.116 56.743-86.033 56.743-86.033l76.879-3.663 1.83 223.316s-133.621-1.83-161.078 0c-27.457 1.83-42.101 75.050-42.101 75.050h203.182s-18.307 124.47-69.557 214.164c-53.085 89.692-151.929 161.078-151.929 161.078s71.387 29.287 140.947-10.983c69.557-42.101 120.811-223.316 120.811-223.316l162.912 203.182s14.643-97.013-1.83-124.47c-18.307-27.457-113.49-137.283-113.49-137.283l-42.101 36.607 29.287-120.811h177.552zM587.050 188.010l-1.83 660.793h65.897l23.795 82.37 115.321-82.37h162.912v-660.793h-366.091zM879.92 775.584h-76.879l-97.013 75.050-21.965-75.050h-20.134v-512.527h215.991v512.527z"></path>
+</svg>
+          </a>
+        
+      
+        
+          <a href="https://weibo.com/5868422298" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-weibo" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M385.682429 733.696q11.995429-19.456 6.290286-39.424t-25.746286-28.598857q-19.456-7.972571-41.691429-0.585143t-34.304 26.258286q-12.580571 19.456-7.460571 39.131429t24.576 28.891429 42.569143 1.462857 35.693714-27.136zM439.442429 664.576q4.534857-7.460571 1.974857-15.140571t-10.020571-10.605714q-7.972571-2.852571-16.310857 0.292571t-12.288 10.605714q-9.728 17.700571 7.460571 25.746286 7.972571 2.852571 16.603429-0.292571t12.580571-10.605714zM538.843572 725.723429q-25.746286 58.294857-90.258286 85.723429t-128 6.875429q-61.147429-19.456-84.260571-72.265143t3.730286-107.154286q26.843429-53.174857 86.601143-79.433143t120.32-10.825143q63.414857 16.603429 90.550857 68.315429t1.462857 108.836571zM717.165858 634.294857q-5.12-54.857143-50.834286-97.133714t-119.149714-62.317714-156.891429-11.995429q-127.414857 13.165714-211.163429 80.822857t-75.702857 151.113143q5.12 54.857143 50.834286 97.133714t119.149714 62.317714 156.891429 11.995429q127.414857-13.165714 211.163429-80.822857t75.702857-151.113143zM893.147572 636.562286q0 38.838857-21.138286 79.725714t-62.317714 78.262857-96.256 67.145143-129.170286 47.396571-154.550857 17.700571-157.110857-19.163429-137.435429-53.174857-98.011429-86.308571-37.156571-114.029714q0-65.682286 39.716571-139.995429t112.859429-147.456q96.548571-96.548571 195.145143-134.875429t140.873143 4.022857q37.156571 36.571429 11.410286 119.442286-2.267429 7.972571-0.585143 11.410286t5.705143 4.022857 8.265143-0.292571 7.68-1.974857l3.437714-1.170286q79.433143-33.718857 140.580571-33.718857t87.405714 34.889143q25.746286 35.986286 0 101.741714-1.170286 7.460571-2.56 11.410286t2.56 7.168 6.875429 4.315429 9.728 3.437714q32.548571 10.313143 58.88 26.843429t45.714286 46.592 19.456 66.56zM850.871001 279.990857q23.990857 26.843429 31.158857 62.025143t-3.730286 67.145143q-4.534857 13.165714-16.822857 19.456t-25.453714 2.267429q-13.165714-4.534857-19.456-16.822857t-2.267429-25.453714q11.410286-35.986286-13.677714-63.414857t-61.147429-19.968q-13.677714 2.852571-25.746286-4.534857t-14.262857-21.138286q-2.852571-13.677714 4.534857-25.453714t21.138286-14.555429q34.304-7.460571 68.022857 3.145143t57.709714 37.449143zM954.295001 186.88q49.737143 54.857143 64.292571 127.122286t-7.68 138.020571q-5.12 15.433143-19.456 22.820571t-29.696 2.267429-22.820571-19.456-2.852571-29.696q16.018286-46.884571 5.705143-98.304t-45.714286-90.258286q-35.401143-39.424-84.553143-54.564571t-98.889143-4.827429q-16.018286 3.437714-29.696-5.412571t-17.115429-24.868571 5.412571-29.403429 24.868571-16.822857q70.290286-14.848 139.410286 6.582857t118.857143 76.873143z"></path>
+</svg>
+          </a>
+        
+      
+        
+          <a href="https://github.com/hybpjx/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+        
+          <a href="https://twitter.com/hybpjx" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M962.285714 233.142857q-38.285714 56-92.571429 95.428571 0.571429 8 0.571429 24 0 74.285714-21.714286 148.285714t-66 142-105.428571 120.285714-147.428571 83.428571-184.571429 31.142857q-154.857143 0-283.428571-82.857143 20 2.285714 44.571429 2.285714 128.571429 0 229.142857-78.857143-60-1.142857-107.428571-36.857143t-65.142857-91.142857q18.857143 2.857143 34.857143 2.857143 24.571429 0 48.571429-6.285714-64-13.142857-106-63.714286t-42-117.428571l0-2.285714q38.857143 21.714286 83.428571 23.428571-37.714286-25.142857-60-65.714286t-22.285714-88q0-50.285714 25.142857-93.142857 69.142857 85.142857 168.285714 136.285714t212.285714 56.857143q-4.571429-21.714286-4.571429-42.285714 0-76.571429 54-130.571429t130.571429-54q80 0 134.857143 58.285714 62.285714-12 117.142857-44.571429-21.142857 65.714286-81.142857 101.714286 53.142857-5.714286 106.285714-28.571429z"></path>
+</svg>
+          </a>
+        
+      
+    </div>
+     
+    <p>&copy; 2025 <a href="/" target="_blank">hybpjx</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  
+
+
+
+
+
+
+<!-- copy button  -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+<!-- https://clipboardjs.com/ -->
+
+
+<script type="text/javascript">
+	(function () {
+		function getCodeType (elem) {
+			const classs = Array.from(elem.classList.values());
+			if (classs && classs.length > 1) {
+				return classs[1];
+			}
+			return "plain";
+		}
+
+		window.addEventListener("DOMContentLoaded", () => {
+			const copyBtnClass = "copy-btn";
+			//  instantiate clipboardjs 
+			const clipboard = new ClipboardJS('.' + copyBtnClass);
+
+			clipboard.on('success', function (e) {
+				console.info('Action:', e.action);
+				console.info('Text:', e.text);
+				console.info('Trigger:', e.trigger);
+				if (e.trigger) {
+					e.trigger.classList.add("copied");
+					setTimeout(() => {
+						e.trigger.classList.remove("copied");
+					}, 3000);
+				}
+				e.clearSelection();
+			});
+
+			clipboard.on('error', function (e) {
+				console.error('Action:', e.action);
+				console.error('Trigger:', e.trigger);
+			});
+
+			document.querySelectorAll('figure.highlight').forEach((elem) => {
+				const codeContent = elem.querySelector("td.code");
+				const copyButton = document.createElement('button');
+				copyButton.setAttribute("class", copyBtnClass);
+				copyButton.setAttribute("title", "Copy Code");
+				copyButton.setAttribute("data-clipboard-text", codeContent.innerText);
+				elem.insertBefore(copyButton, elem.children[0]);
+			});
+		})
+	})();
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>
