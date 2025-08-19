@@ -19,34 +19,52 @@
   <meta name="author" content="hybpjx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言直接说了是 flutter了 那就不必多说了。 先介绍下 什么是flutter。 这里我直接把AI的回复粘贴过来了。 Flutter 是谷歌开发的一套 UI 工具包，让你只写一份代码，就能同时为 iOS、Android、Web 和桌面等多个平台创建美观、高性能的应用。 1、“万物皆 Widget”： Flutter 中所有界面元素，包括按钮、文本和布局，甚至应用本身，都是“Widget”（小部">
+    <meta name="description" content="jadx首先找到定位点。 这里直接搜索 zzzghostsigh  然后找他引用的位置  继续往下找一下位置。 这里发现是一个接口的实现。 那没关系。我们继续找下实现的位置。 这里可以挨个去看。 这里发现是gh.b()  继续点两下 就找到了 引用的位置。找到so层 是 libmfw.so  然后我们hook一下 看看传餐以及结果值。  unidbg这里直接unidbg补环境 封装好请求 直接运行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="某猫投诉 flutter Signature 逆向">
-<meta property="og:url" content="https://hybpjx.cn/2025/08/15/%E6%9F%90%E7%8C%AB%E6%8A%95%E8%AF%89-flutter-Signature-%E9%80%86%E5%90%91/index.html">
+<meta property="og:title" content="某蜂窝 zzzghostsigh 补环境+纯算">
+<meta property="og:url" content="https://hybpjx.cn/2025/08/19/%E9%A9%AC%E8%9C%82%E7%AA%9Dunidbg%E8%A1%A5%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8/index.html">
 <meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="前言直接说了是 flutter了 那就不必多说了。 先介绍下 什么是flutter。 这里我直接把AI的回复粘贴过来了。 Flutter 是谷歌开发的一套 UI 工具包，让你只写一份代码，就能同时为 iOS、Android、Web 和桌面等多个平台创建美观、高性能的应用。 1、“万物皆 Widget”： Flutter 中所有界面元素，包括按钮、文本和布局，甚至应用本身，都是“Widget”（小部">
+<meta property="og:description" content="jadx首先找到定位点。 这里直接搜索 zzzghostsigh  然后找他引用的位置  继续往下找一下位置。 这里发现是一个接口的实现。 那没关系。我们继续找下实现的位置。 这里可以挨个去看。 这里发现是gh.b()  继续点两下 就找到了 引用的位置。找到so层 是 libmfw.so  然后我们hook一下 看看传餐以及结果值。  unidbg这里直接unidbg补环境 封装好请求 直接运行">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2025/08/05/GYFbhyNRjKrMmic.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/06/5ETP9exBkbchr6o.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/05/HYlOxmtKPojwZqG.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/05/ePTuFUOM4KbE1Rg.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/05/LUf6gPlpmXQ2w4v.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/05/XwzYPrNaO6kTVgB.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/06/Q1yiIzbLJmhtvOk.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/06/flcpLsIUG4uogBt.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/05/zkt69FVZ8pMJCOK.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/05/XYCD2Z8As6egTHx.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/05/MSbXx621GWeRzq9.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/15/OSkZxvBtWD7UaCH.png">
-<meta property="article:published_time" content="2025-08-15T08:50:00.000Z">
-<meta property="article:modified_time" content="2025-08-15T09:30:07.334Z">
+<meta property="og:image" content="https://s2.loli.net/2025/07/25/IrSbqQZTWa3582Y.png">
+<meta property="og:image" content="https://s2.loli.net/2025/07/25/tdPlEbB5TfHVMye.png">
+<meta property="og:image" content="https://s2.loli.net/2025/07/25/fok8VWFG4ZKDsva.png">
+<meta property="og:image" content="https://s2.loli.net/2025/07/25/12ihHAPMaurTSe5.png">
+<meta property="og:image" content="https://s2.loli.net/2025/07/17/uf4tKXM78lDiA13.png">
+<meta property="og:image" content="https://s2.loli.net/2025/07/17/KZWTlUqh7pReHLw.png">
+<meta property="og:image" content="https://s2.loli.net/2025/07/17/WEcnH5RM1D7la6i.png">
+<meta property="og:image" content="https://s2.loli.net/2025/07/18/ebXqKf2xwCvHt1o.png">
+<meta property="og:image" content="https://s2.loli.net/2025/07/18/dzFTCv8OJ19it7N.png">
+<meta property="og:image" content="https://s2.loli.net/2025/07/18/62MQmob4Zv1Wcqr.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/jvhzZ4LywsW3tum.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/dltBqg6FuGAyzOZ.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/58hPl9EorNHMfA6.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/4xg8jhpFCmzJqAe.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/ZmBHMtW8OyXKTgz.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/IsXb8ujNv3JM5eS.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/XyrBPNU6wDq97Mb.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/lPTn7FCAherIiKu.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/Sc2EayOoZIVuPTH.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/BmbaQcG65uloC2F.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/BMSzX749xfyrqKc.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/x74eozQcHSfphYX.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/j1xtAycUY28vLhW.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/nFHoXyz3p2WvsKZ.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/ZgRMS15vFkVp4L9.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/y3mxTEOCZh84oQY.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/ANFd4RyGlfKDHIc.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/todO2cb91BnaZ57.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/RyPmKDgX5Gw9eTv.png">
+<meta property="og:image" content="https://s2.loli.net/2025/08/18/yGgx1rCKYeIDXkA.png">
+<meta property="article:published_time" content="2025-08-19T03:48:00.000Z">
+<meta property="article:modified_time" content="2025-08-19T03:48:57.905Z">
 <meta property="article:author" content="hybpjx">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2025/08/05/GYFbhyNRjKrMmic.png">
+<meta name="twitter:image" content="https://s2.loli.net/2025/07/25/IrSbqQZTWa3582Y.png">
   
   
   
-  <title>某猫投诉 flutter Signature 逆向 - 始識’s 博客</title>
+  <title>某蜂窝 zzzghostsigh 补环境+纯算 - 始識’s 博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -236,7 +254,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="某猫投诉 flutter Signature 逆向"></span>
+            <span id="subtitle" data-typed-text="某蜂窝 zzzghostsigh 补环境+纯算"></span>
           
         </div>
 
@@ -252,8 +270,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-15 16:50" pubdate>
-          2025年8月15日 下午
+        <time datetime="2025-08-19 11:48" pubdate>
+          2025年8月19日 中午
         </time>
       </span>
     
@@ -264,7 +282,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          681 字
+          1.1k 字
         
       </span>
     
@@ -275,7 +293,7 @@
         
         
         
-          6 分钟
+          10 分钟
         
       </span>
     
@@ -312,84 +330,129 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">某猫投诉 flutter Signature 逆向</h1>
+            <h1 id="seo-header">某蜂窝 zzzghostsigh 补环境+纯算</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>直接说了是 flutter了 那就不必多说了。</p>
-<p>先介绍下 什么是flutter。 这里我直接把AI的回复粘贴过来了。</p>
-<p>Flutter 是谷歌开发的一套 UI 工具包，让你只写一份代码，就能同时为 iOS、Android、Web 和桌面等多个平台创建美观、高性能的应用。</p>
-<p>1、<strong>“万物皆 Widget”：</strong> Flutter 中所有界面元素，包括按钮、文本和布局，甚至应用本身，都是“Widget”（小部件）。它们可以像积木一样组合起来构建复杂的界面。</p>
-<p>2、<strong>自带渲染引擎（Skia）：</strong> Flutter 不依赖操作系统原生的 UI 组件，而是通过自带的高性能图形引擎 Skia 直接将所有 Widget 绘制到屏幕上。这样可以实现极高的渲染速度和流畅的用户体验。</p>
-<p>3、<strong>Dart 语言：</strong> Flutter 使用 Dart 语言开发。</p>
-<ul>
-<li><strong>AOT 编译：</strong> 发布时，Dart 代码会被直接编译成机器码，使应用运行速度极快，性能接近原生。</li>
-<li><strong>JIT 编译 + 热重载：</strong> 开发时，Dart 支持即时编译和“热重载”功能，开发者修改代码后能立即看到效果，大大提高了开发效率。</li>
-</ul>
-<p>4、<strong>响应式 UI：</strong> Flutter 采用声明式 UI 编程。你只需描述界面“长什么样”，而不用关心“如何更新”，当数据变化时，Flutter 会自动高效地更新界面。</p>
-<p>libflutter.so  &#x3D;&#x3D;&#x3D;&gt;  libapp.so</p>
-<p>那这里 AI介绍了 flutter的特点。</p>
-<p>再补充几点</p>
-<p>1、flutter是由Dart开发</p>
-<p>2、 Flutter被编译出来其实就是个So文件</p>
-<p>3、So文件无函数名。基本都是sub_开头，也无JNI绑定方法。</p>
-<p>4、执行是由flutter.so执行</p>
-<h1 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h1><p>抓包可知。需要逆向的参数 是这个 signautre</p>
-<p><img src="https://s2.loli.net/2025/08/05/GYFbhyNRjKrMmic.png" srcset="/img/loading.gif" lazyload></p>
-<p>这里Java层找不到</p>
-<h1 id="IDA配置"><a href="#IDA配置" class="headerlink" title="IDA配置"></a>IDA配置</h1><p>这里 flutter 反编译 全是一sub 函数。几万个。找不到</p>
-<p>这里使用blutter去做一个函数名还原。</p>
-<p>解压 app 把 libflutter.so 以及 libapp.so 拿出来。</p>
-<p>下载完Blutter。</p>
-<p>这里我是Mac</p>
-<p>使用如下命令</p>
-<p>两个版本 </p>
-<p>macOS Sequoia</p>
-<ul>
-<li>Install XCode</li>
-<li>Install required tools</li>
-</ul>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span>cmake ninja pkg-<span class="hljs-built_in">config</span> icu4c capstone<br>pip3 <span class="hljs-keyword">install </span>pyelftools requests<br></code></pre></td></tr></table></figure>
+                <h1 id="jadx"><a href="#jadx" class="headerlink" title="jadx"></a>jadx</h1><p>首先找到定位点。</p>
+<p>这里直接搜索 zzzghostsigh</p>
+<p><img src="https://s2.loli.net/2025/07/25/IrSbqQZTWa3582Y.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后找他引用的位置</p>
+<p><img src="https://s2.loli.net/2025/07/25/tdPlEbB5TfHVMye.png" srcset="/img/loading.gif" lazyload></p>
+<p>继续往下找一下位置。</p>
+<p>这里发现是一个接口的实现。<img src="https://s2.loli.net/2025/07/25/fok8VWFG4ZKDsva.png" srcset="/img/loading.gif" lazyload></p>
+<p>那没关系。我们继续找下实现的位置。</p>
+<p>这里可以挨个去看。</p>
+<p>这里发现是gh.b()</p>
+<p><img src="https://s2.loli.net/2025/07/25/12ihHAPMaurTSe5.png" srcset="/img/loading.gif" lazyload></p>
+<p>继续点两下 就找到了 引用的位置。找到so层 是 libmfw.so</p>
+<p><img src="https://s2.loli.net/2025/07/17/uf4tKXM78lDiA13.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后我们hook一下 看看传餐以及结果值。</p>
+<p><img src="https://s2.loli.net/2025/07/17/KZWTlUqh7pReHLw.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="unidbg"><a href="#unidbg" class="headerlink" title="unidbg"></a>unidbg</h1><p>这里直接unidbg补环境</p>
+<p>封装好请求</p>
+<p>直接运行 报错如下</p>
+<p>这里看到 直接就运行了没报错 缺少什么环境</p>
+<p><img src="https://s2.loli.net/2025/07/17/WEcnH5RM1D7la6i.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">[10:49:23 460]  WARN [com.github.unidbg.linux.ARM64SyscallHandler] (ARM64SyscallHandler:410) - handleInterrupt intno=2, NR=-128336, svcNumber=0x1a2, PC=unidbg@0xfffe0ab4, LR=RX@0x1203cbac[libmfw.so]0x3cbac, syscall=null<br>java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0<br></code></pre></td></tr></table></figure>
 
-<p>macOS Ventura and Sonoma (clang 16)</p>
-<ul>
-<li>Install XCode</li>
-<li>Install clang 16 and required tools</li>
-</ul>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span><span class="hljs-keyword">llvm@16 </span>cmake ninja pkg-<span class="hljs-built_in">config</span> icu4c capstone<br>pip3 <span class="hljs-keyword">install </span>pyelftools requests<br></code></pre></td></tr></table></figure>
+<p>直接去看报错的这部分基址。跳过这部分校验</p>
+<p>ida找一下 3cbac</p>
+<p>然后分析下 。这个方法中都是校验。补起来相对还是比较麻烦的。</p>
+<p><img src="https://s2.loli.net/2025/07/18/ebXqKf2xwCvHt1o.png" srcset="/img/loading.gif" lazyload></p>
+<p>所以这里我们往上看。这个方法</p>
+<p><img src="https://s2.loli.net/2025/07/18/dzFTCv8OJ19it7N.png" srcset="/img/loading.gif" lazyload></p>
+<p>按x 看下调用的地方。这里就是调用环境的地方。</p>
+<p><img src="https://s2.loli.net/2025/07/18/62MQmob4Zv1Wcqr.png" srcset="/img/loading.gif" lazyload></p>
+<p>所以这里我们直接跳过这个判断。</p>
+<p>这里直接unibdg 去跳过 这个环境</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"> emulator.attach().addBreakPoint(<span class="hljs-keyword">module</span>.base + <span class="hljs-number">0x3970C</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">BreakPointCallback</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">onHit</span><span class="hljs-params">(Emulator&lt;?&gt; emulator, <span class="hljs-type">long</span> address)</span> &#123;<br><span class="hljs-comment">//                emulator.getBackend().reg_write(Arm64Const.UC_ARM64_REG_PC,0x3970C+4);</span><br>                emulator.getBackend().reg_write(Arm64Const.UC_ARM64_REG_PC,address+<span class="hljs-number">4</span>);<br>                emulator.getBackend().reg_write(Arm64Const.UC_ARM64_REG_X0,<span class="hljs-number">1</span>);<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;);<br></code></pre></td></tr></table></figure>
 
-<p>然后执行下述命令</p>
-<blockquote>
-<p>python3 blutter.py .&#x2F;arm64 .&#x2F;output</p>
-</blockquote>
-<p>如下图位置 即可。</p>
-<p><img src="https://s2.loli.net/2025/08/06/5ETP9exBkbchr6o.png" srcset="/img/loading.gif" lazyload></p>
-<p>直接讲ida中还原变量名。</p>
-<p><img src="https://s2.loli.net/2025/08/05/HYlOxmtKPojwZqG.png" srcset="/img/loading.gif" lazyload></p>
-<p>把这个py文件拖进去</p>
-<p><img src="https://s2.loli.net/2025/08/05/ePTuFUOM4KbE1Rg.png" srcset="/img/loading.gif" lazyload></p>
-<p>中间有错误不用管。然后就发现</p>
-<p>诶。变量名都还原了。</p>
-<p><img src="https://s2.loli.net/2025/08/05/LUf6gPlpmXQ2w4v.png" srcset="/img/loading.gif" lazyload></p>
-<p>​	</p>
-<h1 id="具体分析"><a href="#具体分析" class="headerlink" title="具体分析"></a>具体分析</h1><p>这里其实我搞过web的 知道这个signature 是 sha256</p>
-<p>这里直接搜索 sha256</p>
-<p><img src="https://s2.loli.net/2025/08/05/XwzYPrNaO6kTVgB.png" srcset="/img/loading.gif" lazyload></p>
-<p>当然可以把这个Allocate，以及flutter 开头的过滤掉。</p>
-<p>这里点开第一个</p>
-<p><img src="https://s2.loli.net/2025/08/06/Q1yiIzbLJmhtvOk.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2025/08/06/flcpLsIUG4uogBt.png" srcset="/img/loading.gif" lazyload></p>
-<p>直接找他函数地址 Hook一下就好了</p>
-<p>这里直接对比。</p>
-<p><img src="https://s2.loli.net/2025/08/05/zkt69FVZ8pMJCOK.png" srcset="/img/loading.gif" lazyload></p>
-<p>对比</p>
-<p><img src="https://s2.loli.net/2025/08/05/XYCD2Z8As6egTHx.png" srcset="/img/loading.gif" lazyload></p>
-<p>最后发现是由这段加密而成。</p>
-<p><img src="https://s2.loli.net/2025/08/05/MSbXx621GWeRzq9.png" srcset="/img/loading.gif" lazyload></p>
-<p>结果一模一样</p>
-<p>看着唬人 实则非常简单。</p>
-<h1 id="具体结果"><a href="#具体结果" class="headerlink" title="具体结果"></a>具体结果</h1><p>最后还需要一点小小改动。<br><img src="https://s2.loli.net/2025/08/15/OSkZxvBtWD7UaCH.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里返回true 即断点不会断住，返回false 即代表断点断住。</p>
+<p>然后直接运行。发现可以出值。</p>
+<p><img src="https://s2.loli.net/2025/08/18/jvhzZ4LywsW3tum.png" srcset="/img/loading.gif" lazyload></p>
+<p>结果也正如一开始我们frida的值一样。</p>
+<p>接下来就是trace了</p>
+<h1 id="纯算分析"><a href="#纯算分析" class="headerlink" title="纯算分析"></a>纯算分析</h1><p>这里直接搜索 0x4a55</p>
+<p>搜索到了 0x4a55d456 拆成了 8个字节。</p>
+<p><img src="https://s2.loli.net/2025/08/18/dltBqg6FuGAyzOZ.png" srcset="/img/loading.gif" lazyload></p>
+<p>那我们再搜下 0x9606ba47 果然也有 13个。实际不算结果12个。</p>
+<p><img src="https://s2.loli.net/2025/08/18/58hPl9EorNHMfA6.png" srcset="/img/loading.gif" lazyload></p>
+<p>那总计下</p>
+<p>4a55d456 9606ba47 87057a46 2b4f926c f9739142</p>
+<p>拆成了 五组。 40位。其实已经可以猜出来是sha256了。</p>
+<p>先找下 0x4a55d456的基址 0x1203f360</p>
+<p>搜索 一下</p>
+<p><img src="https://s2.loli.net/2025/08/18/4xg8jhpFCmzJqAe.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里先回去看看 ida</p>
+<p>这里把代码丢给gpt。gpt直接告诉我们这是个sha1</p>
+<p><img src="https://s2.loli.net/2025/08/18/ZmBHMtW8OyXKTgz.png" srcset="/img/loading.gif" lazyload></p>
+<p>但是我们实际上去运算。发现好像对不上啊</p>
+<p><img src="https://s2.loli.net/2025/08/18/IsXb8ujNv3JM5eS.png" srcset="/img/loading.gif" lazyload></p>
+<p>所以肯定是魔改了一些参数。这里继续回去看010里的trace。</p>
+<p>这里就相对简单了。我们对这源码去看实现就好。</p>
+<p>这里找着入口对着看。</p>
+<p>这里直接找sha1的特征值。</p>
+<p>找一段源码（最好找python的。或者Go的 只要不是JS的,因为我就是js改的。千奇百怪）</p>
+<p>这里我们找下sha1 的轮常数： 1518500249，1859775393，1894007588（-1894007588） </p>
+<p>然后把它转成16进制去trace搜索。</p>
+<p>这里分别为 0x5A827999，0x6ED9EBA1，0x8F1BBCDC</p>
+<p>这里去搜搜</p>
+<p><img src="https://s2.loli.net/2025/08/18/XyrBPNU6wDq97Mb.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里可以发现trace的地方有703个很明显不合理</p>
+<p>找到 w29&#x3D;0x5A827999 做下切割。</p>
+<p>只拿一段。</p>
+<p><img src="https://s2.loli.net/2025/08/18/lPTn7FCAherIiKu.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里找到 movk的地方。</p>
+<p>发现一共4轮。</p>
+<p><img src="https://s2.loli.net/2025/08/18/Sc2EayOoZIVuPTH.png" srcset="/img/loading.gif" lazyload></p>
+<p>但是这这里movk直接就是就是加载常量了 所以得往前看一点。看看谁那些值。</p>
+<p><img src="https://s2.loli.net/2025/08/18/BmbaQcG65uloC2F.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/18/BMSzX749xfyrqKc.png" srcset="/img/loading.gif" lazyload></p>
+<p>具体看看trace中的值。</p>
+<p><img src="https://s2.loli.net/2025/08/18/x74eozQcHSfphYX.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里可以推断出SHA1的魔值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c">v18 = <span class="hljs-number">0x67452301</span><br>v19 = <span class="hljs-number">0xEFCDAB89</span><br>V20 = <span class="hljs-number">0x98BADCFE</span><br>v21 = <span class="hljs-number">0x5E4A1F7C</span><br>v22 = <span class="hljs-number">0x10325476</span><br></code></pre></td></tr></table></figure>
+
+<p>但是好像和标准值有差别</p>
+<p>标准的 “v21”与“v22”为 “0x10325476” 以及 “0xC3D2E1F0”</p>
+<p>这里虽然改了。但是结果仍然不一致。</p>
+<p>继续往下看吧。</p>
+<p>分析下具体的代码</p>
+<p><img src="https://s2.loli.net/2025/08/18/j1xtAycUY28vLhW.png" srcset="/img/loading.gif" lazyload></p>
+<p>如下</p>
+<p>以上依次为</p>
+<p>movk、rev、and、add、eor、add、ror、add、ror、add、</p>
+<p>_、字节反转、与、加、异或、右移、加、右移、加</p>
+<p>这里可以看到这里基本和算法都差不多没有魔改。这一段对这去扣。</p>
+<p>剩余是否一致也是一样的。往下看。</p>
+<p>这里只讲差异点吧。</p>
+<p>在开头搜过 0x5a827999 这个值。但是正常这个值。其实标准中应该只参与过16轮。而稳重有36轮。</p>
+<p><img src="https://s2.loli.net/2025/08/18/nFHoXyz3p2WvsKZ.png" srcset="/img/loading.gif" lazyload></p>
+<p>所以还有20轮肯定是改了轮数。</p>
+<p>所以下文开始就是16轮之后的改的论数</p>
+<p><img src="https://s2.loli.net/2025/08/18/ZgRMS15vFkVp4L9.png" srcset="/img/loading.gif" lazyload></p>
+<p>对应的伪c如下</p>
+<p><img src="https://s2.loli.net/2025/08/18/y3mxTEOCZh84oQY.png" srcset="/img/loading.gif" lazyload></p>
+<p>继续问下ai</p>
+<p><img src="https://s2.loli.net/2025/08/18/ANFd4RyGlfKDHIc.png" srcset="/img/loading.gif" lazyload></p>
+<p>所以代码应该如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">16</span>) &#123;<br>    f = (b &amp; c) | ((~b) &amp; d);<br>    k = <span class="hljs-number">0x5A827999</span>;<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">20</span>) &#123;<br>    f = b ^ c ^ d;<br>    k = <span class="hljs-number">0x6ED9EBA1</span>;<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">40</span>) &#123;<br>    f = (b &amp; c) | (b &amp; d) | (c &amp; d);<br>    k = <span class="hljs-number">0x8F1BBCDC</span>;<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i &lt; <span class="hljs-number">60</span>)&#123;<br>    f = (b &amp; c) | ((~b) &amp; d);<br>    k = <span class="hljs-number">0x5A827999</span>;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    f = b ^ c ^ d;<br>    k = <span class="hljs-number">0xCA62C1D6</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里既是改了 这些值还是对不上。</p>
+<p>走到最后</p>
+<p><img src="https://s2.loli.net/2025/08/18/todO2cb91BnaZ57.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里对源码看看</p>
+<p><img src="https://s2.loli.net/2025/08/18/RyPmKDgX5Gw9eTv.png" srcset="/img/loading.gif" lazyload></p>
+<p>那正常 应该是 </p>
+<p>4 3 2 1 0</p>
+<p>而我们的 是</p>
+<p>4 2 3 1 0</p>
+<p>所以这样调转下位置。 然后运行</p>
+<p><img src="https://s2.loli.net/2025/08/18/yGgx1rCKYeIDXkA.png" srcset="/img/loading.gif" lazyload></p>
+<p>发现终于一模一样了。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>也算搞了好几天。还原了一个比较简单的算法。</p>
 
                 
               </div>
@@ -428,8 +491,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>某猫投诉 flutter Signature 逆向</div>
-      <div>https://hybpjx.cn/2025/08/15/某猫投诉-flutter-Signature-逆向/</div>
+      <div>某蜂窝 zzzghostsigh 补环境+纯算</div>
+      <div>https://hybpjx.cn/2025/08/19/马蜂窝unidbg补环境——修改寄存器/</div>
     </div>
     <div class="license-meta">
       
@@ -441,7 +504,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月15日</div>
+          <div>2025年8月19日</div>
         </div>
       
       
@@ -473,18 +536,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/19/%E9%A9%AC%E8%9C%82%E7%AA%9Dunidbg%E8%A1%A5%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8/" title="某蜂窝 zzzghostsigh 补环境+纯算">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">某蜂窝 zzzghostsigh 补环境+纯算</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/26/Mac-%E7%94%A8Jenv%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AAJava%E7%8E%AF%E5%A2%83/" title="Mac 用Jenv安装多个Java环境">
-                        <span class="hidden-mobile">Mac 用Jenv安装多个Java环境</span>
+                      <a href="/2025/08/15/%E6%9F%90%E7%8C%AB%E6%8A%95%E8%AF%89-flutter-Signature-%E9%80%86%E5%90%91/" title="某猫投诉 flutter Signature 逆向">
+                        <span class="hidden-mobile">某猫投诉 flutter Signature 逆向</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
