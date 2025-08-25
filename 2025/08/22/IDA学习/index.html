@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/img/kkk.jpeg">
   <link rel="icon" href="/img/kkk.jpeg">
   
-    <link rel="canonical" href="https://hybpjx.cn/2025/08/19/马蜂窝unidbg补环境——修改寄存器/"/>
+    <link rel="canonical" href="https://hybpjx.cn/2025/08/22/IDA学习/"/>
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -21,54 +21,25 @@
   <meta name="author" content="hybpjx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="jadx首先找到定位点。 这里直接搜索 zzzghostsigh  然后找他引用的位置  继续往下找一下位置。 这里发现是一个接口的实现。 那没关系。我们继续找下实现的位置。 这里可以挨个去看。 这里发现是gh.b()  继续点两下 就找到了 引用的位置。找到so层 是 libmfw.so  然后我们hook一下 看看传餐以及结果值。  unidbg这里直接unidbg补环境 封装好请求 直接运行">
+    <meta name="description" content="还原JNI函数方法名如下图所示，输入  JNIEnv a1 或者 JNIEnv  找到调用的jni函数名，鼠标选中a1,单击y,弹出如下界面  点击OK 即可。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="某蜂窝 zzzghostsigh 补环境+纯算">
-<meta property="og:url" content="https://hybpjx.cn/2025/08/19/%E9%A9%AC%E8%9C%82%E7%AA%9Dunidbg%E8%A1%A5%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8/index.html">
+<meta property="og:title" content="IDA学习">
+<meta property="og:url" content="https://hybpjx.cn/2025/08/22/IDA%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="jadx首先找到定位点。 这里直接搜索 zzzghostsigh  然后找他引用的位置  继续往下找一下位置。 这里发现是一个接口的实现。 那没关系。我们继续找下实现的位置。 这里可以挨个去看。 这里发现是gh.b()  继续点两下 就找到了 引用的位置。找到so层 是 libmfw.so  然后我们hook一下 看看传餐以及结果值。  unidbg这里直接unidbg补环境 封装好请求 直接运行">
+<meta property="og:description" content="还原JNI函数方法名如下图所示，输入  JNIEnv a1 或者 JNIEnv  找到调用的jni函数名，鼠标选中a1,单击y,弹出如下界面  点击OK 即可。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2025/07/25/IrSbqQZTWa3582Y.png">
-<meta property="og:image" content="https://s2.loli.net/2025/07/25/tdPlEbB5TfHVMye.png">
-<meta property="og:image" content="https://s2.loli.net/2025/07/25/fok8VWFG4ZKDsva.png">
-<meta property="og:image" content="https://s2.loli.net/2025/07/25/12ihHAPMaurTSe5.png">
-<meta property="og:image" content="https://s2.loli.net/2025/07/17/uf4tKXM78lDiA13.png">
-<meta property="og:image" content="https://s2.loli.net/2025/07/17/KZWTlUqh7pReHLw.png">
-<meta property="og:image" content="https://s2.loli.net/2025/07/17/WEcnH5RM1D7la6i.png">
-<meta property="og:image" content="https://s2.loli.net/2025/07/18/ebXqKf2xwCvHt1o.png">
-<meta property="og:image" content="https://s2.loli.net/2025/07/18/dzFTCv8OJ19it7N.png">
-<meta property="og:image" content="https://s2.loli.net/2025/07/18/62MQmob4Zv1Wcqr.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/jvhzZ4LywsW3tum.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/dltBqg6FuGAyzOZ.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/58hPl9EorNHMfA6.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/4xg8jhpFCmzJqAe.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/ZmBHMtW8OyXKTgz.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/IsXb8ujNv3JM5eS.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/XyrBPNU6wDq97Mb.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/lPTn7FCAherIiKu.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/Sc2EayOoZIVuPTH.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/BmbaQcG65uloC2F.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/BMSzX749xfyrqKc.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/x74eozQcHSfphYX.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/j1xtAycUY28vLhW.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/nFHoXyz3p2WvsKZ.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/ZgRMS15vFkVp4L9.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/y3mxTEOCZh84oQY.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/ANFd4RyGlfKDHIc.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/todO2cb91BnaZ57.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/RyPmKDgX5Gw9eTv.png">
-<meta property="og:image" content="https://s2.loli.net/2025/08/18/yGgx1rCKYeIDXkA.png">
-<meta property="article:published_time" content="2025-08-19T03:48:00.000Z">
-<meta property="article:modified_time" content="2025-08-19T03:48:57.905Z">
+<meta property="og:image" content="https://s2.loli.net/2025/08/22/kSMNzhyvQlTA4G9.png">
+<meta property="article:published_time" content="2025-08-22T07:35:27.000Z">
+<meta property="article:modified_time" content="2025-08-22T07:42:43.277Z">
 <meta property="article:author" content="hybpjx">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2025/07/25/IrSbqQZTWa3582Y.png">
+<meta name="twitter:image" content="https://s2.loli.net/2025/08/22/kSMNzhyvQlTA4G9.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>某蜂窝 zzzghostsigh 补环境+纯算 - 始識’s 博客</title>
+  <title>IDA学习 - 始識’s 博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -271,7 +242,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="某蜂窝 zzzghostsigh 补环境+纯算"></span>
+            <span id="subtitle" data-typed-text="IDA学习"></span>
           
         </div>
 
@@ -287,8 +258,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-19 11:48" pubdate>
-          2025年8月19日 中午
+        <time datetime="2025-08-22 15:35" pubdate>
+          2025年8月22日 下午
         </time>
       </span>
     
@@ -299,7 +270,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          45 字
         
       </span>
     
@@ -310,7 +281,7 @@
         
         
         
-          10 分钟
+          1 分钟
         
       </span>
     
@@ -356,12 +327,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">某蜂窝 zzzghostsigh 补环境+纯算</h1>
+            <h1 id="seo-header">IDA学习</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-08-19T11:48:57+08:00
+                    本文最后更新于 2025-08-22T15:42:43+08:00
                   
                   
 
@@ -371,124 +342,13 @@
             
               <div class="markdown-body">
                 
-                <h1 id="jadx"><a href="#jadx" class="headerlink" title="jadx"></a>jadx</h1><p>首先找到定位点。</p>
-<p>这里直接搜索 zzzghostsigh</p>
-<p><img src="https://s2.loli.net/2025/07/25/IrSbqQZTWa3582Y.png" srcset="/img/loading.gif" lazyload></p>
-<p>然后找他引用的位置</p>
-<p><img src="https://s2.loli.net/2025/07/25/tdPlEbB5TfHVMye.png" srcset="/img/loading.gif" lazyload></p>
-<p>继续往下找一下位置。</p>
-<p>这里发现是一个接口的实现。<img src="https://s2.loli.net/2025/07/25/fok8VWFG4ZKDsva.png" srcset="/img/loading.gif" lazyload></p>
-<p>那没关系。我们继续找下实现的位置。</p>
-<p>这里可以挨个去看。</p>
-<p>这里发现是gh.b()</p>
-<p><img src="https://s2.loli.net/2025/07/25/12ihHAPMaurTSe5.png" srcset="/img/loading.gif" lazyload></p>
-<p>继续点两下 就找到了 引用的位置。找到so层 是 libmfw.so</p>
-<p><img src="https://s2.loli.net/2025/07/17/uf4tKXM78lDiA13.png" srcset="/img/loading.gif" lazyload></p>
-<p>然后我们hook一下 看看传餐以及结果值。</p>
-<p><img src="https://s2.loli.net/2025/07/17/KZWTlUqh7pReHLw.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="unidbg"><a href="#unidbg" class="headerlink" title="unidbg"></a>unidbg</h1><p>这里直接unidbg补环境</p>
-<p>封装好请求</p>
-<p>直接运行 报错如下</p>
-<p>这里看到 直接就运行了没报错 缺少什么环境</p>
-<p><img src="https://s2.loli.net/2025/07/17/WEcnH5RM1D7la6i.png" srcset="/img/loading.gif" lazyload></p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">[10:49:23 460]  WARN [com.github.unidbg.linux.ARM64SyscallHandler] (ARM64SyscallHandler:410) - handleInterrupt intno=2, NR=-128336, svcNumber=0x1a2, PC=unidbg@0xfffe0ab4, LR=RX@0x1203cbac[libmfw.so]0x3cbac, syscall=null<br>java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0<br></code></pre></td></tr></table></figure>
-
-<p>直接去看报错的这部分基址。跳过这部分校验</p>
-<p>ida找一下 3cbac</p>
-<p>然后分析下 。这个方法中都是校验。补起来相对还是比较麻烦的。</p>
-<p><img src="https://s2.loli.net/2025/07/18/ebXqKf2xwCvHt1o.png" srcset="/img/loading.gif" lazyload></p>
-<p>所以这里我们往上看。这个方法</p>
-<p><img src="https://s2.loli.net/2025/07/18/dzFTCv8OJ19it7N.png" srcset="/img/loading.gif" lazyload></p>
-<p>按x 看下调用的地方。这里就是调用环境的地方。</p>
-<p><img src="https://s2.loli.net/2025/07/18/62MQmob4Zv1Wcqr.png" srcset="/img/loading.gif" lazyload></p>
-<p>所以这里我们直接跳过这个判断。</p>
-<p>这里直接unibdg 去跳过 这个环境</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"> emulator.attach().addBreakPoint(<span class="hljs-keyword">module</span>.base + <span class="hljs-number">0x3970C</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">BreakPointCallback</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">onHit</span><span class="hljs-params">(Emulator&lt;?&gt; emulator, <span class="hljs-type">long</span> address)</span> &#123;<br><span class="hljs-comment">//                emulator.getBackend().reg_write(Arm64Const.UC_ARM64_REG_PC,0x3970C+4);</span><br>                emulator.getBackend().reg_write(Arm64Const.UC_ARM64_REG_PC,address+<span class="hljs-number">4</span>);<br>                emulator.getBackend().reg_write(Arm64Const.UC_ARM64_REG_X0,<span class="hljs-number">1</span>);<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;);<br></code></pre></td></tr></table></figure>
-
-<p>这里返回true 即断点不会断住，返回false 即代表断点断住。</p>
-<p>然后直接运行。发现可以出值。</p>
-<p><img src="https://s2.loli.net/2025/08/18/jvhzZ4LywsW3tum.png" srcset="/img/loading.gif" lazyload></p>
-<p>结果也正如一开始我们frida的值一样。</p>
-<p>接下来就是trace了</p>
-<h1 id="纯算分析"><a href="#纯算分析" class="headerlink" title="纯算分析"></a>纯算分析</h1><p>这里直接搜索 0x4a55</p>
-<p>搜索到了 0x4a55d456 拆成了 8个字节。</p>
-<p><img src="https://s2.loli.net/2025/08/18/dltBqg6FuGAyzOZ.png" srcset="/img/loading.gif" lazyload></p>
-<p>那我们再搜下 0x9606ba47 果然也有 13个。实际不算结果12个。</p>
-<p><img src="https://s2.loli.net/2025/08/18/58hPl9EorNHMfA6.png" srcset="/img/loading.gif" lazyload></p>
-<p>那总计下</p>
-<p>4a55d456 9606ba47 87057a46 2b4f926c f9739142</p>
-<p>拆成了 五组。 40位。其实已经可以猜出来是sha256了。</p>
-<p>先找下 0x4a55d456的基址 0x1203f360</p>
-<p>搜索 一下</p>
-<p><img src="https://s2.loli.net/2025/08/18/4xg8jhpFCmzJqAe.png" srcset="/img/loading.gif" lazyload></p>
-<p>这里先回去看看 ida</p>
-<p>这里把代码丢给gpt。gpt直接告诉我们这是个sha1</p>
-<p><img src="https://s2.loli.net/2025/08/18/ZmBHMtW8OyXKTgz.png" srcset="/img/loading.gif" lazyload></p>
-<p>但是我们实际上去运算。发现好像对不上啊</p>
-<p><img src="https://s2.loli.net/2025/08/18/IsXb8ujNv3JM5eS.png" srcset="/img/loading.gif" lazyload></p>
-<p>所以肯定是魔改了一些参数。这里继续回去看010里的trace。</p>
-<p>这里就相对简单了。我们对这源码去看实现就好。</p>
-<p>这里找着入口对着看。</p>
-<p>这里直接找sha1的特征值。</p>
-<p>找一段源码（最好找python的。或者Go的 只要不是JS的,因为我就是js改的。千奇百怪）</p>
-<p>这里我们找下sha1 的轮常数： 1518500249，1859775393，1894007588（-1894007588） </p>
-<p>然后把它转成16进制去trace搜索。</p>
-<p>这里分别为 0x5A827999，0x6ED9EBA1，0x8F1BBCDC</p>
-<p>这里去搜搜</p>
-<p><img src="https://s2.loli.net/2025/08/18/XyrBPNU6wDq97Mb.png" srcset="/img/loading.gif" lazyload></p>
-<p>这里可以发现trace的地方有703个很明显不合理</p>
-<p>找到 w29&#x3D;0x5A827999 做下切割。</p>
-<p>只拿一段。</p>
-<p><img src="https://s2.loli.net/2025/08/18/lPTn7FCAherIiKu.png" srcset="/img/loading.gif" lazyload></p>
-<p>这里找到 movk的地方。</p>
-<p>发现一共4轮。</p>
-<p><img src="https://s2.loli.net/2025/08/18/Sc2EayOoZIVuPTH.png" srcset="/img/loading.gif" lazyload></p>
-<p>但是这这里movk直接就是就是加载常量了 所以得往前看一点。看看谁那些值。</p>
-<p><img src="https://s2.loli.net/2025/08/18/BmbaQcG65uloC2F.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2025/08/18/BMSzX749xfyrqKc.png" srcset="/img/loading.gif" lazyload></p>
-<p>具体看看trace中的值。</p>
-<p><img src="https://s2.loli.net/2025/08/18/x74eozQcHSfphYX.png" srcset="/img/loading.gif" lazyload></p>
-<p>这里可以推断出SHA1的魔值</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c">v18 = <span class="hljs-number">0x67452301</span><br>v19 = <span class="hljs-number">0xEFCDAB89</span><br>V20 = <span class="hljs-number">0x98BADCFE</span><br>v21 = <span class="hljs-number">0x5E4A1F7C</span><br>v22 = <span class="hljs-number">0x10325476</span><br></code></pre></td></tr></table></figure>
-
-<p>但是好像和标准值有差别</p>
-<p>标准的 “v21”与“v22”为 “0x10325476” 以及 “0xC3D2E1F0”</p>
-<p>这里虽然改了。但是结果仍然不一致。</p>
-<p>继续往下看吧。</p>
-<p>分析下具体的代码</p>
-<p><img src="https://s2.loli.net/2025/08/18/j1xtAycUY28vLhW.png" srcset="/img/loading.gif" lazyload></p>
-<p>如下</p>
-<p>以上依次为</p>
-<p>movk、rev、and、add、eor、add、ror、add、ror、add、</p>
-<p>_、字节反转、与、加、异或、右移、加、右移、加</p>
-<p>这里可以看到这里基本和算法都差不多没有魔改。这一段对这去扣。</p>
-<p>剩余是否一致也是一样的。往下看。</p>
-<p>这里只讲差异点吧。</p>
-<p>在开头搜过 0x5a827999 这个值。但是正常这个值。其实标准中应该只参与过16轮。而稳重有36轮。</p>
-<p><img src="https://s2.loli.net/2025/08/18/nFHoXyz3p2WvsKZ.png" srcset="/img/loading.gif" lazyload></p>
-<p>所以还有20轮肯定是改了轮数。</p>
-<p>所以下文开始就是16轮之后的改的论数</p>
-<p><img src="https://s2.loli.net/2025/08/18/ZgRMS15vFkVp4L9.png" srcset="/img/loading.gif" lazyload></p>
-<p>对应的伪c如下</p>
-<p><img src="https://s2.loli.net/2025/08/18/y3mxTEOCZh84oQY.png" srcset="/img/loading.gif" lazyload></p>
-<p>继续问下ai</p>
-<p><img src="https://s2.loli.net/2025/08/18/ANFd4RyGlfKDHIc.png" srcset="/img/loading.gif" lazyload></p>
-<p>所以代码应该如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">16</span>) &#123;<br>    f = (b &amp; c) | ((~b) &amp; d);<br>    k = <span class="hljs-number">0x5A827999</span>;<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">20</span>) &#123;<br>    f = b ^ c ^ d;<br>    k = <span class="hljs-number">0x6ED9EBA1</span>;<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">40</span>) &#123;<br>    f = (b &amp; c) | (b &amp; d) | (c &amp; d);<br>    k = <span class="hljs-number">0x8F1BBCDC</span>;<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i &lt; <span class="hljs-number">60</span>)&#123;<br>    f = (b &amp; c) | ((~b) &amp; d);<br>    k = <span class="hljs-number">0x5A827999</span>;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    f = b ^ c ^ d;<br>    k = <span class="hljs-number">0xCA62C1D6</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>这里既是改了 这些值还是对不上。</p>
-<p>走到最后</p>
-<p><img src="https://s2.loli.net/2025/08/18/todO2cb91BnaZ57.png" srcset="/img/loading.gif" lazyload></p>
-<p>这里对源码看看</p>
-<p><img src="https://s2.loli.net/2025/08/18/RyPmKDgX5Gw9eTv.png" srcset="/img/loading.gif" lazyload></p>
-<p>那正常 应该是 </p>
-<p>4 3 2 1 0</p>
-<p>而我们的 是</p>
-<p>4 2 3 1 0</p>
-<p>所以这样调转下位置。 然后运行</p>
-<p><img src="https://s2.loli.net/2025/08/18/yGgx1rCKYeIDXkA.png" srcset="/img/loading.gif" lazyload></p>
-<p>发现终于一模一样了。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>也算搞了好几天。还原了一个比较简单的算法。</p>
+                <h1 id="还原JNI函数方法名"><a href="#还原JNI函数方法名" class="headerlink" title="还原JNI函数方法名"></a>还原JNI函数方法名</h1><p>如下图所示，输入</p>
+<blockquote>
+<p>JNIEnv <em>a1 或者 JNIEnv</em></p>
+</blockquote>
+<p>找到调用的jni函数名，鼠标选中a1,单击y,弹出如下界面</p>
+<p><img src="https://s2.loli.net/2025/08/22/kSMNzhyvQlTA4G9.png" srcset="/img/loading.gif" lazyload></p>
+<p>点击OK 即可。</p>
 
                 
               </div>
@@ -507,7 +367,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/" class="category-chain-item">安卓逆向</a>
+  <a href="/categories/%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80/" class="category-chain-item">安卓基础</a>
   
   
 
@@ -527,8 +387,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>某蜂窝 zzzghostsigh 补环境+纯算</div>
-      <div>https://hybpjx.cn/2025/08/19/马蜂窝unidbg补环境——修改寄存器/</div>
+      <div>IDA学习</div>
+      <div>https://hybpjx.cn/2025/08/22/IDA学习/</div>
     </div>
     <div class="license-meta">
       
@@ -540,7 +400,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月19日</div>
+          <div>2025年8月22日</div>
         </div>
       
       
@@ -572,18 +432,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/22/IDA%E5%AD%A6%E4%B9%A0/" title="IDA学习">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">IDA学习</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/15/%E6%9F%90%E7%8C%AB%E6%8A%95%E8%AF%89-flutter-Signature-%E9%80%86%E5%90%91/" title="某猫投诉 flutter Signature 逆向">
-                        <span class="hidden-mobile">某猫投诉 flutter Signature 逆向</span>
+                      <a href="/2025/08/19/%E9%A9%AC%E8%9C%82%E7%AA%9Dunidbg%E8%A1%A5%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8/" title="某蜂窝 zzzghostsigh 补环境+纯算">
+                        <span class="hidden-mobile">某蜂窝 zzzghostsigh 补环境+纯算</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>IDA学习</title>
+    <link href="/2025/08/22/IDA%E5%AD%A6%E4%B9%A0/"/>
+    <url>/2025/08/22/IDA%E5%AD%A6%E4%B9%A0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="还原JNI函数方法名"><a href="#还原JNI函数方法名" class="headerlink" title="还原JNI函数方法名"></a>还原JNI函数方法名</h1><p>如下图所示，输入</p><blockquote><p>JNIEnv <em>a1 或者 JNIEnv</em></p></blockquote><p>找到调用的jni函数名，鼠标选中a1,单击y,弹出如下界面</p><p><img src="https://s2.loli.net/2025/08/22/kSMNzhyvQlTA4G9.png"></p><p>点击OK 即可。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>安卓基础</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>某蜂窝 zzzghostsigh 补环境+纯算</title>
     <link href="/2025/08/19/%E9%A9%AC%E8%9C%82%E7%AA%9Dunidbg%E8%A1%A5%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8/"/>
     <url>/2025/08/19/%E9%A9%AC%E8%9C%82%E7%AA%9Dunidbg%E8%A1%A5%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8/</url>
