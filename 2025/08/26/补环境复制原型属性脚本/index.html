@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/img/kkk.jpeg">
   <link rel="icon" href="/img/kkk.jpeg">
   
-    <link rel="canonical" href="https://hybpjx.cn/2024/11/26/Python小技巧/"/>
+    <link rel="canonical" href="https://hybpjx.cn/2025/08/26/补环境复制原型属性脚本/"/>
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -21,15 +21,15 @@
   <meta name="author" content="hybpjx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="引包方式在引包 部署时 总会出现路径问题，包括execjs的路径 万能导入引包1234import sysimport ossys.path.append(os.path.join(os.path.dirname(__file__), &quot;..&quot;)) 或者 1234567import sysimport osscript_path &#x3D; os.path.abspath(os.pat">
+    <meta name="description" content="123456789101112131415161718192021222324252627let  copyAllProperties &#x3D;(obj)&#x3D;&gt; &#123;    const result &#x3D; &#123;&#125;;        &#x2F;&#x2F; 复制对象自身的属性    for (let key in obj) &#123;        try &#123;            r">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python小技巧">
-<meta property="og:url" content="https://hybpjx.cn/2024/11/26/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:title" content="补环境复制原型属性脚本">
+<meta property="og:url" content="https://hybpjx.cn/2025/08/26/%E8%A1%A5%E7%8E%AF%E5%A2%83%E5%A4%8D%E5%88%B6%E5%8E%9F%E5%9E%8B%E5%B1%9E%E6%80%A7%E8%84%9A%E6%9C%AC/index.html">
 <meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="引包方式在引包 部署时 总会出现路径问题，包括execjs的路径 万能导入引包1234import sysimport ossys.path.append(os.path.join(os.path.dirname(__file__), &quot;..&quot;)) 或者 1234567import sysimport osscript_path &#x3D; os.path.abspath(os.pat">
+<meta property="og:description" content="123456789101112131415161718192021222324252627let  copyAllProperties &#x3D;(obj)&#x3D;&gt; &#123;    const result &#x3D; &#123;&#125;;        &#x2F;&#x2F; 复制对象自身的属性    for (let key in obj) &#123;        try &#123;            r">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-26T07:34:00.000Z">
-<meta property="article:modified_time" content="2025-08-25T07:59:28.640Z">
+<meta property="article:published_time" content="2025-08-26T11:48:06.000Z">
+<meta property="article:modified_time" content="2025-08-26T11:53:37.407Z">
 <meta property="article:author" content="hybpjx">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -37,7 +37,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Python小技巧 - 始識’s 博客</title>
+  <title>补环境复制原型属性脚本 - 始識’s 博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Python小技巧"></span>
+            <span id="subtitle" data-typed-text="补环境复制原型属性脚本"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-26 15:34" pubdate>
-          2024年11月26日 下午
+        <time datetime="2025-08-26 19:48" pubdate>
+          2025年8月26日 晚上
         </time>
       </span>
     
@@ -268,7 +268,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          218 字
+          85 字
         
       </span>
     
@@ -279,7 +279,7 @@
         
         
         
-          2 分钟
+          1 分钟
         
       </span>
     
@@ -325,12 +325,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Python小技巧</h1>
+            <h1 id="seo-header">补环境复制原型属性脚本</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-08-25T15:59:28+08:00
+                    本文最后更新于 2025-08-26T19:53:37+08:00
                   
                   
 
@@ -340,23 +340,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="引包方式"><a href="#引包方式" class="headerlink" title="引包方式"></a>引包方式</h1><p>在引包 部署时 总会出现路径问题，包括execjs的路径</p>
-<h2 id="万能导入引包"><a href="#万能导入引包" class="headerlink" title="万能导入引包"></a>万能导入引包</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> os<br><br>sys.path.append(os.path.join(os.path.dirname(__file__), <span class="hljs-string">&quot;..&quot;</span>))<br></code></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> os<br><br>script_path = os.path.abspath(os.path.dirname(__file__) + <span class="hljs-string">&quot;./..&quot;</span>)<br><span class="hljs-keyword">if</span> script_path <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> sys.path:<br>  sys.path.append(script_path)<br><br></code></pre></td></tr></table></figure>
-
-<h2 id="万能路径"><a href="#万能路径" class="headerlink" title="万能路径"></a>万能路径</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pathlib <span class="hljs-keyword">import</span> Path<br><span class="hljs-comment"># 获取当前工作目录</span><br>current_path = Path.cwd()<br>file_path = current_path / <span class="hljs-string">&quot;aaaa&quot;</span> / <span class="hljs-string">&quot;bbb.js&quot;</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="提取json"><a href="#提取json" class="headerlink" title="提取json"></a>提取json</h1><p>类似于下文这样的JSON提取出JSON</p>
-<blockquote>
-<p>VaptchaJsonp1756106013582({“code”: “0103”,”data”: {“knock”:”1756107661vbymKE2e12d”,”cdn_servers”:[“static-cn.vaptcha.net”],”css_version”:”2.9.12”,”js_path”:”verify.2.2.4.js”,”help”:true,”is_vip”:-1,”guideVersion”:”3.1.0”,”sdk_ver”:”vaptcha-sdk.1.2.35.669f69e6.js”,”net_way”:-1,”node”:”CN”,”server”:”<a target="_blank" rel="noopener" href="https://0.vaptcha.com/verify%22%7D,%22msg%22:%22%22%7D">https://0.vaptcha.com/verify&quot;},&quot;msg&quot;:&quot;&quot;}</a>)</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">extract_json = <span class="hljs-keyword">lambda</span> s: json.loads(s[s.find(<span class="hljs-string">&#x27;&#123;&#x27;</span>):s.rfind(<span class="hljs-string">&#x27;&#125;&#x27;</span>) + <span class="hljs-number">1</span>])<br></code></pre></td></tr></table></figure>
-
-<h1 id="添加代理"><a href="#添加代理" class="headerlink" title="添加代理"></a>添加代理</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">proxies = <span class="hljs-keyword">lambda</span> authKey=<span class="hljs-string">&quot;xxx&quot;</span>, password=<span class="hljs-string">&quot;xxx&quot;</span>, proxyAddr=<span class="hljs-string">&quot;xxxx:xxx&quot;</span>: &#123;<br>            <span class="hljs-string">&quot;http&quot;</span>: <span class="hljs-string">f&quot;http://<span class="hljs-subst">&#123;authKey&#125;</span>:<span class="hljs-subst">&#123;password&#125;</span>@<span class="hljs-subst">&#123;proxyAddr&#125;</span>&quot;</span>,<br>            <span class="hljs-string">&quot;https&quot;</span>: <span class="hljs-string">f&quot;http://<span class="hljs-subst">&#123;authKey&#125;</span>:<span class="hljs-subst">&#123;password&#125;</span>@<span class="hljs-subst">&#123;proxyAddr&#125;</span>&quot;</span>,<br>        &#125;<br></code></pre></td></tr></table></figure>
-
+                <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span>  <span class="hljs-title function_">copyAllProperties</span> =(<span class="hljs-params">obj</span>)=&gt; &#123;<br>    <span class="hljs-keyword">const</span> result = &#123;&#125;;<br>    <br>    <span class="hljs-comment">// 复制对象自身的属性</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> obj) &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            result[key] = obj[key];<br>        &#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>            result[key] = <span class="hljs-string">&#x27;[无法访问]&#x27;</span>;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-comment">// 复制不可枚举的属性</span><br>    <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getOwnPropertyNames</span>(obj).<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (!(key <span class="hljs-keyword">in</span> result)) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                result[key] = obj[key];<br>            &#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>                result[key] = <span class="hljs-string">&#x27;[无法访问]&#x27;</span>;<br>            &#125;<br>        &#125;<br>    &#125;);<br>    <br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><br><span class="hljs-keyword">const</span> screenProps = <span class="hljs-title function_">copyAllProperties</span>(<span class="hljs-variable language_">window</span>.<span class="hljs-property">screen</span>);<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -374,8 +358,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Python小技巧</div>
-      <div>https://hybpjx.cn/2024/11/26/Python小技巧/</div>
+      <div>补环境复制原型属性脚本</div>
+      <div>https://hybpjx.cn/2025/08/26/补环境复制原型属性脚本/</div>
     </div>
     <div class="license-meta">
       
@@ -387,7 +371,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年11月26日</div>
+          <div>2025年8月26日</div>
         </div>
       
       
@@ -414,29 +398,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2024/12/02/Scrapyd%E7%AE%80%E6%98%93%E9%A3%9F%E7%94%A8%E6%95%99%E7%A8%8B/" title="Scrapyd简易食用教程">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Scrapyd简易食用教程</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2024/11/22/testab/" title="testab 逆向流程分析">
-                        <span class="hidden-mobile">testab 逆向流程分析</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
