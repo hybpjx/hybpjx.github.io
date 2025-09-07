@@ -6,7 +6,7 @@
   <link href="https://hybpjx.cn/atom.xml" rel="self"/>
   
   <link href="https://hybpjx.cn/"/>
-  <updated>2025-08-29T01:17:00.797Z</updated>
+  <updated>2025-09-07T09:32:44.158Z</updated>
   <id>https://hybpjx.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Wails+svelte开发入门</title>
+    <link href="https://hybpjx.cn/2025/09/07/Wails-svelte%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/"/>
+    <id>https://hybpjx.cn/2025/09/07/Wails-svelte%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/</id>
+    <published>2025-09-07T09:30:25.000Z</published>
+    <updated>2025-09-07T09:32:44.158Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><blockquote><p>go install github.com&#x2F;wailsapp&#x2F;wails&#x2F;v2&#x2F;cmd&#x2F;wails@latest</p></blockquote><h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><blockquote><p>wails init -n “my-svelte-app” -t “svelte”</p></blockquote><ul><li><p><code>-n</code>：指定项目名称，这里是 <code>my-svelte-app</code>。</p></li><li><p><code>-t</code>：指定前端模板，这里我们使用 <code>svelte</code>。</p></li></ul><h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><p>项目创建完成后，进入项目目录并运行：</p><p>Bash</p><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">cd</span> my-svelte-<span class="hljs-keyword">app</span><br>wails dev<br></code></pre></td></tr></table></figure><h1 id="Svelte-核心概念"><a href="#Svelte-核心概念" class="headerlink" title="Svelte 核心概念"></a>Svelte 核心概念</h1><p>您好！很高兴能带您快速入门并精通 Svelte。这是一个非常棒的选择，因为它以其简洁和高效而闻名。</p><p>Svelte 的核心理念与您可能听说过的其他框架（如 React 或 Vue）截然不同。与其在浏览器运行时执行大量工作，Svelte 更像一个<strong>编译器</strong>。它在您构建项目时，将您的代码转换成体积小、运行速度快的原生 JavaScript。这意味着最终用户在访问您的应用时，无需加载庞大的框架代码，从而带来<strong>极佳的性能</strong>。</p><h2 id="Svelte-快速入门指南"><a href="#Svelte-快速入门指南" class="headerlink" title="Svelte 快速入门指南"></a>Svelte 快速入门指南</h2><p>要使用 Svelte 快速上手 Wails 项目，您可以按照以下步骤操作：</p><h3 id="1-创建-Wails-Svelte-项目"><a href="#1-创建-Wails-Svelte-项目" class="headerlink" title="1. 创建 Wails + Svelte 项目"></a>1. 创建 Wails + Svelte 项目</h3><p>在终端中，运行以下命令来创建一个新的项目：</p><p>Bash</p><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">wails init -<span class="hljs-built_in">n</span> <span class="hljs-string">&quot;my-svelte-app&quot;</span> -<span class="hljs-built_in">t</span> <span class="hljs-string">&quot;svelte&quot;</span><br></code></pre></td></tr></table></figure><ul><li><code>-n</code>：指定项目名称，这里是 <code>my-svelte-app</code>。</li><li><code>-t</code>：指定前端模板，这里我们使用 <code>svelte</code>。</li></ul><h3 id="2-运行项目"><a href="#2-运行项目" class="headerlink" title="2. 运行项目"></a>2. 运行项目</h3><p>项目创建完成后，进入项目目录并运行：</p><p>Bash</p><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">cd</span> my-svelte-<span class="hljs-keyword">app</span><br>wails dev<br></code></pre></td></tr></table></figure><p><code>wails dev</code> 命令将启动 Wails 开发模式，同时运行您的 Go 后端和 Svelte 前端。Svelte 的 Vite 开发服务器会自动为您处理热重载。</p><hr><h2 id="Svelte-核心概念-1"><a href="#Svelte-核心概念-1" class="headerlink" title="Svelte 核心概念"></a>Svelte 核心概念</h2><p>要快速精通 Svelte，您只需掌握几个核心概念。它避免了许多其他框架中常见的样板代码。</p><h3 id="1-组件-Components"><a href="#1-组件-Components" class="headerlink" title="1. 组件 (Components)"></a>1. 组件 (Components)</h3><p>在 Svelte 中，每个 <code>.svelte</code> 文件都是一个组件。一个组件通常包含三部分：</p><ul><li><strong><code>&lt;script&gt;</code> 标签</strong>：用于存放组件的 JavaScript 逻辑。</li><li><strong>HTML 标签</strong>：用于定义组件的模板结构。</li><li><strong><code>&lt;style&gt;</code> 标签</strong>：用于编写组件的 CSS 样式。值得注意的是，<strong>样式默认是作用域化的</strong>，这意味着它们只会影响当前组件，而不会污染全局样式。</li></ul><h3 id="2-响应式-Reactivity"><a href="#2-响应式-Reactivity" class="headerlink" title="2. 响应式 (Reactivity)"></a>2. 响应式 (Reactivity)</h3><p>Svelte 的响应式非常简单。当您想让一个变量成为响应式状态时，只需正常声明它即可。当您改变这个变量时，所有使用它的地方都会自动更新。</p><p>Svelte</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;script&gt;<br>let count = 0; // 声明一个响应式变量<br>function increment() &#123;<br>    count++; // 直接修改变量，UI 会自动更新<br>&#125;<br>&lt;/script&gt;<br><br>&lt;button on:click=&#123;increment&#125;&gt;点击了 &#123;count&#125; 次&lt;/button&gt;<br></code></pre></td></tr></table></figure><h3 id="3-响应式声明"><a href="#3-响应式声明" class="headerlink" title="3. 响应式声明 ($:)"></a>3. 响应式声明 (<code>$:</code>)</h3><p>如果您需要从一个或多个响应式变量中派生新值，可以使用 Svelte 独有的 <code>$:</code> 语法。</p><p>Svelte</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;script&gt;<br>let count = 0;<br>// total 是一个派生值，当 count 改变时会自动重新计算<br>$: total = count * 2;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure><h3 id="4-属性-props"><a href="#4-属性-props" class="headerlink" title="4. 属性 (props)"></a>4. 属性 (<code>props</code>)</h3><p>要将数据从父组件传递给子组件，可以使用 <code>export let</code> 语法。</p><p>Svelte</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;!-- ChildComponent.svelte --&gt;<br>&lt;script&gt;<br>export let name; // 声明一个可接受的 prop<br>&lt;/script&gt;<br><br>&lt;h1&gt;你好, &#123;name&#125;!&lt;/h1&gt;<br></code></pre></td></tr></table></figure><p>Svelte</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&lt;!-- App.svelte (父组件) --&gt;<br>&lt;script&gt;<br>import ChildComponent from &#x27;./ChildComponent.svelte&#x27;;<br>&lt;/script&gt;<br><br>&lt;ChildComponent name=&quot;Svelte&quot; /&gt;<br></code></pre></td></tr></table></figure><h3 id="5-逻辑块"><a href="#5-逻辑块" class="headerlink" title="5. 逻辑块"></a>5. 逻辑块</h3><p>Svelte 提供简洁的语法来处理条件渲染和列表渲染：</p><ul><li><strong>条件渲染</strong>：使用 <code>&#123;#if...&#125;</code></li><li><strong>列表渲染</strong>：使用 <code>&#123;#each...&#125;</code></li></ul><p>Svelte</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs svelte">&#123;#if user&#125;<br>    &lt;div&gt;欢迎, &#123;user.name&#125;!&lt;/div&gt;<br>&#123;:else&#125;<br>    &lt;div&gt;请登录&lt;/div&gt;<br>&#123;/if&#125;<br><br>&#123;#each items as item&#125;<br>    &lt;div&gt;&#123;item.name&#125;&lt;/div&gt;<br>&#123;/each&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;go install github.com&amp;#x2F;wailsapp&amp;#x2F;wails&amp;#x2F;v2&amp;#x</summary>
+      
+    
+    
+    
+    
+    <category term="Golang" scheme="https://hybpjx.cn/tags/Golang/"/>
+    
+  </entry>
   
   <entry>
     <title>vaptcha手势验证码分析流程</title>
@@ -437,28 +460,6 @@
     
     
     <category term="JS逆向" scheme="https://hybpjx.cn/categories/JS%E9%80%86%E5%90%91/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>如何在Linux 安装node</title>
-    <link href="https://hybpjx.cn/2024/09/09/%E5%A6%82%E4%BD%95%E5%9C%A8Linux%20%E5%AE%89%E8%A3%85node/"/>
-    <id>https://hybpjx.cn/2024/09/09/%E5%A6%82%E4%BD%95%E5%9C%A8Linux%20%E5%AE%89%E8%A3%85node/</id>
-    <published>2024-09-09T04:03:00.000Z</published>
-    <updated>2025-08-13T17:08:34.161Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="如何在Linux-安装node"><a href="#如何在Linux-安装node" class="headerlink" title="如何在Linux 安装node"></a>如何在Linux 安装node</h1><p>之前说过 NVM安装node 非常方便。但是在某些环境上 安装NVM 会一直卡住不动。非常头疼。</p><p>这里直接安装Node</p><h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p><a href="https://nodejs.cn/download/">下载 | Node.js 中文网 (nodejs.cn)</a></p><p>选择 文中的 <strong>Linux 二进制文件 (x64)</strong></p><p>右击 复制链接 </p><p><img src="https://s2.loli.net/2024/09/09/3d8jFrSKDNvs5pa.png"></p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>直接 wget 下载链接</p><p> <img src="https://s2.loli.net/2024/09/09/vnRrQaoEWYFbZjs.png"></p><p>然后 执行如下命令</p><p>-C 是指定目录解压</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xvf node-v20.17.0-linux-x64.tar.xz -C /usr/local/bin<br></code></pre></td></tr></table></figure><p>重命名一下</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> node-v20.17.0-linux-x64/ node-v20<br></code></pre></td></tr></table></figure><p>建立软连接</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -sf /usr/local/bin/node-v20/bin/node /usr/local/bin/node<br><br><span class="hljs-built_in">ln</span> -sf /usr/local/bin/node-v20/bin/npm /usr/local/bin/npm<br></code></pre></td></tr></table></figure><p>如果报错就</p><p>把 <strong>-s</strong> 命令修改成 <strong>-sf</strong> 命令；<strong>-f</strong> 命令的意思是强制执行，也就意味着如果不存在就执行创建，存在就执行覆盖掉</p><h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>编译环境文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/profile<br></code></pre></td></tr></table></figure><p>新增如下内容</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> NODE_HOME=/usr/local/bin/node-v20/bin<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$NODE_HOME</span>:/usr/local/bin/<br></code></pre></td></tr></table></figure><p>然后刷新配置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> /etc/profile<br></code></pre></td></tr></table></figure><h1 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h1><p>然后执行Node ~ 直接大功告成。 怎么说~~</p><p><img src="https://s2.loli.net/2024/09/09/VtXqJUNWaY1lekQ.png"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;如何在Linux-安装node&quot;&gt;&lt;a href=&quot;#如何在Linux-安装node&quot; class=&quot;headerlink&quot; title=&quot;如何在Linux 安装node&quot;&gt;&lt;/a&gt;如何在Linux 安装node&lt;/h1&gt;&lt;p&gt;之前说过 NVM安装node 非常方</summary>
-      
-    
-    
-    
-    <category term="快速安装" scheme="https://hybpjx.cn/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/"/>
     
     
   </entry>
