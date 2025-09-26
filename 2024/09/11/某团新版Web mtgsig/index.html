@@ -1,26 +1,11 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
+<html lang=zh>
 <head>
-  <meta charset="UTF-8">
-
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/kkk.jpeg">
-  <link rel="icon" href="/img/kkk.jpeg">
-  
-    <link rel="canonical" href="https://hybpjx.cn/2024/09/11/某团新版Web mtgsig/"/>
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="hybpjx">
-  <meta name="keywords" content="">
-  
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="某团新版Web mtgsig1.2 算法解析前言算法和环境更新了一下。某些接口请求几次就强校验了。今天简单来看看。 流程首先AST解混淆，把代码中b函数给解出来就行了。非常简单。 后面解完之后发现 环境代码非常之多。 这里算了。我补了一天最后还差了200多位。这里正常应该是476位。 这里就不多B了。之间开撸。 这里其实就是一个VMP。 层层入栈 直接插桩 1ki+1,kg[&quot;getUi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="某团新版Web mtgsig1.2 算法分析">
@@ -53,317 +38,170 @@
 <meta property="article:published_time" content="2024-09-11T03:11:17.000Z">
 <meta property="article:modified_time" content="2025-08-13T17:08:34.161Z">
 <meta property="article:author" content="hybpjx">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2024/09/01/FoCdXHZzsxeMQA7.png">
-  
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
-  
-  
-  <title>某团新版Web mtgsig1.2 算法分析 - 始識’s 博客</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/hbsn.jpg">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/hbsn.jpg" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/hbsn.jpg">
+        
+      
+    
+    <!-- title -->
+    <title>某团新版Web mtgsig1.2 算法分析</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+    <!-- Umami Analytics -->
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"hybpjx.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"b22594774d0063a7e925af5b0c33d138","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-  
-    <!-- Baidu Analytics -->
-    <script async>
-      if (!Fluid.ctx.dnt) {
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?b22594774d0063a7e925af5b0c33d138";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-      }
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-  
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/friends/">友联</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://cnblogs.com/zichliang">项目</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/09/09/%E5%A6%82%E4%BD%95%E5%9C%A8Linux%20%E5%AE%89%E8%A3%85node/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&text=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&title=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&is_video=false&description=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=某团新版Web mtgsig1.2 算法分析&body=Check out this article: https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&title=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&title=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&title=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&title=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&name=某团新版Web mtgsig1.2 算法分析&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&t=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
 
-<body>
-  
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web-mtgsig1-2-%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">某团新版Web mtgsig1.2 算法解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#a3"><span class="toc-number">4.</span> <span class="toc-text">a3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#a5"><span class="toc-number">5.</span> <span class="toc-text">a5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#a6"><span class="toc-number">6.</span> <span class="toc-text">a6</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
 
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
+    <h1 class="posttitle p-name" itemprop="name headline">
+        某团新版Web mtgsig1.2 算法分析
+    </h1>
 
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>hybpjx&#39;s Blogs</strong>
-    </a>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
 
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-09-11T03:11:17.000Z" class="dt-published" itemprop="datePublished">2024-09-11</time>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
+      
     </div>
-  </div>
-</nav>
 
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/JS%E9%80%86%E5%90%91/">JS逆向</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
   
 
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/dark.jpeg') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="某团新版Web mtgsig1.2 算法分析"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-author" aria-hidden="true"></i>
-        hybpjx
-      </span>
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-11 11:11" pubdate>
-          2024年9月11日 上午
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          1k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          9 分钟
-        
-      </span>
-    
-
-    
-    
-      
-        <span id="busuanzi_container_page_pv" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> 次
-        </span>
-        
-
-      
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">某团新版Web mtgsig1.2 算法分析</h1>
-            
-              <p id="updated-time" class="note note-info" style="display: none">
-                
-                  
-                    本文最后更新于 2025-08-14T01:08:34+08:00
-                  
-                  
-
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h1 id="某团新版Web-mtgsig1-2-算法解析"><a href="#某团新版Web-mtgsig1-2-算法解析" class="headerlink" title="某团新版Web mtgsig1.2 算法解析"></a>某团新版Web mtgsig1.2 算法解析</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>算法和环境更新了一下。某些接口请求几次就强校验了。今天简单来看看。</p>
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="某团新版Web-mtgsig1-2-算法解析"><a href="#某团新版Web-mtgsig1-2-算法解析" class="headerlink" title="某团新版Web mtgsig1.2 算法解析"></a>某团新版Web mtgsig1.2 算法解析</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>算法和环境更新了一下。某些接口请求几次就强校验了。今天简单来看看。</p>
 <h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>首先AST解混淆，把代码中b函数给解出来就行了。非常简单。</p>
 <p>后面解完之后发现 环境代码非常之多。</p>
 <p>这里算了。我补了一天最后还差了200多位。这里正常应该是476位。</p>
@@ -374,13 +212,13 @@
 
 
 
-<p><img src="https://s2.loli.net/2024/09/01/FoCdXHZzsxeMQA7.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/01/FoCdXHZzsxeMQA7.png"></p>
 <p>保存打印的日志。</p>
 <p>​	</p>
-<h1 id="a3"><a href="#a3" class="headerlink" title="a3"></a>a3</h1><p><img src="https://s2.loli.net/2024/09/01/Fn5MoQSGdZvkrtj.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2024/09/01/fwsNncSl2CTHtqp.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="a3"><a href="#a3" class="headerlink" title="a3"></a>a3</h1><p><img src="https://s2.loli.net/2024/09/01/Fn5MoQSGdZvkrtj.png"></p>
+<p><img src="https://s2.loli.net/2024/09/01/fwsNncSl2CTHtqp.png"></p>
 <p>之间搜索dfpID的位置。</p>
-<p><img src="https://s2.loli.net/2024/09/01/lNhYBAeDIGUnup9.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/01/lNhYBAeDIGUnup9.png"></p>
 <p>扣完 a3 即生成。</p>
 <h1 id="a5"><a href="#a5" class="headerlink" title="a5"></a>a5</h1><p>然后找到位置再插一波</p>
 <p>如下图</p>
@@ -388,25 +226,25 @@
 
 
 
-<p><img src="https://s2.loli.net/2024/09/01/iyFhOoZCx6mupGj.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/01/iyFhOoZCx6mupGj.png"></p>
 <p>这里 可以看见 数组转换成字符串。那我们两个断点一起打着看看。</p>
-<p><img src="https://s2.loli.net/2024/09/01/DFLAk84clR2UyYt.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/01/DFLAk84clR2UyYt.png"></p>
 <p>这里重新插一下一开始的位置</p>
-<p><img src="https://s2.loli.net/2024/09/01/nvcAzBQ8jCUlI4t.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/01/nvcAzBQ8jCUlI4t.png"></p>
 <p>单步进栈。发现又是一个 switch 流程</p>
 <p>那继续插</p>
-<p><img src="https://s2.loli.net/2024/09/01/fPR7Yy3ZDo1uKxO.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/01/fPR7Yy3ZDo1uKxO.png"></p>
 <p>OK。那就继续插</p>
-<p><img src="https://s2.loli.net/2024/09/01/Nzx85qjJWCT9sym.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/01/Nzx85qjJWCT9sym.png"></p>
 <p>定位到下图位置 单步调试跟栈</p>
-<p><img src="https://s2.loli.net/2024/09/01/J2hiGVuks4QKzo5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/01/J2hiGVuks4QKzo5.png"></p>
 <p>如下图 扣下来即可。后面就是考虑动态数组的问题了。</p>
-<p><img src="https://s2.loli.net/2024/09/01/k8ZtdMx7Rs6zfuW.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/01/k8ZtdMx7Rs6zfuW.png"></p>
 <p>即lI，lJ,lK 三个值。那又要插装。</p>
 <p>这里重新插装要打印全部值。</p>
 <p>这里找到 0,1,2,3,4 …256的地方。</p>
 <p>重新插</p>
-<p><img src="https://s2.loli.net/2024/09/01/rM3msoDkWTb7njy.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/01/rM3msoDkWTb7njy.png"></p>
 <p>这里动态数组。我们JSON.stringify 来分析下。</p>
 <p>这里分析如下</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs javascript">origin_arr = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>, <span class="hljs-number">16</span>, <span class="hljs-number">17</span>, <span class="hljs-number">18</span>, <span class="hljs-number">19</span>, <span class="hljs-number">20</span>, <span class="hljs-number">21</span>, <span class="hljs-number">22</span>, <span class="hljs-number">23</span>, <span class="hljs-number">24</span>, <span class="hljs-number">25</span>, <span class="hljs-number">26</span>, <span class="hljs-number">27</span>, <span class="hljs-number">28</span>, <span class="hljs-number">29</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">32</span>, <span class="hljs-number">33</span>, <span class="hljs-number">34</span>, <span class="hljs-number">35</span>, <span class="hljs-number">36</span>, <span class="hljs-number">37</span>, <span class="hljs-number">38</span>, <span class="hljs-number">39</span>, <span class="hljs-number">40</span>, <span class="hljs-number">41</span>, <span class="hljs-number">42</span>, <span class="hljs-number">43</span>, <span class="hljs-number">44</span>, <span class="hljs-number">45</span>, <span class="hljs-number">46</span>, <span class="hljs-number">47</span>, <span class="hljs-number">48</span>, <span class="hljs-number">49</span>, <span class="hljs-number">50</span>, <span class="hljs-number">51</span>, <span class="hljs-number">52</span>, <span class="hljs-number">53</span>, <span class="hljs-number">54</span>, <span class="hljs-number">55</span>, <span class="hljs-number">56</span>, <span class="hljs-number">57</span>, <span class="hljs-number">58</span>, <span class="hljs-number">59</span>, <span class="hljs-number">60</span>, <span class="hljs-number">61</span>, <span class="hljs-number">62</span>, <span class="hljs-number">63</span>, <span class="hljs-number">64</span>, <span class="hljs-number">65</span>, <span class="hljs-number">66</span>, <span class="hljs-number">67</span>, <span class="hljs-number">68</span>, <span class="hljs-number">69</span>, <span class="hljs-number">70</span>, <span class="hljs-number">71</span>, <span class="hljs-number">72</span>, <span class="hljs-number">73</span>, <span class="hljs-number">74</span>, <span class="hljs-number">75</span>, <span class="hljs-number">76</span>, <span class="hljs-number">77</span>, <span class="hljs-number">78</span>, <span class="hljs-number">79</span>, <span class="hljs-number">80</span>, <span class="hljs-number">81</span>, <span class="hljs-number">82</span>, <span class="hljs-number">83</span>, <span class="hljs-number">84</span>, <span class="hljs-number">85</span>, <span class="hljs-number">86</span>, <span class="hljs-number">87</span>, <span class="hljs-number">88</span>, <span class="hljs-number">89</span>, <span class="hljs-number">90</span>, <span class="hljs-number">91</span>, <span class="hljs-number">92</span>, <span class="hljs-number">93</span>, <span class="hljs-number">94</span>, <span class="hljs-number">95</span>, <span class="hljs-number">96</span>, <span class="hljs-number">97</span>, <span class="hljs-number">98</span>, <span class="hljs-number">99</span>, <span class="hljs-number">100</span>, <span class="hljs-number">101</span>, <span class="hljs-number">102</span>, <span class="hljs-number">103</span>, <span class="hljs-number">104</span>, <span class="hljs-number">105</span>, <span class="hljs-number">106</span>, <span class="hljs-number">107</span>, <span class="hljs-number">108</span>, <span class="hljs-number">109</span>, <span class="hljs-number">110</span>, <span class="hljs-number">111</span>, <span class="hljs-number">112</span>, <span class="hljs-number">113</span>, <span class="hljs-number">114</span>, <span class="hljs-number">115</span>, <span class="hljs-number">116</span>, <span class="hljs-number">117</span>, <span class="hljs-number">118</span>, <span class="hljs-number">119</span>, <span class="hljs-number">120</span>, <span class="hljs-number">121</span>, <span class="hljs-number">122</span>, <span class="hljs-number">123</span>, <span class="hljs-number">124</span>, <span class="hljs-number">125</span>, <span class="hljs-number">126</span>, <span class="hljs-number">127</span>, <span class="hljs-number">128</span>, <span class="hljs-number">129</span>, <span class="hljs-number">130</span>, <span class="hljs-number">131</span>, <span class="hljs-number">132</span>, <span class="hljs-number">133</span>, <span class="hljs-number">134</span>, <span class="hljs-number">135</span>, <span class="hljs-number">136</span>, <span class="hljs-number">137</span>, <span class="hljs-number">138</span>, <span class="hljs-number">139</span>, <span class="hljs-number">140</span>, <span class="hljs-number">141</span>, <span class="hljs-number">142</span>, <span class="hljs-number">143</span>, <span class="hljs-number">144</span>, <span class="hljs-number">145</span>, <span class="hljs-number">146</span>, <span class="hljs-number">147</span>, <span class="hljs-number">148</span>, <span class="hljs-number">149</span>, <span class="hljs-number">150</span>, <span class="hljs-number">151</span>, <span class="hljs-number">152</span>, <span class="hljs-number">153</span>, <span class="hljs-number">154</span>, <span class="hljs-number">155</span>, <span class="hljs-number">156</span>, <span class="hljs-number">157</span>, <span class="hljs-number">158</span>, <span class="hljs-number">159</span>, <span class="hljs-number">160</span>, <span class="hljs-number">161</span>, <span class="hljs-number">162</span>, <span class="hljs-number">163</span>, <span class="hljs-number">164</span>, <span class="hljs-number">165</span>, <span class="hljs-number">166</span>, <span class="hljs-number">167</span>, <span class="hljs-number">168</span>, <span class="hljs-number">169</span>, <span class="hljs-number">170</span>, <span class="hljs-number">171</span>, <span class="hljs-number">172</span>, <span class="hljs-number">173</span>, <span class="hljs-number">174</span>, <span class="hljs-number">175</span>, <span class="hljs-number">176</span>, <span class="hljs-number">177</span>, <span class="hljs-number">178</span>, <span class="hljs-number">179</span>, <span class="hljs-number">180</span>, <span class="hljs-number">181</span>, <span class="hljs-number">182</span>, <span class="hljs-number">183</span>, <span class="hljs-number">184</span>, <span class="hljs-number">185</span>, <span class="hljs-number">186</span>, <span class="hljs-number">187</span>, <span class="hljs-number">188</span>, <span class="hljs-number">189</span>, <span class="hljs-number">190</span>, <span class="hljs-number">191</span>, <span class="hljs-number">192</span>, <span class="hljs-number">193</span>, <span class="hljs-number">194</span>, <span class="hljs-number">195</span>, <span class="hljs-number">196</span>, <span class="hljs-number">197</span>, <span class="hljs-number">198</span>, <span class="hljs-number">199</span>, <span class="hljs-number">200</span>, <span class="hljs-number">201</span>, <span class="hljs-number">202</span>, <span class="hljs-number">203</span>, <span class="hljs-number">204</span>, <span class="hljs-number">205</span>, <span class="hljs-number">206</span>, <span class="hljs-number">207</span>, <span class="hljs-number">208</span>, <span class="hljs-number">209</span>, <span class="hljs-number">210</span>, <span class="hljs-number">211</span>, <span class="hljs-number">212</span>, <span class="hljs-number">213</span>, <span class="hljs-number">214</span>, <span class="hljs-number">215</span>, <span class="hljs-number">216</span>, <span class="hljs-number">217</span>, <span class="hljs-number">218</span>, <span class="hljs-number">219</span>, <span class="hljs-number">220</span>, <span class="hljs-number">221</span>, <span class="hljs-number">222</span>, <span class="hljs-number">223</span>, <span class="hljs-number">224</span>, <span class="hljs-number">225</span>, <span class="hljs-number">226</span>, <span class="hljs-number">227</span>, <span class="hljs-number">228</span>, <span class="hljs-number">229</span>, <span class="hljs-number">230</span>, <span class="hljs-number">231</span>, <span class="hljs-number">232</span>, <span class="hljs-number">233</span>, <span class="hljs-number">234</span>, <span class="hljs-number">235</span>, <span class="hljs-number">236</span>, <span class="hljs-number">237</span>, <span class="hljs-number">238</span>, <span class="hljs-number">239</span>, <span class="hljs-number">240</span>, <span class="hljs-number">241</span>, <span class="hljs-number">242</span>, <span class="hljs-number">243</span>, <span class="hljs-number">244</span>, <span class="hljs-number">245</span>, <span class="hljs-number">246</span>, <span class="hljs-number">247</span>, <span class="hljs-number">248</span>, <span class="hljs-number">249</span>, <span class="hljs-number">250</span>, <span class="hljs-number">251</span>, <span class="hljs-number">252</span>, <span class="hljs-number">253</span>, <span class="hljs-number">254</span>, <span class="hljs-number">255</span>]<br><br><br><span class="hljs-comment">// 需要与之运算的16位数组</span><br>encrypt_arr = [<span class="hljs-number">152</span>, <span class="hljs-number">232</span>, <span class="hljs-number">186</span>, <span class="hljs-number">109</span>, <span class="hljs-number">125</span>, <span class="hljs-number">188</span>, <span class="hljs-number">249</span>, <span class="hljs-number">229</span>, <span class="hljs-number">95</span>, <span class="hljs-number">58</span>, <span class="hljs-number">250</span>, <span class="hljs-number">230</span>, <span class="hljs-number">169</span>, <span class="hljs-number">75</span>, <span class="hljs-number">115</span>, <span class="hljs-number">56</span>]<br><br><br><span class="hljs-comment">// 第一个</span><br><span class="hljs-comment">// 152+0 = 152   152 = 152+0  232 第一个数组</span><br><span class="hljs-number">152</span> + <span class="hljs-number">31</span><br><br><span class="hljs-number">1</span><br><span class="hljs-comment">// 结果</span><br><span class="hljs-number">183</span><br><br><span class="hljs-comment">// 第二个</span><br><span class="hljs-comment">// 184+232 = 416   184 = 183+1  232 第二个数组</span><br><span class="hljs-number">416</span> + <span class="hljs-number">31</span><br><span class="hljs-number">447</span> - <span class="hljs-number">256</span> || <span class="hljs-number">447</span> % <span class="hljs-number">256</span><br><span class="hljs-comment">// 结果</span><br><span class="hljs-number">191</span><br><br><br><span class="hljs-comment">// 第三个</span><br><span class="hljs-comment">// 193+186   191+2  186 第三个数组</span><br><span class="hljs-number">379</span> + <span class="hljs-number">31</span><br><span class="hljs-number">410</span> - <span class="hljs-number">256</span> || <span class="hljs-number">410</span> % <span class="hljs-number">256</span><br><span class="hljs-comment">// 结果</span><br><span class="hljs-number">154</span><br><br><br><span class="hljs-comment">// 第四个</span><br><span class="hljs-comment">// 157 + 109  154+3    109 第四个数组</span><br><span class="hljs-number">266</span> + <span class="hljs-number">31</span><br><span class="hljs-number">297</span> - <span class="hljs-number">256</span> || <span class="hljs-number">297</span> * <span class="hljs-number">256</span><br><span class="hljs-comment">// 结果</span><br><span class="hljs-number">41</span><br><br><span class="hljs-comment">// ==== ..... 一组轮询完毕</span><br><br><span class="hljs-comment">// 第16个</span><br><span class="hljs-comment">// 231 + 56   216 + 15  56 第15个数组</span><br><span class="hljs-number">287</span> + <span class="hljs-number">31</span><br><span class="hljs-number">318</span> - <span class="hljs-number">256</span> || <span class="hljs-number">318</span> % <span class="hljs-number">256</span><br><span class="hljs-comment">// 结果</span><br><span class="hljs-number">62</span><br><br><span class="hljs-comment">// 第17个</span><br><span class="hljs-comment">// 78+152     62+16   152 第1个数组</span><br><span class="hljs-number">230</span> + <span class="hljs-number">31</span><br><br><span class="hljs-number">261</span> - <span class="hljs-number">256</span> || <span class="hljs-number">318</span> % <span class="hljs-number">256</span><br></code></pre></td></tr></table></figure>
@@ -416,453 +254,204 @@
 <p>这里有个小坑~~~ 留着先自己弄弄</p>
 <p>这里还有个地方 就是与之运算的16位数组了。</p>
 <p>这个地方继续如下图插装</p>
-<p><img src="https://s2.loli.net/2024/09/12/B5OXj82IoEUzFqe.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/12/B5OXj82IoEUzFqe.png"></p>
 <p>然后插装 13 39 </p>
-<p><img src="https://s2.loli.net/2024/09/12/kJyH6KYDROt9pPC.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/12/kJyH6KYDROt9pPC.png"></p>
 <p>然后发现 这一层是上一层kr &#x3D; kR[&quot;apply”](kS, kP) 生成的。</p>
 <p>所以继续插装 这个位置的length</p>
 <p>最后走到这个位置。</p>
 <p>这里发现。有传参的两个值。第一个 是一串类似于hash加密的。</p>
 <p>第二端是把这个值转换成数组。这个直接抠出来就可以。</p>
-<p><img src="https://s2.loli.net/2024/09/13/G3NVyLHx5uzZIiX.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/13/G3NVyLHx5uzZIiX.png"></p>
 <p>这里继续回去看最外层的日志。</p>
 <p>这里直接贴3张图。一眼就能看懂</p>
-<p><img src="https://s2.loli.net/2024/09/13/qF9vdimx8ycJHlQ.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2024/09/13/FvWiS4u8zRQ2Lkl.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2024/09/13/zuXo78ephOGHZNi.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/13/qF9vdimx8ycJHlQ.png"></p>
+<p><img src="https://s2.loli.net/2024/09/13/FvWiS4u8zRQ2Lkl.png"></p>
+<p><img src="https://s2.loli.net/2024/09/13/zuXo78ephOGHZNi.png"></p>
 <p>至此的话。a5就算是搞定了。</p>
 <h1 id="a6"><a href="#a6" class="headerlink" title="a6"></a>a6</h1><p>直接老样子 根据日志 去插装</p>
-<p><img src="https://s2.loli.net/2024/09/13/bGpDuJynCiHgANw.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/13/bGpDuJynCiHgANw.png"></p>
 <p>最后瞎JB一顿乱找 和 乱猜</p>
 <p>定位点如下图所示</p>
-<p><img src="https://s2.loli.net/2024/09/13/5cadXL6VWbYZAke.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/13/5cadXL6VWbYZAke.png"></p>
 <p>OK 这个函数直接缺啥扣啥。确实感觉没什么写的。</p>
 <p>至此 a3 a5 a6 全部搞定。</p>
-<p><img src="https://s2.loli.net/2024/09/14/GRQLv68qbyUgEY3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/14/GRQLv68qbyUgEY3.png"></p>
 <p>后面拼出来就行了。</p>
 <p>然后找几个关键校验的接口 这里我用的是某Boking 去测试的。至于 还有a8 和 d1 。。 只能说待续</p>
-<p><img src="https://s2.loli.net/2024/09/14/DkvWtXI8MrfYKR2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/14/DkvWtXI8MrfYKR2.png"></p>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
+  </div>
+</article>
 
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
         
-  <a href="/categories/JS%E9%80%86%E5%90%91/" class="category-chain-item">JS逆向</a>
-  
-  
+          <div id="footer-post-container">
+  <div id="footer-post">
 
-      </span>
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/friends/">友联</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://cnblogs.com/zichliang">项目</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
     
-  
-</span>
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web-mtgsig1-2-%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">某团新版Web mtgsig1.2 算法解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#a3"><span class="toc-number">4.</span> <span class="toc-text">a3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#a5"><span class="toc-number">5.</span> <span class="toc-text">a5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#a6"><span class="toc-number">6.</span> <span class="toc-text">a6</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&text=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&title=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&is_video=false&description=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=某团新版Web mtgsig1.2 算法分析&body=Check out this article: https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&title=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&title=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&title=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&title=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&name=某团新版Web mtgsig1.2 算法分析&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/&t=某团新版Web mtgsig1.2 算法分析"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
     </div>
-  
-  
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
 </div>
 
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>某团新版Web mtgsig1.2 算法分析</div>
-      <div>https://hybpjx.cn/2024/09/11/某团新版Web mtgsig/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>hybpjx</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2024年9月11日</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-cc-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2025
+    hybpjx
   </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/friends/">友联</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://cnblogs.com/zichliang">项目</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" title="APP逆向之Frida基础教程">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">APP逆向之Frida基础教程</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2024/09/09/%E5%A6%82%E4%BD%95%E5%9C%A8Linux%20%E5%AE%89%E8%A3%85node/" title="如何在Linux 安装node">
-                        <span class="hidden-mobile">如何在Linux 安装node</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
-            
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
   
-    <article id="comments" lazyload>
-      
-  <div id="twikoo"></div>
   <script type="text/javascript">
-    Fluid.utils.loadComments('#comments', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.8/twikoo.all.min.js', function() {
-        var options = Object.assign(
-          {"envId":"https://hybpjx.netlify.app/.netlify/functions/twikoo","region":"ap-shanghai","path":"window.location.pathname"},
-          {
-            el: '#twikoo',
-            path: 'window.location.pathname',
-            onCommentLoaded: function() {
-              Fluid.utils.listenDOMLoaded(function() {
-                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
-                Fluid.plugins.imageCaption(imgSelector);
-                Fluid.plugins.fancyBox(imgSelector);
-              });
-            }
-          }
-        )
-        twikoo.init(options)
-      });
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
     });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-    </article>
-  
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://mp.weixin.qq.com/s/U1F7nCYSaeuNY5YLxWFOGg" target="_blank" rel="nofollow noopener"><span>更多文章请关注我的个人微信公众号: 影17</span></a> <i class="iconfont icon-love"></i> <br> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>本博客主题为:Fluid</span></a> 
-    </div>
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
     })
+  })
   </script>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script src="/js/main.js"></script>
 
+<!-- search -->
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+<!-- Baidu Analytics -->
 
+<!-- Cloudflare Analytics -->
 
+<!-- Disqus Comments -->
 
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
 
+<!-- utterances Comments -->
 
-
-
-  
-<script>
-  var relativeDate = function() {
-    var updatedTime = document.getElementById('updated-time');
-    if (updatedTime) {
-      var text = updatedTime.textContent;
-      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
-      var matchs = text.match(reg);
-      if (matchs) {
-        var relativeTime = moment(matchs[0]).fromNow();
-        updatedTime.textContent = text.replace(reg, relativeTime);
-      }
-      updatedTime.style.display = '';
-    }
-  };
-  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
-    if (!'zh-cn'.startsWith('en')) {
-      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
-        relativeDate();
-      });
-    } else {
-      relativeDate();
-    }
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
 </body>
 </html>

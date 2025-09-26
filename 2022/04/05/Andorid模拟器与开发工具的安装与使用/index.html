@@ -1,26 +1,11 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
+<html lang=zh>
 <head>
-  <meta charset="UTF-8">
-
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/kkk.jpeg">
-  <link rel="icon" href="/img/kkk.jpeg">
-  
-    <link rel="canonical" href="https://hybpjx.cn/2022/04/05/Andorid模拟器与开发工具的安装与使用/"/>
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="hybpjx">
-  <meta name="keywords" content="">
-  
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="前言——准备安装SDK前的准备工作首先为了实现 移动端的自动化控制 还需要一些工具来支持需要设置好Proxy SwitchyOmega 什么是SDKSDK是一系列程序接口，文档，开发工具的集合，是的，集合，sdk即单单不是一个开发工具，也不是一个程序。一个完整的SDK应该包括以下内容：（1）接口文件和库文件（2）帮助文档（3）开发示例（4）实用工具。接口文件和库文件就是API，将底层的代码进行封装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Andorid模拟器与开发工具的安装与使用">
@@ -78,317 +63,170 @@
 <meta property="article:published_time" content="2022-04-05T15:00:31.000Z">
 <meta property="article:modified_time" content="2025-08-13T17:08:34.155Z">
 <meta property="article:author" content="hybpjx">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2024/09/05/we43bTJvOPijz92.png">
-  
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
-  
-  
-  <title>Andorid模拟器与开发工具的安装与使用 - 始識’s 博客</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/hbsn.jpg">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/hbsn.jpg" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/hbsn.jpg">
+        
+      
+    
+    <!-- title -->
+    <title>Andorid模拟器与开发工具的安装与使用</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+    <!-- Umami Analytics -->
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"hybpjx.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"b22594774d0063a7e925af5b0c33d138","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-  
-    <!-- Baidu Analytics -->
-    <script async>
-      if (!Fluid.ctx.dnt) {
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?b22594774d0063a7e925af5b0c33d138";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-      }
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-  
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/friends/">友联</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://cnblogs.com/zichliang">项目</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2022/05/26/%E5%AE%89%E8%A3%85NVM%E4%B8%8E%E6%9E%84%E5%BB%BAvue%E9%A1%B9%E7%9B%AE/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2022/03/26/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85golang/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&text=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&title=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&is_video=false&description=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Andorid模拟器与开发工具的安装与使用&body=Check out this article: https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&title=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&title=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&title=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&title=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&name=Andorid模拟器与开发工具的安装与使用&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&t=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
 
-<body>
-  
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%E2%80%94%E2%80%94%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">前言——准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSDK"><span class="toc-number">1.1.</span> <span class="toc-text">什么是SDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85jdk"><span class="toc-number">1.2.</span> <span class="toc-text">安装jdk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">设置环境变量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">Android开发工具的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85SDK"><span class="toc-number">2.1.</span> <span class="toc-text">安装SDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%A5%BD-%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">安装好 设置环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8AndroidStudio-%E6%9D%A5%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">使用AndroidStudio 来安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEconfigure"><span class="toc-number">3.2.</span> <span class="toc-text">配置configure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B"><span class="toc-number">3.3.</span> <span class="toc-text">如何新建工程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#adb%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.</span> <span class="toc-text">adb简单介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8A%E8%BF%9E%E6%8E%A5adb"><span class="toc-number">5.</span> <span class="toc-text">各种模拟器上连接adb</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9C%E7%A5%9E%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%BF%9E%E6%8E%A5adb"><span class="toc-number">5.1.</span> <span class="toc-text">夜神模拟器连接adb</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MuMu%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8A%E8%BF%9E%E6%8E%A5adb"><span class="toc-number">5.2.</span> <span class="toc-text">MuMu模拟器上连接adb</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#adb%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">6.</span> <span class="toc-text">adb工具的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#adb-%E8%BF%9E%E6%8E%A5-%E6%89%8B%E6%9C%BA"><span class="toc-number">6.1.</span> <span class="toc-text">adb 连接 手机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87adb-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%89%E8%A3%85"><span class="toc-number">6.2.</span> <span class="toc-text">通过adb 命令行安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87adb%E5%91%BD%E4%BB%A4%E5%8D%B8%E8%BD%BD"><span class="toc-number">6.3.</span> <span class="toc-text">通过adb命令卸载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96-adb%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">6.4.</span> <span class="toc-text">其他 adb的功能</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
 
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Andorid模拟器与开发工具的安装与使用
+    </h1>
 
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>hybpjx&#39;s Blogs</strong>
-    </a>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
 
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-04-05T15:00:31.000Z" class="dt-published" itemprop="datePublished">2022-04-05</time>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
+      
     </div>
-  </div>
-</nav>
 
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/">快速安装</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
   
 
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/dark.jpeg') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="Andorid模拟器与开发工具的安装与使用"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-author" aria-hidden="true"></i>
-        hybpjx
-      </span>
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-05 23:00" pubdate>
-          2022年4月5日 晚上
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          1.8k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          15 分钟
-        
-      </span>
-    
-
-    
-    
-      
-        <span id="busuanzi_container_page_pv" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> 次
-        </span>
-        
-
-      
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">Andorid模拟器与开发工具的安装与使用</h1>
-            
-              <p id="updated-time" class="note note-info" style="display: none">
-                
-                  
-                    本文最后更新于 2025-08-14T01:08:34+08:00
-                  
-                  
-
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h1 id="前言——准备"><a href="#前言——准备" class="headerlink" title="前言——准备"></a>前言——准备</h1><p><strong>安装SDK前的准备工作</strong><br>首先为了实现 移动端的自动化控制 还需要一些工具来支持<br>需要设置好<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif">Proxy SwitchyOmega</a></p>
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="前言——准备"><a href="#前言——准备" class="headerlink" title="前言——准备"></a>前言——准备</h1><p><strong>安装SDK前的准备工作</strong><br>首先为了实现 移动端的自动化控制 还需要一些工具来支持<br>需要设置好<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif">Proxy SwitchyOmega</a></p>
 <h2 id="什么是SDK"><a href="#什么是SDK" class="headerlink" title="什么是SDK"></a>什么是SDK</h2><p>SDK是一系列程序接口，文档，开发工具的集合，是的，集合，sdk即单单不是一个开发工具，也不是一个程序。一个完整的SDK应该包括以下内容：<br>（1）接口文件和库文件<br>（2）帮助文档<br>（3）开发示例<br>（4）实用工具。<br>接口文件和库文件就是API，将底层的代码进行封装保护，提供给用户一个调用底层代码的接口；</p>
 <p>Android SDK 指的是 Android专属的软件开发工具包</p>
 <h2 id="安装jdk"><a href="#安装jdk" class="headerlink" title="安装jdk"></a>安装jdk</h2><ul>
@@ -399,7 +237,7 @@
 </li>
 <li>有个做ui手工测试的只支持 jdk8 所以 必须安装jdk8</li>
 </ul>
-<p><strong>安装</strong><br>在电脑D盘新建 Java&#x2F;jdk &#x2F;Java&#x2F;jre<br><img src="https://s2.loli.net/2024/09/05/we43bTJvOPijz92.png" srcset="/img/loading.gif" lazyload><br>选择jre 也是在D盘<br><img src="https://s2.loli.net/2024/09/05/zWpxetFnBvUma2r.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>安装</strong><br>在电脑D盘新建 Java&#x2F;jdk &#x2F;Java&#x2F;jre<br><img src="https://s2.loli.net/2024/09/05/we43bTJvOPijz92.png"><br>选择jre 也是在D盘<br><img src="https://s2.loli.net/2024/09/05/zWpxetFnBvUma2r.png"></p>
 <h3 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h3><ol>
 <li><strong>D:\Java\jdk\bin 添加至 path中</strong></li>
 <li>系统变量添加 <ol>
@@ -408,15 +246,15 @@
 </ol>
 </li>
 </ol>
-<p>测试是否安装成功<br><img src="https://s2.loli.net/2024/09/05/qfQ9oRjkezc5Lyx.png" srcset="/img/loading.gif" lazyload></p>
+<p>测试是否安装成功<br><img src="https://s2.loli.net/2024/09/05/qfQ9oRjkezc5Lyx.png"></p>
 <h1 id="Android开发工具的安装"><a href="#Android开发工具的安装" class="headerlink" title="Android开发工具的安装"></a>Android开发工具的安装</h1><h2 id="安装SDK"><a href="#安装SDK" class="headerlink" title="安装SDK"></a>安装SDK</h2><p>SDK下载地址<br>SDK下载地址：<br>旧：<a target="_blank" rel="noopener" href="http://tools.android-studio.org/index.php/sdk">http://tools.android-studio.org/index.php/sdk</a><br>新：<a target="_blank" rel="noopener" href="https://www.androiddevtools.cn/">https://www.androiddevtools.cn/</a></p>
-<p><img src="https://s2.loli.net/2024/09/05/nJG4RSiAgfPWr5H.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/05/nJG4RSiAgfPWr5H.png"></p>
 <p>下载 24.4.1<br><strong>安装过程</strong></p>
 <ol>
-<li>他会首先检查java环境是否安装<br><img src="https://s2.loli.net/2024/09/05/wiW1GgnlvpNEMZS.png" srcset="/img/loading.gif" lazyload></li>
-<li>其次选择安装路径<br><img src="https://s2.loli.net/2024/09/05/HvsuW4SpkiRfN9V.png" srcset="/img/loading.gif" lazyload></li>
+<li>他会首先检查java环境是否安装<br><img src="https://s2.loli.net/2024/09/05/wiW1GgnlvpNEMZS.png"></li>
+<li>其次选择安装路径<br><img src="https://s2.loli.net/2024/09/05/HvsuW4SpkiRfN9V.png"></li>
 <li>依次选择下一步安装 </li>
-<li>先不用勾选这个start SDK<br><img src="https://s2.loli.net/2024/09/05/gKL7MkpnQPctdyH.png" srcset="/img/loading.gif" lazyload></li>
+<li>先不用勾选这个start SDK<br><img src="https://s2.loli.net/2024/09/05/gKL7MkpnQPctdyH.png"></li>
 </ol>
 <h2 id="安装好-设置环境变量"><a href="#安装好-设置环境变量" class="headerlink" title="安装好 设置环境变量"></a>安装好 设置环境变量</h2><p>在系统变量中设置<br>ANDROID_HOME : D:&#x2F;SDK</p>
 <p>系统变量下面<br>设置path的变量</p>
@@ -427,8 +265,8 @@
 <blockquote>
 <p>% ANDROID_HOME%\platform-tools;% ANDROID_HOME%\tools</p>
 </blockquote>
-<p>然后打开 sdk manager 安装所需的工具<br>因为国内环境太慢<br>所以需要 打开 tools&gt; options 设置代理<br><img src="https://s2.loli.net/2024/09/05/ZBSaHoMjAKDkWlc.png" srcset="/img/loading.gif" lazyload><br>然后关闭</p>
-<p>选择Packages<br><img src="https://s2.loli.net/2024/09/05/NZetmoMK2Ddruf8.png" srcset="/img/loading.gif" lazyload><br>大连东软信息学院镜像服务器地址:</p>
+<p>然后打开 sdk manager 安装所需的工具<br>因为国内环境太慢<br>所以需要 打开 tools&gt; options 设置代理<br><img src="https://s2.loli.net/2024/09/05/ZBSaHoMjAKDkWlc.png"><br>然后关闭</p>
+<p>选择Packages<br><img src="https://s2.loli.net/2024/09/05/NZetmoMK2Ddruf8.png"><br>大连东软信息学院镜像服务器地址:</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://mirrors.neusoft.edu.cn/">http://mirrors.neusoft.edu.cn</a> 端口：80<br>北京化工大学镜像服务器地址:</li>
 <li>IPv4: <a target="_blank" rel="noopener" href="http://ubuntu.buct.edu.cn/">http://ubuntu.buct.edu.cn/</a> 端口：80</li>
@@ -436,476 +274,227 @@
 <li>IPv6: <a target="_blank" rel="noopener" href="http://ubuntu.buct6.edu.cn/">http://ubuntu.buct6.edu.cn/</a> 端口：80<br>上海GDG镜像服务器地址:</li>
 <li><a target="_blank" rel="noopener" href="http://sdk.gdgshanghai.com/">http://sdk.gdgshanghai.com</a> 端口：8000</li>
 </ul>
-<p>选择 安装的包如下<br><img src="https://s2.loli.net/2024/09/05/Ds3P1jlApGx6g7m.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2024/09/05/pHXaUcotB8d4RxV.png" srcset="/img/loading.gif" lazyload><br>安装即可</p>
+<p>选择 安装的包如下<br><img src="https://s2.loli.net/2024/09/05/Ds3P1jlApGx6g7m.png"></p>
+<p><img src="https://s2.loli.net/2024/09/05/pHXaUcotB8d4RxV.png"><br>安装即可</p>
 <h1 id="使用AndroidStudio-来安装"><a href="#使用AndroidStudio-来安装" class="headerlink" title="使用AndroidStudio 来安装"></a>使用AndroidStudio 来安装</h1><p>编译器下载地址： <a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/#downloads">https://developer.android.google.cn/studio/#downloads</a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载安装步骤不讲了 就一直下一步下一步 然后选择路径然后再下一步<br>打开软件&#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/sdUa9vZp7qkNeXI.png" srcset="/img/loading.gif" lazyload><br>直接选择 <code>cancel</code><br>next&#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/oOPjLg74Kv9ZdsJ.png" srcset="/img/loading.gif" lazyload><br>next&#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/m3dSAFaI4T1oyit.png" srcset="/img/loading.gif" lazyload><br>next 选择安装好的JDK&#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/qNAOvDlIWJX5keR.png" srcset="/img/loading.gif" lazyload><br>next 选择喜欢的主题 &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/GXYV1QEDbSqeWIz.png" srcset="/img/loading.gif" lazyload><br>next &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/WKC8c7hPnXOadyQ.png" srcset="/img/loading.gif" lazyload><br>给模拟器的大小配置 （根据配置来 越大越好） 如果要使用他自带的模拟器的话。next &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/oHLSe6RfwTG3F1D.png" srcset="/img/loading.gif" lazyload><br>等待安装, finish &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/iVrh8LksDqYGFQe.png" srcset="/img/loading.gif" lazyload><br>安装成功！！<br><img src="https://s2.loli.net/2024/09/05/jXw49PqBnTxbNd8.png" srcset="/img/loading.gif" lazyload><br>到了这一步还没算完结&#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/K9lZrocvEi51m4e.png" srcset="/img/loading.gif" lazyload><br>还需要对某些配置进行设置&#x3D;&gt;</p>
-<h2 id="配置configure"><a href="#配置configure" class="headerlink" title="配置configure"></a>配置configure</h2><p><img src="https://s2.loli.net/2024/09/05/ZRam3SgUYCjNrqc.png" srcset="/img/loading.gif" lazyload><br>选择第一项SDK manager(AVD manager 是对模拟器进行配置，如果不用这个自带的模拟器就不需要配置) &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/YxfdF4wzQpohcgO.png" srcset="/img/loading.gif" lazyload><br>然后选择sdk tools &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/8OyKfqiD6EcXJ2j.png" srcset="/img/loading.gif" lazyload><br>选择好安装的工具 &#x3D; &gt;<br><img src="https://s2.loli.net/2024/09/05/DcES36275qGw9bP.png" srcset="/img/loading.gif" lazyload><br>next  &#x3D; &gt;<br><img src="https://s2.loli.net/2024/09/05/UtCcZkNQgzwREx3.png" srcset="/img/loading.gif" lazyload><br>finish &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/R4LT8NwrplJC2Qa.png" srcset="/img/loading.gif" lazyload><br>然后就算创建完毕了<br>然后去新建工程即可。</p>
-<h2 id="如何新建工程"><a href="#如何新建工程" class="headerlink" title="如何新建工程"></a>如何新建工程</h2><p><img src="https://s2.loli.net/2024/09/05/pUStAaZXBFwOfsv.png" srcset="/img/loading.gif" lazyload><br>选择&#x3D; &gt;<br><img src="https://s2.loli.net/2024/09/05/HjCkpusvDNQrASo.png" srcset="/img/loading.gif" lazyload><br>下一步 &#x3D; &gt;<br><img src="https://s2.loli.net/2024/09/05/9Nkh36slFvOpWgn.png" srcset="/img/loading.gif" lazyload><br><img src="https://s2.loli.net/2024/09/05/muJlQ2AgMFBLvxb.png" srcset="/img/loading.gif" lazyload><br>这样就代表创建完毕了</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载安装步骤不讲了 就一直下一步下一步 然后选择路径然后再下一步<br>打开软件&#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/sdUa9vZp7qkNeXI.png"><br>直接选择 <code>cancel</code><br>next&#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/oOPjLg74Kv9ZdsJ.png"><br>next&#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/m3dSAFaI4T1oyit.png"><br>next 选择安装好的JDK&#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/qNAOvDlIWJX5keR.png"><br>next 选择喜欢的主题 &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/GXYV1QEDbSqeWIz.png"><br>next &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/WKC8c7hPnXOadyQ.png"><br>给模拟器的大小配置 （根据配置来 越大越好） 如果要使用他自带的模拟器的话。next &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/oHLSe6RfwTG3F1D.png"><br>等待安装, finish &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/iVrh8LksDqYGFQe.png"><br>安装成功！！<br><img src="https://s2.loli.net/2024/09/05/jXw49PqBnTxbNd8.png"><br>到了这一步还没算完结&#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/K9lZrocvEi51m4e.png"><br>还需要对某些配置进行设置&#x3D;&gt;</p>
+<h2 id="配置configure"><a href="#配置configure" class="headerlink" title="配置configure"></a>配置configure</h2><p><img src="https://s2.loli.net/2024/09/05/ZRam3SgUYCjNrqc.png"><br>选择第一项SDK manager(AVD manager 是对模拟器进行配置，如果不用这个自带的模拟器就不需要配置) &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/YxfdF4wzQpohcgO.png"><br>然后选择sdk tools &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/8OyKfqiD6EcXJ2j.png"><br>选择好安装的工具 &#x3D; &gt;<br><img src="https://s2.loli.net/2024/09/05/DcES36275qGw9bP.png"><br>next  &#x3D; &gt;<br><img src="https://s2.loli.net/2024/09/05/UtCcZkNQgzwREx3.png"><br>finish &#x3D;&gt;<br><img src="https://s2.loli.net/2024/09/05/R4LT8NwrplJC2Qa.png"><br>然后就算创建完毕了<br>然后去新建工程即可。</p>
+<h2 id="如何新建工程"><a href="#如何新建工程" class="headerlink" title="如何新建工程"></a>如何新建工程</h2><p><img src="https://s2.loli.net/2024/09/05/pUStAaZXBFwOfsv.png"><br>选择&#x3D; &gt;<br><img src="https://s2.loli.net/2024/09/05/HjCkpusvDNQrASo.png"><br>下一步 &#x3D; &gt;<br><img src="https://s2.loli.net/2024/09/05/9Nkh36slFvOpWgn.png"><br><img src="https://s2.loli.net/2024/09/05/muJlQ2AgMFBLvxb.png"><br>这样就代表创建完毕了</p>
 <h1 id="adb简单介绍"><a href="#adb简单介绍" class="headerlink" title="adb简单介绍"></a>adb简单介绍</h1><p>Android 调试桥 (adb) 是一种功能多样的命令行工具，可让您与设备进行通信。adb 命令可用于执行各种设备操作，例如安装和调试应用。adb 提供对 Unix shell（可用来在设备上运行各种命令）的访问权限。它是一种客户端-服务器程序，包括以下三个组件：</p>
 <p>客户端：用于发送命令。客户端在开发机器上运行。您可以通过发出 adb 命令从命令行终端调用客户端。<br>守护程序 (adbd)：用于在设备上运行命令。守护程序在每个设备上作为后台进程运行。<br>服务器：用于管理客户端与守护程序之间的通信。服务器在开发机器上作为后台进程运行。<br>adb 包含在 Android SDK 平台工具软件包中。您可以使用 SDK 管理器下载此软件包，该管理器会将其安装在 android_sdk&#x2F;platform-tools&#x2F; 下。如果您需要独立的 Android SDK 平台工具软件包，请点击此处进行下载。<br>如需了解如何通过 adb 连接设备以供使用，包括如何使用 Connection Assistant 来排查常见问题，请参阅在硬件设备上运行应用。<br>adb 是有个通用命令行工具 他允许您与模拟器实例或者链接的Android设备进行通信，他可为各种设备操作提供便利，比如安装和调试应用</p>
-<p>adb在 D:\SDK\platform-tools 目录下<br><img src="https://s2.loli.net/2024/09/05/bpmWvzLD1QGKyUd.png" srcset="/img/loading.gif" lazyload></p>
+<p>adb在 D:\SDK\platform-tools 目录下<br><img src="https://s2.loli.net/2024/09/05/bpmWvzLD1QGKyUd.png"></p>
 <p>启动adb 服务<br>在命令行中输入<br><code>adb start-server</code><br>会启动tcp端口 5037</p>
-<p>连续敲击n下 手机的版本号选项进入开发者模式<br><img src="https://s2.loli.net/2024/09/05/6ZVAIf4LSnO1jbU.png" srcset="/img/loading.gif" lazyload><br>打开开发者选项 打开 <code>usb调试</code></p>
+<p>连续敲击n下 手机的版本号选项进入开发者模式<br><img src="https://s2.loli.net/2024/09/05/6ZVAIf4LSnO1jbU.png"><br>打开开发者选项 打开 <code>usb调试</code></p>
 <h1 id="各种模拟器上连接adb"><a href="#各种模拟器上连接adb" class="headerlink" title="各种模拟器上连接adb"></a>各种模拟器上连接adb</h1><h2 id="夜神模拟器连接adb"><a href="#夜神模拟器连接adb" class="headerlink" title="夜神模拟器连接adb"></a>夜神模拟器连接adb</h2><p><strong>注： adb 电脑安装的版本和手机版本不兼容</strong></p>
 <ul>
-<li>打开夜神模拟器的bin目录<br>将<img src="https://s2.loli.net/2024/09/05/iYAo21lTa3B8ReQ.png" srcset="/img/loading.gif" lazyload></li>
+<li>打开夜神模拟器的bin目录<br>将<img src="https://s2.loli.net/2024/09/05/iYAo21lTa3B8ReQ.png"></li>
 <li>这三个目录备份起来</li>
 <li>再将 platfrom-tools中的这三个文件拷贝进来</li>
 <li>需要把夜神模拟器里的nox_adb.exe给替换掉<br>将夜神模拟器安装路径的bin目录下的之前的nox_adb.exe备份 或者删除<br>将platform-tools目录下的adb.exe复制过去，并改名称为nox_adb.exe</li>
 <li>之后重新运行我们的安卓模拟器</li>
 <li>然后在命令行输入 adb device</li>
 </ul>
-<p><img src="https://s2.loli.net/2024/09/05/9o453wqkrUK1NAC.png" srcset="/img/loading.gif" lazyload><br>就能看见链接了一台设备了</p>
-<h2 id="MuMu模拟器上连接adb"><a href="#MuMu模拟器上连接adb" class="headerlink" title="MuMu模拟器上连接adb"></a>MuMu模拟器上连接adb</h2><p>官方文档： <a target="_blank" rel="noopener" href="https://mumu.163.com/help/20220721/35047_730476.html">https://mumu.163.com/help/20220721/35047_730476.html</a><br>第一步，打开MuMu模拟器安装路径下的bin文件夹（具体路径为~\emulator\nemu\vmonitor\bin），然后点击文件夹路径，输入CMD，再点击回车按键呼出CMD运行窗口（如下图）；<br><img src="https://s2.loli.net/2024/09/05/C6BDtLVWrzIPUx8.png" srcset="/img/loading.gif" lazyload></p>
-<p>打开cmd终端后<br>第二步，输入以下代码（具体可参考下图）：<br>友情提示：  要打开MuMu模拟器 再操作如下代码<br>最好也把root打开（反正迟早要打开）<br><img src="https://s2.loli.net/2024/09/05/8zERnP6HSx4csLd.png" srcset="/img/loading.gif" lazyload><br><img src="https://s2.loli.net/2024/09/05/51xCeW9z7aibcNL.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/05/9o453wqkrUK1NAC.png"><br>就能看见链接了一台设备了</p>
+<h2 id="MuMu模拟器上连接adb"><a href="#MuMu模拟器上连接adb" class="headerlink" title="MuMu模拟器上连接adb"></a>MuMu模拟器上连接adb</h2><p>官方文档： <a target="_blank" rel="noopener" href="https://mumu.163.com/help/20220721/35047_730476.html">https://mumu.163.com/help/20220721/35047_730476.html</a><br>第一步，打开MuMu模拟器安装路径下的bin文件夹（具体路径为~\emulator\nemu\vmonitor\bin），然后点击文件夹路径，输入CMD，再点击回车按键呼出CMD运行窗口（如下图）；<br><img src="https://s2.loli.net/2024/09/05/C6BDtLVWrzIPUx8.png"></p>
+<p>打开cmd终端后<br>第二步，输入以下代码（具体可参考下图）：<br>友情提示：  要打开MuMu模拟器 再操作如下代码<br>最好也把root打开（反正迟早要打开）<br><img src="https://s2.loli.net/2024/09/05/8zERnP6HSx4csLd.png"><br><img src="https://s2.loli.net/2024/09/05/51xCeW9z7aibcNL.png"></p>
 <blockquote>
-<p>代码如下<br>adb_server.exe connect 127.0.0.1:7555<br>adb_server shell<br><img src="https://s2.loli.net/2024/09/05/Xexl8tTBgbYj2A5.png" srcset="/img/loading.gif" lazyload></p>
+<p>代码如下<br>adb_server.exe connect 127.0.0.1:7555<br>adb_server shell<br><img src="https://s2.loli.net/2024/09/05/Xexl8tTBgbYj2A5.png"></p>
 </blockquote>
-<h1 id="adb工具的使用"><a href="#adb工具的使用" class="headerlink" title="adb工具的使用"></a>adb工具的使用</h1><h2 id="adb-连接-手机"><a href="#adb-连接-手机" class="headerlink" title="adb 连接 手机"></a>adb 连接 手机</h2><p>进入 手机底层操作系统<br>win+r<br><img src="https://s2.loli.net/2024/09/05/x6rysLk2mAzCK1n.png" srcset="/img/loading.gif" lazyload><br><code>adb -s + 手机名 shell</code></p>
-<p>同理 也可以直接进入 手机模拟器<br><img src="https://s2.loli.net/2024/09/05/dW1EyPwcb7Nk4fL.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="adb工具的使用"><a href="#adb工具的使用" class="headerlink" title="adb工具的使用"></a>adb工具的使用</h1><h2 id="adb-连接-手机"><a href="#adb-连接-手机" class="headerlink" title="adb 连接 手机"></a>adb 连接 手机</h2><p>进入 手机底层操作系统<br>win+r<br><img src="https://s2.loli.net/2024/09/05/x6rysLk2mAzCK1n.png"><br><code>adb -s + 手机名 shell</code></p>
+<p>同理 也可以直接进入 手机模拟器<br><img src="https://s2.loli.net/2024/09/05/dW1EyPwcb7Nk4fL.png"></p>
 <h2 id="通过adb-命令行安装"><a href="#通过adb-命令行安装" class="headerlink" title="通过adb 命令行安装"></a>通过adb 命令行安装</h2><p><code>adb -s 手机名 install xxx.apk(直接拖拽即可)</code></p>
-<p>例：安装手机京东 如下图所示<br><img src="https://s2.loli.net/2024/09/05/ezEI6vAoPqig8lp.png" srcset="/img/loading.gif" lazyload><br>这样代表就是安装成功<br><img src="https://s2.loli.net/2024/09/05/WcunXVb1IkNJTOs.png" srcset="/img/loading.gif" lazyload></p>
+<p>例：安装手机京东 如下图所示<br><img src="https://s2.loli.net/2024/09/05/ezEI6vAoPqig8lp.png"><br>这样代表就是安装成功<br><img src="https://s2.loli.net/2024/09/05/WcunXVb1IkNJTOs.png"></p>
 <h2 id="通过adb命令卸载"><a href="#通过adb命令卸载" class="headerlink" title="通过adb命令卸载"></a>通过adb命令卸载</h2><blockquote>
 <p>我们安装时使用的<strong>文件名</strong>去安装<br>但是卸载需要使用<strong>包名</strong>去卸载</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb -s xxx shell<br><br><span class="hljs-comment"># cd /data/app</span><br><span class="hljs-comment"># ls </span><br><span class="hljs-comment"># exit</span><br><br>$ adb -s 127.0.0.1:62001 uninstall com.jingdong.app.mall<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2024/09/05/G1nWkZS4AjlPTCz.png" srcset="/img/loading.gif" lazyload><br><img src="https://s2.loli.net/2024/09/05/2aKSAP7cEdhiZ9x.png" srcset="/img/loading.gif" lazyload><br>提示success 即代表卸载成功</p>
+<p><img src="https://s2.loli.net/2024/09/05/G1nWkZS4AjlPTCz.png"><br><img src="https://s2.loli.net/2024/09/05/2aKSAP7cEdhiZ9x.png"><br>提示success 即代表卸载成功</p>
 <p><strong>注：如果 adb device 没有设备</strong></p>
 <p>可以 尝试命令<br><code>adb connect 127.0.0.1:62001</code></p>
 <p>即可发现设备</p>
 <h2 id="其他-adb的功能"><a href="#其他-adb的功能" class="headerlink" title="其他 adb的功能"></a>其他 adb的功能</h2><p><strong>通过命令 查看系统安装包名</strong></p>
 <p><code>adb shell pm list package</code></p>
 <p><strong>传递 数据 将电脑的文件传到夜神模拟器中</strong><br>adb push [文件路径] [存储路径]</p>
-<p><code>adb push C:\abc.text /sdcard</code><br><img src="https://s2.loli.net/2024/09/05/2aKSAP7cEdhiZ9x.png" srcset="/img/loading.gif" lazyload><br>这样代表上传成功</p>
+<p><code>adb push C:\abc.text /sdcard</code><br><img src="https://s2.loli.net/2024/09/05/2aKSAP7cEdhiZ9x.png"><br>这样代表上传成功</p>
 <p><strong>传递 数据 将夜神模拟器的文件传到电脑中</strong><br>adb pull [文件路径] [存储路径]</p>
 <p><code>adb pull /init C:\Users\13689\Desktop</code></p>
-<p><img src="https://s2.loli.net/2024/09/05/AwE1FNjBxJQkZnd.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2024/09/05/AwE1FNjBxJQkZnd.png"></p>
 <p>注意： 不能直接pull到根目录</p>
 <p><strong>adb 远程截图</strong><br><code>adb shell screencap /sdcard/test.png</code></p>
 <p>故 adb 可以通过 远程对我们手机进行一系列的操作</p>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
+  </div>
+</article>
 
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
         
-  <a href="/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/" class="category-chain-item">快速安装</a>
-  
-  
+          <div id="footer-post-container">
+  <div id="footer-post">
 
-      </span>
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/friends/">友联</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://cnblogs.com/zichliang">项目</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
     
-  
-</span>
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%E2%80%94%E2%80%94%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">前言——准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSDK"><span class="toc-number">1.1.</span> <span class="toc-text">什么是SDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85jdk"><span class="toc-number">1.2.</span> <span class="toc-text">安装jdk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">设置环境变量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">Android开发工具的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85SDK"><span class="toc-number">2.1.</span> <span class="toc-text">安装SDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%A5%BD-%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">安装好 设置环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8AndroidStudio-%E6%9D%A5%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">使用AndroidStudio 来安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEconfigure"><span class="toc-number">3.2.</span> <span class="toc-text">配置configure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B"><span class="toc-number">3.3.</span> <span class="toc-text">如何新建工程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#adb%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.</span> <span class="toc-text">adb简单介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8A%E8%BF%9E%E6%8E%A5adb"><span class="toc-number">5.</span> <span class="toc-text">各种模拟器上连接adb</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9C%E7%A5%9E%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%BF%9E%E6%8E%A5adb"><span class="toc-number">5.1.</span> <span class="toc-text">夜神模拟器连接adb</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MuMu%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8A%E8%BF%9E%E6%8E%A5adb"><span class="toc-number">5.2.</span> <span class="toc-text">MuMu模拟器上连接adb</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#adb%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">6.</span> <span class="toc-text">adb工具的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#adb-%E8%BF%9E%E6%8E%A5-%E6%89%8B%E6%9C%BA"><span class="toc-number">6.1.</span> <span class="toc-text">adb 连接 手机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87adb-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%89%E8%A3%85"><span class="toc-number">6.2.</span> <span class="toc-text">通过adb 命令行安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87adb%E5%91%BD%E4%BB%A4%E5%8D%B8%E8%BD%BD"><span class="toc-number">6.3.</span> <span class="toc-text">通过adb命令卸载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96-adb%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">6.4.</span> <span class="toc-text">其他 adb的功能</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&text=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&title=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&is_video=false&description=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Andorid模拟器与开发工具的安装与使用&body=Check out this article: https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&title=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&title=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&title=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&title=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&name=Andorid模拟器与开发工具的安装与使用&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/&t=Andorid模拟器与开发工具的安装与使用"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
     </div>
-  
-  
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
 </div>
 
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>Andorid模拟器与开发工具的安装与使用</div>
-      <div>https://hybpjx.cn/2022/04/05/Andorid模拟器与开发工具的安装与使用/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>hybpjx</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年4月5日</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-cc-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2025
+    hybpjx
   </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/friends/">友联</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://cnblogs.com/zichliang">项目</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/26/%E5%AE%89%E8%A3%85NVM%E4%B8%8E%E6%9E%84%E5%BB%BAvue%E9%A1%B9%E7%9B%AE/" title="安装NVM与构建vue项目">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">安装NVM与构建vue项目</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/03/26/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85golang/" title="在ubuntu上安装golang">
-                        <span class="hidden-mobile">在ubuntu上安装golang</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
-            
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
   
-    <article id="comments" lazyload>
-      
-  <div id="twikoo"></div>
   <script type="text/javascript">
-    Fluid.utils.loadComments('#comments', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.8/twikoo.all.min.js', function() {
-        var options = Object.assign(
-          {"envId":"https://hybpjx.netlify.app/.netlify/functions/twikoo","region":"ap-shanghai","path":"window.location.pathname"},
-          {
-            el: '#twikoo',
-            path: 'window.location.pathname',
-            onCommentLoaded: function() {
-              Fluid.utils.listenDOMLoaded(function() {
-                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
-                Fluid.plugins.imageCaption(imgSelector);
-                Fluid.plugins.fancyBox(imgSelector);
-              });
-            }
-          }
-        )
-        twikoo.init(options)
-      });
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
     });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-    </article>
-  
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://mp.weixin.qq.com/s/U1F7nCYSaeuNY5YLxWFOGg" target="_blank" rel="nofollow noopener"><span>更多文章请关注我的个人微信公众号: 影17</span></a> <i class="iconfont icon-love"></i> <br> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>本博客主题为:Fluid</span></a> 
-    </div>
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
     })
+  })
   </script>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script src="/js/main.js"></script>
 
+<!-- search -->
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+<!-- Baidu Analytics -->
 
+<!-- Cloudflare Analytics -->
 
+<!-- Disqus Comments -->
 
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
 
+<!-- utterances Comments -->
 
-
-
-  
-<script>
-  var relativeDate = function() {
-    var updatedTime = document.getElementById('updated-time');
-    if (updatedTime) {
-      var text = updatedTime.textContent;
-      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
-      var matchs = text.match(reg);
-      if (matchs) {
-        var relativeTime = moment(matchs[0]).fromNow();
-        updatedTime.textContent = text.replace(reg, relativeTime);
-      }
-      updatedTime.style.display = '';
-    }
-  };
-  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
-    if (!'zh-cn'.startsWith('en')) {
-      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
-        relativeDate();
-      });
-    } else {
-      relativeDate();
-    }
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
 </body>
 </html>

@@ -1,26 +1,11 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
+<html lang=zh>
 <head>
-  <meta charset="UTF-8">
-
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/kkk.jpeg">
-  <link rel="icon" href="/img/kkk.jpeg">
-  
-    <link rel="canonical" href="https://hybpjx.cn/2025/08/29/手势验证码分析流程/"/>
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="hybpjx">
-  <meta name="keywords" content="">
-  
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="vaptcha 手势验证码 分析流程抓包先config 获取信息 再get拿到验证码和order 	 如下图 配置如下 vi： 固定 k：返回值 en： 加密值  分析get请求n 生成出如下  第一个en 随便扣扣 就扣出来了。  然后把比较重要的component拿出来  然后抠出来 请求就可以了。中间会遇到很多坑。 其中指纹需要复制。 底图还原这里请求完之后会获取到图片信息和 图片的orde">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vaptcha手势验证码分析流程">
@@ -50,329 +35,182 @@
 <meta property="article:published_time" content="2025-08-29T01:16:28.000Z">
 <meta property="article:modified_time" content="2025-08-29T01:17:00.797Z">
 <meta property="article:author" content="hybpjx">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2025/08/25/lRa5dCrwXDiKTqf.png">
-  
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
-  
-  
-  <title>vaptcha手势验证码分析流程 - 始識’s 博客</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/hbsn.jpg">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/hbsn.jpg" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/hbsn.jpg">
+        
+      
+    
+    <!-- title -->
+    <title>vaptcha手势验证码分析流程</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+    <!-- Umami Analytics -->
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"hybpjx.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"b22594774d0063a7e925af5b0c33d138","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-  
-    <!-- Baidu Analytics -->
-    <script async>
-      if (!Fluid.ctx.dnt) {
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?b22594774d0063a7e925af5b0c33d138";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-      }
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-  
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/friends/">友联</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://cnblogs.com/zichliang">项目</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2025/09/07/Wails-svelte%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/08/26/%E8%A1%A5%E7%8E%AF%E5%A2%83%E5%A4%8D%E5%88%B6%E5%8E%9F%E5%9E%8B%E5%B1%9E%E6%80%A7%E8%84%9A%E6%9C%AC/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&text=vaptcha手势验证码分析流程"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=vaptcha手势验证码分析流程"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&is_video=false&description=vaptcha手势验证码分析流程"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=vaptcha手势验证码分析流程&body=Check out this article: https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=vaptcha手势验证码分析流程"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=vaptcha手势验证码分析流程"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=vaptcha手势验证码分析流程"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=vaptcha手势验证码分析流程"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&name=vaptcha手势验证码分析流程&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&t=vaptcha手势验证码分析流程"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
 
-<body>
-  
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vaptcha-%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81-%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">vaptcha 手势验证码 分析流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%93%E5%8C%85"><span class="toc-number">1.1.</span> <span class="toc-text">抓包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#get%E8%AF%B7%E6%B1%82"><span class="toc-number">1.2.1.</span> <span class="toc-text">get请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%95%E5%9B%BE%E8%BF%98%E5%8E%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text">底图还原</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E8%BF%98%E5%8E%9F"><span class="toc-number">1.2.3.</span> <span class="toc-text">算法还原</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#validate"><span class="toc-number">1.2.4.</span> <span class="toc-text">validate</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%BE%E7%82%B9%E4%B8%8E%E5%9D%91"><span class="toc-number">1.3.</span> <span class="toc-text">难点与坑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">1.4.</span> <span class="toc-text">结果</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
 
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
+    <h1 class="posttitle p-name" itemprop="name headline">
+        vaptcha手势验证码分析流程
+    </h1>
 
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>hybpjx&#39;s Blogs</strong>
-    </a>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
 
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-08-29T01:16:28.000Z" class="dt-published" itemprop="datePublished">2025-08-29</time>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
+      
     </div>
-  </div>
-</nav>
 
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/JS%E9%80%86%E5%90%91/">JS逆向</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
   
 
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/dark.jpeg') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="vaptcha手势验证码分析流程"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-author" aria-hidden="true"></i>
-        hybpjx
-      </span>
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-29 09:16" pubdate>
-          2025年8月29日 上午
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          1.1k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          10 分钟
-        
-      </span>
-    
-
-    
-    
-      
-        <span id="busuanzi_container_page_pv" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> 次
-        </span>
-        
-
-      
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">vaptcha手势验证码分析流程</h1>
-            
-              <p id="updated-time" class="note note-info" style="display: none">
-                
-                  
-                    本文最后更新于 2025-08-29T09:17:00+08:00
-                  
-                  
-
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h1 id="vaptcha-手势验证码-分析流程"><a href="#vaptcha-手势验证码-分析流程" class="headerlink" title="vaptcha 手势验证码 分析流程"></a>vaptcha 手势验证码 分析流程</h1><h2 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h2><p>先config 获取信息 再get拿到验证码和order</p>
-<p><img src="https://s2.loli.net/2025/08/25/lRa5dCrwXDiKTqf.png" srcset="/img/loading.gif" lazyload>	</p>
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="vaptcha-手势验证码-分析流程"><a href="#vaptcha-手势验证码-分析流程" class="headerlink" title="vaptcha 手势验证码 分析流程"></a>vaptcha 手势验证码 分析流程</h1><h2 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h2><p>先config 获取信息 再get拿到验证码和order</p>
+<p><img src="https://s2.loli.net/2025/08/25/lRa5dCrwXDiKTqf.png">	</p>
 <p>如下图 配置如下</p>
 <p>vi： 固定</p>
 <p>k：返回值</p>
 <p>en： 加密值</p>
-<p><img src="https://s2.loli.net/2025/08/25/trCgI8WO56mpweR.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/25/trCgI8WO56mpweR.png"></p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h3><p>n 生成出如下</p>
-<p><img src="https://s2.loli.net/2025/08/25/kZyih3G2oaIRN1K.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/25/kZyih3G2oaIRN1K.png"></p>
 <p>第一个en 随便扣扣 就扣出来了。</p>
-<p><img src="https://s2.loli.net/2025/08/25/yWGmVfgKibajRlA.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/25/yWGmVfgKibajRlA.png"></p>
 <p>然后把比较重要的component拿出来</p>
-<p><img src="https://s2.loli.net/2025/08/25/sJ4SVXiojG7RCdZ.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/25/sJ4SVXiojG7RCdZ.png"></p>
 <p>然后抠出来 请求就可以了。中间会遇到很多坑。</p>
 <p>其中指纹需要复制。</p>
 <h3 id="底图还原"><a href="#底图还原" class="headerlink" title="底图还原"></a>底图还原</h3><p>这里请求完之后会获取到图片信息和 图片的order</p>
@@ -380,55 +218,55 @@
 <p>（这里为了保持代码一致。我扣下来一版 来找对应位置。所以有些值和网页会有所对应不上）</p>
 <p>还原位置如下：</p>
 <p>搜索关键词：imageOnload 或者 Decrypt</p>
-<p><img src="https://s2.loli.net/2025/08/28/hcDXq6gmKMyJ2Ai.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/28/hcDXq6gmKMyJ2Ai.png"></p>
 <p>这里就直接硬扣就完事了。</p>
 <p>Decrypt的算法逻辑如下</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">_0xb05afc</span>(<span class="hljs-params">_0x2b9119, _0x1f3614</span>) &#123;<br>    <span class="hljs-keyword">var</span> _0x431184 = <span class="hljs-string">&quot;&quot;</span>;<br>    _0x431184 = (<span class="hljs-built_in">parseInt</span>(_0x2b9119) - _0x1f3614).<span class="hljs-title function_">toString</span>();<br>    <span class="hljs-keyword">if</span> (_0x431184.<span class="hljs-property">length</span> &lt; (<span class="hljs-number">983293</span> ^ <span class="hljs-number">983287</span>)) &#123;<br>        _0x431184 = <span class="hljs-string">&quot;0&quot;</span> + _0x431184;<br>    &#125;<br>    <span class="hljs-keyword">return</span> _0x431184;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>稍微麻烦的也就是传参的这个</p>
-<p><img src="https://s2.loli.net/2025/08/28/MXGf6zUZISOnqgk.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/28/MXGf6zUZISOnqgk.png"></p>
 <h3 id="算法还原"><a href="#算法还原" class="headerlink" title="算法还原"></a>算法还原</h3><p>拿到底图链接 即重新拼接成一个完整图片</p>
 <p>算法如下；</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">process_image</span>(<span class="hljs-params">order: <span class="hljs-built_in">str</span>, image_url: <span class="hljs-built_in">str</span>, output_path: <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;image.png&quot;</span></span>):<br>    CANVAS_WIDTH, CANVAS_HEIGHT = <span class="hljs-number">290</span>, <span class="hljs-number">167</span><br>    SOURCE_WIDTH, SOURCE_HEIGHT = <span class="hljs-number">400</span>, <span class="hljs-number">230</span><br><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> (<span class="hljs-built_in">len</span>(order) == <span class="hljs-number">10</span> <span class="hljs-keyword">and</span> order.isdigit()):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;错误：排序字符串必须为10位数字&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    response = requests.get(image_url, timeout=<span class="hljs-number">10</span>)<br>    source_image = Image.<span class="hljs-built_in">open</span>(io.BytesIO(response.content))<br><br>    target_canvas = Image.new(<span class="hljs-string">&#x27;RGB&#x27;</span>, (CANVAS_WIDTH, CANVAS_HEIGHT), <span class="hljs-string">&#x27;white&#x27;</span>)<br><br>    canvas_block_w, canvas_block_h = CANVAS_WIDTH // <span class="hljs-number">5</span>, CANVAS_HEIGHT // <span class="hljs-number">2</span><br>    source_block_w, source_block_h = SOURCE_WIDTH // <span class="hljs-number">5</span>, SOURCE_HEIGHT // <span class="hljs-number">2</span><br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>        <span class="hljs-comment"># 计算源和目标位置</span><br>        source_x, source_y = (i % <span class="hljs-number">5</span>) * source_block_w, (i // <span class="hljs-number">5</span>) * source_block_h<br>        pos = <span class="hljs-built_in">int</span>(order[i])<br>        target_x, target_y = (pos % <span class="hljs-number">5</span>) * canvas_block_w, (pos // <span class="hljs-number">5</span>) * canvas_block_h<br><br>        <span class="hljs-comment"># 裁剪、缩放并粘贴</span><br>        block = source_image.crop((source_x, source_y, source_x + source_block_w, source_y + source_block_h))<br>        resized_block = block.resize((canvas_block_w, canvas_block_h), Image.Resampling.LANCZOS)<br>        target_canvas.paste(resized_block, (target_x, target_y))<br><br>    target_canvas.save(output_path, <span class="hljs-string">&#x27;PNG&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;图像已保存为 <span class="hljs-subst">&#123;output_path&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
 
 <h3 id="validate"><a href="#validate" class="headerlink" title="validate"></a>validate</h3><p>validate的请求中的en </p>
 <p>定位点如下图所示</p>
-<p><img src="https://s2.loli.net/2025/08/28/214CoGMDfOzyub6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/28/214CoGMDfOzyub6.png"></p>
 <p>其实这里算法都和你简单随便扣扣就出来了。</p>
 <p>传参这里看看。</p>
-<p><img src="https://s2.loli.net/2025/08/29/xSoBO8wQjnJa1lH.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/29/xSoBO8wQjnJa1lH.png"></p>
 <p>v： 轨迹</p>
 <p>vi：固定值 和uk差不多</p>
 <p>k：接口返回</p>
 <p>dt： 滑动时间</p>
 <p>ch：heigh 图片高度</p>
 <p>cw：width 图片宽度</p>
-<p><img src="https://s2.loli.net/2025/08/29/DuMCjlp7FWi8nZS.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/29/DuMCjlp7FWi8nZS.png"></p>
 <p>补充说明：具体值demo如上</p>
 <h2 id="难点与坑"><a href="#难点与坑" class="headerlink" title="难点与坑"></a>难点与坑</h2><p>这里讲完流程大概讲下难点</p>
 <ol>
-<li><p>en有个UA头 前后要保持一致 如下图<img src="https://s2.loli.net/2025/08/28/fe6JKqcagSGP58r.png" srcset="/img/loading.gif" lazyload alt="image-20250828235814245"></p>
+<li><p>en有个UA头 前后要保持一致 如下图<img src="https://s2.loli.net/2025/08/28/fe6JKqcagSGP58r.png" alt="image-20250828235814245"></p>
 </li>
 <li><p>GenerateFP。下图其实这里就是运用了 JavaScript 生成器 的特性。.sent 就是接受了上一步吐出来的值。</p>
-<p><img src="https://s2.loli.net/2025/08/29/gSqoDkRuFaJwAxW.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/29/gSqoDkRuFaJwAxW.png"></p>
 </li>
 <li><p>这里有个异步方法 其实。只需要看他返回值 然后扣下来或者给AI就可以了。</p>
-<p><img src="https://s2.loli.net/2025/08/29/rCMNwedOGS1IWsi.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2025/08/29/yW5jtdHVxPYDKIG.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/29/rCMNwedOGS1IWsi.png"></p>
+<p><img src="https://s2.loli.net/2025/08/29/yW5jtdHVxPYDKIG.png"></p>
 <p>当然 这里还有个环境指纹 直接copy下来就好了。</p>
-<p><img src="https://s2.loli.net/2025/08/29/RJe2kpswx6FInQq.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/29/RJe2kpswx6FInQq.png"></p>
 </li>
 <li><p>轨迹 </p>
 <p>这里不应该是坑点。这里打个鼠标断点就能找到轨迹生成的地方。可以对着分析 但是没屌用。具体我也没研究明白。</p>
-<p><img src="https://s2.loli.net/2025/08/29/UNylLinexzOZ6CS.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/29/UNylLinexzOZ6CS.png"></p>
 </li>
 </ol>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>结果就是我也没搞出来。demo站倒是比较松。这个真应用起来好像是划得来不太准就会一直错。</p>
-<p><img src="https://s2.loli.net/2025/08/29/tpiMF2Es3gRIHWS.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/29/tpiMF2Es3gRIHWS.png"></p>
 <p>代码返回了 103 代表了canvas 指纹不对。</p>
-<p><img src="https://s2.loli.net/2025/08/29/OQLEkjb78H4x3Ti.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/29/OQLEkjb78H4x3Ti.png"></p>
 <p>代码返回了101 代表了 en生成的值和 knock的值不对。</p>
-<p><img src="https://s2.loli.net/2025/08/29/GhQqWOCVcFsbrud.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2025/08/29/GhQqWOCVcFsbrud.png"></p>
 <p>代码返回了104 代表了 轨迹的值不对。最终也是卡死在了这一步。</p>
 <p>至于识别的话。这里我使用了CSDN的某位大佬的方案。</p>
 <p>使用cv2 手动的去滑。然后 line 的去模拟轨迹。但是实际下来好像是不太行。</p>
@@ -436,426 +274,177 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">record_trajectory</span>(<span class="hljs-params">img_path</span>):<br>    points = []<br>    img = cv2.imread(img_path)<br>    <span class="hljs-keyword">if</span> img <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;无法加载图片，请检查路径&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span><br><br>    cv2.namedWindow(<span class="hljs-string">&#x27;Image Trajectory Recorder&#x27;</span>)<br>    cv2.setMouseCallback(<span class="hljs-string">&#x27;Image Trajectory Recorder&#x27;</span>,<br>                         <span class="hljs-keyword">lambda</span> event, x, y, flags, param:<br>                         (points.append(&#123;<span class="hljs-string">&#x27;x&#x27;</span>: x, <span class="hljs-string">&#x27;y&#x27;</span>: y, <span class="hljs-string">&#x27;time&#x27;</span>: <span class="hljs-built_in">int</span>(time.time() * <span class="hljs-number">1000</span>)&#125;))<br>                         <span class="hljs-keyword">if</span> event == cv2.EVENT_LBUTTONDOWN <span class="hljs-keyword">or</span> (<br>                                     event == cv2.EVENT_MOUSEMOVE <span class="hljs-keyword">and</span> flags == cv2.EVENT_FLAG_LBUTTON) <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;在图片上按住鼠标左键并移动来绘制轨迹，按&#x27;s&#x27;保存并返回，按&#x27;q&#x27;退出&quot;</span>)<br><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        clone = img.copy()<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(points) &gt; <span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(points) - <span class="hljs-number">1</span>):<br>                cv2.line(clone,<br>                         (points[i][<span class="hljs-string">&#x27;x&#x27;</span>], points[i][<span class="hljs-string">&#x27;y&#x27;</span>]),<br>                         (points[i + <span class="hljs-number">1</span>][<span class="hljs-string">&#x27;x&#x27;</span>], points[i + <span class="hljs-number">1</span>][<span class="hljs-string">&#x27;y&#x27;</span>]),<br>                         (<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), <span class="hljs-number">2</span>)<br>        cv2.imshow(<span class="hljs-string">&#x27;Image Trajectory Recorder&#x27;</span>, clone)<br><br>        key = cv2.waitKey(<span class="hljs-number">1</span>) &amp; <span class="hljs-number">0xFF</span><br><br>        <span class="hljs-comment"># 按&#x27;s&#x27;保存并返回</span><br>        <span class="hljs-keyword">if</span> key == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;s&#x27;</span>):<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> points:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;没有记录到轨迹点&quot;</span>)<br>                <span class="hljs-keyword">break</span><br><br>            <span class="hljs-comment"># 计算相对时间并添加偏移量</span><br>            start_time = points[<span class="hljs-number">0</span>][<span class="hljs-string">&#x27;time&#x27;</span>]<br>            <span class="hljs-keyword">for</span> point <span class="hljs-keyword">in</span> points:<br>                point[<span class="hljs-string">&#x27;time&#x27;</span>] = point[<span class="hljs-string">&#x27;time&#x27;</span>] - start_time<br>                point[<span class="hljs-string">&#x27;x&#x27;</span>] += <span class="hljs-number">30</span><br>                point[<span class="hljs-string">&#x27;y&#x27;</span>] += <span class="hljs-number">35</span><br><br>            <span class="hljs-comment"># 返回JSON字符串</span><br>            trajectory_data = json.dumps(points, indent=<span class="hljs-number">2</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;轨迹已记录，共 <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(points)&#125;</span> 个点。&quot;</span>)<br><br>            cv2.destroyAllWindows()<br>            <span class="hljs-keyword">return</span> trajectory_data<br><br>        <span class="hljs-comment"># 按&#x27;q&#x27;退出</span><br>        <span class="hljs-keyword">elif</span> key == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;q&#x27;</span>):<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;已退出，未保存轨迹&quot;</span>)<br>            <span class="hljs-keyword">break</span><br><br>    cv2.destroyAllWindows()<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
 
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
+  </div>
+</article>
 
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
         
-  <a href="/categories/JS%E9%80%86%E5%90%91/" class="category-chain-item">JS逆向</a>
-  
-  
+          <div id="footer-post-container">
+  <div id="footer-post">
 
-      </span>
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/friends/">友联</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://cnblogs.com/zichliang">项目</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
     
-  
-</span>
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vaptcha-%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81-%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">vaptcha 手势验证码 分析流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%93%E5%8C%85"><span class="toc-number">1.1.</span> <span class="toc-text">抓包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#get%E8%AF%B7%E6%B1%82"><span class="toc-number">1.2.1.</span> <span class="toc-text">get请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%95%E5%9B%BE%E8%BF%98%E5%8E%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text">底图还原</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E8%BF%98%E5%8E%9F"><span class="toc-number">1.2.3.</span> <span class="toc-text">算法还原</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#validate"><span class="toc-number">1.2.4.</span> <span class="toc-text">validate</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%BE%E7%82%B9%E4%B8%8E%E5%9D%91"><span class="toc-number">1.3.</span> <span class="toc-text">难点与坑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">1.4.</span> <span class="toc-text">结果</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&text=vaptcha手势验证码分析流程"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=vaptcha手势验证码分析流程"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&is_video=false&description=vaptcha手势验证码分析流程"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=vaptcha手势验证码分析流程&body=Check out this article: https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=vaptcha手势验证码分析流程"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=vaptcha手势验证码分析流程"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=vaptcha手势验证码分析流程"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=vaptcha手势验证码分析流程"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&name=vaptcha手势验证码分析流程&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/08/29/%E6%89%8B%E5%8A%BF%E9%AA%8C%E8%AF%81%E7%A0%81%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&t=vaptcha手势验证码分析流程"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
     </div>
-  
-  
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
 </div>
 
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>vaptcha手势验证码分析流程</div>
-      <div>https://hybpjx.cn/2025/08/29/手势验证码分析流程/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>hybpjx</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2025年8月29日</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-cc-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2025
+    hybpjx
   </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/friends/">友联</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://cnblogs.com/zichliang">项目</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2025/09/07/Wails-svelte%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/" title="Wails+svelte开发入门">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Wails+svelte开发入门</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2025/08/22/IDA%E5%AD%A6%E4%B9%A0/" title="IDA学习">
-                        <span class="hidden-mobile">IDA学习</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
-            
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
   
-    <article id="comments" lazyload>
-      
-  <div id="twikoo"></div>
   <script type="text/javascript">
-    Fluid.utils.loadComments('#comments', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.8/twikoo.all.min.js', function() {
-        var options = Object.assign(
-          {"envId":"https://hybpjx.netlify.app/.netlify/functions/twikoo","region":"ap-shanghai","path":"window.location.pathname"},
-          {
-            el: '#twikoo',
-            path: 'window.location.pathname',
-            onCommentLoaded: function() {
-              Fluid.utils.listenDOMLoaded(function() {
-                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
-                Fluid.plugins.imageCaption(imgSelector);
-                Fluid.plugins.fancyBox(imgSelector);
-              });
-            }
-          }
-        )
-        twikoo.init(options)
-      });
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
     });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-    </article>
-  
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://mp.weixin.qq.com/s/U1F7nCYSaeuNY5YLxWFOGg" target="_blank" rel="nofollow noopener"><span>更多文章请关注我的个人微信公众号: 影17</span></a> <i class="iconfont icon-love"></i> <br> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>本博客主题为:Fluid</span></a> 
-    </div>
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
     })
+  })
   </script>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script src="/js/main.js"></script>
 
+<!-- search -->
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+<!-- Baidu Analytics -->
 
+<!-- Cloudflare Analytics -->
 
+<!-- Disqus Comments -->
 
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
 
+<!-- utterances Comments -->
 
-
-
-  
-<script>
-  var relativeDate = function() {
-    var updatedTime = document.getElementById('updated-time');
-    if (updatedTime) {
-      var text = updatedTime.textContent;
-      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
-      var matchs = text.match(reg);
-      if (matchs) {
-        var relativeTime = moment(matchs[0]).fromNow();
-        updatedTime.textContent = text.replace(reg, relativeTime);
-      }
-      updatedTime.style.display = '';
-    }
-  };
-  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
-    if (!'zh-cn'.startsWith('en')) {
-      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
-        relativeDate();
-      });
-    } else {
-      relativeDate();
-    }
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
 </body>
 </html>
