@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="hook 检测函数12345678910111213function hook_dlopen() &#123;    Interceptor.attach(Module.findExportByName(null, &quot;android_dlopen_ext&quot;),        &#123;            onEnter: function (args) &#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="frida常用大全">
+<meta property="og:url" content="https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/index.html">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="hook 检测函数12345678910111213function hook_dlopen() &#123;    Interceptor.attach(Module.findExportByName(null, &quot;android_dlopen_ext&quot;),        &#123;            onEnter: function (args) &#123;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-28T10:14:21.000Z">
+<meta property="article:modified_time" content="2025-09-28T10:25:19.294Z">
+<meta property="article:author" content="hybpjx">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/hbsn.jpg">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/hbsn.jpg" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/hbsn.jpg">
+        
+      
+    
+    <!-- title -->
+    <title>frida常用大全</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/friends/">友联</a></li><!--
+     --><!--
+       --><li><a href="/message/">留言板</a></li><!--
+     --><!--
+       --><li><a href="/essays/">说说</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">相册</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/09/19/Mac%E5%AE%89%E8%A3%85Mongodb/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&text=frida常用大全"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&is_video=false&description=frida常用大全"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=frida常用大全&body=Check out this article: https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&name=frida常用大全&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&t=frida常用大全"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-%E6%A3%80%E6%B5%8B%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">hook 检测函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">修改寄存器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-webview-%E9%A1%B5%E9%9D%A2"><span class="toc-number">3.</span> <span class="toc-text">Hook webview 页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-So%E5%B1%82%E7%9A%84-newStringUTF8"><span class="toc-number">4.</span> <span class="toc-text">hook So层的 newStringUTF8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook%E5%85%B7%E4%BD%93%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80"><span class="toc-number">5.</span> <span class="toc-text">hook具体函数地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap%E6%88%96%E8%BD%ACJson"><span class="toc-number">6.</span> <span class="toc-text">HashMap或转Json</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        frida常用大全
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-09-28T10:14:21.000Z" class="dt-published" itemprop="datePublished">2025-09-28</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80/">安卓基础</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="hook-检测函数"><a href="#hook-检测函数" class="headerlink" title="hook 检测函数"></a>hook 检测函数</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">hook_dlopen</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Interceptor</span>.<span class="hljs-title function_">attach</span>(<span class="hljs-title class_">Module</span>.<span class="hljs-title function_">findExportByName</span>(<span class="hljs-literal">null</span>, <span class="hljs-string">&quot;android_dlopen_ext&quot;</span>),<br>        &#123;<br>            <span class="hljs-attr">onEnter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">args</span>) &#123;<br>                <span class="hljs-keyword">var</span> pathptr = args[<span class="hljs-number">0</span>];<br>                <span class="hljs-keyword">if</span> (pathptr !== <span class="hljs-literal">undefined</span> &amp;&amp; pathptr != <span class="hljs-literal">null</span>) &#123;<br>                    <span class="hljs-keyword">var</span> path = <span class="hljs-title function_">ptr</span>(pathptr).<span class="hljs-title function_">readCString</span>();<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;load &quot;</span> + path);<br>                &#125;<br>            &#125;<br>        &#125;<br>    );<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>查看所有android_dlopen_ext打开的动态库</p>
+</blockquote>
+<h1 id="修改寄存器"><a href="#修改寄存器" class="headerlink" title="修改寄存器"></a>修改寄存器</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> soAddr = <span class="hljs-title class_">Module</span>.<span class="hljs-title function_">findBaseAddress</span>(<span class="hljs-string">&quot;lib.so&quot;</span>);<br><span class="hljs-keyword">var</span> funcAddr = soAddr.<span class="hljs-title function_">add</span>(<span class="hljs-number">0x121974</span>) <br><br><span class="hljs-title class_">Interceptor</span>.<span class="hljs-title function_">attach</span>(funcAddr,&#123;<br>    <span class="hljs-attr">onEnter</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">args</span>)&#123;<br><br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;onEnter arg[]: &#x27;</span>,<span class="hljs-variable language_">this</span>.<span class="hljs-property">context</span>.<span class="hljs-property">x0</span>)  <span class="hljs-comment">// 32位是r寄存器 this.context.r0</span><br><br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;onEnter arg[]: &#x27;</span>,<span class="hljs-title function_">hexdump</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">context</span>.<span class="hljs-property">x0</span>)) <span class="hljs-comment">// 内存才可以 hexdump</span><br><br>        <span class="hljs-comment">// console.log(&#x27;onEnter arg[]: &#x27;,args[0])</span><br>        <span class="hljs-comment">// this.arg0 = args[0]</span><br>    &#125;,<br>    <span class="hljs-attr">onLeave</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">retval</span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;onLeave arg[]: &#x27;</span>)<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;onLeave result: &#x27;</span>,retval)<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="Hook-webview-页面"><a href="#Hook-webview-页面" class="headerlink" title="Hook webview 页面"></a>Hook webview 页面</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//frida -U &quot;&lt;ProcessName&gt;&quot; -l Android_WebView_inspector.js</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Android_WebView_inspector</span>(<span class="hljs-params"></span>) &#123;<br><br>    <span class="hljs-comment">//实例化一个对象</span><br>    <span class="hljs-keyword">var</span> <span class="hljs-title class_">WebView</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;android.webkit.WebView&#x27;</span>);<br>    <span class="hljs-comment">//重写WebView类的重载方法，因为setWebContentsDebuggingEnabled不是静态方法，所以需要一个对象来调用这个方法</span><br>    <span class="hljs-title class_">WebView</span>.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.content.Context&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;WebView.$init is called!1&quot;</span>);<br>        <span class="hljs-keyword">var</span> retval = <span class="hljs-variable language_">this</span>.$init(a);<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>);<br>        <span class="hljs-keyword">return</span> retval;<br>    &#125;<br>    <span class="hljs-title class_">WebView</span>.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.content.Context&#x27;</span>, <span class="hljs-string">&#x27;android.util.AttributeSet&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;WebView.$init is called!2&quot;</span>);<br>        <span class="hljs-keyword">var</span> retval = <span class="hljs-variable language_">this</span>.$init(a, b);<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>);<br>        <span class="hljs-keyword">return</span> retval;<br>    &#125;<br>    <span class="hljs-title class_">WebView</span>.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.content.Context&#x27;</span>, <span class="hljs-string">&#x27;android.util.AttributeSet&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, c</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;WebView.$init is called!3&quot;</span>);<br>        <span class="hljs-keyword">var</span> retval = <span class="hljs-variable language_">this</span>.$init(a, b, c);<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>);<br>        <span class="hljs-keyword">return</span> retval;<br>    &#125;<br>    <span class="hljs-comment">//始终设置为true,打开调试</span><br>    <span class="hljs-title class_">WebView</span>.<span class="hljs-property">setWebContentsDebuggingEnabled</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;setWebContentsDebuggingEnabled is called!&quot;</span>);<br><br>    &#125;<br>&#125;<br><br><br><span class="hljs-comment">// replace_str_maps();</span><br><br><br><span class="hljs-comment">// setTimeout(Android_WebView_inspector, 3000);</span><br><br><span class="hljs-comment">// console.log(&quot;脚本加载成功&quot;);</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;脚本加载成功&quot;</span>);<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">main</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">var</span> <span class="hljs-title class_">WebView</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;android.webkit.WebView&#x27;</span>);<br>        <span class="hljs-title class_">WebView</span>.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.content.Context&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) &#123;<br>            <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.$init(a);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>);<br>            <span class="hljs-keyword">return</span> result;<br>        &#125;<br>        <span class="hljs-title class_">WebView</span>.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.content.Context&#x27;</span>, <span class="hljs-string">&#x27;android.util.AttributeSet&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) &#123;<br>            <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.$init(a, b);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>);<br>            <span class="hljs-keyword">return</span> result;<br>        &#125;<br>        <span class="hljs-title class_">WebView</span>.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.content.Context&#x27;</span>, <span class="hljs-string">&#x27;android.util.AttributeSet&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, c</span>) &#123;<br>            <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.$init(a, b, c);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>);<br>            <span class="hljs-keyword">return</span> result;<br>        &#125;<br>        <span class="hljs-title class_">WebView</span>.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.content.Context&#x27;</span>, <span class="hljs-string">&#x27;android.util.AttributeSet&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, c, d</span>) &#123;<br>            <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.$init(a, b, c, d);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>);<br>            <span class="hljs-keyword">return</span> result;<br>        &#125;<br>        <span class="hljs-title class_">WebView</span>.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.content.Context&#x27;</span>, <span class="hljs-string">&#x27;android.util.AttributeSet&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>, <span class="hljs-string">&#x27;boolean&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, c, d</span>) &#123;<br>            <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.$init(a, b, c, d);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>);<br>            <span class="hljs-keyword">return</span> result;<br>        &#125;<br>        <span class="hljs-title class_">WebView</span>.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.content.Context&#x27;</span>, <span class="hljs-string">&#x27;android.util.AttributeSet&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>, <span class="hljs-string">&#x27;java.util.Map&#x27;</span>, <span class="hljs-string">&#x27;boolean&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, c, d, e</span>) &#123;<br>            <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.$init(a, b, c, d, e);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>);<br>            <span class="hljs-keyword">return</span> result;<br>        &#125;<br>        <span class="hljs-title class_">WebView</span>.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.content.Context&#x27;</span>, <span class="hljs-string">&#x27;android.util.AttributeSet&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>, <span class="hljs-string">&#x27;java.util.Map&#x27;</span>, <span class="hljs-string">&#x27;boolean&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, c, d, e, f</span>) &#123;<br>            <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.$init(a, b, c, d, e, f);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>);<br>            <span class="hljs-keyword">return</span> result;<br>        &#125;<br>    &#125;);<br>&#125;<br><span class="hljs-title function_">setImmediate</span>(main);<br><br><br><span class="hljs-comment">// setTimeout(main, 2000);</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">main2</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br><br>        <span class="hljs-comment">// Hook WebView 的 loadUrl 方法 (经测试全部用的是这个)</span><br>        <span class="hljs-comment">// var WebView = Java.use(&#x27;android.webkit.WebView&#x27;);</span><br>        <span class="hljs-comment">// WebView.loadUrl.overload(&#x27;java.lang.String&#x27;).implementation = function(url) &#123;</span><br>        <span class="hljs-comment">//     console.log(&quot;WebView loading URL: &quot; + url);</span><br>        <span class="hljs-comment">//     // 打印栈追踪 (调用链)</span><br>        <span class="hljs-comment">//     var stackTrace = Java.use(&#x27;android.util.Log&#x27;).getStackTraceString(Java.use(&#x27;java.lang.Exception&#x27;).$new());</span><br>        <span class="hljs-comment">//     console.log(&quot;调用链: &quot; + stackTrace);</span><br>        <span class="hljs-comment">//     // 继续执行原来的 loadUrl 方法</span><br>        <span class="hljs-comment">//     return this.loadUrl(url);</span><br>        <span class="hljs-comment">// &#125;;</span><br><br>        <span class="hljs-comment">// Hook WebView 的 loadUrl 方法 (经测试全部用的是这个)</span><br>        <span class="hljs-keyword">var</span> <span class="hljs-title class_">WebView</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;android.webkit.WebView&#x27;</span>);<br>        <span class="hljs-title class_">WebView</span>.<span class="hljs-property">setWebContentsDebuggingEnabled</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&quot;boolean&quot;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">s</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;强制开启webview调试&quot;</span>);<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setWebContentsDebuggingEnabled</span>(<span class="hljs-literal">true</span>)<br>        &#125;<br>        <span class="hljs-title class_">WebView</span>.<span class="hljs-property">loadUrl</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;java.lang.String&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">url</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;WebView loading URL: &quot;</span> + url);<br>            <span class="hljs-keyword">if</span> (url.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;javascript:&quot;</span>) &amp;&amp; url.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;window.requestConfig&quot;</span>)) &#123;<br>                <span class="hljs-comment">// 提取Base64字符串</span><br>                <span class="hljs-keyword">var</span> base64EncodedString = url.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/&quot;([^&quot;]+)&quot;/</span>)[<span class="hljs-number">1</span>]; <span class="hljs-comment">// 匹配出Base64字符串</span><br>                <span class="hljs-comment">// 解码Base64</span><br>                <span class="hljs-keyword">var</span> decodedBase64 = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;android.util.Base64&#x27;</span>).<span class="hljs-title function_">decode</span>(base64EncodedString, <span class="hljs-number">0</span>);<br>                <span class="hljs-keyword">var</span> decodedString = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;java.lang.String&#x27;</span>).$new(decodedBase64, <span class="hljs-string">&quot;UTF-8&quot;</span>);<br>                <span class="hljs-comment">// 使用Java的replace方法进行转义字符替换</span><br>                decodedString = decodedString.<span class="hljs-title function_">replace</span>(<span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;java.lang.String&#x27;</span>).$new(<span class="hljs-string">&quot;\\u0026&quot;</span>), <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;java.lang.String&#x27;</span>).$new(<span class="hljs-string">&quot;&amp;&quot;</span>));<br>                decodedString = decodedString.<span class="hljs-title function_">replace</span>(<span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;java.lang.String&#x27;</span>).$new(<span class="hljs-string">&quot;\\u003d&quot;</span>), <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;java.lang.String&#x27;</span>).$new(<span class="hljs-string">&quot;=&quot;</span>));<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;解码 Base64: &quot;</span> + decodedString)<br>            &#125;<br>            <span class="hljs-comment">// 打印栈追踪 (调用链)</span><br>            <span class="hljs-keyword">var</span> stackTrace = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;android.util.Log&#x27;</span>).<span class="hljs-title function_">getStackTraceString</span>(<span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;java.lang.Exception&#x27;</span>).$new());<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;调用链: &quot;</span> + stackTrace);<br>            <span class="hljs-comment">// 继续执行原来的 loadUrl 方法</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadUrl</span>(url);<br>        &#125;;<br><br>        <span class="hljs-comment">// 解码Unicode字符串的函数</span><br>        <span class="hljs-keyword">function</span> <span class="hljs-title function_">decodeUnicode</span>(<span class="hljs-params">str</span>) &#123;<br>            <span class="hljs-keyword">return</span> str.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\\u[\dA-Fa-f]&#123;4&#125;/g</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">match</span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-title class_">String</span>.<span class="hljs-title function_">fromCharCode</span>(<span class="hljs-built_in">parseInt</span>(match.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;\\u&quot;</span>, <span class="hljs-string">&quot;&quot;</span>), <span class="hljs-number">16</span>));<br>            &#125;);<br>        &#125;<br><br><br>        <span class="hljs-comment">// Hook WebViewClient 的 onPageFinished 方法</span><br>        <span class="hljs-keyword">var</span> <span class="hljs-title class_">WebViewClient</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;android.webkit.WebViewClient&#x27;</span>);<br>        <span class="hljs-title class_">WebViewClient</span>.<span class="hljs-property">onPageFinished</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.webkit.WebView&#x27;</span>, <span class="hljs-string">&#x27;java.lang.String&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">view, url</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;WebView finished loading URL: &quot;</span> + url);<br>            <span class="hljs-comment">// 可以在这里处理更多逻辑，如获取网页内容</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">onPageFinished</span>(view, url);<br>        &#125;;<br><br>        <span class="hljs-comment">// Hook WebView 的 WebResourceRequest</span><br>        <span class="hljs-keyword">var</span> <span class="hljs-title class_">WebResourceRequest</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;android.webkit.WebResourceRequest&#x27;</span>);<br>        <span class="hljs-keyword">var</span> <span class="hljs-title class_">WebViewClient2</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;android.webkit.WebViewClient&#x27;</span>);<br><br>        <span class="hljs-title class_">WebViewClient2</span>.<span class="hljs-property">shouldInterceptRequest</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;android.webkit.WebView&#x27;</span>, <span class="hljs-string">&#x27;android.webkit.WebResourceRequest&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">view, request</span>) &#123;<br>            <span class="hljs-keyword">var</span> requestUrl = request.<span class="hljs-title function_">getUrl</span>().<span class="hljs-title function_">toString</span>();<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Intercepting WebResourceRequest: &quot;</span> + requestUrl);<br><br>            <span class="hljs-comment">// 在这里可以执行任何自定义逻辑，如修改请求</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">shouldInterceptRequest</span>(view, request);<br>        &#125;;<br>    &#125;);<br>&#125;<br><br><br><span class="hljs-comment">// setTimeout(main2, 3000);</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="hook-So层的-newStringUTF8"><a href="#hook-So层的-newStringUTF8" class="headerlink" title="hook So层的 newStringUTF8"></a>hook So层的 newStringUTF8</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">hook_NewStringUTF</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> artModule = <span class="hljs-title class_">Process</span>.<span class="hljs-title function_">findModuleByName</span>(<span class="hljs-string">&quot;libart.so&quot;</span>);<br>    <span class="hljs-keyword">var</span> symbols = artModule.<span class="hljs-title function_">enumerateSymbols</span>();<br>    <span class="hljs-keyword">var</span> newStringUTF = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; symbols.<span class="hljs-property">length</span>; i++) &#123;<br>        <span class="hljs-keyword">let</span> symbol = symbols[i];<br>        <span class="hljs-keyword">if</span> (symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;NewStringUTF&quot;</span>) !== -<span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(symbol.<span class="hljs-property">name</span>);<br>            newStringUTF = symbol.<span class="hljs-property">address</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (newStringUTF) &#123;<br>        <span class="hljs-title class_">Interceptor</span>.<span class="hljs-title function_">attach</span>(newStringUTF, &#123;<br>            <span class="hljs-attr">onEnter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">args</span>) &#123;<br>                <span class="hljs-keyword">let</span> string = args[<span class="hljs-number">1</span>].<span class="hljs-title function_">readCString</span>()<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[字符串]:&quot;</span>, string);<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[调用栈]:&quot;</span>,<span class="hljs-title class_">Thread</span>.<span class="hljs-title function_">backtrace</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">context</span>, <span class="hljs-title class_">Backtracer</span>.<span class="hljs-property">FUZZY</span>).<span class="hljs-title function_">map</span>(<span class="hljs-title class_">DebugSymbol</span>.<span class="hljs-property">fromAddress</span>).<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>) + <span class="hljs-string">&#x27;\n&#x27;</span>);<br>            &#125;, <span class="hljs-attr">onLeave</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">retval</span>) &#123;<br>            &#125;<br>        &#125;)<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;没有这个函数&quot;</span>)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="hook具体函数地址"><a href="#hook具体函数地址" class="headerlink" title="hook具体函数地址"></a>hook具体函数地址</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">hook_dlsym</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">// 获取dlsym函数的地址</span><br>    <span class="hljs-keyword">let</span> dlsymAddr = <span class="hljs-title class_">Module</span>.<span class="hljs-title function_">findExportByName</span>(<span class="hljs-string">&quot;libdl.so&quot;</span>,<span class="hljs-string">&quot;dlsym&quot;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(dlsymAddr);<br>    <span class="hljs-comment">// hook dlsym</span><br>    <span class="hljs-title class_">Interceptor</span>.<span class="hljs-title function_">attach</span>(dlsymAddr,&#123;<br>        <span class="hljs-attr">onEnter</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">args</span>)&#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">args1</span> = args[<span class="hljs-number">1</span>];<br>        &#125;,<br>        <span class="hljs-attr">onLeave</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">retval</span>)&#123;<br>            <span class="hljs-keyword">let</span> md= <span class="hljs-title class_">Process</span>.<span class="hljs-title function_">findModuleByAddress</span>(retval);<br>            <span class="hljs-keyword">if</span>(md==<span class="hljs-literal">null</span>)<span class="hljs-keyword">return</span>;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;函数：&quot;</span>+<span class="hljs-variable language_">this</span>.<span class="hljs-property">args1</span>.<span class="hljs-title function_">readCString</span>(),<span class="hljs-string">&quot;模块：&quot;</span>+md.<span class="hljs-property">name</span>,<span class="hljs-string">&quot;地址：&quot;</span>+retval,<span class="hljs-string">&quot;偏移：&quot;</span>+retval.<span class="hljs-title function_">sub</span>(md.<span class="hljs-property">base</span>));<br>        &#125;<br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="HashMap或转Json"><a href="#HashMap或转Json" class="headerlink" title="HashMap或转Json"></a>HashMap或转Json</h1><p>方法一：直接打印：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> <span class="hljs-title class_">HashMap</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;java.util.HashMap&#x27;</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;map：&quot;</span> + <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">cast</span>(map, <span class="hljs-title class_">HashMap</span>).<span class="hljs-title function_">toString</span>());<br> <br><span class="hljs-comment">// 输出展示：map -&gt; &#123;onlyCanExchange=0, pageSize=5, pageNum=1&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>方法二：借助Gson转Json打印（推荐）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> <span class="hljs-title class_">Gson</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;com.google.gson.Gson&#x27;</span>).$new();<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;map -&gt; &quot;</span> + <span class="hljs-title class_">Gson</span>.<span class="hljs-title function_">toJsonTree</span>(map).<span class="hljs-title function_">getAsJsonObject</span>());<br> <br><span class="hljs-comment">// 输出展示：map -&gt; &#123;&quot;onlyCanExchange&quot;:0,&quot;pageSize&quot;:&quot;5&quot;,&quot;pageNum&quot;:&quot;1&quot;&#125;</span><br></code></pre></td></tr></table></figure>
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/friends/">友联</a></li>
+        
+          <li><a href="/message/">留言板</a></li>
+        
+          <li><a href="/essays/">说说</a></li>
+        
+          <li><a href="/masonry/">相册</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-%E6%A3%80%E6%B5%8B%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">hook 检测函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">修改寄存器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-webview-%E9%A1%B5%E9%9D%A2"><span class="toc-number">3.</span> <span class="toc-text">Hook webview 页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-So%E5%B1%82%E7%9A%84-newStringUTF8"><span class="toc-number">4.</span> <span class="toc-text">hook So层的 newStringUTF8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook%E5%85%B7%E4%BD%93%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80"><span class="toc-number">5.</span> <span class="toc-text">hook具体函数地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap%E6%88%96%E8%BD%ACJson"><span class="toc-number">6.</span> <span class="toc-text">HashMap或转Json</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&text=frida常用大全"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&is_video=false&description=frida常用大全"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=frida常用大全&body=Check out this article: https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&name=frida常用大全&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&t=frida常用大全"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2025
+    hybpjx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/friends/">友联</a></li><!--
+     --><!--
+       --><li><a href="/message/">留言板</a></li><!--
+     --><!--
+       --><li><a href="/essays/">说说</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">相册</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
