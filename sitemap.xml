@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hybpjx.cn/2024/11/04/Requests%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85%E4%BB%A5%E5%8F%8AAPI/</loc>
+    
+    <lastmod>2025-09-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hybpjx.cn/2023/03/28/Javacript%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2025-09-29</lastmod>
@@ -219,15 +228,6 @@
   
   <url>
     <loc>https://hybpjx.cn/2024/12/08/Xposed-API%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8/</loc>
-    
-    <lastmod>2025-08-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hybpjx.cn/2024/11/04/Requests%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85%E4%BB%A5%E5%8F%8AAPI/</loc>
     
     <lastmod>2025-08-13</lastmod>
     
@@ -547,13 +547,6 @@
   
   <url>
     <loc>https://hybpjx.cn/tags/APP%E9%80%86%E5%90%91/</loc>
-    <lastmod>2025-09-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hybpjx.cn/tags/python/</loc>
     <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
