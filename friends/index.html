@@ -169,13 +169,18 @@
 
         /* 头像样式 */
         .link-card img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            width: 73px;
+            height: 73px;
+            border-radius: 10%;
             object-fit: cover;
-            margin-right: 15px;
-            /* 在深色背景下给头像一个细微的边框，使其更清晰 */
-            border: 1px solid #444;
+            margin-right: 5% !important;
+
+            /* 核心优化：使用双层边框模拟内阴影效果 */
+            /* 1. 外部边框：与背景融合，提供一点点空间 */
+            border: 3px solid #1e1e1e; /* 比 #444 更暗，与你的深色背景更接近 */
+            /* 2. 内部边框：模拟浅色光环，让头像轮廓更清晰 */
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1); 
+    
         }
 
         /* 名字和描述的容器 */
@@ -246,6 +251,8 @@
                 
                     <div class="link-card">
                         <a href="https://zichliang.top" target="_blank" rel="noopener">
+                            
+                                <img src="/images/haokan.jpg" alt="个人博客">
                             
 
                             <div class="link-card-content">
