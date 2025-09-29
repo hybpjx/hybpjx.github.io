@@ -9,7 +9,7 @@
     <meta name="description" content="目标网站 aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwNzcxODA5MTAuaHRtbA&#x3D;&#x3D;  流程分析直接搜索ParamsSign 找到这个融合接口的地方  后续直接搜索这个Psign即可 这里有很多 可以每个都打上断点。也可以根据搜索自己的接口传参打断点。 这里可以发现 得到的值应该就是新版的h5st的值。  这里直接反推另辟蹊径 去把这个new Pa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="h5st 5.0逆向分析流程">
-<meta property="og:url" content="https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:url" content="https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/index.html">
 <meta property="og:site_name" content="始識’s 博客">
 <meta property="og:description" content="目标网站 aHR0cHM6Ly9pdGVtLmpkLmNvbS8xMDAwNzcxODA5MTAuaHRtbA&#x3D;&#x3D;  流程分析直接搜索ParamsSign 找到这个融合接口的地方  后续直接搜索这个Psign即可 这里有很多 可以每个都打上断点。也可以根据搜索自己的接口传参打断点。 这里可以发现 得到的值应该就是新版的h5st的值。  这里直接反推另辟蹊径 去把这个new Pa">
 <meta property="og:locale" content="zh_CN">
@@ -139,17 +139,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&text=h5st 5.0逆向分析流程"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&is_video=false&description=h5st 5.0逆向分析流程"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=h5st 5.0逆向分析流程&body=Check out this article: https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&name=h5st 5.0逆向分析流程&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&t=h5st 5.0逆向分析流程"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&text=h5st 5.0逆向分析流程"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&is_video=false&description=h5st 5.0逆向分析流程"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=h5st 5.0逆向分析流程&body=Check out this article: https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&name=h5st 5.0逆向分析流程&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&t=h5st 5.0逆向分析流程"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -329,17 +329,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&text=h5st 5.0逆向分析流程"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&is_video=false&description=h5st 5.0逆向分析流程"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=h5st 5.0逆向分析流程&body=Check out this article: https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&name=h5st 5.0逆向分析流程&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5-0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&t=h5st 5.0逆向分析流程"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&text=h5st 5.0逆向分析流程"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&is_video=false&description=h5st 5.0逆向分析流程"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=h5st 5.0逆向分析流程&body=Check out this article: https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&title=h5st 5.0逆向分析流程"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&name=h5st 5.0逆向分析流程&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/01/01/%E6%9F%90%E4%B8%9Ch5st5.0%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/&t=h5st 5.0逆向分析流程"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
