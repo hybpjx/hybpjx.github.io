@@ -125,71 +125,166 @@
 
     </header>
 
-    <div class="content e-content" itemprop="articleBody">
-        <h2>我的朋友们</h2>
+    <style>
+        /* 友联卡片容器 */
+        .links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
 
-        
+        /* 友联卡片本身 */
+        .link-card {
+            margin: 0;
+            padding: 15px;
+            /* 适配黑色背景：使用淡灰色边框 */
+            border: 1px solid #333;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            /* 适配黑色背景：使用黑色阴影，略微扩散 */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+        }
+
+        /* 鼠标悬停效果 */
+        .link-card:hover {
+            /* 悬停时增强阴影，让卡片更亮眼 */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            transform: translateY(-2px);
+            /* 悬停时边框颜色略微变亮 */
+            border-color: #555;
+            background-color: rgba(255, 255, 255, 0.05); /* 略微的背景色变化 */
+        }
+
+        /* 友联卡片内的链接 */
+        .link-card a {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 头像样式 */
+        .link-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            /* 在深色背景下给头像一个细微的边框，使其更清晰 */
+            border: 1px solid #444;
+        }
+
+        /* 名字和描述的容器 */
+        .link-card-content {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        /* 友联名称 */
+        .link-card h4 {
+            margin: 0;
+            font-size: 1.1em;
+            /* 适配黑色背景：使用柔和的亮色 */
+            color: #ccc;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 友联描述 */
+        .link-card p {
+            margin: 0;
+            font-size: 0.9em;
+            /* 适配黑色背景：使用中性灰色，低对比度更舒适 */
+            color: #888;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        /* 针对移动端优化 */
+        @media (max-width: 600px) {
+            .links-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <div class="content e-content" itemprop="articleBody">
+        <h1># 我的朋友们</h1>
+
         
             <div class="links-container">
                 
-                
-                    <div class="link-card" style="margin-bottom: 20px; border: 1px solid #eee; padding: 15px;">
+                    <div class="link-card">
                         <a href="https://blog.csdn.net/Zuko_chen?type=blog" target="_blank" rel="noopener">
                             
-                            
 
-                            <h4>csdn</h4>
-                            <p style="margin: 0; color: #666;">作者本人的csdn</p>
+                            <div class="link-card-content">
+                                <h4>csdn</h4>
+                                <p>作者本人的csdn</p>
+                            </div>
                         </a>
                     </div>
                 
-                    <div class="link-card" style="margin-bottom: 20px; border: 1px solid #eee; padding: 15px;">
+                    <div class="link-card">
                         <a href="https://www.cnblogs.com/zichliang" target="_blank" rel="noopener">
                             
-                            
 
-                            <h4>博客园</h4>
-                            <p style="margin: 0; color: #666;">作者本人的博客园</p>
+                            <div class="link-card-content">
+                                <h4>博客园</h4>
+                                <p>作者本人的博客园</p>
+                            </div>
                         </a>
                     </div>
                 
-                    <div class="link-card" style="margin-bottom: 20px; border: 1px solid #eee; padding: 15px;">
+                    <div class="link-card">
                         <a href="https://zichliang.top" target="_blank" rel="noopener">
                             
-                            
 
-                            <h4>个人博客</h4>
-                            <p style="margin: 0; color: #666;">作者本人的notion搭建的博客</p>
+                            <div class="link-card-content">
+                                <h4>个人博客</h4>
+                                <p>作者本人的notion搭建的博客</p>
+                            </div>
                         </a>
                     </div>
                 
-                    <div class="link-card" style="margin-bottom: 20px; border: 1px solid #eee; padding: 15px;">
+                    <div class="link-card">
                         <a href="https://lpy30m.github.io/skuukzky.github.io/" target="_blank" rel="noopener">
                             
-                            
 
-                            <h4>小🐑‘s Blog</h4>
-                            <p style="margin: 0; color: #666;">工具🉐神 <br> 仔细研究持续成长</p>
+                            <div class="link-card-content">
+                                <h4>小🐑‘s Blog</h4>
+                                <p>工具🉐神 <br> 仔细研究持续成长</p>
+                            </div>
                         </a>
                     </div>
                 
-                    <div class="link-card" style="margin-bottom: 20px; border: 1px solid #eee; padding: 15px;">
+                    <div class="link-card">
                         <a href="https://www.cnblogs.com/pigke" target="_blank" rel="noopener">
                             
-                            
 
-                            <h4>流星🐷Studio</h4>
-                            <p style="margin: 0; color: #666;">一个帅哥🐷 <br> 持续成长的小程序天才🐷</p>
+                            <div class="link-card-content">
+                                <h4>流星🐷Studio</h4>
+                                <p>一个帅哥🐷 <br> 持续成长的小程序天才🐷</p>
+                            </div>
                         </a>
                     </div>
                 
-                    <div class="link-card" style="margin-bottom: 20px; border: 1px solid #eee; padding: 15px;">
+                    <div class="link-card">
                         <a href="https://dstbp.com" target="_blank" rel="noopener">
                             
-                            
 
-                            <h4>dstbp</h4>
-                            <p style="margin: 0; color: #666;">密码+安卓</p>
+                            <div class="link-card-content">
+                                <h4>dstbp</h4>
+                                <p>密码+安卓</p>
+                            </div>
                         </a>
                     </div>
                 
@@ -197,10 +292,9 @@
         
 
 
-         <h2>如需要添加友联 可在评论中回复～</h2>
+         <h1 id="link-request-title"># 如需要添加友联 可在评论中回复～</h1>
     </div>
 
-    
     
 
     <div class="blog-post-comments">
