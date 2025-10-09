@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://hybpjx.cn/2022/09/26/Golang%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://hybpjx.cn/2023/03/28/Javacript%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E6%96%B9%E6%B3%95/</loc>
+    
+    <lastmod>2025-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hybpjx.cn/tools/index.html</loc>
     
     <lastmod>2025-10-03</lastmod>
@@ -30,15 +57,6 @@
   
   <url>
     <loc>https://hybpjx.cn/2024/11/04/Requests%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85%E4%BB%A5%E5%8F%8AAPI/</loc>
-    
-    <lastmod>2025-09-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hybpjx.cn/2023/03/28/Javacript%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2025-09-29</lastmod>
     
@@ -443,25 +461,7 @@
   </url>
   
   <url>
-    <loc>https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/</loc>
-    
-    <lastmod>2025-08-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://hybpjx.cn/2023/10/26/Gin-gorm%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%A8%A1%E5%9E%8B%E7%B1%BB%E9%87%8D%E5%86%99/</loc>
-    
-    <lastmod>2025-08-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hybpjx.cn/2022/09/26/Golang%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/</loc>
     
     <lastmod>2025-08-13</lastmod>
     
