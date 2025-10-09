@@ -125,103 +125,8 @@
 
     </header>
 
-    <style>
-        /* 友联卡片容器 */
-        .links-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        /* 友联卡片本身 */
-        .link-card {
-            margin: 0;
-            padding: 15px;
-            /* 适配黑色背景：使用淡灰色边框 */
-            border: 1px solid #333;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            /* 适配黑色背景：使用黑色阴影，略微扩散 */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-        }
-
-        /* 鼠标悬停效果 */
-        .link-card:hover {
-            /* 悬停时增强阴影，让卡片更亮眼 */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-            transform: translateY(-2px);
-            /* 悬停时边框颜色略微变亮 */
-            border-color: #555;
-            background-color: rgba(255, 255, 255, 0.05); /* 略微的背景色变化 */
-        }
-
-        /* 友联卡片内的链接 */
-        .link-card a {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* 头像样式 */
-        .link-card img {
-            width: 73px;
-            height: 73px;
-            border-radius: 10%;
-            object-fit: cover;
-            margin-right: 5% !important;
-
-            /* 核心优化：使用双层边框模拟内阴影效果 */
-            /* 1. 外部边框：与背景融合，提供一点点空间 */
-            border: 3px solid #1e1e1e; /* 比 #444 更暗，与你的深色背景更接近 */
-            /* 2. 内部边框：模拟浅色光环，让头像轮廓更清晰 */
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1); 
-    
-        }
-
-        /* 名字和描述的容器 */
-        .link-card-content {
-            flex-grow: 1;
-            min-width: 0;
-        }
-
-        /* 友联名称 */
-        .link-card h4 {
-            margin: 0;
-            font-size: 1.1em;
-            /* 适配黑色背景：使用柔和的亮色 */
-            color: #ccc;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* 友联描述 */
-        .link-card p {
-            font-size: 0.9em;
-            color: #888;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        /* 针对移动端优化 */
-        @media (max-width: 600px) {
-            .links-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-
     <div class="content e-content" itemprop="articleBody">
-        <h1># 我的朋友们</h1>
-
+        <h1># 我的朋友们</h1> 
         
             <div class="links-container">
                 
@@ -297,8 +202,8 @@
         
 
 
-         <h1 id="link-request-title"># 如需要添加友联 可在评论中回复～</h1>
-    </div>
+        <h1 id="link-request-title">如需要添加友联 可在评论中回复～</h1> 
+        </div>
 
     
 

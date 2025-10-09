@@ -804,6 +804,25 @@
     
     
     <entry>
+      <title>小程序webview调试</title>
+      <link href="/2024/08/09/%E5%B0%8F%E7%A8%8B%E5%BA%8Fwebview%E8%B0%83%E8%AF%95/"/>
+      <url>/2024/08/09/%E5%B0%8F%E7%A8%8B%E5%BA%8Fwebview%E8%B0%83%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<p>链接手机远程Debug调试</p><ol><li>手机用usb连接至电脑</li><li>手机微信内点击 <a href="http://debugxweb.qq.com/?inspector=true">http://debugxweb.qq.com/?inspector=true</a> （只要跳转过微信首页就是开启了调试）</li><li>微信内打开所需调试网址, 例如 <a href="http://weixin.qq.com/">weixin.qq.com</a> </li><li>chrome浏览器打开 chrome:&#x2F;&#x2F;inspect&#x2F;#devices 会看到我们打开的网页 <a href="http://weixin.qq.com/">weixin.qq.com</a> </li><li>在点击chrome里的inspect 直接调试 (可以直接用鼠标进行操作)</li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 逆向 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Gin_gorm时间格式化模型类重写</title>
       <link href="/2023/10/26/Gin-gorm%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%A8%A1%E5%9E%8B%E7%B1%BB%E9%87%8D%E5%86%99/"/>
       <url>/2023/10/26/Gin-gorm%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%A8%A1%E5%9E%8B%E7%B1%BB%E9%87%8D%E5%86%99/</url>
@@ -948,6 +967,33 @@
         <tags>
             
             <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>scrapy结合加速乐完成无损爬取</title>
+      <link href="/2023/03/09/scrapy%E7%BB%93%E5%90%88%E5%8A%A0%E9%80%9F%E4%B9%90%E5%AE%8C%E6%88%90%E6%97%A0%E6%8D%9F%E7%88%AC%E5%8F%96/"/>
+      <url>/2023/03/09/scrapy%E7%BB%93%E5%90%88%E5%8A%A0%E9%80%9F%E4%B9%90%E5%AE%8C%E6%88%90%E6%97%A0%E6%8D%9F%E7%88%AC%E5%8F%96/</url>
+      
+        <content type="html"><![CDATA[<p><strong>中间件重要知识： 返回None代表继续通过 返回request就重新走调度流程</strong></p><p>本文文章中 需要在settings中设置 <strong>COOKIES_ENABLED &#x3D; True</strong></p><p>这里超链接一篇文章（不理解COOKIES_ENABLED 的可以看看）—<a href="https://blog.csdn.net/u013444182/article/details/105282050">scrapy 中 COOKIES_ENABLED 设置_NealHuiwen的博客-CSDN博客</a></p><p>其次需要开启爬虫中的cookie中间件</p><p><a href="http://utilsmiddlewares.py/">utilsMiddlewares.py</a> &gt;&gt;&gt;&gt;&gt;&gt;&gt;</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">HandleCookieMiddleware</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_request</span>(<span class="hljs-params">self, request, spider</span>):<br>       <span class="hljs-keyword">pass</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_response</span>(<span class="hljs-params">self, request, response, spider</span>):<br>        status_code = response.status<br>        <span class="hljs-keyword">if</span> status_code == <span class="hljs-number">521</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;jsl&gt;&gt;&gt;&gt;&gt;&gt;&quot;</span>, response.url)<br>            cookies, response, ok = <span class="hljs-variable language_">self</span>.get_cookie(response)<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ok:<br>                <span class="hljs-keyword">return</span> response<br><br>            request.cookies = cookies<br>            request.headers[<br>                <span class="hljs-string">&#x27;User-Agent&#x27;</span>] = <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36&#x27;</span><br>            <span class="hljs-keyword">return</span> request<br></code></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_cookie</span>(<span class="hljs-params">self, response</span>) -&gt; (<span class="hljs-built_in">dict</span>, Response, <span class="hljs-built_in">bool</span>):<br>    <span class="hljs-keyword">if</span> pattern := re.findall(<span class="hljs-string">r&#x27;cookie=(.*?);location&#x27;</span>, response.text):<br>        encrypt_jsfuck = pattern[<span class="hljs-number">0</span>]<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>, response, <span class="hljs-literal">False</span><br>        <span class="hljs-comment"># return response</span><br>    DJ = DecryptJsl()<br>    decrypt_jsfuck = <span class="hljs-built_in">str</span>(execjs.<span class="hljs-built_in">eval</span>(encrypt_jsfuck))<br>    first_decrypt_cookie = decrypt_jsfuck.split(<span class="hljs-string">&#x27;=&#x27;</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">&#x27;;&#x27;</span>)[<span class="hljs-number">0</span>]<br>    jsl_cookie_key = decrypt_jsfuck.split(<span class="hljs-string">&#x27;=&#x27;</span>)[<span class="hljs-number">0</span>]<br>    first_set_cookie = &#123;&#125;<br>    <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> <span class="hljs-built_in">str</span>(response.headers.getlist(<span class="hljs-string">&#x27;Set-Cookie&#x27;</span>)[<span class="hljs-number">0</span>].decode(<span class="hljs-string">&quot;utf-8&quot;</span>)).split(<span class="hljs-string">&quot;;&quot;</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;=&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> c:<br>            <span class="hljs-keyword">continue</span><br>        first_set_cookie[c.split(<span class="hljs-string">&quot;=&quot;</span>)[<span class="hljs-number">0</span>]] = c.split(<span class="hljs-string">&quot;=&quot;</span>)[<span class="hljs-number">1</span>]<br>    first_cookies = &#123;<br>        **first_set_cookie,<br>        jsl_cookie_key: first_decrypt_cookie&#125;<br>    res1 = requests.get(response.url, cookies=first_cookies, headers=&#123;<br>        <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36&#x27;</span>,<br>    &#125;)<br>    data = json.loads(re.findall(<span class="hljs-string">r&#x27;;go\((.*?)\)&#x27;</span>, res1.text)[<span class="hljs-number">0</span>])<br>    second_decrypt_cookie = DJ.get_parameter(data)<br>    cookies = &#123;<br>        **first_set_cookie,<br>        jsl_cookie_key: second_decrypt_cookie&#125;<br>    <span class="hljs-keyword">return</span> cookies, <span class="hljs-literal">None</span>, <span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure><p>2024-4-24 </p><p>上面方法是我自实现的方法。可能很多时候不适用。</p><p>这几天入职新公司 遇到个新方法 非常好用</p><p>直接看源码。好用成DOG啊。看到这里的同学 你遇到宝了。</p><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs jsx">def <span class="hljs-title function_">process_response</span>(self, request, response, spider):<br>    <span class="hljs-keyword">if</span> response.<span class="hljs-property">status</span> == <span class="hljs-number">521</span>:<br>        <span class="hljs-title function_">print</span>(<span class="hljs-string">&quot;jsl&gt;&gt;&gt;&gt;&gt;&gt;&quot;</span>, response.<span class="hljs-property">url</span>)<br>        <span class="hljs-variable constant_">DJ</span> = <span class="hljs-title class_">DecryptJsl</span>()<br>        cookies = <span class="hljs-variable constant_">DJ</span>.<span class="hljs-title function_">get_cookies</span>(response.<span class="hljs-property">url</span>)<br><br>        # request.<span class="hljs-property">cookies</span> = cookies<br>        headers = &#123;<br>            <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36&#x27;</span>,<br>        &#125;<br>        req_res = requests.<span class="hljs-title function_">get</span>(response.<span class="hljs-property">url</span>, headers=headers, cookies=cookies)<br><br>        response = <span class="hljs-title class_">TextResponse</span>(url=req_res.<span class="hljs-property">url</span>,<br>                     body=req_res.<span class="hljs-property">text</span>,<br>                     encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>       <br>        <span class="hljs-keyword">return</span> response<br><br>    <span class="hljs-keyword">return</span> response<br></code></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> scrapy </tag>
             
         </tags>
       
