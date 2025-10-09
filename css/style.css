@@ -439,6 +439,133 @@ body td {
   font-family: "Meslo LG";
   src: local("Meslo LG S"), url("../lib/meslo-LG/MesloLGS-Regular.ttf") format("truetype");
 }
+.links-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+.link-card {
+  margin: 0;
+  padding: 15px;
+/* 适配黑色背景：使用淡灰色边框 */
+  border: 1px solid #333;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+/* 适配黑色背景：使用黑色阴影，略微扩散 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+}
+.link-card:hover {
+/* 悬停时增强阴影，让卡片更亮眼 */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+  transform: translateY(-2px);
+/* 悬停时边框颜色略微变亮 */
+  border-color: #555;
+  background-color: rgba(255,255,255,0.05); /* 略微的背景色变化 */
+}
+.link-card a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+.link-card img {
+  width: 73px;
+  height: 73px;
+  border-radius: 10%;
+  object-fit: cover;
+  margin-right: 5% !important;
+/* 核心优化：使用双层边框模拟内阴影效果 */
+/* 1. 外部边框：与背景融合，提供一点点空间 */
+  border: 3px solid #1e1e1e; /* 比 #444 更暗，与你的深色背景更接近 */
+/* 2. 内部边框：模拟浅色光环，让头像轮廓更清晰 */
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+}
+.link-card-content {
+  flex-grow: 1;
+  min-width: 0;
+}
+.link-card h4 {
+  margin: 0;
+  font-size: 1.1em;
+/* 适配黑色背景：使用柔和的亮色 */
+  color: #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.link-card p {
+  font-size: 0.9em;
+  color: #888;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+@media (max-width: 600px) {
+  .links-container {
+    grid-template-columns: 1fr;
+  }
+}
+.tools-category-title {
+  margin-top: 40px;
+  margin-bottom: 15px;
+  padding: 8px 10px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #69c585;
+  background: rgba(40,40,40,0.4);
+  border-radius: 4px;
+  border-left: 4px solid #69c585;
+}
+.tools-category-title i {
+  display: none;
+}
+.tools-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin: 15px 0;
+}
+.tool-card {
+  height: 100%;
+  padding: 15px;
+  border: 1px solid #333;
+  background-color: #1e1e1e;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.5), 0 3px 8px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+.tool-card:hover {
+  box-shadow: 0 5px 12px rgba(0,0,0,0.9), 0 0 8px 0 #69c585;
+  transform: translateY(-3px);
+  border-color: #69c585;
+  background-color: rgba(40,40,40,0.6);
+}
+.tool-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 1.05em;
+  font-weight: bold;
+  color: #ccc;
+}
+.tool-card h4 i {
+  margin-right: 8px;
+  font-size: 1em;
+  color: #69c585;
+}
+.tool-card p {
+  font-size: 0.85em;
+  color: #888;
+  margin-bottom: 0;
+  flex-grow: 1;
+}
 *,
 *:before,
 *:after {
@@ -851,6 +978,7 @@ body {
   padding-left: 0rem;
 }
 #toc .toc-level-1 > .toc-link {
+  font-weight: bold;
   display: block;
 }
 #toc .toc-level-2 {
@@ -1042,8 +1170,10 @@ body {
   color: #c9cacc;
   font-size: 0.8rem;
   padding-left: 0rem;
+  margin-bottom: 0.5rem !important;
 }
 #footer-post .toc-level-1 > .toc-link {
+  font-weight: bold;
   display: block !important;
 }
 #footer-post .toc-level-2 {
