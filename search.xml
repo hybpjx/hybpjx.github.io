@@ -98,7 +98,7 @@
       <link href="/2025/09/19/Mac%E5%AE%89%E8%A3%85Mongodb/"/>
       <url>/2025/09/19/Mac%E5%AE%89%E8%A3%85Mongodb/</url>
       
-        <content type="html"><![CDATA[<h1 id="Homebrew-安装"><a href="#Homebrew-安装" class="headerlink" title="Homebrew 安装"></a>Homebrew 安装</h1><ol><li>更新 brew</li></ol><blockquote><p>brew update</p></blockquote><ol start="2"><li>添加 MongoDB 官方 tap</li></ol><blockquote><p>brew tap mongodb&#x2F;brew</p></blockquote><ol start="3"><li>安装最新稳定版</li></ol><blockquote><p>brew install <a href="mailto:&#109;&#x6f;&#110;&#x67;&#111;&#100;&#x62;&#x2d;&#99;&#x6f;&#109;&#x6d;&#x75;&#x6e;&#x69;&#x74;&#121;&#64;&#x37;&#46;&#48;">mongodb-community@7.0</a><br>（这里我写的是 7.0，如果你需要特定版本可以改，比如 6.0。）</p></blockquote><ol start="4"><li>启动 MongoDB 服务</li></ol><blockquote><p>brew services start <a href="mailto:&#109;&#x6f;&#110;&#103;&#111;&#100;&#98;&#45;&#x63;&#x6f;&#109;&#109;&#x75;&#x6e;&#x69;&#116;&#121;&#x40;&#x37;&#x2e;&#48;">mongodb-community@7.0</a><br>brew services start mongodb&#x2F;brew&#x2F;<a href="mailto:&#109;&#x6f;&#110;&#x67;&#111;&#x64;&#98;&#x2d;&#99;&#x6f;&#x6d;&#109;&#x75;&#110;&#x69;&#116;&#x79;&#64;&#55;&#x2e;&#48;">mongodb-community@7.0</a></p></blockquote><ol start="5"><li>确认 MongoDB 是否启动成功</li></ol><blockquote><p>ps aux | grep -v grep | grep mongod</p></blockquote><ol start="6"><li>连接 MongoDB</li></ol><blockquote><p>mongosh</p></blockquote><p>默认会连到本地 mongodb:&#x2F;&#x2F;localhost:27017</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="Homebrew-安装"><a href="#Homebrew-安装" class="headerlink" title="Homebrew 安装"></a>Homebrew 安装</h1><ol><li>更新 brew</li></ol><blockquote><p>brew update</p></blockquote><ol start="2"><li>添加 MongoDB 官方 tap</li></ol><blockquote><p>brew tap mongodb&#x2F;brew</p></blockquote><ol start="3"><li>安装最新稳定版</li></ol><blockquote><p>brew install <a href="mailto:&#109;&#111;&#110;&#103;&#111;&#x64;&#x62;&#45;&#x63;&#111;&#x6d;&#x6d;&#x75;&#x6e;&#x69;&#x74;&#x79;&#64;&#x37;&#46;&#x30;">mongodb-community@7.0</a><br>（这里我写的是 7.0，如果你需要特定版本可以改，比如 6.0。）</p></blockquote><ol start="4"><li>启动 MongoDB 服务</li></ol><blockquote><p>brew services start <a href="mailto:&#109;&#x6f;&#x6e;&#x67;&#x6f;&#100;&#x62;&#x2d;&#99;&#111;&#109;&#x6d;&#x75;&#110;&#105;&#116;&#x79;&#x40;&#55;&#x2e;&#48;">mongodb-community@7.0</a><br>brew services start mongodb&#x2F;brew&#x2F;<a href="mailto:&#109;&#111;&#x6e;&#103;&#111;&#100;&#x62;&#x2d;&#99;&#111;&#x6d;&#x6d;&#x75;&#110;&#x69;&#116;&#x79;&#64;&#x37;&#x2e;&#x30;">mongodb-community@7.0</a></p></blockquote><ol start="5"><li>确认 MongoDB 是否启动成功</li></ol><blockquote><p>ps aux | grep -v grep | grep mongod</p></blockquote><ol start="6"><li>连接 MongoDB</li></ol><blockquote><p>mongosh</p></blockquote><p>默认会连到本地 mongodb:&#x2F;&#x2F;localhost:27017</p>]]></content>
       
       
       <categories>
@@ -135,9 +135,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Golang </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> Svelte </tag>
             
@@ -820,9 +820,9 @@
       
         <tags>
             
-            <tag> 反爬 </tag>
-            
             <tag> 爬虫 </tag>
+            
+            <tag> 反爬 </tag>
             
         </tags>
       
@@ -891,9 +891,9 @@
       
         <tags>
             
-            <tag> 爬虫 </tag>
-            
             <tag> Ja3 </tag>
+            
+            <tag> 爬虫 </tag>
             
         </tags>
       
