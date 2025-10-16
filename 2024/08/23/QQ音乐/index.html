@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang=zh>
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="目标网站 aHR0cHM6Ly95LnFxLmNvbS8&#x3D;  前言补环境 直接秒，搞过的可以划走\x7e，没事水一篇文章，很简单，只是自己确实算法搞得一般 就写个文章记录下。 流程分析搜索sign:  进入n(350).default 这个栈  然后打日志点 &gt;&gt;&gt; 【”index&gt;&gt;&gt;&gt;&gt;&gt;”,g+1,”n[g+1]&gt;&gt;">
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <meta name="description" content="目标网站 aHR0cHM6Ly95LnFxLmNvbS8&#x3D;  前言补环境 直接秒，搞过的可以划走\x7e，没事水一篇文章，很简单，只是自己确实算法搞得一般 就写个文章记录下。 流程分析搜索sign:  进入n(350).default 这个栈  然后打日志点 &gt;&gt;&gt; 【”index&gt;&gt;&gt;&gt;&gt;&gt;”,g+1,”n[g+1]&gt;&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSVMP逆向流程——QQ音乐">
 <meta property="og:url" content="https://hybpjx.cn/2024/08/23/QQ%E9%9F%B3%E4%B9%90/index.html">
@@ -38,54 +56,53 @@
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2024/08/25/edug9TaOszxbSlE.png">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
     
-    
-      
-        
-          <link rel="shortcut icon" href="/images/hbsn.jpg">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/hbsn.jpg" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/hbsn.jpg">
-        
-      
-    
-    <!-- title -->
-    <title>JSVMP逆向流程——QQ音乐</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+  <!-- title -->
+  <title>JSVMP逆向流程——QQ音乐</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
 
 
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
-    
+  <!-- styles -->
+  
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-		<script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({
-			tex2jax: {
-			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-			  inlineMath: [['$','$']]
-			}
-		  });
-		</script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-	
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+  <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      inlineMath: [['$','$']]
+    }
+     });
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"
+    async
+  ></script>
+  
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 

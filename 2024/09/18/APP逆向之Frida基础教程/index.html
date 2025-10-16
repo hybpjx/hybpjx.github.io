@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang=zh>
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="入门安装123Frida 代码自动补全&#96;&#96;&#96;bashnpm install --save @types&#x2F;frida-gum  安装Frida 12pip install frida-toolspip install objection  找到相应版本的Frida 推送到设备中 https:&#x2F;&#x2F;github.com&#x2F;frida&#x2F;frida&#x2F;releases&#x2F;tag&#x2F;16.5.1  命令 1adb p">
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <meta name="description" content="入门安装123Frida 代码自动补全&#96;&#96;&#96;bashnpm install --save @types&#x2F;frida-gum  安装Frida 12pip install frida-toolspip install objection  找到相应版本的Frida 推送到设备中 https:&#x2F;&#x2F;github.com&#x2F;frida&#x2F;frida&#x2F;releases&#x2F;tag&#x2F;16.5.1  命令 1adb p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="APP逆向之Frida基础教程">
 <meta property="og:url" content="https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/index.html">
@@ -20,54 +38,53 @@
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2024/09/18/yqCbzJ1QaZfipFn.png">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
     
-    
-      
-        
-          <link rel="shortcut icon" href="/images/hbsn.jpg">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/hbsn.jpg" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/hbsn.jpg">
-        
-      
-    
-    <!-- title -->
-    <title>APP逆向之Frida基础教程</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+  <!-- title -->
+  <title>APP逆向之Frida基础教程</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
 
 
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
-    
+  <!-- styles -->
+  
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-		<script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({
-			tex2jax: {
-			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-			  inlineMath: [['$','$']]
-			}
-		  });
-		</script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-	
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+  <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      inlineMath: [['$','$']]
+    }
+     });
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"
+    async
+  ></script>
+  
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 

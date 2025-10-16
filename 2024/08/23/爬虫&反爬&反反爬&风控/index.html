@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang=zh>
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="基于反爬系统和浏览安全体系相比逆向更加有亲和力，逆向只有最后一刻才能得到成就感 所有反爬的手段只有两个  鉴权阻止进入（开发端拦截） 高频组织数据大面积泄露 &#x2F; 防止服务器崩溃（风控层面）  app 和 web 整体的思想和逻辑是不变的  最开始的本质只是采集数据  &gt;&gt;&gt; 因为我们在获取数据的时候 人为采集太费时间  采集数据 （招投标 工商信息。外卖 等等） 转变&amp;">
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <meta name="description" content="基于反爬系统和浏览安全体系相比逆向更加有亲和力，逆向只有最后一刻才能得到成就感 所有反爬的手段只有两个  鉴权阻止进入（开发端拦截） 高频组织数据大面积泄露 &#x2F; 防止服务器崩溃（风控层面）  app 和 web 整体的思想和逻辑是不变的  最开始的本质只是采集数据  &gt;&gt;&gt; 因为我们在获取数据的时候 人为采集太费时间  采集数据 （招投标 工商信息。外卖 等等） 转变&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬虫&amp;反爬&amp;反反爬&amp;风控">
 <meta property="og:url" content="https://hybpjx.cn/2024/08/23/%E7%88%AC%E8%99%AB&%E5%8F%8D%E7%88%AC&%E5%8F%8D%E5%8F%8D%E7%88%AC&%E9%A3%8E%E6%8E%A7/index.html">
@@ -19,54 +37,53 @@
 <meta property="article:tag" content="爬虫">
 <meta property="article:tag" content="反爬">
 <meta name="twitter:card" content="summary">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
     
-    
-      
-        
-          <link rel="shortcut icon" href="/images/hbsn.jpg">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/hbsn.jpg" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/hbsn.jpg">
-        
-      
-    
-    <!-- title -->
-    <title>爬虫&amp;反爬&amp;反反爬&amp;风控</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+  <!-- title -->
+  <title>爬虫&amp;反爬&amp;反反爬&amp;风控</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
 
 
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
-    
+  <!-- styles -->
+  
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-		<script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({
-			tex2jax: {
-			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-			  inlineMath: [['$','$']]
-			}
-		  });
-		</script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-	
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+  <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      inlineMath: [['$','$']]
+    }
+     });
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"
+    async
+  ></script>
+  
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 

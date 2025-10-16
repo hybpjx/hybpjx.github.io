@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang=zh>
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="引言：在当今互联网时代，保护通信数据的安全性变得至关重要。为了建立安全的通信连接，TLS（Transport Layer Security）协议被广泛应用于Web浏览器、移动应用和其他网络应用程序中。而与此同时，识别和分析这些TLS通信也成为网络安全研究和威胁情报分析的重要任务之一。JA3指纹作为一种独特的指纹识别技术，为我们提供了一种有效的手段来识别和分析TLS通信。 JA3指纹的概述什么是">
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <meta name="description" content="引言：在当今互联网时代，保护通信数据的安全性变得至关重要。为了建立安全的通信连接，TLS（Transport Layer Security）协议被广泛应用于Web浏览器、移动应用和其他网络应用程序中。而与此同时，识别和分析这些TLS通信也成为网络安全研究和威胁情报分析的重要任务之一。JA3指纹作为一种独特的指纹识别技术，为我们提供了一种有效的手段来识别和分析TLS通信。 JA3指纹的概述什么是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ja3指纹学习">
 <meta property="og:url" content="https://hybpjx.cn/2023/06/26/Ja3%E6%8C%87%E7%BA%B9%E5%AD%A6%E4%B9%A0/index.html">
@@ -33,54 +51,53 @@
 <meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2024/08/26/MaLQRDKgSeZ2cl3.png">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
     
-    
-      
-        
-          <link rel="shortcut icon" href="/images/hbsn.jpg">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/hbsn.jpg" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/hbsn.jpg">
-        
-      
-    
-    <!-- title -->
-    <title>Ja3指纹学习</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+  <!-- title -->
+  <title>Ja3指纹学习</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
 
 
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
-    
+  <!-- styles -->
+  
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-		<script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({
-			tex2jax: {
-			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-			  inlineMath: [['$','$']]
-			}
-		  });
-		</script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-	
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+  <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      inlineMath: [['$','$']]
+    }
+     });
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"
+    async
+  ></script>
+  
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 

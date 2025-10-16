@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang=zh>
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Homebrew 安装 更新 brew   brew update   添加 MongoDB 官方 tap   brew tap mongodb&#x2F;brew   安装最新稳定版   brew install mongodb-community@7.0（这里我写的是 7.0，如果你需要特定版本可以改，比如 6.0。）   启动 MongoDB 服务   brew services start">
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <meta name="description" content="Homebrew 安装 更新 brew   brew update   添加 MongoDB 官方 tap   brew tap mongodb&#x2F;brew   安装最新稳定版   brew install mongodb-community@7.0（这里我写的是 7.0，如果你需要特定版本可以改，比如 6.0。）   启动 MongoDB 服务   brew services start">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac安装Mongodb">
 <meta property="og:url" content="https://hybpjx.cn/2025/09/19/Mac%E5%AE%89%E8%A3%85Mongodb/index.html">
@@ -18,54 +36,53 @@
 <meta property="article:author" content="hybpjx">
 <meta property="article:tag" content="MongoDB">
 <meta name="twitter:card" content="summary">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
     
-    
-      
-        
-          <link rel="shortcut icon" href="/images/hbsn.jpg">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/hbsn.jpg" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/hbsn.jpg">
-        
-      
-    
-    <!-- title -->
-    <title>Mac安装Mongodb</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+  <!-- title -->
+  <title>Mac安装Mongodb</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
 
 
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
-    
+  <!-- styles -->
+  
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-		<script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({
-			tex2jax: {
-			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-			  inlineMath: [['$','$']]
-			}
-		  });
-		</script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-	
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+  <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      inlineMath: [['$','$']]
+    }
+     });
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"
+    async
+  ></script>
+  
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
@@ -206,13 +223,13 @@
 <li>安装最新稳定版</li>
 </ol>
 <blockquote>
-<p>brew install <a href="mailto:&#109;&#111;&#110;&#103;&#111;&#x64;&#x62;&#45;&#x63;&#111;&#x6d;&#x6d;&#x75;&#x6e;&#x69;&#x74;&#x79;&#64;&#x37;&#46;&#x30;">mongodb-community@7.0</a><br>（这里我写的是 7.0，如果你需要特定版本可以改，比如 6.0。）</p>
+<p>brew install <a href="mailto:&#x6d;&#x6f;&#x6e;&#103;&#111;&#x64;&#98;&#x2d;&#99;&#x6f;&#x6d;&#109;&#117;&#110;&#x69;&#116;&#x79;&#x40;&#x37;&#x2e;&#48;">mongodb-community@7.0</a><br>（这里我写的是 7.0，如果你需要特定版本可以改，比如 6.0。）</p>
 </blockquote>
 <ol start="4">
 <li>启动 MongoDB 服务</li>
 </ol>
 <blockquote>
-<p>brew services start <a href="mailto:&#109;&#x6f;&#x6e;&#x67;&#x6f;&#100;&#x62;&#x2d;&#99;&#111;&#109;&#x6d;&#x75;&#110;&#105;&#116;&#x79;&#x40;&#55;&#x2e;&#48;">mongodb-community@7.0</a><br>brew services start mongodb&#x2F;brew&#x2F;<a href="mailto:&#109;&#111;&#x6e;&#103;&#111;&#100;&#x62;&#x2d;&#99;&#111;&#x6d;&#x6d;&#x75;&#110;&#x69;&#116;&#x79;&#64;&#x37;&#x2e;&#x30;">mongodb-community@7.0</a></p>
+<p>brew services start <a href="mailto:&#109;&#x6f;&#110;&#x67;&#111;&#x64;&#98;&#45;&#99;&#x6f;&#x6d;&#109;&#x75;&#110;&#105;&#x74;&#121;&#x40;&#x37;&#46;&#48;">mongodb-community@7.0</a><br>brew services start mongodb&#x2F;brew&#x2F;<a href="mailto:&#x6d;&#x6f;&#110;&#x67;&#x6f;&#100;&#98;&#x2d;&#99;&#111;&#x6d;&#x6d;&#x75;&#x6e;&#105;&#x74;&#121;&#x40;&#55;&#x2e;&#x30;">mongodb-community@7.0</a></p>
 </blockquote>
 <ol start="5">
 <li>确认 MongoDB 是否启动成功</li>
