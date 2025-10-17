@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
   <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
   <script>hljs.highlightAll();</script>
+  
   <meta name="description" content="目标网站 aHR0cHM6Ly95LnFxLmNvbS8&#x3D;  前言补环境 直接秒，搞过的可以划走\x7e，没事水一篇文章，很简单，只是自己确实算法搞得一般 就写个文章记录下。 流程分析搜索sign:  进入n(350).default 这个栈  然后打日志点 &gt;&gt;&gt; 【”index&gt;&gt;&gt;&gt;&gt;&gt;”,g+1,”n[g+1]&gt;&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSVMP逆向流程——QQ音乐">
@@ -304,12 +305,12 @@
   </div>
 </article>
 
-
     <div class="blog-post-comments">
-        <div id="utterances_thread">
+        <div id="disqus_thread">
             <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
         </div>
     </div>
+
 
 
         
@@ -467,27 +468,19 @@
 
 <!-- Disqus Comments -->
 
-<!-- utterances Comments -->
-
     <script type="text/javascript">
-      var utterances_repo = 'hybpjx/hybpjx.github.io';
-      var utterances_issue_term = 'pathname';
-      var utterances_label = 'Comment';
-      var utterances_theme = 'github-dark';
+        var disqus_shortname = 'hybpjx-cn';
 
-      (function(){
-          var script = document.createElement('script');
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
 
-          script.src = 'https://utteranc.es/client.js';
-          script.setAttribute('repo', utterances_repo);
-          script.setAttribute('issue-term', 'pathname');
-          script.setAttribute('label', utterances_label);
-          script.setAttribute('theme', utterances_theme);
-          script.setAttribute('crossorigin', 'anonymous');
-          script.async = true;
-          (document.getElementById('utterances_thread')).appendChild(script);
-      }());
-  </script>
+<!-- utterances Comments -->
 
 </body>
 </html>

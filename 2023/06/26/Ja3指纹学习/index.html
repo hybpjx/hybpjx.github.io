@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
   <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
   <script>hljs.highlightAll();</script>
+  
   <meta name="description" content="引言：在当今互联网时代，保护通信数据的安全性变得至关重要。为了建立安全的通信连接，TLS（Transport Layer Security）协议被广泛应用于Web浏览器、移动应用和其他网络应用程序中。而与此同时，识别和分析这些TLS通信也成为网络安全研究和威胁情报分析的重要任务之一。JA3指纹作为一种独特的指纹识别技术，为我们提供了一种有效的手段来识别和分析TLS通信。 JA3指纹的概述什么是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ja3指纹学习">
@@ -47,8 +48,8 @@
 <meta property="article:published_time" content="2023-06-26T09:22:24.000Z">
 <meta property="article:modified_time" content="2025-10-09T06:46:10.968Z">
 <meta property="article:author" content="hybpjx">
-<meta property="article:tag" content="爬虫">
 <meta property="article:tag" content="Ja3">
+<meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2024/08/26/MaLQRDKgSeZ2cl3.png">
      
@@ -466,12 +467,12 @@
   </div>
 </article>
 
-
     <div class="blog-post-comments">
-        <div id="utterances_thread">
+        <div id="disqus_thread">
             <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
         </div>
     </div>
+
 
 
         
@@ -629,27 +630,19 @@
 
 <!-- Disqus Comments -->
 
-<!-- utterances Comments -->
-
     <script type="text/javascript">
-      var utterances_repo = 'hybpjx/hybpjx.github.io';
-      var utterances_issue_term = 'pathname';
-      var utterances_label = 'Comment';
-      var utterances_theme = 'github-dark';
+        var disqus_shortname = 'hybpjx-cn';
 
-      (function(){
-          var script = document.createElement('script');
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
 
-          script.src = 'https://utteranc.es/client.js';
-          script.setAttribute('repo', utterances_repo);
-          script.setAttribute('issue-term', 'pathname');
-          script.setAttribute('label', utterances_label);
-          script.setAttribute('theme', utterances_theme);
-          script.setAttribute('crossorigin', 'anonymous');
-          script.async = true;
-          (document.getElementById('utterances_thread')).appendChild(script);
-      }());
-  </script>
+<!-- utterances Comments -->
 
 </body>
 </html>

@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
   <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
   <script>hljs.highlightAll();</script>
+  
   <meta name="description" content="安装redis sudo apt-get install -y redis-server  更改配置 sudo vim &#x2F;etc&#x2F;redis&#x2F;redis.conf   如果不知道怎么找直接在命令行模式下输入&#x2F;{你要搜索的东西} 然后按回车 然后按n是下一个 N是上一个 重启服务 systemctl restart redis-server.service">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu下安装redis并且设置远程登陆和密码">
@@ -236,12 +237,12 @@
   </div>
 </article>
 
-
     <div class="blog-post-comments">
-        <div id="utterances_thread">
+        <div id="disqus_thread">
             <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
         </div>
     </div>
+
 
 
         
@@ -399,27 +400,19 @@
 
 <!-- Disqus Comments -->
 
-<!-- utterances Comments -->
-
     <script type="text/javascript">
-      var utterances_repo = 'hybpjx/hybpjx.github.io';
-      var utterances_issue_term = 'pathname';
-      var utterances_label = 'Comment';
-      var utterances_theme = 'github-dark';
+        var disqus_shortname = 'hybpjx-cn';
 
-      (function(){
-          var script = document.createElement('script');
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
 
-          script.src = 'https://utteranc.es/client.js';
-          script.setAttribute('repo', utterances_repo);
-          script.setAttribute('issue-term', 'pathname');
-          script.setAttribute('label', utterances_label);
-          script.setAttribute('theme', utterances_theme);
-          script.setAttribute('crossorigin', 'anonymous');
-          script.async = true;
-          (document.getElementById('utterances_thread')).appendChild(script);
-      }());
-  </script>
+<!-- utterances Comments -->
 
 </body>
 </html>

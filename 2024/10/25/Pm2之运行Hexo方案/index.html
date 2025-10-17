@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
   <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
   <script>hljs.highlightAll();</script>
+  
   <meta name="description" content="简介pm2是一个管理nodejs process的工具，它可以让我们用简单的指令启动nodejs进程(多为web前端)并管理之。详情可以参考pm2的官方文档，这里只是用到了start&#x2F;stop&#x2F;logs几个常用的命令 坑点这里直接安装会报错。并且会报错找不到 这里直接如下安装 1sudo npm install -g pm2 这里一定要加sudo 使用vim hexo_run.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pm2之运行Hexo方案">
@@ -224,12 +225,12 @@
   </div>
 </article>
 
-
     <div class="blog-post-comments">
-        <div id="utterances_thread">
+        <div id="disqus_thread">
             <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
         </div>
     </div>
+
 
 
         
@@ -387,27 +388,19 @@
 
 <!-- Disqus Comments -->
 
-<!-- utterances Comments -->
-
     <script type="text/javascript">
-      var utterances_repo = 'hybpjx/hybpjx.github.io';
-      var utterances_issue_term = 'pathname';
-      var utterances_label = 'Comment';
-      var utterances_theme = 'github-dark';
+        var disqus_shortname = 'hybpjx-cn';
 
-      (function(){
-          var script = document.createElement('script');
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
 
-          script.src = 'https://utteranc.es/client.js';
-          script.setAttribute('repo', utterances_repo);
-          script.setAttribute('issue-term', 'pathname');
-          script.setAttribute('label', utterances_label);
-          script.setAttribute('theme', utterances_theme);
-          script.setAttribute('crossorigin', 'anonymous');
-          script.async = true;
-          (document.getElementById('utterances_thread')).appendChild(script);
-      }());
-  </script>
+<!-- utterances Comments -->
 
 </body>
 </html>
