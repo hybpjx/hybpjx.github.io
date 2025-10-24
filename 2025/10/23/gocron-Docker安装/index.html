@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+  <meta name="description" content="安装Docker这里我用的是Mac 使用 Colima + Docker CLI  安装  1brew install colima docker docker-compose   启动分配 6 核 CPU 和 12 GB 内存  1colima start --cpu 6 --memory 12  如遇到问题 可修改配置 比如修改镜像等等 1colima start --edit  完整配置如下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gocron_Docker安装">
+<meta property="og:url" content="https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="安装Docker这里我用的是Mac 使用 Colima + Docker CLI  安装  1brew install colima docker docker-compose   启动分配 6 核 CPU 和 12 GB 内存  1colima start --cpu 6 --memory 12  如遇到问题 可修改配置 比如修改镜像等等 1colima start --edit  完整配置如下">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-23T02:18:37.000Z">
+<meta property="article:modified_time" content="2025-10-23T02:30:23.908Z">
+<meta property="article:author" content="hybpjx">
+<meta name="twitter:card" content="summary">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
+    
+  <!-- title -->
+  <title>gocron_Docker安装</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
+
+
+  <!-- styles -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/friends/">友联</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">相册</a></li><!--
+     --><!--
+       --><li><a href="/tools/">工具</a></li><!--
+     --><!--
+       --><li><a href="/message/">留言板</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/10/16/hexo%E4%B8%BB%E9%A2%98%E9%AB%98%E4%BA%AE%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&text=gocron_Docker安装"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&title=gocron_Docker安装"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&is_video=false&description=gocron_Docker安装"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=gocron_Docker安装&body=Check out this article: https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&title=gocron_Docker安装"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&title=gocron_Docker安装"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&title=gocron_Docker安装"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&title=gocron_Docker安装"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&name=gocron_Docker安装&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&t=gocron_Docker安装"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Docker"><span class="toc-number">1.</span> <span class="toc-text">安装Docker</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        gocron_Docker安装
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-10-23T02:18:37.000Z" class="dt-published" itemprop="datePublished">2025-10-23</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h1><p>这里我用的是Mac</p>
+<p>使用 Colima + Docker CLI</p>
+<blockquote>
+<p>安装</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install colima docker docker-compose<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>启动<br>分配 6 核 CPU 和 12 GB 内存</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colima start --cpu 6 --memory 12<br></code></pre></td></tr></table></figure>
+
+<p>如遇到问题 可修改配置 比如修改镜像等等</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colima start --edit<br></code></pre></td></tr></table></figure>
+
+<p>完整配置如下</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-comment"># ============================================================================================ #</span><br><span class="hljs-comment"># To abort, delete the contents of this file including the comments and save as an empty file</span><br><span class="hljs-comment"># ============================================================================================ #</span><br><br><span class="hljs-comment"># Number of CPUs to be allocated to the virtual machine.</span><br><span class="hljs-comment"># Default: 2</span><br><span class="hljs-params">cpu:</span> <span class="hljs-number">2</span><br><br><span class="hljs-comment"># Size of the disk in GiB to be allocated to the virtual machine for container data.</span><br><span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> value can only be increased after virtual machine has been created.</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Default: 100</span><br><span class="hljs-params">disk:</span> <span class="hljs-number">100</span><br><br><span class="hljs-comment"># Size of the memory in GiB to be allocated to the virtual machine.</span><br><span class="hljs-comment"># Default: 2</span><br><span class="hljs-params">memory:</span> <span class="hljs-number">2</span><br><br><span class="hljs-comment"># Architecture of the virtual machine (x86_64, aarch64, host)</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> value cannot be changed after virtual machine is created.</span><br><span class="hljs-comment"># Default: host</span><br><span class="hljs-params">arch:</span> aarch64<br><br><span class="hljs-comment"># Container runtime to be used (docker, containerd).</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> value cannot be changed after virtual machine is created.</span><br><span class="hljs-comment"># Default: docker</span><br><span class="hljs-params">runtime:</span> docker<br><br><span class="hljs-comment"># Set custom hostname for the virtual machine.</span><br><span class="hljs-comment"># Default: colima</span><br><span class="hljs-comment">#          colima-profile_name for other profiles</span><br><span class="hljs-params">hostname:</span> colima<br><br><span class="hljs-comment"># Kubernetes configuration for the virtual machine.</span><br><span class="hljs-params">kubernetes:</span><br>  <span class="hljs-comment"># Enable kubernetes.</span><br>  <span class="hljs-comment"># Default: false</span><br>  <span class="hljs-params">enabled:</span> <span class="hljs-literal">false</span><br> <span class="hljs-comment"># Kubernetes version to use.</span><br>  <span class="hljs-comment"># This needs to exactly match a k3s version https://github.com/k3s-io/k3s/releases</span><br>  <span class="hljs-comment"># Default: latest stable release</span><br>  <span class="hljs-params">version:</span> v1.<span class="hljs-number">33.4</span><span class="hljs-operator">+</span>k3s1<br><br>  <span class="hljs-comment"># Additional args to pass to k3s https://docs.k3s.io/cli/server</span><br>  <span class="hljs-comment"># Default: traefik is disabled</span><br>  <span class="hljs-params">k3sArgs:</span><br>    <span class="hljs-operator">-</span> <span class="hljs-operator">-</span>-disable<span class="hljs-operator">=</span>traefik<br><br>  <span class="hljs-comment"># Kubernetes port to listen on</span><br>  <span class="hljs-comment"># A common port is 6443, though left unbound to ensure no port conflicts</span><br>  <span class="hljs-comment"># Default: pick random unbound port</span><br>  <span class="hljs-params">port:</span> <span class="hljs-number">0</span><br><br><span class="hljs-comment"># Auto-activate on the Host for client access.</span><br><span class="hljs-comment"># Setting to true does the following on startup</span><br><span class="hljs-comment">#  - sets as active Docker context (for Docker runtime).</span><br><span class="hljs-comment">#  - sets as active Kubernetes context (if Kubernetes is enabled).</span><br><span class="hljs-comment">#  - sets as active Incus remote (for Incus runtime).</span><br><span class="hljs-comment"># Default: true</span><br><span class="hljs-params">autoActivate:</span> <span class="hljs-literal">true</span><br><span class="hljs-comment"># Network configurations for the virtual machine.</span><br><span class="hljs-params">network:</span><br>  <span class="hljs-comment"># Assign reachable IP address to the virtual machine.</span><br>  <span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> this is currently macOS only and ignored on Linux.</span><br>  <span class="hljs-comment"># Default: false</span><br>  <span class="hljs-params">address:</span> <span class="hljs-literal">false</span><br><br>  <span class="hljs-comment"># Network mode for the virtual machine (shared, bridged).</span><br>  <span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> this is currently macOS only and ignored on Linux.</span><br>  <span class="hljs-comment"># Default: shared</span><br>  <span class="hljs-params">mode:</span> shared<br><br>  <span class="hljs-comment"># Network interface to use for bridged mode.</span><br>  <span class="hljs-comment"># This is only used when mode is set to bridged.</span><br>  <span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> this is currently macOS only and ignored on Linux.</span><br>  <span class="hljs-comment"># Default: en0</span><br>  <span class="hljs-params">interface:</span> en0<br><br>  <span class="hljs-comment"># Use the assigned IP address as the preferred route for the VM.</span><br>  <span class="hljs-comment"># Note: this only has an effect when `address` is set to true.</span><br>  <span class="hljs-comment"># Default: false</span><br>  <span class="hljs-params">preferredRoute:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-comment"># Custom DNS resolvers for the virtual machine.</span><br>  <span class="hljs-comment">#</span><br>  <span class="hljs-comment"># EXAMPLE</span><br>  <span class="hljs-comment"># dns: [8.8.8.8, 1.1.1.1]</span><br>  <span class="hljs-comment">#</span><br>  <span class="hljs-comment"># Default: []</span><br>  <span class="hljs-params">dns:</span><br>    <span class="hljs-operator">-</span> <span class="hljs-number">8.8</span>.<span class="hljs-number">8.8</span><br>    <span class="hljs-operator">-</span> <span class="hljs-number">1.1</span>.<span class="hljs-number">1.1</span><br><br>  <span class="hljs-comment"># DNS hostnames to resolve to custom targets using the internal resolver.</span><br>  <span class="hljs-comment"># This setting has no effect if a custom DNS resolver list is supplied above.</span><br>  <span class="hljs-comment"># It does not configure the /etc/hosts files of any machine or container.</span><br>  <span class="hljs-comment"># The value can be an IP address or another host.</span><br>  <span class="hljs-comment">#</span><br>  <span class="hljs-comment"># EXAMPLE</span><br>  <span class="hljs-comment"># dnsHosts:</span><br>  <span class="hljs-comment">#   example.com: 1.2.3.4</span><br>  <span class="hljs-params">dnsHosts:</span> &#123;&#125;<br><br>  <span class="hljs-comment"># Replicate host IP addresses in the VM. This enables port forwarding to specific</span><br>  <span class="hljs-comment"># host IP addresses.</span><br>  <span class="hljs-comment">#   e.g. `docker run --port 10.0.1.2:8080:8080 alpine` would only forward to the</span><br>  <span class="hljs-comment">#   specified IP address.</span><br>  <span class="hljs-comment">#</span><br>  <span class="hljs-comment"># Default: false</span><br>  <span class="hljs-params">hostAddresses:</span> <span class="hljs-literal">false</span><br><br><span class="hljs-comment"># ===================================================================== #</span><br><span class="hljs-comment"># ADVANCED CONFIGURATION</span><br><span class="hljs-comment"># ===================================================================== #</span><br><br><span class="hljs-comment"># Forward the host&#x27;s SSH agent to the virtual machine.</span><br><span class="hljs-comment"># Default: false</span><br><span class="hljs-params">forwardAgent:</span> <span class="hljs-literal">false</span><br><br><span class="hljs-comment"># Docker daemon configuration that maps directly to daemon.json.</span><br><span class="hljs-comment"># https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file.</span><br><span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> some settings may affect Colima&#x27;s ability to start docker. e.g. `hosts`.</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># EXAMPLE - disable buildkit</span><br><span class="hljs-comment"># docker:</span><br><span class="hljs-comment">#   features:</span><br><span class="hljs-comment">#     buildkit: false</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># EXAMPLE - add insecure registries</span><br><span class="hljs-comment"># docker:</span><br><span class="hljs-comment">#   insecure-registries:</span><br><span class="hljs-comment">#     - myregistry.com:5000</span><br><span class="hljs-comment">#     - host.docker.internal:5000</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Colima default behaviour: buildkit enabled</span><br><span class="hljs-comment"># Default: &#123;&#125;</span><br><span class="hljs-params">docker:</span><br>  <span class="hljs-params">registry-mirrors:</span><br>    <span class="hljs-operator">-</span> https:<span class="hljs-symbol">//docker.mirrors.ustc.edu.cn</span><br><br><span class="hljs-comment"># Virtual Machine type (qemu, vz)</span><br><span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> this is macOS 13 only. For Linux and macOS &lt;13.0, qemu is always used.</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># vz is macOS virtualization framework and requires macOS 13</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> value cannot be changed after virtual machine is created.</span><br><span class="hljs-comment"># Default: qemu</span><br><span class="hljs-params">vmType:</span> vz<br><br><span class="hljs-comment"># Port forwarder for the virtual machine (ssh, grpc).</span><br><span class="hljs-comment"># ssh is more stable but supports only TCP.</span><br><span class="hljs-comment"># grpc supports both TCP and UDP, but is experimental.</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Default: ssh</span><br><span class="hljs-params">portForwarder:</span> ssh<br><br><span class="hljs-comment"># Utilise rosetta for amd64 emulation (requires m1 mac and vmType `vz`)</span><br><span class="hljs-comment"># Default: false</span><br><span class="hljs-params">rosetta:</span> <span class="hljs-literal">false</span><br><br><span class="hljs-comment"># Enable foreign architecture emulation via binfmt (e.g. amd64 on arm64, arm64 on amd64)</span><br><span class="hljs-comment"># Default: true</span><br><span class="hljs-params">binfmt:</span> <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># Enable nested virtualization for the virtual machine (requires m3 mac and vmType `vz`)</span><br><span class="hljs-comment"># Default: false</span><br><span class="hljs-params">nestedVirtualization:</span> <span class="hljs-literal">false</span><br><br><span class="hljs-comment"># Volume mount driver for the virtual machine (virtiofs, 9p, sshfs).</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># virtiofs is limited to macOS and vmType `vz`. It is the fastest of the options.</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># 9p is the recommended and the most stable option for vmType `qemu`.</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># sshfs is faster than 9p but the least reliable of the options (when there are lots</span><br><span class="hljs-comment"># of concurrent reads or writes).</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> value cannot be changed after virtual machine is created.</span><br><span class="hljs-comment"># Default: virtiofs (for vz), sshfs (for qemu)</span><br><span class="hljs-params">mountType:</span> virtiofs<br><br><span class="hljs-comment"># Propagate inotify file events to the VM.</span><br><span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> this is experimental.</span><br><span class="hljs-params">mountInotify:</span> <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># The CPU type for the virtual machine (requires vmType `qemu`).</span><br><span class="hljs-comment"># Options available for host emulation can be checked with: `qemu-system-$(arch) -cpu help`.</span><br><span class="hljs-comment"># Instructions are also supported by appending to the cpu type e.g. &quot;qemu64,+ssse3&quot;.</span><br><br><span class="hljs-comment"># Default: host</span><br><span class="hljs-params">cpuType:</span> <span class="hljs-string">&quot;&quot;</span><br><br><span class="hljs-comment"># Custom provision scripts for the virtual machine.</span><br><span class="hljs-comment"># Provisioning scripts are executed on startup and therefore needs to be idempotent.</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># EXAMPLE - script executed as root</span><br><span class="hljs-comment"># provision:</span><br><span class="hljs-comment">#   - mode: system</span><br><span class="hljs-comment">#     script: apt-get install htop vim</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># EXAMPLE - script executed as user</span><br><span class="hljs-comment"># provision:</span><br><span class="hljs-comment">#   - mode: user</span><br><span class="hljs-comment">#     script: |</span><br><span class="hljs-comment">#       [ -f ~/.provision ] &amp;&amp; exit 0;</span><br><span class="hljs-comment">#       echo provisioning as $USER...</span><br><span class="hljs-comment">#       touch ~/.provision</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Default: []</span><br><span class="hljs-params">provision:</span> []<br><br><span class="hljs-comment"># Modify ~/.ssh/config automatically to include a SSH config for the virtual machine.</span><br><span class="hljs-comment"># SSH config will still be generated in $COLIMA_HOME/ssh_config regardless.</span><br><span class="hljs-comment"># Default: true</span><br><span class="hljs-params">sshConfig:</span> <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># The port number for the SSH server for the virtual machine.</span><br><span class="hljs-comment"># When set to 0, a random available port is used.</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Default: 0</span><br><span class="hljs-params">sshPort:</span> <span class="hljs-number">0</span><br><br><span class="hljs-comment"># Configure volume mounts for the virtual machine.</span><br><span class="hljs-comment"># Colima mounts user&#x27;s home directory by default to provide a familiar</span><br><span class="hljs-comment"># user experience.</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># EXAMPLE</span><br><span class="hljs-comment"># mounts:</span><br><span class="hljs-comment">#   - location: ~/secrets</span><br><span class="hljs-comment">#     writable: false</span><br><span class="hljs-comment">#   - location: ~/projects</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Colima default behaviour: $HOME is mounted as writable.</span><br><span class="hljs-comment"># Default: []</span><br><span class="hljs-params">mounts:</span> []<br><br><span class="hljs-comment"># Specify a custom disk image for the virtual machine.</span><br><span class="hljs-comment"># When not specified, Colima downloads an appropriate disk image from Github at</span><br><span class="hljs-comment"># https://github.com/abiosoft/colima-core/releases.</span><br><span class="hljs-comment"># The file path to a custom disk image can be specified to override the behaviour.</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Default: &quot;&quot;</span><br><span class="hljs-params">diskImage:</span> <span class="hljs-string">&quot;&quot;</span><br><br><span class="hljs-comment"># Size of the disk in GiB for the root filesystem of the virtual machine.</span><br><span class="hljs-comment"># This value is ignored if no runtime is in use. i.e. `none` runtime.</span><br><span class="hljs-comment"># Default: 20</span><br><span class="hljs-params">rootDisk:</span> <span class="hljs-number">20</span><br><br><span class="hljs-comment"># Environment variables for the virtual machine.</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># EXAMPLE</span><br><span class="hljs-comment"># env:</span><br><span class="hljs-comment">#   KEY: value</span><br><span class="hljs-comment">#   ANOTHER_KEY: another value</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Default: &#123;&#125;</span><br><span class="hljs-params">env:</span><br>  <span class="hljs-params">HTTP_PROXY:</span> <span class="hljs-string">&quot;&quot;</span><br>  <span class="hljs-params">HTTPS_PROXY:</span> <span class="hljs-string">&quot;&quot;</span><br>  <span class="hljs-params">NO_PROXY:</span> <span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/friends/">友联</a></li>
+        
+          <li><a href="/masonry/">相册</a></li>
+        
+          <li><a href="/tools/">工具</a></li>
+        
+          <li><a href="/message/">留言板</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Docker"><span class="toc-number">1.</span> <span class="toc-text">安装Docker</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&text=gocron_Docker安装"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&title=gocron_Docker安装"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&is_video=false&description=gocron_Docker安装"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=gocron_Docker安装&body=Check out this article: https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&title=gocron_Docker安装"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&title=gocron_Docker安装"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&title=gocron_Docker安装"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&title=gocron_Docker安装"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&name=gocron_Docker安装&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/&t=gocron_Docker安装"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2025
+    hybpjx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/friends/">友联</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">相册</a></li><!--
+     --><!--
+       --><li><a href="/tools/">工具</a></li><!--
+     --><!--
+       --><li><a href="/message/">留言板</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
