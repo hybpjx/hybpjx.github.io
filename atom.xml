@@ -113,7 +113,7 @@
     <link href="https://hybpjx.cn/2025/10/09/python-UV%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/"/>
     <id>https://hybpjx.cn/2025/10/09/python-UV%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/</id>
     <published>2025-10-09T07:11:54.000Z</published>
-    <updated>2025-10-10T10:17:05.492Z</updated>
+    <updated>2025-10-24T07:29:53.748Z</updated>
     
     <content type="html"><![CDATA[<h1 id="安裝-uv"><a href="#安裝-uv" class="headerlink" title="安裝 uv"></a>安裝 uv</h1><p>uv 本身並不需要 Python，所以不建議用 pip 或是 pipx 安裝，這樣都會跟特定的 Python 環境綁在一起，Windows 上就直接透過 PowerSehll 安裝即可：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">powershell -ExecutionPolicy ByPass -c <span class="hljs-string">&quot;irm https://astral.sh/uv/install.ps1 | </span><br></code></pre></td></tr></table></figure><h1 id="scoop-安裝："><a href="#scoop-安裝：" class="headerlink" title="scoop 安裝："></a>scoop 安裝：</h1><blockquote><p>scoop install uv<br>本文都以 Windows 平台在 PowerShell 下操作示範</p></blockquote><h1 id="配置路径"><a href="#配置路径" class="headerlink" title="配置路径"></a>配置路径</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">set</span> Path=D:\MyConfiguration\zichen2.liang\.local\<span class="hljs-built_in">bin</span>;%Path%   (cmd)<br>$env:Path = <span class="hljs-string">&quot;D:\MyConfiguration\zichen2.liang\.local\bin;$env:Path&quot;</span>   (powershell)<br></code></pre></td></tr></table></figure><h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看所有安装及可安装的版本</span><br>uv python list <br><br><span class="hljs-comment"># 最新版安装</span><br>uv python install<br><br><span class="hljs-comment"># 指定版本安装</span><br>uv python install 3.10<br><br><span class="hljs-comment"># 安装多个版本</span><br>uv python install 3.10 3.11<br><br><span class="hljs-comment"># 显示安装的路径</span><br>uv python <span class="hljs-built_in">dir</span><br><br><span class="hljs-comment"># 卸载安装</span><br>uv python uninstall 3.10<br><br><span class="hljs-comment"># 卸载多个版本</span><br>uv python uninstall 3.10 3.11<br><br></code></pre></td></tr></table></figure>]]></content>
     
@@ -128,7 +128,7 @@
     <category term="快速安装" scheme="https://hybpjx.cn/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/"/>
     
     
-    <category term="Python" scheme="https://hybpjx.cn/tags/Python/"/>
+    <category term="python" scheme="https://hybpjx.cn/tags/python/"/>
     
   </entry>
   
