@@ -1353,7 +1353,7 @@ article header .author {
 article header .postdate {
   display: inline;
 }
-.content h1:before {
+.e-content h1:before {
   content: "#";
   font-weight: bold;
   left: -1rem;
