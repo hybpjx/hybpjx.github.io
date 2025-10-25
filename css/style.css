@@ -1484,6 +1484,9 @@ article header .postdate {
 #archive .post-year {
   list-style-type: none;
 }
+#archive .post-year h2:before {
+  content: "" !important;
+}
 #archive .post-list {
   padding: 0;
 }
