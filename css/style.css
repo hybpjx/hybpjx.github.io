@@ -521,6 +521,9 @@ body td {
   border-radius: 4px;
   border-left: 4px solid #69c585;
 }
+.tools-category-title:before {
+  content: "" !important;
+}
 .tools-category-title i {
   display: none;
 }
