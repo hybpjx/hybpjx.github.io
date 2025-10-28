@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>某度点选VMP逆向分析</title>
+      <link href="/2025/10/28/%E6%9F%90%E5%BA%A6%E7%82%B9%E9%80%89VMP%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"/>
+      <url>/2025/10/28/%E6%9F%90%E5%BA%A6%E7%82%B9%E9%80%89VMP%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/</url>
+      
+        <content type="html"><![CDATA[<h1 id="底图解密"><a href="#底图解密" class="headerlink" title="底图解密"></a>底图解密</h1><p>由于底图是乱序的。所以要先找到还原位置。</p><p>这里直接看插装日志</p><p>具体如何实现看一眼日志就知道了</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">this</span>.<span class="hljs-property">q</span>.<span class="hljs-title function_">A</span>(<span class="hljs-string">&quot;arguments&quot;</span>, n || []); ; )<br></code></pre></td></tr></table></figure><p><img src="https://s2.loli.net/2025/10/24/JPNL23snAEOa7gy.png"></p><h1 id="C-函数解密"><a href="#C-函数解密" class="headerlink" title="C 函数解密"></a>C 函数解密</h1><p>如下图</p><p><img src="https://s2.loli.net/2025/10/24/DY7Qr5HZPCTv2oM.png"></p><p><img src="/Users/hybpjx/Library/Application%20Support/typora-user-images/image-20251024233559043.png"></p><p>断点定位</p><p><img src="https://s2.loli.net/2025/10/24/pQbC9se65lwMTXk.png"></p><p>继续</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs javascript">t.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">get</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">t</span>) &#123;<br>                <span class="hljs-keyword">var</span> e = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">g</span>(t);<br>                <span class="hljs-keyword">return</span> e || (e = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">p</span>(t),<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">m</span>(t, e),<br>                e)<br>            &#125;<br>,<br>t.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">set</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">t, e</span>) &#123;<br>    <span class="hljs-keyword">var</span> n = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">get</span>(t);<br>    <span class="hljs-keyword">if</span> (!n)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReferenceError</span>(<span class="hljs-string">&quot;&quot;</span>.<span class="hljs-title function_">concat</span>(t, <span class="hljs-string">&quot; is not defined&quot;</span>));<br>    n.<span class="hljs-title function_">set</span>(e)<br>&#125;<br><br><br>================================<br>t.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">set</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">t</span>) &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-number">2</span> === <span class="hljs-variable language_">this</span>.<span class="hljs-property">kind</span>)<br>                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TypeError</span>(<span class="hljs-string">&quot;Assignment to constant variable&quot;</span>);<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> = t<br>            &#125;<br>,<br>t.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">get</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span><br>&#125;<br></code></pre></td></tr></table></figure><p>找到C的</p><p><img src="https://s2.loli.net/2025/10/27/i157w3UrjAKnVJR.png"></p><p>简单看下流程</p><p><img src="https://s2.loli.net/2025/10/27/rGNFsV2dW1oDLYE.png"></p><p><img src="https://s2.loli.net/2025/10/27/pNcmDlwj85YH7qy.png"></p><p>经过验证。可知 IV是固定。</p><p>key为动态值。</p><p><img src="https://s2.loli.net/2025/10/27/BzvKDiXnltajLs7.png"></p><p>如图所值。 key 是分割而来 40位</p><p>分析得知为sha1。</p><p>&#x3D;&#x3D;&#x3D;&gt;</p><p>值由来如下图</p><p><img src="https://s2.loli.net/2025/10/27/sxY87cnISPz9bju.png"></p><p>然后经过一层 AES.</p><p>key为动态值，IV写死。</p><p>得到最终的 C值。</p><p>AES加密前的值为</p><p>&#x3D;&#x3D;&#x3D;&gt; </p><p>如下图所示</p><p><img src="https://s2.loli.net/2025/10/27/YaImgKE9Glwtsj1.png"></p><p>值为一个一个跳出。</p><p>可以看到 </p><p>有个特殊值。 MNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+&#x2F;ABCDEFGHIJKL。应该是修改了base64的码表</p><p><img src="https://s2.loli.net/2025/10/27/uD3UHer8XpBicCt.png"></p><p>经过分析。可知每次码表都不一样。</p><p>规则如下</p><p>这里我们先来了解下 何为base64，AI简单概括几句话</p><p>1、<strong>分组基础：</strong> Base64 将输入数据按每 <strong>3 个字节</strong>（共 24 位二进制）进行一组处理。</p><p>2、<strong>重新划分：</strong> 将这 24 位二进制流重新划分为 <strong>4 组</strong>，每组 <strong>6 位</strong>。</p><p>3、<strong>查表映射：</strong> 每组 6 位（数值范围 $0-63$）作为索引，去查 Base64 专用的 <strong>64 字符表</strong>，得到一个可见字符。</p><p>4、<strong>数据比例：</strong> 最终，每 3 个输入字节对应 4 个输出字符，因此编码后的数据体积增大 $1&#x2F;3$。</p><p>5、<strong>末尾填充：</strong> 如果输入数据不足 3 个字节，则在二进制末尾补零，并在 Base64 字符串末尾使用一个或两个 <strong><code>=</code></strong> 符号进行占位填充。</p><p><img src="https://s2.loli.net/2025/10/27/H7MVefWO8U4Gynw.png"></p><p>具体不多说了。</p><p>最后看结果。</p><p><img src="https://s2.loli.net/2025/10/28/dfBmFOLEwqM1ane.png"></p><p>页面也不校验，成功率也低。可以当个练练手的项目</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JS逆向 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 逆向 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>gocron_Docker安装</title>
       <link href="/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/"/>
       <url>/2025/10/23/gocron-Docker%E5%AE%89%E8%A3%85/</url>
@@ -288,6 +313,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 逆向 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -309,7 +340,7 @@
       
         <tags>
             
-            <tag> Android </tag>
+            <tag> 逆向 </tag>
             
         </tags>
       
