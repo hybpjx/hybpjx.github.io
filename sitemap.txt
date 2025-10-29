@@ -1,3 +1,5 @@
+https://hybpjx.cn/friends/index.html
+https://hybpjx.cn/about/index.html
 https://hybpjx.cn/2025/10/28/%E6%9F%90%E5%BA%A6%E7%82%B9%E9%80%89VMP%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/
 https://hybpjx.cn/2025/08/15/%E6%9F%90%E7%8C%AB%E6%8A%95%E8%AF%89%20flutter%20Signature%20%E9%80%86%E5%90%91/
 https://hybpjx.cn/2025/08/19/%E9%A9%AC%E8%9C%82%E7%AA%9Dunidbg%E8%A1%A5%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8/
@@ -51,12 +53,10 @@ https://hybpjx.cn/2022/04/05/Andorid%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%8E%E5%BC%8
 https://hybpjx.cn/2022/03/26/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85golang/
 https://hybpjx.cn/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/
 https://hybpjx.cn/masonry/index.html
-https://hybpjx.cn/friends/index.html
 https://hybpjx.cn/essays/index.html
 https://hybpjx.cn/message/index.html
 https://hybpjx.cn/search/index.html
 https://hybpjx.cn/2025/08/22/IDA%E5%AD%A6%E4%B9%A0/
-https://hybpjx.cn/about/index.html
 https://hybpjx.cn/2025/03/26/Mac-%E7%94%A8Jenv%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AAJava%E7%8E%AF%E5%A2%83/
 https://hybpjx.cn/tags/index.html
 https://hybpjx.cn/categories/index.html
