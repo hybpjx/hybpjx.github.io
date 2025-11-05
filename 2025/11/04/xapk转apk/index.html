@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+  <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475import zipfileimport osimport shutilimport sysimport subpro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xapk转apk">
+<meta property="og:url" content="https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/index.html">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475import zipfileimport osimport shutilimport sysimport subpro">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-04T02:41:01.000Z">
+<meta property="article:modified_time" content="2025-11-05T09:03:36.849Z">
+<meta property="article:author" content="hybpjx">
+<meta name="twitter:card" content="summary">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
+    
+  <!-- title -->
+  <title>xapk转apk</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
+
+
+  <!-- styles -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/10/28/%E6%9F%90%E5%BA%A6%E7%82%B9%E9%80%89VMP%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&text=xapk转apk"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&title=xapk转apk"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&is_video=false&description=xapk转apk"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=xapk转apk&body=Check out this article: https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&title=xapk转apk"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&title=xapk转apk"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&title=xapk转apk"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&title=xapk转apk"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&name=xapk转apk&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&t=xapk转apk"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        xapk转apk
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-11-04T02:41:01.000Z" class="dt-published" itemprop="datePublished">2025-11-04</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%9D%82%E8%AE%B0/">杂记</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> zipfile<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> shutil<br><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> subprocess<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">unzip_file</span>(<span class="hljs-params">src, dst</span>):<br>    <span class="hljs-keyword">with</span> zipfile.ZipFile(src, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> z:<br>        z.extractall(dst)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_files</span>(<span class="hljs-params">base, ext</span>):<br>    result = []<br>    <span class="hljs-keyword">for</span> root, _, files <span class="hljs-keyword">in</span> os.walk(base):<br>        <span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> files:<br>            <span class="hljs-keyword">if</span> f.endswith(ext):<br>                result.append(os.path.join(root, f))<br>    <span class="hljs-keyword">return</span> result<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">copy_files</span>(<span class="hljs-params">files, dst</span>):<br>    os.makedirs(dst, exist_ok=<span class="hljs-literal">True</span>)<br>    <span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> files:<br>        shutil.copy(f, dst)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">copy_obb</span>(<span class="hljs-params">base, dst</span>):<br>    <span class="hljs-keyword">for</span> root, dirs, _ <span class="hljs-keyword">in</span> os.walk(base):<br>        <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> dirs:<br>            <span class="hljs-keyword">if</span> d == <span class="hljs-string">&#x27;obb&#x27;</span>:<br>                shutil.copytree(os.path.join(root, d), os.path.join(dst, d), dirs_exist_ok=<span class="hljs-literal">True</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">adb_install_multiple</span>(<span class="hljs-params">apk_dir</span>):<br>    apk_list = <span class="hljs-built_in">sorted</span>(find_files(apk_dir, <span class="hljs-string">&#x27;.apk&#x27;</span>))<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> apk_list:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;no apk files to install&#x27;</span>)<br>        <span class="hljs-keyword">return</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;installing via adb...&#x27;</span>)<br>    cmd = [<span class="hljs-string">&#x27;adb&#x27;</span>, <span class="hljs-string">&#x27;install-multiple&#x27;</span>] + apk_list<br>    <span class="hljs-keyword">try</span>:<br>        subprocess.run(cmd, check=<span class="hljs-literal">True</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;install success&#x27;</span>)<br>    <span class="hljs-keyword">except</span> subprocess.CalledProcessError:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;install failed&#x27;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">convert_xapk</span>(<span class="hljs-params">xapk_path, output_dir=<span class="hljs-literal">None</span>, auto_install=<span class="hljs-literal">False</span></span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(xapk_path):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;file not found&#x27;</span>)<br>        <span class="hljs-keyword">return</span><br>    <span class="hljs-keyword">if</span> output_dir <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        output_dir = os.path.splitext(xapk_path)[<span class="hljs-number">0</span>]<br>    os.makedirs(output_dir, exist_ok=<span class="hljs-literal">True</span>)<br><br>    unzip_file(xapk_path, output_dir)<br>    apk_dir = os.path.join(output_dir, <span class="hljs-string">&#x27;apk&#x27;</span>)<br>    obb_dir = os.path.join(output_dir, <span class="hljs-string">&#x27;obb&#x27;</span>)<br><br>    apk_files = find_files(output_dir, <span class="hljs-string">&#x27;.apk&#x27;</span>)<br>    <span class="hljs-keyword">if</span> apk_files:<br>        copy_files(apk_files, apk_dir)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;apk extracted&#x27;</span>)<br><br>    copy_obb(output_dir, obb_dir)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;obb extracted&#x27;</span>)<br><br>    <span class="hljs-keyword">if</span> auto_install:<br>        adb_install_multiple(apk_dir)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;done:&#x27;</span>, output_dir)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(sys.argv) &lt; <span class="hljs-number">2</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;usage: python xapk_to_apk.py app.xapk [output_dir] [--install]&#x27;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        xapk = sys.argv[<span class="hljs-number">1</span>]<br>        out = sys.argv[<span class="hljs-number">2</span>] <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(sys.argv) &gt; <span class="hljs-number">2</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> sys.argv[<span class="hljs-number">2</span>].startswith(<span class="hljs-string">&#x27;--&#x27;</span>) <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span><br>        install_flag = <span class="hljs-string">&#x27;--install&#x27;</span> <span class="hljs-keyword">in</span> sys.argv<br>        convert_xapk(xapk, out, install_flag)<br></code></pre></td></tr></table></figure>
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/archives/">🖋️ 片刻记录</a></li>
+        
+          <li><a href="/about/">📜 关于</a></li>
+        
+          <li><a href="/tools/">🛠️ 械所</a></li>
+        
+          <li><a href="/masonry/">🖼️ 相册</a></li>
+        
+          <li><a href="/friends/">🤝 同行者</a></li>
+        
+          <li><a href="/search/">🔍 搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&text=xapk转apk"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&title=xapk转apk"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&is_video=false&description=xapk转apk"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=xapk转apk&body=Check out this article: https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&title=xapk转apk"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&title=xapk转apk"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&title=xapk转apk"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&title=xapk转apk"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&name=xapk转apk&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/&t=xapk转apk"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    ⚖️ 著作权属 &copy;
+    
+    
+    2025-2099
+    hybpjx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+  <meta name="description" content="并发基础你电脑只有 1 颗 CPU，也能同时开 20 个浏览器页面，对吧？其实不是同时做，而是： CPU 速度非常快它切换任务 → 我们看起来像同时做 Go 的并发，也是同一个思想：创建很多“小任务”，轮流执行，看起来像是一起执行的。 Go func是什么？某个函数执行  result :&#x3D; doTask(url)👉 会阻塞：一条没做完，下一条不能做  Go 的核心 加上   go d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang高并发">
+<meta property="og:url" content="https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/index.html">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="并发基础你电脑只有 1 颗 CPU，也能同时开 20 个浏览器页面，对吧？其实不是同时做，而是： CPU 速度非常快它切换任务 → 我们看起来像同时做 Go 的并发，也是同一个思想：创建很多“小任务”，轮流执行，看起来像是一起执行的。 Go func是什么？某个函数执行  result :&#x3D; doTask(url)👉 会阻塞：一条没做完，下一条不能做  Go 的核心 加上   go d">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-05T09:03:51.000Z">
+<meta property="article:modified_time" content="2025-11-05T09:18:54.987Z">
+<meta property="article:author" content="hybpjx">
+<meta name="twitter:card" content="summary">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
+    
+  <!-- title -->
+  <title>Golang高并发</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
+
+
+  <!-- styles -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/11/04/xapk%E8%BD%ACapk/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&text=Golang高并发"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&title=Golang高并发"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&is_video=false&description=Golang高并发"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Golang高并发&body=Check out this article: https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&title=Golang高并发"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&title=Golang高并发"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&title=Golang高并发"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&title=Golang高并发"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&name=Golang高并发&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&t=Golang高并发"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">并发基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Go-func%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">Go func是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%9F%BA%E7%A1%80%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-number">1.2.</span> <span class="toc-text">最基础的版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">并发控制？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E5%B9%B6%E5%8F%91%E6%A0%B8%E5%BF%83"><span class="toc-number">2.</span> <span class="toc-text">高并发核心</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="toc-number">2.1.</span> <span class="toc-text">什么意思</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%A8go-func-%E7%9A%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">为什么不用go func() 的形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E6%98%93%E4%BD%BF%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">简易使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6"><span class="toc-number">2.4.</span> <span class="toc-text">进阶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95return"><span class="toc-number">2.5.</span> <span class="toc-text">如何return</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Golang高并发
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-11-05T09:03:51.000Z" class="dt-published" itemprop="datePublished">2025-11-05</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="并发基础"><a href="#并发基础" class="headerlink" title="并发基础"></a>并发基础</h1><p>你电脑只有 1 颗 CPU，也能同时开 20 个浏览器页面，对吧？<br>其实不是同时做，而是：</p>
+<p>CPU 速度非常快<br>它切换任务 → 我们看起来像同时做</p>
+<p>Go 的并发，也是同一个思想：<br>创建很多“小任务”，轮流执行，看起来像是一起执行的。</p>
+<h2 id="Go-func是什么？"><a href="#Go-func是什么？" class="headerlink" title="Go func是什么？"></a>Go func是什么？</h2><p>某个函数执行</p>
+<blockquote>
+<p>result :&#x3D; doTask(url)<br>👉 会阻塞：一条没做完，下一条不能做</p>
+</blockquote>
+<p>Go 的核心 加上 </p>
+<blockquote>
+<p>go doTask(url)</p>
+</blockquote>
+<p><strong>这叫 启动一个协程（goroutine）</strong><br><strong>它会后台运行，不等它执行完</strong><br><strong>主程序继续往下走</strong></p>
+<h2 id="最基础的版本"><a href="#最基础的版本" class="headerlink" title="最基础的版本"></a>最基础的版本</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br> <span class="hljs-string">&quot;fmt&quot;</span><br> <span class="hljs-string">&quot;net/http&quot;</span><br> <span class="hljs-string">&quot;sync&quot;</span><br> <span class="hljs-string">&quot;time&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br> client := &amp;http.Client&#123;Timeout: <span class="hljs-number">2</span> * time.Second&#125;<br><br> urls := []<span class="hljs-type">string</span>&#123;<br>  <span class="hljs-string">&quot;https://www.baidu.com&quot;</span>,<br>  <span class="hljs-string">&quot;https://www.qq.com&quot;</span>,<br>  <span class="hljs-string">&quot;https://www.bilibili.com&quot;</span>,<br> &#125;<br><br> <span class="hljs-keyword">var</span> wg sync.WaitGroup<br> wg.Add(<span class="hljs-built_in">len</span>(urls))<br><br> start := time.Now()<br><br> <span class="hljs-keyword">for</span> _, u := <span class="hljs-keyword">range</span> urls &#123;<br>  <span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(link <span class="hljs-type">string</span>)</span></span> &#123;<br>   <span class="hljs-keyword">defer</span> wg.Done()<br><br>   resp, err := client.Get(link)<br>   <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;请求失败:&quot;</span>, link)<br>    <span class="hljs-keyword">return</span><br>   &#125;<br>   resp.Body.Close()<br>   fmt.Println(<span class="hljs-string">&quot;完成:&quot;</span>, link)<br>  &#125;(u)<br> &#125;<br> wg.Wait()<br><br> fmt.Printf(<span class="hljs-string">&quot;全部完成！耗时：%v\n&quot;</span>, time.Since(start))<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="并发控制？"><a href="#并发控制？" class="headerlink" title="并发控制？"></a>并发控制？</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br> <span class="hljs-string">&quot;fmt&quot;</span><br> <span class="hljs-string">&quot;net/http&quot;</span><br> <span class="hljs-string">&quot;sync&quot;</span><br> <span class="hljs-string">&quot;time&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br> urls := []<span class="hljs-type">string</span>&#123;&#125;<br> <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++ &#123;<br>  urls = <span class="hljs-built_in">append</span>(urls, <span class="hljs-string">&quot;https://www.baidu.com&quot;</span>)<br> &#125;<br><br> client := &amp;http.Client&#123;Timeout: <span class="hljs-number">2</span> * time.Second&#125;<br><br> <span class="hljs-comment">// 限制并发为 20</span><br> limit := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>&#123;&#125;, <span class="hljs-number">20</span>)<br><br> <span class="hljs-keyword">var</span> wg sync.WaitGroup<br> begin := time.Now()<br><br> <span class="hljs-keyword">for</span> _, u := <span class="hljs-keyword">range</span> urls &#123;<br>  wg.Add(<span class="hljs-number">1</span>)<br><br>  limit &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125; <span class="hljs-comment">// 占一个坑（如果满了就阻塞）</span><br><br>  <span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(link <span class="hljs-type">string</span>)</span></span> &#123;<br>   <span class="hljs-keyword">defer</span> wg.Done()<br>   <span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123; &lt;-limit &#125;() <span class="hljs-comment">// 用完释放一个坑</span><br>   resp, err := client.Get(link)<br>   <span class="hljs-keyword">if</span> err == <span class="hljs-literal">nil</span> &#123;<br>    resp.Body.Close()<br>   &#125;<br><br>   fmt.Println(<span class="hljs-string">&quot;完成:&quot;</span>, link)<br>  &#125;(u)<br> &#125;<br><br> wg.Wait()<br> fmt.Println(<span class="hljs-string">&quot;全部完成，用时:&quot;</span>, time.Since(begin))<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="高并发核心"><a href="#高并发核心" class="headerlink" title="高并发核心"></a>高并发核心</h1><p>认识这个库</p>
+<blockquote>
+<p>github.com&#x2F;panjf2000&#x2F;ants&#x2F;v2</p>
+</blockquote>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe"><span class="hljs-keyword">var</span> pool, <span class="hljs-literal">_</span> = ants.NewPool(<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="什么意思"><a href="#什么意思" class="headerlink" title="什么意思"></a>什么意思</h2><p>创建了 <strong>10个</strong>协程池，可以同时执行10个任务。</p>
+<h2 id="为什么不用go-func-的形式"><a href="#为什么不用go-func-的形式" class="headerlink" title="为什么不用go func() 的形式"></a>为什么不用go func() 的形式</h2><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>问题</th>
+<th>适用于谁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>直接 <code>go func()</code></td>
+<td>协程数量无上限 → 内存爆炸 → 拥塞</td>
+<td>小量任务</td>
+</tr>
+<tr>
+<td>make(chan) + go routine 自己控制</td>
+<td>代码量大，容易踩坑</td>
+<td>熟练工程师</td>
+</tr>
+<tr>
+<td><strong>ants.Pool</strong> ✅</td>
+<td>自动回收调度、限制并发、复用 goroutine</td>
+<td>最佳方案</td>
+</tr>
+</tbody></table>
+<h2 id="简易使用"><a href="#简易使用" class="headerlink" title="简易使用"></a>简易使用</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br> <span class="hljs-string">&quot;fmt&quot;</span><br> <span class="hljs-string">&quot;time&quot;</span><br><br> <span class="hljs-string">&quot;github.com/panjf2000/ants/v2&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br> <span class="hljs-comment">// 最大并发数：20</span><br> pool, _ := ants.NewPool(<span class="hljs-number">20</span>)<br> <span class="hljs-keyword">defer</span> pool.Release()<br><br> start := time.Now()<br><br> <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++ &#123;<br>  num := i<br>  pool.Submit(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>   time.Sleep(<span class="hljs-number">100</span> * time.Millisecond) <span class="hljs-comment">// 模拟任务</span><br>   fmt.Println(<span class="hljs-string">&quot;完成任务:&quot;</span>, num)<br>  &#125;)<br> &#125;<br><br> <span class="hljs-comment">// 等所有任务做完</span><br> pool.Release() <span class="hljs-comment">// 关闭池子并等待任务完成</span><br><br> fmt.Println(<span class="hljs-string">&quot;耗时:&quot;</span>, time.Since(start))<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br> <span class="hljs-string">&quot;fmt&quot;</span><br> <span class="hljs-string">&quot;net/http&quot;</span><br> <span class="hljs-string">&quot;time&quot;</span><br><br> <span class="hljs-string">&quot;github.com/panjf2000/ants/v2&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br> urls := []<span class="hljs-type">string</span>&#123;&#125;<br> <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++ &#123;<br>  urls = <span class="hljs-built_in">append</span>(urls, <span class="hljs-string">&quot;https://www.baidu.com&quot;</span>)<br> &#125;<br><br> client := &amp;http.Client&#123;Timeout: <span class="hljs-number">2</span> * time.Second&#125;<br><br> pool, _ := ants.NewPool(<span class="hljs-number">20</span>)<br> <span class="hljs-keyword">defer</span> pool.Release()<br><br> begin := time.Now()<br><br> <span class="hljs-keyword">for</span> _, u := <span class="hljs-keyword">range</span> urls &#123;<br>  link := u<br>  pool.Submit(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>   resp, err := client.Get(link)<br>   <span class="hljs-keyword">if</span> err == <span class="hljs-literal">nil</span> &#123;<br>    resp.Body.Close()<br>   &#125;<br>   fmt.Println(<span class="hljs-string">&quot;✅ 完成:&quot;</span>, link)<br>  &#125;)<br> &#125;<br><br> pool.Release() <span class="hljs-comment">// 等任务全部结束</span><br> fmt.Println(<span class="hljs-string">&quot;总耗时:&quot;</span>, time.Since(begin))<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="如何return"><a href="#如何return" class="headerlink" title="如何return"></a>如何return</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br> <span class="hljs-string">&quot;fmt&quot;</span><br> <span class="hljs-string">&quot;net/http&quot;</span><br> <span class="hljs-string">&quot;sync&quot;</span><br> <span class="hljs-string">&quot;time&quot;</span><br><br> <span class="hljs-string">&quot;github.com/panjf2000/ants/v2&quot;</span><br>)<br><br><span class="hljs-keyword">type</span> Result <span class="hljs-keyword">struct</span> &#123;<br> Url  <span class="hljs-type">string</span><br> Ok   <span class="hljs-type">bool</span><br> Cost time.Duration<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br><br> urls := []<span class="hljs-type">string</span>&#123;<br>  <span class="hljs-string">&quot;https://www.baidu.com&quot;</span>,<br>  <span class="hljs-string">&quot;https://www.google.com&quot;</span>,<br>  <span class="hljs-string">&quot;https://www.bilibili.com&quot;</span>,<br>  <span class="hljs-string">&quot;https://www.qq.com&quot;</span>,<br> &#125;<br><br> client := &amp;http.Client&#123;Timeout: <span class="hljs-number">2</span> * time.Second&#125;<br><br> results := <span class="hljs-built_in">make</span>([]Result, <span class="hljs-built_in">len</span>(urls))<br> <span class="hljs-keyword">var</span> wg sync.WaitGroup<br> wg.Add(<span class="hljs-built_in">len</span>(urls))<br><br> pool, _ := ants.NewPool(<span class="hljs-number">20</span>)<br> <span class="hljs-keyword">defer</span> pool.Release()<br><br> <span class="hljs-keyword">for</span> i, u := <span class="hljs-keyword">range</span> urls &#123;<br><br>  idx := i<br>  urlCopy := u<br><br>  pool.Submit(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>   <span class="hljs-keyword">defer</span> wg.Done()<br><br>   t := time.Now()<br>   resp, err := client.Get(urlCopy)<br>   ok := <span class="hljs-literal">false</span><br>   <span class="hljs-keyword">if</span> err == <span class="hljs-literal">nil</span> &#123;<br>    resp.Body.Close()<br>    ok = <span class="hljs-literal">true</span><br>   &#125;<br><br>   results[idx] = Result&#123;<br>    Url:  urlCopy,<br>    Ok:   ok,<br>    Cost: time.Since(t),<br>   &#125;<br>  &#125;)<br> &#125;<br><br> wg.Wait() <span class="hljs-comment">// 等全部完成</span><br><br> fmt.Println(<span class="hljs-string">&quot;执行结果↓&quot;</span>)<br><br> <span class="hljs-keyword">for</span> _, r := <span class="hljs-keyword">range</span> results &#123;<br>  fmt.Println(r)<br> &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/archives/">🖋️ 片刻记录</a></li>
+        
+          <li><a href="/about/">📜 关于</a></li>
+        
+          <li><a href="/tools/">🛠️ 械所</a></li>
+        
+          <li><a href="/masonry/">🖼️ 相册</a></li>
+        
+          <li><a href="/friends/">🤝 同行者</a></li>
+        
+          <li><a href="/search/">🔍 搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">并发基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Go-func%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">Go func是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%9F%BA%E7%A1%80%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-number">1.2.</span> <span class="toc-text">最基础的版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">并发控制？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E5%B9%B6%E5%8F%91%E6%A0%B8%E5%BF%83"><span class="toc-number">2.</span> <span class="toc-text">高并发核心</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="toc-number">2.1.</span> <span class="toc-text">什么意思</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%A8go-func-%E7%9A%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">为什么不用go func() 的形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E6%98%93%E4%BD%BF%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">简易使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6"><span class="toc-number">2.4.</span> <span class="toc-text">进阶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95return"><span class="toc-number">2.5.</span> <span class="toc-text">如何return</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&text=Golang高并发"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&title=Golang高并发"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&is_video=false&description=Golang高并发"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Golang高并发&body=Check out this article: https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&title=Golang高并发"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&title=Golang高并发"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&title=Golang高并发"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&title=Golang高并发"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&name=Golang高并发&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/&t=Golang高并发"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    ⚖️ 著作权属 &copy;
+    
+    
+    2025-2099
+    hybpjx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
