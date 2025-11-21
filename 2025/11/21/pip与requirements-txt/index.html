@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+  <meta name="description" content="导出全部已安装包使用pip freeze命令可快速导出当前Python环境中所有已安装的包及其版本： 1pip freeze &gt; requirements.txt  导出格式化的requirements.txt为了使requirements.txt文件更易于阅读，可以使用以下命令： 1pip freeze | grep -v &#x27;^-e&#x27; &gt; requirements">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pip与requirements.txt">
+<meta property="og:url" content="https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/index.html">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="导出全部已安装包使用pip freeze命令可快速导出当前Python环境中所有已安装的包及其版本： 1pip freeze &gt; requirements.txt  导出格式化的requirements.txt为了使requirements.txt文件更易于阅读，可以使用以下命令： 1pip freeze | grep -v &#x27;^-e&#x27; &gt; requirements">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-21T07:08:45.000Z">
+<meta property="article:modified_time" content="2025-11-21T07:17:36.929Z">
+<meta property="article:author" content="hybpjx">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
+    
+  <!-- title -->
+  <title>pip与requirements.txt</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
+
+
+  <!-- styles -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&text=pip与requirements.txt"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&title=pip与requirements.txt"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&is_video=false&description=pip与requirements.txt"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=pip与requirements.txt&body=Check out this article: https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&title=pip与requirements.txt"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&title=pip与requirements.txt"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&title=pip与requirements.txt"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&title=pip与requirements.txt"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&name=pip与requirements.txt&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&t=pip与requirements.txt"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E5%85%A8%E9%83%A8%E5%B7%B2%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">导出全部已安装包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%9A%84requirements-txt"><span class="toc-number">2.</span> <span class="toc-text">导出格式化的requirements.txt</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E9%9D%9E%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E5%8C%85"><span class="toc-number">3.</span> <span class="toc-text">导出非本地开发包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%85%A8%E9%83%A8%E5%8C%85"><span class="toc-number">4.</span> <span class="toc-text">安装全部包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E5%8D%95%E4%B8%AA%E5%8C%85"><span class="toc-number">5.</span> <span class="toc-text">更新单个包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E7%89%B9%E5%AE%9A%E5%8C%85%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-number">6.</span> <span class="toc-text">导出特定包的版本</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        pip与requirements.txt
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-11-21T07:08:45.000Z" class="dt-published" itemprop="datePublished">2025-11-21</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/">快速安装</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="导出全部已安装包"><a href="#导出全部已安装包" class="headerlink" title="导出全部已安装包"></a>导出全部已安装包</h1><p>使用pip freeze命令可快速导出当前Python环境中所有已安装的包及其版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip freeze &gt; requirements.txt<br></code></pre></td></tr></table></figure>
+
+<h1 id="导出格式化的requirements-txt"><a href="#导出格式化的requirements-txt" class="headerlink" title="导出格式化的requirements.txt"></a>导出格式化的requirements.txt</h1><p>为了使requirements.txt文件更易于阅读，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip freeze | grep -v <span class="hljs-string">&#x27;^-e&#x27;</span> &gt; requirements.txt<br></code></pre></td></tr></table></figure>
+
+<h1 id="导出非本地开发包"><a href="#导出非本地开发包" class="headerlink" title="导出非本地开发包"></a>导出非本地开发包</h1><p>通过grep过滤掉非标准包（如本地开发包）：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">pip <span class="hljs-keyword">freeze</span> | grep -v &quot; @ &quot; &gt; requirements.txt<br><br>pip list <span class="hljs-comment">--format=freeze | grep -v &#x27;pkg-resources==0.0.0&#x27; &gt; requirements.txt</span><br><br><br></code></pre></td></tr></table></figure>
+
+<p>这条命令会过滤掉任何以’-e’开头的行（通常是本地开发路径），只保留实际的包和版本信息。</p>
+<h1 id="安装全部包"><a href="#安装全部包" class="headerlink" title="安装全部包"></a>安装全部包</h1><p>使用pip install命令可快速安装requirements.txt文件中列出的所有包及其版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install -r requirements.txt<br></code></pre></td></tr></table></figure>
+
+<h1 id="更新单个包"><a href="#更新单个包" class="headerlink" title="更新单个包"></a>更新单个包</h1><p>如果要更新单个包，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install --upgrade &lt;package_name&gt;<br></code></pre></td></tr></table></figure>
+
+<p>例如，要更新Django到最新版本，可以运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install --upgrade Django<br></code></pre></td></tr></table></figure>
+
+<h1 id="导出特定包的版本"><a href="#导出特定包的版本" class="headerlink" title="导出特定包的版本"></a>导出特定包的版本</h1><p>如果你只想导出某个特定的包及其版本，可以先安装该包，然后使用pip freeze命令。例如，先安装Flask，再执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install Flask<br>pip freeze | grep flask &gt; requirements.txt<br></code></pre></td></tr></table></figure>
+
+
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/archives/">🖋️ 片刻记录</a></li>
+        
+          <li><a href="/about/">📜 关于</a></li>
+        
+          <li><a href="/tools/">🛠️ 械所</a></li>
+        
+          <li><a href="/masonry/">🖼️ 相册</a></li>
+        
+          <li><a href="/friends/">🤝 同行者</a></li>
+        
+          <li><a href="/search/">🔍 搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E5%85%A8%E9%83%A8%E5%B7%B2%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">导出全部已安装包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%9A%84requirements-txt"><span class="toc-number">2.</span> <span class="toc-text">导出格式化的requirements.txt</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E9%9D%9E%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E5%8C%85"><span class="toc-number">3.</span> <span class="toc-text">导出非本地开发包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%85%A8%E9%83%A8%E5%8C%85"><span class="toc-number">4.</span> <span class="toc-text">安装全部包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E5%8D%95%E4%B8%AA%E5%8C%85"><span class="toc-number">5.</span> <span class="toc-text">更新单个包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E7%89%B9%E5%AE%9A%E5%8C%85%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-number">6.</span> <span class="toc-text">导出特定包的版本</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&text=pip与requirements.txt"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&title=pip与requirements.txt"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&is_video=false&description=pip与requirements.txt"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=pip与requirements.txt&body=Check out this article: https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&title=pip与requirements.txt"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&title=pip与requirements.txt"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&title=pip与requirements.txt"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&title=pip与requirements.txt"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&name=pip与requirements.txt&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/&t=pip与requirements.txt"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    ⚖️ 著作权属 &copy;
+    
+    
+    2025-2099
+    hybpjx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>

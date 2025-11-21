@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hybpjx.cn/2025/11/21/pip%E4%B8%8Erequirements-txt/</loc>
+    
+    <lastmod>2025-11-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/</loc>
     
     <lastmod>2025-11-05</lastmod>
@@ -598,7 +607,7 @@
 
   <url>
     <loc>https://hybpjx.cn/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -606,112 +615,112 @@
   
   <url>
     <loc>https://hybpjx.cn/tags/python/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/ubuntu/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/golang/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/Android/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/JavaScript/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/Golang/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/redis/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/scrapy/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/Ja3/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/%E7%88%AC%E8%99%AB/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/%E9%80%86%E5%90%91/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/%E5%8F%8D%E7%88%AC/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/Java/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/MongoDB/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/Svelte/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/tags/Unidbg/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -720,91 +729,91 @@
   
   <url>
     <loc>https://hybpjx.cn/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/%E8%AF%AD%E8%A8%80%E5%8A%A0%E8%A7%A3%E5%AF%86/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/Gin%E9%80%9F%E7%94%A8/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/%E6%9D%82%E8%AE%B0/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/JS%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/APP%E9%80%86%E5%90%91/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/JS%E9%80%86%E5%90%91/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/AST%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hybpjx.cn/categories/%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>pip与requirements.txt</title>
+      <link href="/2025/11/21/pip%E4%B8%8Erequirements-txt/"/>
+      <url>/2025/11/21/pip%E4%B8%8Erequirements-txt/</url>
+      
+        <content type="html"><![CDATA[<h1 id="导出全部已安装包"><a href="#导出全部已安装包" class="headerlink" title="导出全部已安装包"></a>导出全部已安装包</h1><p>使用pip freeze命令可快速导出当前Python环境中所有已安装的包及其版本：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip freeze &gt; requirements.txt<br></code></pre></td></tr></table></figure><h1 id="导出格式化的requirements-txt"><a href="#导出格式化的requirements-txt" class="headerlink" title="导出格式化的requirements.txt"></a>导出格式化的requirements.txt</h1><p>为了使requirements.txt文件更易于阅读，可以使用以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip freeze | grep -v <span class="hljs-string">&#x27;^-e&#x27;</span> &gt; requirements.txt<br></code></pre></td></tr></table></figure><h1 id="导出非本地开发包"><a href="#导出非本地开发包" class="headerlink" title="导出非本地开发包"></a>导出非本地开发包</h1><p>通过grep过滤掉非标准包（如本地开发包）：</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">pip <span class="hljs-keyword">freeze</span> | grep -v &quot; @ &quot; &gt; requirements.txt<br><br>pip list <span class="hljs-comment">--format=freeze | grep -v &#x27;pkg-resources==0.0.0&#x27; &gt; requirements.txt</span><br><br><br></code></pre></td></tr></table></figure><p>这条命令会过滤掉任何以’-e’开头的行（通常是本地开发路径），只保留实际的包和版本信息。</p><h1 id="安装全部包"><a href="#安装全部包" class="headerlink" title="安装全部包"></a>安装全部包</h1><p>使用pip install命令可快速安装requirements.txt文件中列出的所有包及其版本：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install -r requirements.txt<br></code></pre></td></tr></table></figure><h1 id="更新单个包"><a href="#更新单个包" class="headerlink" title="更新单个包"></a>更新单个包</h1><p>如果要更新单个包，可以使用以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install --upgrade &lt;package_name&gt;<br></code></pre></td></tr></table></figure><p>例如，要更新Django到最新版本，可以运行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install --upgrade Django<br></code></pre></td></tr></table></figure><h1 id="导出特定包的版本"><a href="#导出特定包的版本" class="headerlink" title="导出特定包的版本"></a>导出特定包的版本</h1><p>如果你只想导出某个特定的包及其版本，可以先安装该包，然后使用pip freeze命令。例如，先安装Flask，再执行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install Flask<br>pip freeze | grep flask &gt; requirements.txt<br></code></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 快速安装 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Golang高并发</title>
       <link href="/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
       <url>/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/</url>
