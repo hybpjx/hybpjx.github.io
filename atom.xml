@@ -6,7 +6,7 @@
   <link href="https://hybpjx.cn/atom.xml" rel="self"/>
   
   <link href="https://hybpjx.cn/"/>
-  <updated>2025-11-21T07:17:36.929Z</updated>
+  <updated>2025-12-11T03:35:16.955Z</updated>
   <id>https://hybpjx.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jtype+unidbg</title>
+    <link href="https://hybpjx.cn/2025/12/11/jtype-unidbg/"/>
+    <id>https://hybpjx.cn/2025/12/11/jtype-unidbg/</id>
+    <published>2025-12-11T03:34:57.000Z</published>
+    <updated>2025-12-11T03:35:16.955Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Jtype-unidbg打包调用"><a href="#Jtype-unidbg打包调用" class="headerlink" title="Jtype &amp;&amp; unidbg打包调用"></a>Jtype &amp;&amp; unidbg打包调用</h1><p>点击文件 ——&gt; 项目结构</p><p><img src="https://s2.loli.net/2025/08/14/peKEB8Y2AsLDgxP.png"></p><p>共件 ——&gt; 添加</p><p><img src="https://s2.loli.net/2025/08/14/QxFp8CvVsRrfUgJ.png"></p><p>然后选择带有依赖的模块</p><p><img src="https://s2.loli.net/2025/08/14/1QLolnMOCh8EK5c.png"></p><p>类似于下文点击</p><p><img src="https://s2.loli.net/2025/08/14/BFOEogXbsVJiezt.png"></p><p>修改包名</p><p><img src="https://s2.loli.net/2025/08/14/uMmvzZQ2l7NrKGB.png"></p><p>然后点击构建工件</p><p><img src="https://s2.loli.net/2025/08/14/PntmgDdyLpeZlqz.png"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Jtype-unidbg打包调用&quot;&gt;&lt;a href=&quot;#Jtype-unidbg打包调用&quot; class=&quot;headerlink&quot; title=&quot;Jtype &amp;amp;&amp;amp; unidbg打包调用&quot;&gt;&lt;/a&gt;Jtype &amp;amp;&amp;amp; unidbg打包调用</summary>
+      
+    
+    
+    
+    
+    <category term="unidbg" scheme="https://hybpjx.cn/tags/unidbg/"/>
+    
+  </entry>
   
   <entry>
     <title>pip与requirements.txt</title>
@@ -471,30 +493,6 @@
     
     
     <category term="JavaScript" scheme="https://hybpjx.cn/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac 用Jenv安装多个Java环境</title>
-    <link href="https://hybpjx.cn/2025/03/26/Mac-%E7%94%A8Jenv%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AAJava%E7%8E%AF%E5%A2%83/"/>
-    <id>https://hybpjx.cn/2025/03/26/Mac-%E7%94%A8Jenv%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AAJava%E7%8E%AF%E5%A2%83/</id>
-    <published>2025-03-26T05:53:00.000Z</published>
-    <updated>2025-08-15T09:16:52.628Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Mac使用Jenv-安装多个Java环境"><a href="#Mac使用Jenv-安装多个Java环境" class="headerlink" title="Mac使用Jenv 安装多个Java环境"></a>Mac使用Jenv 安装多个Java环境</h1><h1 id="安装Jenv"><a href="#安装Jenv" class="headerlink" title="安装Jenv"></a>安装Jenv</h1><p>通过Homebrew快速安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install jenv<br></code></pre></td></tr></table></figure><p>配置环境变量到Shell配置文件（如<code>.zshrc</code>或<code>.bash_profile</code>）：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;$HOME/.jenv/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;eval &quot;$(jenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc<br><span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure><h1 id="安装Java环境"><a href="#安装Java环境" class="headerlink" title="安装Java环境"></a>安装Java环境</h1><p><a href="https://www.azul.com/core-post-download">https://www.azul.com/core-post-download</a></p><p>选择 自己相应的 版本 一键式安装接口</p><h1 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h1><ul><li><p>下载 <code>.dmg</code> 文件并安装，默认路径为：<br><code>/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home</code></p></li><li><p><strong>添加至 jenv 管理</strong></p><ul><li><pre><code class="language-bash">jenv add /Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Homejenv versions  # 验证是否显示 &quot;1.8&quot;</code></pre></li></ul></li></ul><h1 id="安装完成即可"><a href="#安装完成即可" class="headerlink" title="安装完成即可"></a>安装完成即可</h1><p>如下图所示</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;Mac使用Jenv-安装多个Java环境&quot;&gt;&lt;a href=&quot;#Mac使用Jenv-安装多个Java环境&quot; class=&quot;headerlink&quot; title=&quot;Mac使用Jenv 安装多个Java环境&quot;&gt;&lt;/a&gt;Mac使用Jenv 安装多个Java环境&lt;/h1&gt;&lt;</summary>
-      
-    
-    
-    
-    <category term="快速安装" scheme="https://hybpjx.cn/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/"/>
-    
-    
-    <category term="Java" scheme="https://hybpjx.cn/tags/Java/"/>
     
   </entry>
   

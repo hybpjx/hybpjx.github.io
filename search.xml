@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>jtype+unidbg</title>
+      <link href="/2025/12/11/jtype-unidbg/"/>
+      <url>/2025/12/11/jtype-unidbg/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Jtype-unidbg打包调用"><a href="#Jtype-unidbg打包调用" class="headerlink" title="Jtype &amp;&amp; unidbg打包调用"></a>Jtype &amp;&amp; unidbg打包调用</h1><p>点击文件 ——&gt; 项目结构</p><p><img src="https://s2.loli.net/2025/08/14/peKEB8Y2AsLDgxP.png"></p><p>共件 ——&gt; 添加</p><p><img src="https://s2.loli.net/2025/08/14/QxFp8CvVsRrfUgJ.png"></p><p>然后选择带有依赖的模块</p><p><img src="https://s2.loli.net/2025/08/14/1QLolnMOCh8EK5c.png"></p><p>类似于下文点击</p><p><img src="https://s2.loli.net/2025/08/14/BFOEogXbsVJiezt.png"></p><p>修改包名</p><p><img src="https://s2.loli.net/2025/08/14/uMmvzZQ2l7NrKGB.png"></p><p>然后点击构建工件</p><p><img src="https://s2.loli.net/2025/08/14/PntmgDdyLpeZlqz.png"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> unidbg </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>pip与requirements.txt</title>
       <link href="/2025/11/21/pip%E4%B8%8Erequirements-txt/"/>
       <url>/2025/11/21/pip%E4%B8%8Erequirements-txt/</url>
