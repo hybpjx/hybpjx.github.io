@@ -28,7 +28,7 @@
   <meta name="description" content="公众号搜索: 影17">
 <meta property="og:type" content="website">
 <meta property="og:title" content="始識’s 博客">
-<meta property="og:url" content="https://hybpjx.cn/tags/Golang/index.html">
+<meta property="og:url" content="https://hybpjx.cn/tags/golang/index.html">
 <meta property="og:site_name" content="始識’s 博客">
 <meta property="og:description" content="公众号搜索: 影17">
 <meta property="og:locale" content="zh_CN">
@@ -51,7 +51,7 @@
   />
     
   <!-- title -->
-  <title>🏷️ 锚点: Golang</title>
+  <title>🏷️ 锚点: golang</title>
   <!-- async scripts -->
   <!-- Google Analytics -->
 
@@ -79,7 +79,7 @@
   <a class="u-url u-uid" href="/">
   
     
-      <img id="logo" alt class="u-logo" src="/images/stzm.gif" />
+      <img id="logo" alt class="u-logo" src="/images/mj.gif" />
     
   
     <div id="title">
@@ -119,106 +119,6 @@
       
       
       
-        <li class="post-year"><h2>2025</h2></li>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2025-09-07T09:30:25.000Z" class="dt-published" itemprop="datePublished">2025-09-07</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2025/09/07/Wails-svelte%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/">Wails+svelte开发入门</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-        <li class="post-year"><h2>2023</h2></li>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-10-26T09:18:16.000Z" class="dt-published" itemprop="datePublished">2023-10-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/10/26/Gin-gorm%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%A8%A1%E5%9E%8B%E7%B1%BB%E9%87%8D%E5%86%99/">Gin_gorm时间格式化模型类重写</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-04-26T08:53:58.000Z" class="dt-published" itemprop="datePublished">2023-04-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/04/26/Golang%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93%E4%B9%8BGoRequests/">GoRequests库</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-04-26T08:48:16.000Z" class="dt-published" itemprop="datePublished">2023-04-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/04/26/Golang%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93%E4%B9%8Bbcrypt/">bcrypt库</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
         <li class="post-year"><h2>2022</h2></li>
       
       <li class="post-item">
@@ -226,7 +126,7 @@
     <div class="meta">
       
         
-          <time datetime="2022-11-26T09:20:43.000Z" class="dt-published" itemprop="datePublished">2022-11-26</time>
+          <time datetime="2022-03-26T09:12:39.000Z" class="dt-published" itemprop="datePublished">2022-03-26</time>
         
       
     </div>
@@ -234,31 +134,7 @@
 
         <span>
     
-        <a class="" href="/2022/11/26/Gin-Resonse%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F/">Gin_Resonse返回格式</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2022-09-26T09:06:57.000Z" class="dt-published" itemprop="datePublished">2022-09-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2022/09/26/Golang%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/">Golang加密解密算法</a>
+        <a class="" href="/2022/03/26/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85golang/">在ubuntu上安装golang</a>
     
 
 
@@ -465,6 +341,95 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 设置总时间
     audio.addEventListener('loadedmetadata', function() {
+        totalTimeEl.textContent = '/' + formatTime(audio.duration);
+    });
+
+    // 播放/暂停
+    playPauseBtn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = '▶';
+        }
+    });
+
+    // 静音
+    muteBtn.addEventListener('click', function() {
+        audio.muted = !audio.muted;
+        muteBtn.textContent = audio.muted ? '??' : '🔊';
+    });
+
+    // 音量控制
+    volumeSlider.addEventListener('input', function() {
+        audio.volume = this.value;
+    });
+
+    // 进度条控制
+    progressContainer.addEventListener('click', function(e) {
+        const progressWidth = this.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audio.duration;
+        audio.currentTime = (clickX / progressWidth) * duration;
+    });
+
+    // 播放列表切换
+    playlistToggle.addEventListener('click', function() {
+        playlist.style.display = playlist.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // 播放列表项点击
+    playlistItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const src = this.getAttribute('data-src');
+            audio.src = src;
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+            
+            // 高亮当前播放项
+            playlistItems.forEach(i => i.classList.remove('playing'));
+            this.classList.add('playing');
+        });
+    });
+
+    // 更新进度
+    audio.addEventListener('timeupdate', updateProgress);
+});
+</script>
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
+ntListener('loadedmetadata', function() {
         totalTimeEl.textContent = '/' + formatTime(audio.duration);
     });
 
