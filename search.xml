@@ -11,12 +11,12 @@
         <content type="html"><![CDATA[<h2 id="MCP-是什么？"><a href="#MCP-是什么？" class="headerlink" title="MCP 是什么？"></a><strong>MCP</strong> 是什么？</h2><h3 id="先一句话解释（最重要）"><a href="#先一句话解释（最重要）" class="headerlink" title="先一句话解释（最重要）"></a>先一句话解释（最重要）</h3><blockquote><p><strong>MCP &#x3D; 让 AI“会用你们公司系统 &#x2F; 数据 &#x2F; 接口”的一种标准方式</strong></p></blockquote><p>就像给 AI <strong>装插件、接外脑、连工具</strong>。</p><hr><h3 id="用一个生活比喻"><a href="#用一个生活比喻" class="headerlink" title="用一个生活比喻"></a>用一个生活比喻</h3><p>你可以把 AI（比如 ChatGPT）想成一个<strong>很聪明但被关在房间里的人</strong>：</p><ul><li>它会聊天、会写东西</li><li>❌ 但<strong>不知道你们公司的数据库</strong></li><li>❌ 不能直接查你们的系统</li><li>❌ 不能调用你们的接口</li></ul><p>👉 <strong>MCP 就是给它一部“公司内部电话 + 工具说明书”</strong></p><hr><h3 id="MCP-到底在干嘛（稍微技术一点）"><a href="#MCP-到底在干嘛（稍微技术一点）" class="headerlink" title="MCP 到底在干嘛（稍微技术一点）"></a>MCP 到底在干嘛（稍微技术一点）</h3><p><strong>MCP（Model Context Protocol）</strong> 是一种协议，用来：</p><ul><li><p>告诉 AI：</p><ul><li>👉 有哪些工具</li><li>👉 每个工具怎么用</li><li>👉 什么时候该用哪个工具</li></ul></li><li><p>AI 决定后</p><ul><li>👉 自动调用接口</li><li>👉 拿到结果</li><li>👉 再用自然语言回复人</li></ul></li></ul><p><strong>核心目标</strong>：</p><blockquote><p>❌ 不只是“聊天的 AI”<br>✅ 而是“能干活的 AI”</p></blockquote><hr><h3 id="“项目MCP”通常是什么意思？"><a href="#“项目MCP”通常是什么意思？" class="headerlink" title="“项目MCP”通常是什么意思？"></a>“项目MCP”通常是什么意思？</h3><p>结合真实工作场景，<strong>99% 不是让你发明协议</strong>，而是：</p><blockquote><p>👉 <strong>把你们的系统 &#x2F; 接口 &#x2F; 数据，接给 AI 用</strong></p></blockquote><p>常见任务包括：</p><ul><li><p>把某个接口包装成 MCP tool</p></li><li><p>让 AI 能：</p><ul><li>查数据</li><li>查订单</li><li>查用户信息</li><li>调内部 API</li></ul></li><li><p>写配置 &#x2F; 写描述，让 AI 知道：</p><ul><li>这个接口是干嘛的</li><li>参数怎么填</li><li>返回结果怎么看</li></ul></li></ul><p>📌 <strong>简单说：让 AI 会用你们的接口</strong></p><hr><h2 id="什么是-Dify？"><a href="#什么是-Dify？" class="headerlink" title="什么是 Dify？"></a>什么是 Dify？</h2><h3 id="一句话解释"><a href="#一句话解释" class="headerlink" title="一句话解释"></a>一句话解释</h3><blockquote><p><strong>Dify &#x3D; 一个“做 AI 应用的平台”，不用从零写代码</strong></p></blockquote><hr><h3 id="生活比喻"><a href="#生活比喻" class="headerlink" title="生活比喻"></a>生活比喻</h3><ul><li>MCP：插头 &#x2F; 插座标准</li><li>Dify：<strong>AI 应用“搭积木平台”</strong></li></ul><p>你可以在 Dify 里：</p><ul><li><p>接大模型（GPT、Claude、通义、百川等）</p></li><li><p>配提示词</p></li><li><p>接数据库 &#x2F; API</p></li><li><p>做：</p><ul><li>AI 客服</li><li>AI 助手</li><li>内部 AI 工具</li></ul></li></ul><hr><h3 id="Dify-和-MCP-的关系"><a href="#Dify-和-MCP-的关系" class="headerlink" title="Dify 和 MCP 的关系"></a>Dify 和 MCP 的关系</h3><p>✔ <strong>Dify 支持 MCP</strong></p><p>也就是说：</p><ul><li>MCP：<strong>能力标准</strong></li><li>Dify：<strong>落地平台</strong></li></ul><p>👉 很多公司是：<br><strong>用 Dify + MCP，把内部系统接给 AI</strong></p><hr><h2 id="什么是「扣子（Coze-扣子）」？"><a href="#什么是「扣子（Coze-扣子）」？" class="headerlink" title="什么是「扣子（Coze &#x2F; 扣子）」？"></a>什么是「扣子（Coze &#x2F; 扣子）」？</h2><h3 id="一句话解释-1"><a href="#一句话解释-1" class="headerlink" title="一句话解释"></a>一句话解释</h3><blockquote><p><strong>扣子 &#x3D; 字节跳动出的 AI 应用平台（偏产品&#x2F;业务）</strong></p></blockquote><hr><h3 id="Dify-的区别（超重要）"><a href="#Dify-的区别（超重要）" class="headerlink" title="Dify 的区别（超重要）"></a>Dify 的区别（超重要）</h3><table><thead><tr><th>对比</th><th>扣子</th><th>Dify</th></tr></thead><tbody><tr><td>公司</td><td>字节跳动</td><td>开源社区</td></tr><tr><td>上手</td><td>非常简单</td><td>稍微技术一点</td></tr><tr><td>定位</td><td>产品 &#x2F; 运营 &#x2F; 业务</td><td>技术 &#x2F; 企业</td></tr><tr><td>可控性</td><td>一般</td><td>很高</td></tr><tr><td>私有部署</td><td>❌</td><td>✅</td></tr></tbody></table><p>👉 <strong>扣子更像“AI 低代码工具”</strong><br>👉 <strong>Dify 更像“企业级 AI 平台”</strong></p><hr><h3 id="扣子适合谁？"><a href="#扣子适合谁？" class="headerlink" title="扣子适合谁？"></a>扣子适合谁？</h3><ul><li>产品经理</li><li>运营</li><li>不太写代码的人</li><li>快速做 Demo &#x2F; 机器人</li></ul><hr><h2 id="什么是-ModelScope（魔搭）？"><a href="#什么是-ModelScope（魔搭）？" class="headerlink" title="什么是 ModelScope（魔搭）？"></a>什么是 ModelScope（魔搭）？</h2><h3 id="一句话解释-2"><a href="#一句话解释-2" class="headerlink" title="一句话解释"></a>一句话解释</h3><blockquote><p><strong>ModelScope &#x3D; 阿里出的“AI 模型商店 + 工具箱”</strong></p></blockquote><hr><h3 id="它是干嘛的？"><a href="#它是干嘛的？" class="headerlink" title="它是干嘛的？"></a>它是干嘛的？</h3><p>你可以把它理解成：</p><blockquote><p><strong>AI 版的 GitHub + 应用市场</strong></p></blockquote><p>里面有：</p><ul><li><p>各种模型：</p><ul><li>NLP</li><li>语音</li><li>图像</li></ul></li><li><p>示例代码</p></li><li><p>数据集</p></li><li><p>推理服务</p></li></ul><hr><h3 id="ModelScope-和前面的关系"><a href="#ModelScope-和前面的关系" class="headerlink" title="ModelScope 和前面的关系"></a>ModelScope 和前面的关系</h3><ul><li>❌ 它不是做 AI 应用的</li><li>✅ 它是<strong>模型和技术资源平台</strong></li></ul><p>常见用途：</p><ul><li>技术选型</li><li>找国产模型</li><li>离线 &#x2F; 私有部署</li></ul><hr><h2 id="把这几个东西放一起，你就懂了"><a href="#把这几个东西放一起，你就懂了" class="headerlink" title="把这几个东西放一起，你就懂了"></a>把这几个东西放一起，你就懂了</h2><h3 id="一张“人话版”全景图"><a href="#一张“人话版”全景图" class="headerlink" title="一张“人话版”全景图"></a>一张“人话版”全景图</h3><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs nix">[ ModelScope ]<br>   ↑ 提供模型<br><br>[ 大模型（GPT <span class="hljs-symbol">/</span> 通义 <span class="hljs-symbol">/</span> 百川） ]<br>   ↑ 能力<br><br>[ MCP ]<br>   ↑ 让模型能用工具 <span class="hljs-symbol">/</span> 接口<br><br>[ Dify <span class="hljs-symbol">/</span> 扣子 ]<br>   ↑ 把能力做成应用<br><br>[ 你们公司的系统 <span class="hljs-symbol">/</span> 数据 <span class="hljs-symbol">/</span> API ]<br></code></pre></td></tr></table></figure><hr><h2 id="一句话总结"><a href="#一句话总结" class="headerlink" title="一句话总结"></a>一句话总结</h2><ul><li><strong>MCP</strong>：让 AI 会用工具</li><li><strong>Dify</strong>：做 AI 应用的平台</li><li><strong>扣子</strong>：更偏业务的 AI 搭建工具</li><li><strong>ModelScope</strong>：模型和技术资源库</li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> 杂记 </category>
+          
+      </categories>
       
-        <tags>
-            
-            <tag> AI </tag>
-            
-        </tags>
       
     </entry>
     
@@ -29,6 +29,12 @@
       
         <content type="html"><![CDATA[<h1 id="Jtype-unidbg打包调用"><a href="#Jtype-unidbg打包调用" class="headerlink" title="Jtype &amp;&amp; unidbg打包调用"></a>Jtype &amp;&amp; unidbg打包调用</h1><p>点击文件 ——&gt; 项目结构</p><p><img src="https://s2.loli.net/2025/08/14/peKEB8Y2AsLDgxP.png"></p><p>共件 ——&gt; 添加</p><p><img src="https://s2.loli.net/2025/08/14/QxFp8CvVsRrfUgJ.png"></p><p>然后选择带有依赖的模块</p><p><img src="https://s2.loli.net/2025/08/14/1QLolnMOCh8EK5c.png"></p><p>类似于下文点击</p><p><img src="https://s2.loli.net/2025/08/14/BFOEogXbsVJiezt.png"></p><p>修改包名</p><p><img src="https://s2.loli.net/2025/08/14/uMmvzZQ2l7NrKGB.png"></p><p>然后点击构建工件</p><p><img src="https://s2.loli.net/2025/08/14/PntmgDdyLpeZlqz.png"></p>]]></content>
       
+      
+      <categories>
+          
+          <category> 安卓逆向基础 </category>
+          
+      </categories>
       
       
         <tags>
@@ -75,6 +81,12 @@
       
       
       
+        <tags>
+            
+            <tag> Golang </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -113,12 +125,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> 逆向 </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -133,7 +139,7 @@
       
       <categories>
           
-          <category> 杂记 </category>
+          <category> 快速安装 </category>
           
       </categories>
       
@@ -267,10 +273,16 @@
       
       <categories>
           
-          <category> 安卓基础 </category>
+          <category> 安卓逆向基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> frida </tag>
+            
+        </tags>
       
     </entry>
     
@@ -390,10 +402,16 @@
       
       <categories>
           
-          <category> 安卓基础 </category>
+          <category> 安卓逆向基础 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> ida </tag>
+            
+        </tags>
       
     </entry>
     
@@ -596,12 +614,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> 逆向 </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -616,7 +628,7 @@
       
       <categories>
           
-          <category> 安卓逆向 </category>
+          <category> 安卓逆向基础 </category>
           
       </categories>
       
@@ -690,12 +702,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> 逆向 </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -760,7 +766,7 @@
       
       <categories>
           
-          <category> APP逆向 </category>
+          <category> 安卓逆向基础 </category>
           
       </categories>
       
@@ -787,7 +793,7 @@
       
       <categories>
           
-          <category> APP逆向 </category>
+          <category> 安卓逆向基础 </category>
           
       </categories>
       
@@ -816,12 +822,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> 逆向 </tag>
-            
-        </tags>
       
     </entry>
     
@@ -917,12 +917,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> 逆向 </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -939,8 +933,6 @@
         <tags>
             
             <tag> JavaScript </tag>
-            
-            <tag> 反爬 </tag>
             
         </tags>
       
@@ -982,14 +974,6 @@
       
       
       
-        <tags>
-            
-            <tag> 爬虫 </tag>
-            
-            <tag> 反爬 </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -1002,12 +986,12 @@
         <content type="html"><![CDATA[<p>链接手机远程Debug调试</p><ol><li>手机用usb连接至电脑</li><li>手机微信内点击 <a href="http://debugxweb.qq.com/?inspector=true">http://debugxweb.qq.com/?inspector=true</a> （只要跳转过微信首页就是开启了调试）</li><li>微信内打开所需调试网址, 例如 <a href="http://weixin.qq.com/">weixin.qq.com</a> </li><li>chrome浏览器打开 chrome:&#x2F;&#x2F;inspect&#x2F;#devices 会看到我们打开的网页 <a href="http://weixin.qq.com/">weixin.qq.com</a> </li><li>在点击chrome里的inspect 直接调试 (可以直接用鼠标进行操作)</li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> 杂记 </category>
+          
+      </categories>
       
-        <tags>
-            
-            <tag> 逆向 </tag>
-            
-        </tags>
       
     </entry>
     
@@ -1056,8 +1040,6 @@
         <tags>
             
             <tag> Ja3 </tag>
-            
-            <tag> 爬虫 </tag>
             
         </tags>
       
