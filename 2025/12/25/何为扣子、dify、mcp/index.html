@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+  <meta name="description" content="MCP 是什么？先一句话解释（最重要） MCP &#x3D; 让 AI“会用你们公司系统 &#x2F; 数据 &#x2F; 接口”的一种标准方式  就像给 AI 装插件、接外脑、连工具。  用一个生活比喻你可以把 AI（比如 ChatGPT）想成一个很聪明但被关在房间里的人：  它会聊天、会写东西 ❌ 但不知道你们公司的数据库 ❌ 不能直接查你们的系统 ❌ 不能调用你们的接口  👉 MCP 就是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MCP、dify、扣子、魔塔到底是什么？">
+<meta property="og:url" content="https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/index.html">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="MCP 是什么？先一句话解释（最重要） MCP &#x3D; 让 AI“会用你们公司系统 &#x2F; 数据 &#x2F; 接口”的一种标准方式  就像给 AI 装插件、接外脑、连工具。  用一个生活比喻你可以把 AI（比如 ChatGPT）想成一个很聪明但被关在房间里的人：  它会聊天、会写东西 ❌ 但不知道你们公司的数据库 ❌ 不能直接查你们的系统 ❌ 不能调用你们的接口  👉 MCP 就是">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-25T07:34:57.000Z">
+<meta property="article:modified_time" content="2026-01-09T05:57:22.530Z">
+<meta property="article:author" content="hybpjx">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
+    
+  <!-- title -->
+  <title>MCP、dify、扣子、魔塔到底是什么？</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
+
+
+  <!-- styles -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2025/12/11/jtype-unidbg/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&text=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&title=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&is_video=false&description=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=MCP、dify、扣子、魔塔到底是什么？&body=Check out this article: https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&title=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&title=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&title=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&title=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&name=MCP、dify、扣子、魔塔到底是什么？&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&t=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MCP-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">MCP 是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E4%B8%80%E5%8F%A5%E8%AF%9D%E8%A7%A3%E9%87%8A%EF%BC%88%E6%9C%80%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">先一句话解释（最重要）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E4%B8%80%E4%B8%AA%E7%94%9F%E6%B4%BB%E6%AF%94%E5%96%BB"><span class="toc-number">1.2.</span> <span class="toc-text">用一个生活比喻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MCP-%E5%88%B0%E5%BA%95%E5%9C%A8%E5%B9%B2%E5%98%9B%EF%BC%88%E7%A8%8D%E5%BE%AE%E6%8A%80%E6%9C%AF%E4%B8%80%E7%82%B9%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">MCP 到底在干嘛（稍微技术一点）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E9%A1%B9%E7%9B%AEMCP%E2%80%9D%E9%80%9A%E5%B8%B8%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">“项目MCP”通常是什么意思？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Dify%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">什么是 Dify？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E8%A7%A3%E9%87%8A"><span class="toc-number">2.1.</span> <span class="toc-text">一句话解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%B4%BB%E6%AF%94%E5%96%BB"><span class="toc-number">2.2.</span> <span class="toc-text">生活比喻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dify-%E5%92%8C-MCP-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.3.</span> <span class="toc-text">Dify 和 MCP 的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E3%80%8C%E6%89%A3%E5%AD%90%EF%BC%88Coze-%E6%89%A3%E5%AD%90%EF%BC%89%E3%80%8D%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">什么是「扣子（Coze &#x2F; 扣子）」？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E8%A7%A3%E9%87%8A-1"><span class="toc-number">3.1.</span> <span class="toc-text">一句话解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dify-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E8%B6%85%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">Dify 的区别（超重要）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A3%E5%AD%90%E9%80%82%E5%90%88%E8%B0%81%EF%BC%9F"><span class="toc-number">3.3.</span> <span class="toc-text">扣子适合谁？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-ModelScope%EF%BC%88%E9%AD%94%E6%90%AD%EF%BC%89%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">什么是 ModelScope（魔搭）？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E8%A7%A3%E9%87%8A-2"><span class="toc-number">4.1.</span> <span class="toc-text">一句话解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%83%E6%98%AF%E5%B9%B2%E5%98%9B%E7%9A%84%EF%BC%9F"><span class="toc-number">4.2.</span> <span class="toc-text">它是干嘛的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ModelScope-%E5%92%8C%E5%89%8D%E9%9D%A2%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">4.3.</span> <span class="toc-text">ModelScope 和前面的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%8A%E8%BF%99%E5%87%A0%E4%B8%AA%E4%B8%9C%E8%A5%BF%E6%94%BE%E4%B8%80%E8%B5%B7%EF%BC%8C%E4%BD%A0%E5%B0%B1%E6%87%82%E4%BA%86"><span class="toc-number">5.</span> <span class="toc-text">把这几个东西放一起，你就懂了</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%BC%A0%E2%80%9C%E4%BA%BA%E8%AF%9D%E7%89%88%E2%80%9D%E5%85%A8%E6%99%AF%E5%9B%BE"><span class="toc-number">5.1.</span> <span class="toc-text">一张“人话版”全景图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">一句话总结</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        MCP、dify、扣子、魔塔到底是什么？
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-12-25T07:34:57.000Z" class="dt-published" itemprop="datePublished">2025-12-25</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/AI/" rel="tag">AI</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="MCP-是什么？"><a href="#MCP-是什么？" class="headerlink" title="MCP 是什么？"></a><strong>MCP</strong> 是什么？</h2><h3 id="先一句话解释（最重要）"><a href="#先一句话解释（最重要）" class="headerlink" title="先一句话解释（最重要）"></a>先一句话解释（最重要）</h3><blockquote>
+<p><strong>MCP &#x3D; 让 AI“会用你们公司系统 &#x2F; 数据 &#x2F; 接口”的一种标准方式</strong></p>
+</blockquote>
+<p>就像给 AI <strong>装插件、接外脑、连工具</strong>。</p>
+<hr>
+<h3 id="用一个生活比喻"><a href="#用一个生活比喻" class="headerlink" title="用一个生活比喻"></a>用一个生活比喻</h3><p>你可以把 AI（比如 ChatGPT）想成一个<strong>很聪明但被关在房间里的人</strong>：</p>
+<ul>
+<li>它会聊天、会写东西</li>
+<li>❌ 但<strong>不知道你们公司的数据库</strong></li>
+<li>❌ 不能直接查你们的系统</li>
+<li>❌ 不能调用你们的接口</li>
+</ul>
+<p>👉 <strong>MCP 就是给它一部“公司内部电话 + 工具说明书”</strong></p>
+<hr>
+<h3 id="MCP-到底在干嘛（稍微技术一点）"><a href="#MCP-到底在干嘛（稍微技术一点）" class="headerlink" title="MCP 到底在干嘛（稍微技术一点）"></a>MCP 到底在干嘛（稍微技术一点）</h3><p><strong>MCP（Model Context Protocol）</strong> 是一种协议，用来：</p>
+<ul>
+<li><p>告诉 AI：</p>
+<ul>
+<li>👉 有哪些工具</li>
+<li>👉 每个工具怎么用</li>
+<li>👉 什么时候该用哪个工具</li>
+</ul>
+</li>
+<li><p>AI 决定后</p>
+<ul>
+<li>👉 自动调用接口</li>
+<li>👉 拿到结果</li>
+<li>👉 再用自然语言回复人</li>
+</ul>
+</li>
+</ul>
+<p><strong>核心目标</strong>：</p>
+<blockquote>
+<p>❌ 不只是“聊天的 AI”<br>✅ 而是“能干活的 AI”</p>
+</blockquote>
+<hr>
+<h3 id="“项目MCP”通常是什么意思？"><a href="#“项目MCP”通常是什么意思？" class="headerlink" title="“项目MCP”通常是什么意思？"></a>“项目MCP”通常是什么意思？</h3><p>结合真实工作场景，<strong>99% 不是让你发明协议</strong>，而是：</p>
+<blockquote>
+<p>👉 <strong>把你们的系统 &#x2F; 接口 &#x2F; 数据，接给 AI 用</strong></p>
+</blockquote>
+<p>常见任务包括：</p>
+<ul>
+<li><p>把某个接口包装成 MCP tool</p>
+</li>
+<li><p>让 AI 能：</p>
+<ul>
+<li>查数据</li>
+<li>查订单</li>
+<li>查用户信息</li>
+<li>调内部 API</li>
+</ul>
+</li>
+<li><p>写配置 &#x2F; 写描述，让 AI 知道：</p>
+<ul>
+<li>这个接口是干嘛的</li>
+<li>参数怎么填</li>
+<li>返回结果怎么看</li>
+</ul>
+</li>
+</ul>
+<p>📌 <strong>简单说：让 AI 会用你们的接口</strong></p>
+<hr>
+<h2 id="什么是-Dify？"><a href="#什么是-Dify？" class="headerlink" title="什么是 Dify？"></a>什么是 Dify？</h2><h3 id="一句话解释"><a href="#一句话解释" class="headerlink" title="一句话解释"></a>一句话解释</h3><blockquote>
+<p><strong>Dify &#x3D; 一个“做 AI 应用的平台”，不用从零写代码</strong></p>
+</blockquote>
+<hr>
+<h3 id="生活比喻"><a href="#生活比喻" class="headerlink" title="生活比喻"></a>生活比喻</h3><ul>
+<li>MCP：插头 &#x2F; 插座标准</li>
+<li>Dify：<strong>AI 应用“搭积木平台”</strong></li>
+</ul>
+<p>你可以在 Dify 里：</p>
+<ul>
+<li><p>接大模型（GPT、Claude、通义、百川等）</p>
+</li>
+<li><p>配提示词</p>
+</li>
+<li><p>接数据库 &#x2F; API</p>
+</li>
+<li><p>做：</p>
+<ul>
+<li>AI 客服</li>
+<li>AI 助手</li>
+<li>内部 AI 工具</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Dify-和-MCP-的关系"><a href="#Dify-和-MCP-的关系" class="headerlink" title="Dify 和 MCP 的关系"></a>Dify 和 MCP 的关系</h3><p>✔ <strong>Dify 支持 MCP</strong></p>
+<p>也就是说：</p>
+<ul>
+<li>MCP：<strong>能力标准</strong></li>
+<li>Dify：<strong>落地平台</strong></li>
+</ul>
+<p>👉 很多公司是：<br><strong>用 Dify + MCP，把内部系统接给 AI</strong></p>
+<hr>
+<h2 id="什么是「扣子（Coze-扣子）」？"><a href="#什么是「扣子（Coze-扣子）」？" class="headerlink" title="什么是「扣子（Coze &#x2F; 扣子）」？"></a>什么是「扣子（Coze &#x2F; 扣子）」？</h2><h3 id="一句话解释-1"><a href="#一句话解释-1" class="headerlink" title="一句话解释"></a>一句话解释</h3><blockquote>
+<p><strong>扣子 &#x3D; 字节跳动出的 AI 应用平台（偏产品&#x2F;业务）</strong></p>
+</blockquote>
+<hr>
+<h3 id="Dify-的区别（超重要）"><a href="#Dify-的区别（超重要）" class="headerlink" title="Dify 的区别（超重要）"></a>Dify 的区别（超重要）</h3><table>
+<thead>
+<tr>
+<th>对比</th>
+<th>扣子</th>
+<th>Dify</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>公司</td>
+<td>字节跳动</td>
+<td>开源社区</td>
+</tr>
+<tr>
+<td>上手</td>
+<td>非常简单</td>
+<td>稍微技术一点</td>
+</tr>
+<tr>
+<td>定位</td>
+<td>产品 &#x2F; 运营 &#x2F; 业务</td>
+<td>技术 &#x2F; 企业</td>
+</tr>
+<tr>
+<td>可控性</td>
+<td>一般</td>
+<td>很高</td>
+</tr>
+<tr>
+<td>私有部署</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+</tbody></table>
+<p>👉 <strong>扣子更像“AI 低代码工具”</strong><br>👉 <strong>Dify 更像“企业级 AI 平台”</strong></p>
+<hr>
+<h3 id="扣子适合谁？"><a href="#扣子适合谁？" class="headerlink" title="扣子适合谁？"></a>扣子适合谁？</h3><ul>
+<li>产品经理</li>
+<li>运营</li>
+<li>不太写代码的人</li>
+<li>快速做 Demo &#x2F; 机器人</li>
+</ul>
+<hr>
+<h2 id="什么是-ModelScope（魔搭）？"><a href="#什么是-ModelScope（魔搭）？" class="headerlink" title="什么是 ModelScope（魔搭）？"></a>什么是 ModelScope（魔搭）？</h2><h3 id="一句话解释-2"><a href="#一句话解释-2" class="headerlink" title="一句话解释"></a>一句话解释</h3><blockquote>
+<p><strong>ModelScope &#x3D; 阿里出的“AI 模型商店 + 工具箱”</strong></p>
+</blockquote>
+<hr>
+<h3 id="它是干嘛的？"><a href="#它是干嘛的？" class="headerlink" title="它是干嘛的？"></a>它是干嘛的？</h3><p>你可以把它理解成：</p>
+<blockquote>
+<p><strong>AI 版的 GitHub + 应用市场</strong></p>
+</blockquote>
+<p>里面有：</p>
+<ul>
+<li><p>各种模型：</p>
+<ul>
+<li>NLP</li>
+<li>语音</li>
+<li>图像</li>
+</ul>
+</li>
+<li><p>示例代码</p>
+</li>
+<li><p>数据集</p>
+</li>
+<li><p>推理服务</p>
+</li>
+</ul>
+<hr>
+<h3 id="ModelScope-和前面的关系"><a href="#ModelScope-和前面的关系" class="headerlink" title="ModelScope 和前面的关系"></a>ModelScope 和前面的关系</h3><ul>
+<li>❌ 它不是做 AI 应用的</li>
+<li>✅ 它是<strong>模型和技术资源平台</strong></li>
+</ul>
+<p>常见用途：</p>
+<ul>
+<li>技术选型</li>
+<li>找国产模型</li>
+<li>离线 &#x2F; 私有部署</li>
+</ul>
+<hr>
+<h2 id="把这几个东西放一起，你就懂了"><a href="#把这几个东西放一起，你就懂了" class="headerlink" title="把这几个东西放一起，你就懂了"></a>把这几个东西放一起，你就懂了</h2><h3 id="一张“人话版”全景图"><a href="#一张“人话版”全景图" class="headerlink" title="一张“人话版”全景图"></a>一张“人话版”全景图</h3><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs nix">[ ModelScope ]<br>   ↑ 提供模型<br><br>[ 大模型（GPT <span class="hljs-symbol">/</span> 通义 <span class="hljs-symbol">/</span> 百川） ]<br>   ↑ 能力<br><br>[ MCP ]<br>   ↑ 让模型能用工具 <span class="hljs-symbol">/</span> 接口<br><br>[ Dify <span class="hljs-symbol">/</span> 扣子 ]<br>   ↑ 把能力做成应用<br><br>[ 你们公司的系统 <span class="hljs-symbol">/</span> 数据 <span class="hljs-symbol">/</span> API ]<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="一句话总结"><a href="#一句话总结" class="headerlink" title="一句话总结"></a>一句话总结</h2><ul>
+<li><strong>MCP</strong>：让 AI 会用工具</li>
+<li><strong>Dify</strong>：做 AI 应用的平台</li>
+<li><strong>扣子</strong>：更偏业务的 AI 搭建工具</li>
+<li><strong>ModelScope</strong>：模型和技术资源库</li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/archives/">🖋️ 片刻记录</a></li>
+        
+          <li><a href="/about/">📜 关于</a></li>
+        
+          <li><a href="/tools/">🛠️ 械所</a></li>
+        
+          <li><a href="/masonry/">🖼️ 相册</a></li>
+        
+          <li><a href="/friends/">🤝 同行者</a></li>
+        
+          <li><a href="/search/">🔍 搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MCP-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">MCP 是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E4%B8%80%E5%8F%A5%E8%AF%9D%E8%A7%A3%E9%87%8A%EF%BC%88%E6%9C%80%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">先一句话解释（最重要）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E4%B8%80%E4%B8%AA%E7%94%9F%E6%B4%BB%E6%AF%94%E5%96%BB"><span class="toc-number">1.2.</span> <span class="toc-text">用一个生活比喻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MCP-%E5%88%B0%E5%BA%95%E5%9C%A8%E5%B9%B2%E5%98%9B%EF%BC%88%E7%A8%8D%E5%BE%AE%E6%8A%80%E6%9C%AF%E4%B8%80%E7%82%B9%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">MCP 到底在干嘛（稍微技术一点）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E9%A1%B9%E7%9B%AEMCP%E2%80%9D%E9%80%9A%E5%B8%B8%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">“项目MCP”通常是什么意思？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Dify%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">什么是 Dify？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E8%A7%A3%E9%87%8A"><span class="toc-number">2.1.</span> <span class="toc-text">一句话解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%B4%BB%E6%AF%94%E5%96%BB"><span class="toc-number">2.2.</span> <span class="toc-text">生活比喻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dify-%E5%92%8C-MCP-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.3.</span> <span class="toc-text">Dify 和 MCP 的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E3%80%8C%E6%89%A3%E5%AD%90%EF%BC%88Coze-%E6%89%A3%E5%AD%90%EF%BC%89%E3%80%8D%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">什么是「扣子（Coze &#x2F; 扣子）」？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E8%A7%A3%E9%87%8A-1"><span class="toc-number">3.1.</span> <span class="toc-text">一句话解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dify-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E8%B6%85%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">Dify 的区别（超重要）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A3%E5%AD%90%E9%80%82%E5%90%88%E8%B0%81%EF%BC%9F"><span class="toc-number">3.3.</span> <span class="toc-text">扣子适合谁？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-ModelScope%EF%BC%88%E9%AD%94%E6%90%AD%EF%BC%89%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">什么是 ModelScope（魔搭）？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E8%A7%A3%E9%87%8A-2"><span class="toc-number">4.1.</span> <span class="toc-text">一句话解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%83%E6%98%AF%E5%B9%B2%E5%98%9B%E7%9A%84%EF%BC%9F"><span class="toc-number">4.2.</span> <span class="toc-text">它是干嘛的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ModelScope-%E5%92%8C%E5%89%8D%E9%9D%A2%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">4.3.</span> <span class="toc-text">ModelScope 和前面的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%8A%E8%BF%99%E5%87%A0%E4%B8%AA%E4%B8%9C%E8%A5%BF%E6%94%BE%E4%B8%80%E8%B5%B7%EF%BC%8C%E4%BD%A0%E5%B0%B1%E6%87%82%E4%BA%86"><span class="toc-number">5.</span> <span class="toc-text">把这几个东西放一起，你就懂了</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%BC%A0%E2%80%9C%E4%BA%BA%E8%AF%9D%E7%89%88%E2%80%9D%E5%85%A8%E6%99%AF%E5%9B%BE"><span class="toc-number">5.1.</span> <span class="toc-text">一张“人话版”全景图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">一句话总结</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&text=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&title=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&is_video=false&description=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=MCP、dify、扣子、魔塔到底是什么？&body=Check out this article: https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&title=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&title=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&title=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&title=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&name=MCP、dify、扣子、魔塔到底是什么？&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/12/25/%E4%BD%95%E4%B8%BA%E6%89%A3%E5%AD%90%E3%80%81dify%E3%80%81mcp/&t=MCP、dify、扣子、魔塔到底是什么？"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    ⚖️ 著作权属 &copy;
+    
+    
+    2025-2099
+    hybpjx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+<!-- 音乐播放器 -->
+<div id="music-player" class="music-player">
+    <div class="player-controls">
+        <button id="play-pause" class="control-btn">▶</button>
+        <audio id="audio-player" src="/music/暧昧合伙人.mp3" preload="metadata"></audio>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <span class="current-time">0:00</span>
+        <span class="total-time">/0:00</span>
+        <div class="volume-control">
+            <button id="mute" class="control-btn">🔊</button>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8">
+        </div>
+        <div class="playlist-control">
+            <button id="playlist-toggle" class="control-btn">🎵</button>
+        </div>
+    </div>
+    <div id="playlist" class="playlist">
+        <div class="playlist-item" data-src="/music/暧昧合伙人.mp3">暧昧合伙人</div>
+    </div>
+</div>
+
+<style>
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.control-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.progress-container {
+    flex: 1;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #007bff;
+    border-radius: 2px;
+    width: 0%;
+}
+
+.current-time, .total-time {
+    font-size: 12px;
+    color: #666;
+    min-width: 35px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#volume {
+    width: 60px;
+}
+
+.playlist {
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+}
+
+.playlist-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.playlist-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.playlist-item.playing {
+    background: #007bff;
+    color: white;
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .music-player {
+        background: rgba(40, 40, 40, 0.9);
+        color: white;
+    }
+    
+    .progress-container {
+        background: #555;
+    }
+    
+    .current-time, .total-time {
+        color: #ccc;
+    }
+    
+    .playlist-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('audio-player');
+    const playPauseBtn = document.getElementById('play-pause');
+    const muteBtn = document.getElementById('mute');
+    const volumeSlider = document.getElementById('volume');
+    const progressContainer = document.querySelector('.progress-container');
+    const progressBar = document.querySelector('.progress-bar');
+    const currentTimeEl = document.querySelector('.current-time');
+    const totalTimeEl = document.querySelector('.total-time');
+    const playlistToggle = document.getElementById('playlist-toggle');
+    const playlist = document.getElementById('playlist');
+    const playlistItems = document.querySelectorAll('.playlist-item');
+
+    // 格式化时间
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // 更新进度条
+    function updateProgress() {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = progress + '%';
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+    }
+
+    // 设置总时间
+    audio.addEventListener('loadedmetadata', function() {
+        totalTimeEl.textContent = '/' + formatTime(audio.duration);
+    });
+
+    // 播放/暂停
+    playPauseBtn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = '▶';
+        }
+    });
+
+    // 静音
+    muteBtn.addEventListener('click', function() {
+        audio.muted = !audio.muted;
+        muteBtn.textContent = audio.muted ? '??' : '🔊';
+    });
+
+    // 音量控制
+    volumeSlider.addEventListener('input', function() {
+        audio.volume = this.value;
+    });
+
+    // 进度条控制
+    progressContainer.addEventListener('click', function(e) {
+        const progressWidth = this.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audio.duration;
+        audio.currentTime = (clickX / progressWidth) * duration;
+    });
+
+    // 播放列表切换
+    playlistToggle.addEventListener('click', function() {
+        playlist.style.display = playlist.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // 播放列表项点击
+    playlistItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const src = this.getAttribute('data-src');
+            audio.src = src;
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+            
+            // 高亮当前播放项
+            playlistItems.forEach(i => i.classList.remove('playing'));
+            this.classList.add('playing');
+        });
+    });
+
+    // 更新进度
+    audio.addEventListener('timeupdate', updateProgress);
+});
+</script>
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
