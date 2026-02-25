@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+  <meta name="description" content="启动 Notebook1、打开终端（Terminal） 2、进入你想存文章的文件夹，例如：  cd ~&#x2F;Documents&#x2F;article_project  3、启动 Jupyter  jupyter notebook  会自动打开浏览器，显示文件列表 点击 New → Python 3 新建 Notebook Excel相关操作读取123456import pandas as">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jupyter+Notebook+Excel">
+<meta property="og:url" content="https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/index.html">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="启动 Notebook1、打开终端（Terminal） 2、进入你想存文章的文件夹，例如：  cd ~&#x2F;Documents&#x2F;article_project  3、启动 Jupyter  jupyter notebook  会自动打开浏览器，显示文件列表 点击 New → Python 3 新建 Notebook Excel相关操作读取123456import pandas as">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-02-03T06:56:43.000Z">
+<meta property="article:modified_time" content="2026-02-03T07:16:46.000Z">
+<meta property="article:author" content="hybpjx">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
+    
+  <!-- title -->
+  <title>Jupyter+Notebook+Excel</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
+
+
+  <!-- styles -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&text=Jupyter+Notebook+Excel"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&title=Jupyter+Notebook+Excel"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&is_video=false&description=Jupyter+Notebook+Excel"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Jupyter+Notebook+Excel&body=Check out this article: https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&title=Jupyter+Notebook+Excel"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&title=Jupyter+Notebook+Excel"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&title=Jupyter+Notebook+Excel"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&title=Jupyter+Notebook+Excel"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&name=Jupyter+Notebook+Excel&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&t=Jupyter+Notebook+Excel"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8-Notebook"><span class="toc-number">1.</span> <span class="toc-text">启动 Notebook</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Excel%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">Excel相关操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96"><span class="toc-number">2.1.</span> <span class="toc-text">读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE"><span class="toc-number">2.2.</span> <span class="toc-text">数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%9D%A1%E4%BB%B6%E7%AD%9B%E9%80%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">单条件筛选</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%9D%A1%E4%BB%B6%E7%AD%9B%E9%80%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">多条件筛选</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%9B%E9%80%89%E5%8C%85%E5%90%AB%E6%8C%87%E5%AE%9A%E5%80%BC"><span class="toc-number">2.2.3.</span> <span class="toc-text">筛选包含指定值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%BB%E9%87%8D"><span class="toc-number">2.3.</span> <span class="toc-text">去重</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E9%87%8D%EF%BC%88%E9%BB%98%E8%AE%A4%E6%8C%89%E6%89%80%E6%9C%89%E5%88%97%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">去重（默认按所有列）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E9%87%8D%EF%BC%88%E6%8C%87%E5%AE%9A%E5%88%97%EF%BC%89"><span class="toc-number">2.3.2.</span> <span class="toc-text">去重（指定列）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%BB%E9%99%A4%E7%A9%BA%E5%80%BC"><span class="toc-number">2.4.</span> <span class="toc-text">去除空值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E9%99%A4%E7%89%B9%E5%AE%9A%E5%88%97%E7%9A%84%E7%A9%BA%E5%80%BC"><span class="toc-number">2.4.1.</span> <span class="toc-text">去除特定列的空值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A1%AB%E5%85%85%E7%A9%BA%E5%80%BC"><span class="toc-number">2.4.2.</span> <span class="toc-text">填充空值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">2.5.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%B0%E5%88%97"><span class="toc-number">2.6.</span> <span class="toc-text">添加新列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%9B%E9%80%89-Top-N-Bottom-N"><span class="toc-number">2.7.</span> <span class="toc-text">筛选 Top N &#x2F; Bottom N</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0Vslookup"><span class="toc-number">2.8.</span> <span class="toc-text">实现Vslookup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%85%A5"><span class="toc-number">2.9.</span> <span class="toc-text">写入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-number">2.10.</span> <span class="toc-text">小技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C%EF%BC%9A%E5%8E%BB%E7%A9%BA%E5%80%BC-%E5%8E%BB%E9%87%8D-%E7%AD%9B%E9%80%89%E5%8F%AF%E4%BB%A5%E4%B8%80%E8%A1%8C%E6%90%9E%E5%AE%9A"><span class="toc-number">2.10.1.</span> <span class="toc-text">链式操作：去空值 + 去重 + 筛选可以一行搞定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.10.2.</span> <span class="toc-text">快速查看数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E9%80%89%E6%8B%A9"><span class="toc-number">2.10.3.</span> <span class="toc-text">列选择</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Notebook-%E8%9E%8D%E5%90%88-AI"><span class="toc-number">3.</span> <span class="toc-text">Notebook 融合 AI</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E5%AF%BC%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">安装和导入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%97%AE"><span class="toc-number">3.2.</span> <span class="toc-text">提问</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Jupyter+Notebook+Excel
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-02-03T06:56:43.000Z" class="dt-published" itemprop="datePublished">2026-02-03</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/python/" rel="tag">python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="启动-Notebook"><a href="#启动-Notebook" class="headerlink" title="启动 Notebook"></a>启动 Notebook</h1><p>1、打开终端（Terminal）</p>
+<p>2、进入你想存文章的文件夹，例如：</p>
+<blockquote>
+<p>cd ~&#x2F;Documents&#x2F;article_project</p>
+</blockquote>
+<p>3、启动 Jupyter</p>
+<blockquote>
+<p>jupyter notebook</p>
+</blockquote>
+<p>会自动打开浏览器，显示文件列表</p>
+<p>点击 New → Python 3 新建 Notebook</p>
+<h1 id="Excel相关操作"><a href="#Excel相关操作" class="headerlink" title="Excel相关操作"></a>Excel相关操作</h1><h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br><span class="hljs-comment"># 读取 Excel 文件</span><br>df = pd.read_excel(<span class="hljs-string">&quot;your_file.xlsx&quot;</span>)  <span class="hljs-comment"># 替换成你的文件名</span><br>df.head()  <span class="hljs-comment"># 显示前5行</span><br><br></code></pre></td></tr></table></figure>
+
+<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><h3 id="单条件筛选"><a href="#单条件筛选" class="headerlink" title="单条件筛选"></a>单条件筛选</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 筛选“地区”列为北京的行</span><br>df_beijing = df[df[<span class="hljs-string">&quot;地区&quot;</span>] == <span class="hljs-string">&quot;北京&quot;</span>]<br>df_beijing.head()<br></code></pre></td></tr></table></figure>
+
+<h3 id="多条件筛选"><a href="#多条件筛选" class="headerlink" title="多条件筛选"></a>多条件筛选</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 地区是北京且销售额大于1000</span><br>df_filtered = df[(df[<span class="hljs-string">&quot;地区&quot;</span>] == <span class="hljs-string">&quot;北京&quot;</span>) &amp; (df[<span class="hljs-string">&quot;销售额&quot;</span>] &gt; <span class="hljs-number">1000</span>)]<br>df_filtered.head()<br></code></pre></td></tr></table></figure>
+
+<h3 id="筛选包含指定值"><a href="#筛选包含指定值" class="headerlink" title="筛选包含指定值"></a>筛选包含指定值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 客户名称包含“科技”的行</span><br>df_tech = df[df[<span class="hljs-string">&quot;客户名称&quot;</span>].<span class="hljs-built_in">str</span>.contains(<span class="hljs-string">&quot;科技&quot;</span>, <span class="hljs-keyword">case</span>=<span class="hljs-literal">False</span>)]<br>df_tech.head()<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h2><h3 id="去重（默认按所有列）"><a href="#去重（默认按所有列）" class="headerlink" title="去重（默认按所有列）"></a>去重（默认按所有列）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 去重，默认是按所有列去重</span><br>df_unique = df.drop_duplicates()<br>df_unique.head()<br></code></pre></td></tr></table></figure>
+
+<h3 id="去重（指定列）"><a href="#去重（指定列）" class="headerlink" title="去重（指定列）"></a>去重（指定列）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 基于“客户ID”去重，保留第一次出现</span><br>df_unique = df.drop_duplicates(subset=[<span class="hljs-string">&quot;客户ID&quot;</span>], keep=<span class="hljs-string">&quot;first&quot;</span>)<br>df_unique.head()<br></code></pre></td></tr></table></figure>
+
+<h2 id="去除空值"><a href="#去除空值" class="headerlink" title="去除空值"></a>去除空值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 去除所有列的空值行</span><br>df_clean = df.dropna()<br>df_clean.head()<br></code></pre></td></tr></table></figure>
+
+<h3 id="去除特定列的空值"><a href="#去除特定列的空值" class="headerlink" title="去除特定列的空值"></a>去除特定列的空值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_no_na_col = df.dropna(subset=[<span class="hljs-string">&quot;销售额&quot;</span>])<br>df_no_na_col.head()<br></code></pre></td></tr></table></figure>
+<h3 id="填充空值"><a href="#填充空值" class="headerlink" title="填充空值"></a>填充空值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 用0填充“销售额”列的空值</span><br>df_filled = df.fillna(&#123;<span class="hljs-string">&quot;销售额&quot;</span>: <span class="hljs-number">0</span>&#125;)<br>df_filled.head()<br></code></pre></td></tr></table></figure>
+
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 按单列升序排序</span><br>df.sort_values(by=<span class="hljs-string">&quot;销售额&quot;</span>, ascending=<span class="hljs-literal">True</span>, inplace=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment"># 按多列排序</span><br>df.sort_values(by=[<span class="hljs-string">&quot;地区&quot;</span>,<span class="hljs-string">&quot;销售额&quot;</span>], ascending=[<span class="hljs-literal">True</span>, <span class="hljs-literal">False</span>], inplace=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="添加新列"><a href="#添加新列" class="headerlink" title="添加新列"></a>添加新列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 新增一列 = 销售额 * 0.9</span><br>df[<span class="hljs-string">&quot;折后金额&quot;</span>] = df[<span class="hljs-string">&quot;销售额&quot;</span>] * <span class="hljs-number">0.9</span><br><br><span class="hljs-comment"># 根据条件生成新列</span><br>df[<span class="hljs-string">&quot;高销售&quot;</span>] = df[<span class="hljs-string">&quot;销售额&quot;</span>].apply(<span class="hljs-keyword">lambda</span> x: <span class="hljs-string">&quot;是&quot;</span> <span class="hljs-keyword">if</span> x &gt; <span class="hljs-number">1000</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;否&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="筛选-Top-N-Bottom-N"><a href="#筛选-Top-N-Bottom-N" class="headerlink" title="筛选 Top N &#x2F; Bottom N"></a>筛选 Top N &#x2F; Bottom N</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 销售额前 5 名</span><br>df.nlargest(<span class="hljs-number">5</span>, <span class="hljs-string">&quot;销售额&quot;</span>)<br><br><span class="hljs-comment"># 销售额最小 3 名</span><br>df.nsmallest(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;销售额&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="实现Vslookup"><a href="#实现Vslookup" class="headerlink" title="实现Vslookup"></a>实现Vslookup</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 主表</span><br>df1 = pd.DataFrame(&#123;<br>    <span class="hljs-string">&quot;客户ID&quot;</span>:[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],<br>    <span class="hljs-string">&quot;客户名称&quot;</span>:[<span class="hljs-string">&quot;A&quot;</span>,<span class="hljs-string">&quot;B&quot;</span>,<span class="hljs-string">&quot;C&quot;</span>]<br>&#125;)<br><br><span class="hljs-comment"># 参考表</span><br>df2 = pd.DataFrame(&#123;<br>    <span class="hljs-string">&quot;客户ID&quot;</span>:[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],<br>    <span class="hljs-string">&quot;地区&quot;</span>:[<span class="hljs-string">&quot;北京&quot;</span>,<span class="hljs-string">&quot;上海&quot;</span>,<span class="hljs-string">&quot;广州&quot;</span>]<br>&#125;)<br><br></code></pre></td></tr></table></figure>
+
+<p>用 merge 实现 VLOOKUP</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_merged = df1.merge(df2, on=<span class="hljs-string">&quot;客户ID&quot;</span>, how=<span class="hljs-string">&quot;left&quot;</span>)<br>df_merged<br></code></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_merged.to_excel(<span class="hljs-string">&quot;processed.xlsx&quot;</span>, index=<span class="hljs-literal">False</span>)<br><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><h3 id="链式操作：去空值-去重-筛选可以一行搞定"><a href="#链式操作：去空值-去重-筛选可以一行搞定" class="headerlink" title="链式操作：去空值 + 去重 + 筛选可以一行搞定"></a>链式操作：去空值 + 去重 + 筛选可以一行搞定</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean = df.dropna(subset=[<span class="hljs-string">&quot;销售额&quot;</span>]) \<br>             .drop_duplicates(subset=[<span class="hljs-string">&quot;客户ID&quot;</span>]) \<br>             .query(<span class="hljs-string">&quot;销售额 &gt; 1000&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="快速查看数据类型"><a href="#快速查看数据类型" class="headerlink" title="快速查看数据类型"></a>快速查看数据类型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">df.head()   <span class="hljs-comment"># 前5行</span><br>df.tail(<span class="hljs-number">10</span>) <span class="hljs-comment"># 后10行</span><br>df.info()   <span class="hljs-comment"># 数据信息</span><br>df.describe() <span class="hljs-comment"># 统计信息</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="列选择"><a href="#列选择" class="headerlink" title="列选择"></a>列选择</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df[[<span class="hljs-string">&quot;客户ID&quot;</span>,<span class="hljs-string">&quot;销售额&quot;</span>]]  <span class="hljs-comment"># 选择两列</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="Notebook-融合-AI"><a href="#Notebook-融合-AI" class="headerlink" title="Notebook 融合 AI"></a>Notebook 融合 AI</h1><h2 id="安装和导入"><a href="#安装和导入" class="headerlink" title="安装和导入"></a>安装和导入</h2><p>这里以 OpenAI 免费额度的 GPT-3.5 为例：</p>
+<blockquote>
+<p>pip install openai</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> openai <span class="hljs-keyword">import</span> OpenAI<br>client = OpenAI(api_key=<span class="hljs-string">&quot;&quot;</span>)  <br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="提问"><a href="#提问" class="headerlink" title="提问"></a>提问</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 生成分析</span><br>data_text = df.head(<span class="hljs-number">20</span>).to_string()  <span class="hljs-comment"># 前20行示例</span><br>prompt = <span class="hljs-string">f&quot;你是数据分析师，请分析以下数据：\n<span class="hljs-subst">&#123;data_text&#125;</span>\n用中文总结趋势、异常和建议。&quot;</span><br><br>response = client.chat.completions.create(<br>    model=<span class="hljs-string">&quot;gpt-4&quot;</span>,<br>    messages=[&#123;<span class="hljs-string">&quot;role&quot;</span>:<span class="hljs-string">&quot;user&quot;</span>, <span class="hljs-string">&quot;content&quot;</span>: prompt&#125;],<br>    temperature=<span class="hljs-number">0.7</span><br>)<br><br>analysis = response.choices[<span class="hljs-number">0</span>].message.content<br><span class="hljs-built_in">print</span>(analysis)<br></code></pre></td></tr></table></figure>
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/archives/">🖋️ 片刻记录</a></li>
+        
+          <li><a href="/about/">📜 关于</a></li>
+        
+          <li><a href="/tools/">🛠️ 械所</a></li>
+        
+          <li><a href="/masonry/">🖼️ 相册</a></li>
+        
+          <li><a href="/friends/">🤝 同行者</a></li>
+        
+          <li><a href="/search/">🔍 搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8-Notebook"><span class="toc-number">1.</span> <span class="toc-text">启动 Notebook</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Excel%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">Excel相关操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96"><span class="toc-number">2.1.</span> <span class="toc-text">读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE"><span class="toc-number">2.2.</span> <span class="toc-text">数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%9D%A1%E4%BB%B6%E7%AD%9B%E9%80%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">单条件筛选</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%9D%A1%E4%BB%B6%E7%AD%9B%E9%80%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">多条件筛选</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%9B%E9%80%89%E5%8C%85%E5%90%AB%E6%8C%87%E5%AE%9A%E5%80%BC"><span class="toc-number">2.2.3.</span> <span class="toc-text">筛选包含指定值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%BB%E9%87%8D"><span class="toc-number">2.3.</span> <span class="toc-text">去重</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E9%87%8D%EF%BC%88%E9%BB%98%E8%AE%A4%E6%8C%89%E6%89%80%E6%9C%89%E5%88%97%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">去重（默认按所有列）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E9%87%8D%EF%BC%88%E6%8C%87%E5%AE%9A%E5%88%97%EF%BC%89"><span class="toc-number">2.3.2.</span> <span class="toc-text">去重（指定列）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%BB%E9%99%A4%E7%A9%BA%E5%80%BC"><span class="toc-number">2.4.</span> <span class="toc-text">去除空值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E9%99%A4%E7%89%B9%E5%AE%9A%E5%88%97%E7%9A%84%E7%A9%BA%E5%80%BC"><span class="toc-number">2.4.1.</span> <span class="toc-text">去除特定列的空值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A1%AB%E5%85%85%E7%A9%BA%E5%80%BC"><span class="toc-number">2.4.2.</span> <span class="toc-text">填充空值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">2.5.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%B0%E5%88%97"><span class="toc-number">2.6.</span> <span class="toc-text">添加新列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%9B%E9%80%89-Top-N-Bottom-N"><span class="toc-number">2.7.</span> <span class="toc-text">筛选 Top N &#x2F; Bottom N</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0Vslookup"><span class="toc-number">2.8.</span> <span class="toc-text">实现Vslookup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%85%A5"><span class="toc-number">2.9.</span> <span class="toc-text">写入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-number">2.10.</span> <span class="toc-text">小技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C%EF%BC%9A%E5%8E%BB%E7%A9%BA%E5%80%BC-%E5%8E%BB%E9%87%8D-%E7%AD%9B%E9%80%89%E5%8F%AF%E4%BB%A5%E4%B8%80%E8%A1%8C%E6%90%9E%E5%AE%9A"><span class="toc-number">2.10.1.</span> <span class="toc-text">链式操作：去空值 + 去重 + 筛选可以一行搞定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.10.2.</span> <span class="toc-text">快速查看数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E9%80%89%E6%8B%A9"><span class="toc-number">2.10.3.</span> <span class="toc-text">列选择</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Notebook-%E8%9E%8D%E5%90%88-AI"><span class="toc-number">3.</span> <span class="toc-text">Notebook 融合 AI</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E5%AF%BC%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">安装和导入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%97%AE"><span class="toc-number">3.2.</span> <span class="toc-text">提问</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&text=Jupyter+Notebook+Excel"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&title=Jupyter+Notebook+Excel"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&is_video=false&description=Jupyter+Notebook+Excel"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Jupyter+Notebook+Excel&body=Check out this article: https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&title=Jupyter+Notebook+Excel"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&title=Jupyter+Notebook+Excel"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&title=Jupyter+Notebook+Excel"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&title=Jupyter+Notebook+Excel"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&name=Jupyter+Notebook+Excel&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/&t=Jupyter+Notebook+Excel"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    ⚖️ 著作权属 &copy;
+    
+    
+    2025-2099
+    hybpjx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+<!-- 音乐播放器 -->
+<div id="music-player" class="music-player">
+    <div class="player-controls">
+        <button id="play-pause" class="control-btn">▶</button>
+        <audio id="audio-player" src="/music/遗憾R&B.mp3" preload="metadata"></audio>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <span class="current-time">0:00</span>
+        <span class="total-time">/0:00</span>
+        <div class="volume-control">
+            <button id="mute" class="control-btn">🔊</button>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8">
+        </div>
+        <div class="playlist-control">
+            <button id="playlist-toggle" class="control-btn">🎵</button>
+        </div>
+    </div>
+    <div id="playlist" class="playlist">
+        <div class="playlist-item" data-src="/music/暧昧合伙人.mp3">暧昧合伙人</div>
+        <div class="playlist-item" data-src="/music/遗憾R&B.mp3">遗憾</div>
+    </div>
+</div>
+
+<style>
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.control-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.progress-container {
+    flex: 1;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #007bff;
+    border-radius: 2px;
+    width: 0%;
+}
+
+.current-time, .total-time {
+    font-size: 12px;
+    color: #666;
+    min-width: 35px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#volume {
+    width: 60px;
+}
+
+.playlist {
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+}
+
+.playlist-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.playlist-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.playlist-item.playing {
+    background: #007bff;
+    color: white;
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .music-player {
+        background: rgba(40, 40, 40, 0.9);
+        color: white;
+    }
+    
+    .progress-container {
+        background: #555;
+    }
+    
+    .current-time, .total-time {
+        color: #ccc;
+    }
+    
+    .playlist-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('audio-player');
+    const playPauseBtn = document.getElementById('play-pause');
+    const muteBtn = document.getElementById('mute');
+    const volumeSlider = document.getElementById('volume');
+    const progressContainer = document.querySelector('.progress-container');
+    const progressBar = document.querySelector('.progress-bar');
+    const currentTimeEl = document.querySelector('.current-time');
+    const totalTimeEl = document.querySelector('.total-time');
+    const playlistToggle = document.getElementById('playlist-toggle');
+    const playlist = document.getElementById('playlist');
+    const playlistItems = document.querySelectorAll('.playlist-item');
+
+    // 格式化时间
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // 更新进度条
+    function updateProgress() {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = progress + '%';
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+    }
+
+    // 设置总时间
+    audio.addEventListener('loadedmetadata', function() {
+        totalTimeEl.textContent = '/' + formatTime(audio.duration);
+    });
+
+    // 播放/暂停
+    playPauseBtn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = '▶';
+        }
+    });
+
+    // 静音
+    muteBtn.addEventListener('click', function() {
+        audio.muted = !audio.muted;
+        muteBtn.textContent = audio.muted ? '??' : '🔊';
+    });
+
+    // 音量控制
+    volumeSlider.addEventListener('input', function() {
+        audio.volume = this.value;
+    });
+
+    // 进度条控制
+    progressContainer.addEventListener('click', function(e) {
+        const progressWidth = this.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audio.duration;
+        audio.currentTime = (clickX / progressWidth) * duration;
+    });
+
+    // 播放列表切换
+    playlistToggle.addEventListener('click', function() {
+        playlist.style.display = playlist.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // 播放列表项点击
+    playlistItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const src = this.getAttribute('data-src');
+            audio.src = src;
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+            
+            // 高亮当前播放项
+            playlistItems.forEach(i => i.classList.remove('playing'));
+            this.classList.add('playing');
+        });
+    });
+
+    // 更新进度
+    audio.addEventListener('timeupdate', updateProgress);
+});
+</script>
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>

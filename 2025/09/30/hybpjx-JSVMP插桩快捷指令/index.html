@@ -28,7 +28,7 @@
   <meta name="description" content="要对JSVMP进行插桩。以下是总结的一些快速复制 对象序列化（判断window）12345678jj,JSON.stringify(jc,function(k, v) &#123;    if (v &#x3D;&#x3D;&#x3D; window) &#123;        return &#x27;window&#x27;    &#125;    return v&#125;)  对象序列化（判断长度以及window">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSVMP插桩快捷指令">
-<meta property="og:url" content="https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:url" content="https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/index.html">
 <meta property="og:site_name" content="始識’s 博客">
 <meta property="og:description" content="要对JSVMP进行插桩。以下是总结的一些快速复制 对象序列化（判断window）12345678jj,JSON.stringify(jc,function(k, v) &#123;    if (v &#x3D;&#x3D;&#x3D; window) &#123;        return &#x27;window&#x27;    &#125;    return v&#125;)  对象序列化（判断长度以及window">
 <meta property="og:locale" content="zh_CN">
@@ -105,7 +105,7 @@
         <li><a class="icon" aria-label="上一篇" href="/2025/10/09/python-UV%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" aria-label="下一篇" href="/2025/09/28/frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="下一篇" href="/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -118,17 +118,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&text=JSVMP插桩快捷指令"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&is_video=false&description=JSVMP插桩快捷指令"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=JSVMP插桩快捷指令&body=Check out this article: https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&name=JSVMP插桩快捷指令&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&t=JSVMP插桩快捷指令"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&text=JSVMP插桩快捷指令"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&is_video=false&description=JSVMP插桩快捷指令"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JSVMP插桩快捷指令&body=Check out this article: https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&name=JSVMP插桩快捷指令&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&t=JSVMP插桩快捷指令"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -230,17 +230,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&text=JSVMP插桩快捷指令"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&is_video=false&description=JSVMP插桩快捷指令"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=JSVMP插桩快捷指令&body=Check out this article: https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&name=JSVMP插桩快捷指令&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/09/30/JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&t=JSVMP插桩快捷指令"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&text=JSVMP插桩快捷指令"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&is_video=false&description=JSVMP插桩快捷指令"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JSVMP插桩快捷指令&body=Check out this article: https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&title=JSVMP插桩快捷指令"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&name=JSVMP插桩快捷指令&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/&t=JSVMP插桩快捷指令"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -316,7 +316,7 @@
 .music-player {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     padding: 10px;
