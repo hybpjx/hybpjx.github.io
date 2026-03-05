@@ -4,6 +4,57 @@
   
     
     <entry>
+      <title>七牛云配置并且设置自定义域名</title>
+      <link href="/2026/03/04/%E4%B8%83%E7%89%9B%E4%BA%91%E9%85%8D%E7%BD%AE%E5%B9%B6%E4%B8%94%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/"/>
+      <url>/2026/03/04/%E4%B8%83%E7%89%9B%E4%BA%91%E9%85%8D%E7%BD%AE%E5%B9%B6%E4%B8%94%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/</url>
+      
+        <content type="html"><![CDATA[<h1 id="配置项说明"><a href="#配置项说明" class="headerlink" title="配置项说明"></a>配置项说明</h1><p>区域: 对象储存空间所属的区域，可在七牛云控制台查看。<br>空间名称: 对象储存空间名称，可在七牛云控制台查看。<br>Access Key: 密钥。<br>Secret Key: 密钥。<br>域名: 使用七牛云默认提供的测试域名或者你的自定义域名。测试域名可在七牛云控制台查看。域名需以http:&#x2F;&#x2F;或者https:&#x2F;&#x2F;开头。<br>保存路径: 文件储存的路径（包括文件夹）。 支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} 等变量。比如：上传的图片为 uPic.jpg，设定为 “uPic&#x2F;{filename}{.suffix}”，则会保存到 “uPic&#x2F;uPic.jpg”。<br>在保存路径输入框后面的是网址后缀: 用于自定义图片处理。在七牛云对象储存中可以配置图片处理样式。例如：规则名称为w的规则来标识水印版本，分隔符为!，则可以在网址后缀中填写!w。之后每次上传的图片生成连接后面都会追加上-w，即表示访问水印版本。</p><h1 id="区域、空间名称、域名信息获取"><a href="#区域、空间名称、域名信息获取" class="headerlink" title="区域、空间名称、域名信息获取"></a>区域、空间名称、域名信息获取</h1><p>进入 <a href="https://portal.qiniu.com/bucket">对象储存</a> 控制台查看</p><p><img src="http://cdn.hybpjx.cn/uPic/image-20260304232708978.png"></p><h1 id="密钥获取-Access-Key、Secret-Key"><a href="#密钥获取-Access-Key、Secret-Key" class="headerlink" title="密钥获取(Access Key、Secret Key)"></a>密钥获取(Access Key、Secret Key)</h1><p>进入个人中心 <a href="https://portal.qiniu.com/signin?redirect=/developer/user/key">密钥管理</a> 查看</p><h1 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h1><p>这里使用自己买好的域名</p><p>比如  已经占用了 www</p><p><img src="http://cdn.hybpjx.cn/uPic/image-20260304232851867.png"></p><p>没关系这里我们重新创建一个cdn.xxx.com CName 然后做解析依然可以。</p><p>在阿里云中如下文设置</p><p>点击左上角的蓝色按钮 <strong>“添加记录”</strong>，填写如下信息：</p><ul><li><strong>主机记录</strong>：填写 <code>cdn</code> (如果您在七牛填的是 <code>cdn.xxx.cn</code>)。</li><li><strong>记录类型</strong>：选择 <code>CNAME</code>。</li><li><strong>线路类型</strong>：默认。</li><li><strong>记录值</strong>：填写从七牛云复制回来的那个 <code>.qiniudns.com</code> 地址。</li><li><strong>TTL</strong>：默认 600 或 10分钟。</li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>openclaw与picoclaw</title>
+      <link href="/2026/03/04/openclaw%E4%B8%8Epicoclaw/"/>
+      <url>/2026/03/04/openclaw%E4%B8%8Epicoclaw/</url>
+      
+        <content type="html"><![CDATA[<h1 id="openclaw部署命令"><a href="#openclaw部署命令" class="headerlink" title="openclaw部署命令"></a>openclaw部署命令</h1><blockquote><p>npm install -g openclaw@latest<br>openclaw onboard –install-daemon</p></blockquote><h1 id="picoclaw部署命令"><a href="#picoclaw部署命令" class="headerlink" title="picoclaw部署命令"></a>picoclaw部署命令</h1><p><a href="https://picoclaw.net/zh/#install">https://picoclaw.net/zh/#install</a></p><blockquote><p>git clone <a href="https://github.com/sipeed/picoclaw">https://github.com/sipeed/picoclaw</a> &amp;&amp; cd picoclaw &amp;&amp; picoclaw onboard</p></blockquote><h1 id="openclaw相关的skills"><a href="#openclaw相关的skills" class="headerlink" title="openclaw相关的skills"></a>openclaw相关的skills</h1><p><a href="https://github.com/VoltAgent/awesome-openclaw-skills">https://github.com/VoltAgent/awesome-openclaw-skills</a></p><p>这是skills合集 覆盖大模型，开发，办公，娱乐等方方面面的技能。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> AI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何不改变现有修改windows版本</title>
+      <link href="/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/"/>
+      <url>/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/</url>
+      
+        <content type="html"><![CDATA[<h1 id="先查看当前版本"><a href="#先查看当前版本" class="headerlink" title="先查看当前版本"></a>先查看当前版本</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">DISM /Online /Get-CurrentEdition<br></code></pre></td></tr></table></figure><h1 id="查看可升级的目标版本"><a href="#查看可升级的目标版本" class="headerlink" title="查看可升级的目标版本"></a>查看可升级的目标版本</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">DISM /Online /Get-TargetEditions<br></code></pre></td></tr></table></figure><h1 id="查看当前许可证"><a href="#查看当前许可证" class="headerlink" title="查看当前许可证"></a>查看当前许可证</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wmic path softwarelicensingservice get<br></code></pre></td></tr></table></figure><h1 id="升级到专业版，并输入密钥"><a href="#升级到专业版，并输入密钥" class="headerlink" title="升级到专业版，并输入密钥"></a>升级到专业版，并输入密钥</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">DISM /Online /Set-Edition:Professional /ProductKey:xxx-xxxx-xxx-xxx /AcceptEula<br></code></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 杂项 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Jupyter+Notebook+Excel</title>
       <link href="/2026/02/03/Jupyter-Notebook-Excel/"/>
       <url>/2026/02/03/Jupyter-Notebook-Excel/</url>

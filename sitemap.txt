@@ -1,3 +1,6 @@
+https://hybpjx.cn/2026/03/04/%E4%B8%83%E7%89%9B%E4%BA%91%E9%85%8D%E7%BD%AE%E5%B9%B6%E4%B8%94%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/
+https://hybpjx.cn/2026/03/04/openclaw%E4%B8%8Epicoclaw/
+https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/
 https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/
 https://hybpjx.cn/2026/02/03/Jupyter-Notebook-Excel/
 https://hybpjx.cn/secret/index.html
@@ -90,6 +93,8 @@ https://hybpjx.cn/tags/MongoDB/
 https://hybpjx.cn/tags/Svelte/
 https://hybpjx.cn/tags/Unidbg/
 https://hybpjx.cn/tags/unidbg/
+https://hybpjx.cn/tags/AI/
+https://hybpjx.cn/tags/%E6%9D%82%E9%A1%B9/
 https://hybpjx.cn/categories/AST%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/
 https://hybpjx.cn/categories/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/
 https://hybpjx.cn/categories/%E6%9D%82%E8%AE%B0/

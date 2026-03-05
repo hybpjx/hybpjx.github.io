@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+  <meta name="description" content="先查看当前版本1DISM &#x2F;Online &#x2F;Get-CurrentEdition  查看可升级的目标版本1DISM &#x2F;Online &#x2F;Get-TargetEditions  查看当前许可证1wmic path softwarelicensingservice get  升级到专业版，并输入密钥1DISM &#x2F;Online &#x2F;Set-Edition:Professional &#x2F;ProductKey:x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何不改变现有修改windows版本">
+<meta property="og:url" content="https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/index.html">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="先查看当前版本1DISM &#x2F;Online &#x2F;Get-CurrentEdition  查看可升级的目标版本1DISM &#x2F;Online &#x2F;Get-TargetEditions  查看当前许可证1wmic path softwarelicensingservice get  升级到专业版，并输入密钥1DISM &#x2F;Online &#x2F;Set-Edition:Professional &#x2F;ProductKey:x">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-03T10:59:46.000Z">
+<meta property="article:modified_time" content="2026-03-04T03:40:53.137Z">
+<meta property="article:author" content="hybpjx">
+<meta property="article:tag" content="杂项">
+<meta name="twitter:card" content="summary">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
+    
+  <!-- title -->
+  <title>如何不改变现有修改windows版本</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
+
+
+  <!-- styles -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2026/03/04/openclaw%E4%B8%8Epicoclaw/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2026/02/03/Jupyter-Notebook-Excel/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&text=如何不改变现有修改windows版本"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&title=如何不改变现有修改windows版本"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&is_video=false&description=如何不改变现有修改windows版本"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何不改变现有修改windows版本&body=Check out this article: https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&title=如何不改变现有修改windows版本"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&title=如何不改变现有修改windows版本"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&title=如何不改变现有修改windows版本"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&title=如何不改变现有修改windows版本"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&name=如何不改变现有修改windows版本&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&t=如何不改变现有修改windows版本"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%88%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%89%88%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">先查看当前版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%8F%AF%E5%8D%87%E7%BA%A7%E7%9A%84%E7%9B%AE%E6%A0%87%E7%89%88%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">查看可升级的目标版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="toc-number">3.</span> <span class="toc-text">查看当前许可证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%88%B0%E4%B8%93%E4%B8%9A%E7%89%88%EF%BC%8C%E5%B9%B6%E8%BE%93%E5%85%A5%E5%AF%86%E9%92%A5"><span class="toc-number">4.</span> <span class="toc-text">升级到专业版，并输入密钥</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        如何不改变现有修改windows版本
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-03-03T10:59:46.000Z" class="dt-published" itemprop="datePublished">2026-03-03</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="先查看当前版本"><a href="#先查看当前版本" class="headerlink" title="先查看当前版本"></a>先查看当前版本</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">DISM /Online /Get-CurrentEdition<br></code></pre></td></tr></table></figure>
+
+<h1 id="查看可升级的目标版本"><a href="#查看可升级的目标版本" class="headerlink" title="查看可升级的目标版本"></a>查看可升级的目标版本</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">DISM /Online /Get-TargetEditions<br></code></pre></td></tr></table></figure>
+
+<h1 id="查看当前许可证"><a href="#查看当前许可证" class="headerlink" title="查看当前许可证"></a>查看当前许可证</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wmic path softwarelicensingservice get<br></code></pre></td></tr></table></figure>
+
+<h1 id="升级到专业版，并输入密钥"><a href="#升级到专业版，并输入密钥" class="headerlink" title="升级到专业版，并输入密钥"></a>升级到专业版，并输入密钥</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">DISM /Online /Set-Edition:Professional /ProductKey:xxx-xxxx-xxx-xxx /AcceptEula<br></code></pre></td></tr></table></figure>
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/archives/">🖋️ 片刻记录</a></li>
+        
+          <li><a href="/about/">📜 关于</a></li>
+        
+          <li><a href="/tools/">🛠️ 械所</a></li>
+        
+          <li><a href="/masonry/">🖼️ 相册</a></li>
+        
+          <li><a href="/friends/">🤝 同行者</a></li>
+        
+          <li><a href="/search/">🔍 搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%88%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%89%88%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">先查看当前版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%8F%AF%E5%8D%87%E7%BA%A7%E7%9A%84%E7%9B%AE%E6%A0%87%E7%89%88%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">查看可升级的目标版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="toc-number">3.</span> <span class="toc-text">查看当前许可证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%88%B0%E4%B8%93%E4%B8%9A%E7%89%88%EF%BC%8C%E5%B9%B6%E8%BE%93%E5%85%A5%E5%AF%86%E9%92%A5"><span class="toc-number">4.</span> <span class="toc-text">升级到专业版，并输入密钥</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&text=如何不改变现有修改windows版本"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&title=如何不改变现有修改windows版本"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&is_video=false&description=如何不改变现有修改windows版本"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何不改变现有修改windows版本&body=Check out this article: https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&title=如何不改变现有修改windows版本"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&title=如何不改变现有修改windows版本"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&title=如何不改变现有修改windows版本"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&title=如何不改变现有修改windows版本"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&name=如何不改变现有修改windows版本&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/&t=如何不改变现有修改windows版本"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    ⚖️ 著作权属 &copy;
+    
+    
+    2025-2099
+    hybpjx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+<!-- 音乐播放器 -->
+<div id="music-player" class="music-player">
+    <div class="player-controls">
+        <button id="play-pause" class="control-btn">▶</button>
+        <audio id="audio-player" src="/music/遗憾R&B.mp3" preload="metadata"></audio>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <span class="current-time">0:00</span>
+        <span class="total-time">/0:00</span>
+        <div class="volume-control">
+            <button id="mute" class="control-btn">🔊</button>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8">
+        </div>
+        <div class="playlist-control">
+            <button id="playlist-toggle" class="control-btn">🎵</button>
+        </div>
+    </div>
+    <div id="playlist" class="playlist">
+        <div class="playlist-item" data-src="/music/暧昧合伙人.mp3">暧昧合伙人</div>
+        <div class="playlist-item" data-src="/music/遗憾R&B.mp3">遗憾</div>
+    </div>
+</div>
+
+<style>
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.control-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.progress-container {
+    flex: 1;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #007bff;
+    border-radius: 2px;
+    width: 0%;
+}
+
+.current-time, .total-time {
+    font-size: 12px;
+    color: #666;
+    min-width: 35px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#volume {
+    width: 60px;
+}
+
+.playlist {
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+}
+
+.playlist-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.playlist-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.playlist-item.playing {
+    background: #007bff;
+    color: white;
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .music-player {
+        background: rgba(40, 40, 40, 0.9);
+        color: white;
+    }
+    
+    .progress-container {
+        background: #555;
+    }
+    
+    .current-time, .total-time {
+        color: #ccc;
+    }
+    
+    .playlist-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('audio-player');
+    const playPauseBtn = document.getElementById('play-pause');
+    const muteBtn = document.getElementById('mute');
+    const volumeSlider = document.getElementById('volume');
+    const progressContainer = document.querySelector('.progress-container');
+    const progressBar = document.querySelector('.progress-bar');
+    const currentTimeEl = document.querySelector('.current-time');
+    const totalTimeEl = document.querySelector('.total-time');
+    const playlistToggle = document.getElementById('playlist-toggle');
+    const playlist = document.getElementById('playlist');
+    const playlistItems = document.querySelectorAll('.playlist-item');
+
+    // 格式化时间
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // 更新进度条
+    function updateProgress() {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = progress + '%';
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+    }
+
+    // 设置总时间
+    audio.addEventListener('loadedmetadata', function() {
+        totalTimeEl.textContent = '/' + formatTime(audio.duration);
+    });
+
+    // 播放/暂停
+    playPauseBtn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = '▶';
+        }
+    });
+
+    // 静音
+    muteBtn.addEventListener('click', function() {
+        audio.muted = !audio.muted;
+        muteBtn.textContent = audio.muted ? '??' : '🔊';
+    });
+
+    // 音量控制
+    volumeSlider.addEventListener('input', function() {
+        audio.volume = this.value;
+    });
+
+    // 进度条控制
+    progressContainer.addEventListener('click', function(e) {
+        const progressWidth = this.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audio.duration;
+        audio.currentTime = (clickX / progressWidth) * duration;
+    });
+
+    // 播放列表切换
+    playlistToggle.addEventListener('click', function() {
+        playlist.style.display = playlist.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // 播放列表项点击
+    playlistItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const src = this.getAttribute('data-src');
+            audio.src = src;
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+            
+            // 高亮当前播放项
+            playlistItems.forEach(i => i.classList.remove('playing'));
+            this.classList.add('playing');
+        });
+    });
+
+    // 更新进度
+    audio.addEventListener('timeupdate', updateProgress);
+});
+</script>
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
