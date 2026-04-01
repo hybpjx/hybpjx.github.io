@@ -37,29 +37,6 @@
   </entry>
   
   <entry>
-    <title>openclaw与picoclaw</title>
-    <link href="https://hybpjx.cn/2026/03/04/openclaw%E4%B8%8Epicoclaw/"/>
-    <id>https://hybpjx.cn/2026/03/04/openclaw%E4%B8%8Epicoclaw/</id>
-    <published>2026-03-04T03:40:31.000Z</published>
-    <updated>2026-03-04T03:43:42.843Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="openclaw部署命令"><a href="#openclaw部署命令" class="headerlink" title="openclaw部署命令"></a>openclaw部署命令</h1><blockquote><p>npm install -g openclaw@latest<br>openclaw onboard –install-daemon</p></blockquote><h1 id="picoclaw部署命令"><a href="#picoclaw部署命令" class="headerlink" title="picoclaw部署命令"></a>picoclaw部署命令</h1><p><a href="https://picoclaw.net/zh/#install">https://picoclaw.net/zh/#install</a></p><blockquote><p>git clone <a href="https://github.com/sipeed/picoclaw">https://github.com/sipeed/picoclaw</a> &amp;&amp; cd picoclaw &amp;&amp; picoclaw onboard</p></blockquote><h1 id="openclaw相关的skills"><a href="#openclaw相关的skills" class="headerlink" title="openclaw相关的skills"></a>openclaw相关的skills</h1><p><a href="https://github.com/VoltAgent/awesome-openclaw-skills">https://github.com/VoltAgent/awesome-openclaw-skills</a></p><p>这是skills合集 覆盖大模型，开发，办公，娱乐等方方面面的技能。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;openclaw部署命令&quot;&gt;&lt;a href=&quot;#openclaw部署命令&quot; class=&quot;headerlink&quot; title=&quot;openclaw部署命令&quot;&gt;&lt;/a&gt;openclaw部署命令&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;npm install -g op</summary>
-      
-    
-    
-    
-    
-    <category term="AI" scheme="https://hybpjx.cn/tags/AI/"/>
-    
-  </entry>
-  
-  <entry>
     <title>如何不改变现有修改windows版本</title>
     <link href="https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/"/>
     <id>https://hybpjx.cn/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/</id>
@@ -473,6 +450,33 @@
     
     
     <category term="frida" scheme="https://hybpjx.cn/tags/frida/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac安装Mongodb</title>
+    <link href="https://hybpjx.cn/2025/09/19/Mac%E5%AE%89%E8%A3%85Mongodb/"/>
+    <id>https://hybpjx.cn/2025/09/19/Mac%E5%AE%89%E8%A3%85Mongodb/</id>
+    <published>2025-09-19T08:24:55.000Z</published>
+    <updated>2025-10-09T07:12:30.957Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Homebrew-安装"><a href="#Homebrew-安装" class="headerlink" title="Homebrew 安装"></a>Homebrew 安装</h1><ol><li>更新 brew</li></ol><blockquote><p>brew update</p></blockquote><ol start="2"><li>添加 MongoDB 官方 tap</li></ol><blockquote><p>brew tap mongodb&#x2F;brew</p></blockquote><ol start="3"><li>安装最新稳定版</li></ol><blockquote><p>brew install <a href="mailto:&#109;&#111;&#x6e;&#103;&#x6f;&#100;&#98;&#x2d;&#99;&#111;&#x6d;&#109;&#117;&#110;&#x69;&#116;&#x79;&#x40;&#x37;&#46;&#48;">mongodb-community@7.0</a><br>（这里我写的是 7.0，如果你需要特定版本可以改，比如 6.0。）</p></blockquote><ol start="4"><li>启动 MongoDB 服务</li></ol><blockquote><p>brew services start <a href="mailto:&#x6d;&#111;&#x6e;&#103;&#x6f;&#x64;&#x62;&#45;&#x63;&#111;&#109;&#x6d;&#x75;&#110;&#x69;&#116;&#x79;&#x40;&#55;&#46;&#x30;">mongodb-community@7.0</a><br>brew services start mongodb&#x2F;brew&#x2F;<a href="mailto:&#109;&#x6f;&#x6e;&#103;&#x6f;&#100;&#98;&#45;&#99;&#111;&#109;&#x6d;&#117;&#110;&#x69;&#x74;&#x79;&#64;&#x37;&#x2e;&#x30;">mongodb-community@7.0</a></p></blockquote><ol start="5"><li>确认 MongoDB 是否启动成功</li></ol><blockquote><p>ps aux | grep -v grep | grep mongod</p></blockquote><ol start="6"><li>连接 MongoDB</li></ol><blockquote><p>mongosh</p></blockquote><p>默认会连到本地 mongodb:&#x2F;&#x2F;localhost:27017</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Homebrew-安装&quot;&gt;&lt;a href=&quot;#Homebrew-安装&quot; class=&quot;headerlink&quot; title=&quot;Homebrew 安装&quot;&gt;&lt;/a&gt;Homebrew 安装&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;更新 brew&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquo</summary>
+      
+    
+    
+    
+    <category term="快速安装" scheme="https://hybpjx.cn/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/"/>
+    
+    
+    <category term="MongoDB" scheme="https://hybpjx.cn/tags/MongoDB/"/>
     
   </entry>
   

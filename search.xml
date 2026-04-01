@@ -17,25 +17,6 @@
     
     
     <entry>
-      <title>openclaw与picoclaw</title>
-      <link href="/2026/03/04/openclaw%E4%B8%8Epicoclaw/"/>
-      <url>/2026/03/04/openclaw%E4%B8%8Epicoclaw/</url>
-      
-        <content type="html"><![CDATA[<h1 id="openclaw部署命令"><a href="#openclaw部署命令" class="headerlink" title="openclaw部署命令"></a>openclaw部署命令</h1><blockquote><p>npm install -g openclaw@latest<br>openclaw onboard –install-daemon</p></blockquote><h1 id="picoclaw部署命令"><a href="#picoclaw部署命令" class="headerlink" title="picoclaw部署命令"></a>picoclaw部署命令</h1><p><a href="https://picoclaw.net/zh/#install">https://picoclaw.net/zh/#install</a></p><blockquote><p>git clone <a href="https://github.com/sipeed/picoclaw">https://github.com/sipeed/picoclaw</a> &amp;&amp; cd picoclaw &amp;&amp; picoclaw onboard</p></blockquote><h1 id="openclaw相关的skills"><a href="#openclaw相关的skills" class="headerlink" title="openclaw相关的skills"></a>openclaw相关的skills</h1><p><a href="https://github.com/VoltAgent/awesome-openclaw-skills">https://github.com/VoltAgent/awesome-openclaw-skills</a></p><p>这是skills合集 覆盖大模型，开发，办公，娱乐等方方面面的技能。</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> AI </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>如何不改变现有修改windows版本</title>
       <link href="/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/"/>
       <url>/2026/03/03/%E5%A6%82%E4%BD%95%E4%B8%8D%E6%94%B9%E5%8F%98%E7%8E%B0%E6%9C%89%E4%BF%AE%E6%94%B9windows%E7%89%88%E6%9C%AC/</url>
