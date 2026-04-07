@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <!-- so meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=5"
+  />
+
+  <!-- <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+  <meta name="description" content="Golang转换转换成Golang。请求部分使用 github.com&#x2F;go-resty&#x2F;resty&#x2F;v2。 JSON解析部分使用 github.com&#x2F;tidwall&#x2F;gjson。 代码要求：无注释，异常打上中文日志。方便维护。变量名简介易看懂。各方法保持解耦。 Ast skills12345678910111213141516---name:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码通用提示词+skills">
+<meta property="og:url" content="https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/index.html">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="Golang转换转换成Golang。请求部分使用 github.com&#x2F;go-resty&#x2F;resty&#x2F;v2。 JSON解析部分使用 github.com&#x2F;tidwall&#x2F;gjson。 代码要求：无注释，异常打上中文日志。方便维护。变量名简介易看懂。各方法保持解耦。 Ast skills12345678910111213141516---name:">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-02T02:36:15.000Z">
+<meta property="article:modified_time" content="2026-04-02T10:44:41.030Z">
+<meta property="article:author" content="hybpjx">
+<meta name="twitter:card" content="summary">
+     
+  <link rel="shortcut icon" href="/images/hbsn.jpg" />
+     
+  <link
+    rel="icon"
+    type="image/png"
+    href="/images/hbsn.jpg"
+    sizes="192x192"
+  />
+     
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/images/hbsn.jpg"
+  />
+    
+  <!-- title -->
+  <title>代码通用提示词+skills</title>
+  <!-- async scripts -->
+  <!-- Google Analytics -->
+
+ <!-- Umami Analytics -->
+
+
+  <!-- styles -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- persian styles -->
+  
+  <!-- rss -->
+   
+  <!-- mathjax -->
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2026/04/02/%E5%AE%89%E5%8D%93%E6%8A%93%E5%8C%85%E9%A3%9F%E7%94%A8/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2026/03/04/%E4%B8%83%E7%89%9B%E4%BA%91%E9%85%8D%E7%BD%AE%E5%B9%B6%E4%B8%94%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&text=代码通用提示词+skills"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&title=代码通用提示词+skills"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&is_video=false&description=代码通用提示词+skills"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=代码通用提示词+skills&body=Check out this article: https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&title=代码通用提示词+skills"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&title=代码通用提示词+skills"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&title=代码通用提示词+skills"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&title=代码通用提示词+skills"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&name=代码通用提示词+skills&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&t=代码通用提示词+skills"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Golang%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text">Golang转换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ast-skills"><span class="toc-number">2.</span> <span class="toc-text">Ast skills</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E7%AD%96%E7%95%A5"><span class="toc-number">2.1.</span> <span class="toc-text">执行策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E5%8E%9F%E5%88%99"><span class="toc-number">2.1.1.</span> <span class="toc-text">整体原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MCP-%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA"><span class="toc-number">2.1.2.</span> <span class="toc-text">MCP 使用时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Subagent-%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5"><span class="toc-number">2.1.3.</span> <span class="toc-text">Subagent 并行策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%89%8B%E5%86%8C"><span class="toc-number">2.2.</span> <span class="toc-text">技术手册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-0-%E9%A2%84%E5%88%86%E6%9E%90%E4%B8%8E%E7%89%B9%E5%BE%81%E8%AF%86%E5%88%AB"><span class="toc-number">2.2.1.</span> <span class="toc-text">Step 0: 预分析与特征识别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-0-5-Webpack-%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7-Unpack%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">Step 0.5: Webpack&#x2F;打包工具 Unpack（可选）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-1-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E5%AF%86%E4%B8%8E%E5%A4%A7%E6%95%B0%E7%BB%84%E5%9B%9E%E5%A1%AB"><span class="toc-number">2.2.3.</span> <span class="toc-text">Step 1: 字符串解密与大数组回填</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-2-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E5%8C%96"><span class="toc-number">2.2.4.</span> <span class="toc-text">Step 2: 表达式简化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-3-%E5%BC%95%E7%94%A8%E4%B8%8E%E5%B1%9E%E6%80%A7%E8%AE%BF%E9%97%AE%E6%A0%87%E5%87%86%E5%8C%96"><span class="toc-number">2.2.5.</span> <span class="toc-text">Step 3: 引用与属性访问标准化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-4-%E6%8E%A7%E5%88%B6%E6%B5%81%E5%B9%B3%E5%9D%A6%E5%8C%96%E8%BF%98%E5%8E%9F"><span class="toc-number">2.2.6.</span> <span class="toc-text">Step 4: 控制流平坦化还原</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-5-%E6%AD%BB%E4%BB%A3%E7%A0%81%E7%A7%BB%E9%99%A4"><span class="toc-number">2.2.7.</span> <span class="toc-text">Step 5: 死代码移除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-6-%E5%8F%98%E9%87%8F%E9%87%8D%E5%91%BD%E5%90%8D%E4%B8%8E%E6%9C%80%E7%BB%88%E6%95%B4%E5%BD%A2"><span class="toc-number">2.2.8.</span> <span class="toc-text">Step 6: 变量重命名与最终整形</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E8%BE%B9%E7%95%8C"><span class="toc-number">2.3.</span> <span class="toc-text">安全边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Babel-%E5%85%B3%E9%94%AE-API-%E9%80%9F%E6%9F%A5"><span class="toc-number">2.4.</span> <span class="toc-text">Babel 关键 API 速查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">2.5.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#name-find-crypto-entrydescription-%E5%AE%9A%E4%BD%8D-JS-%E4%B8%AD%E5%8F%82%E6%95%B0%E7%9A%84%E7%94%9F%E6%88%90%E5%85%A5%E5%8F%A3%E3%80%82%E5%BD%93%E7%94%A8%E6%88%B7%E9%97%AE%E2%80%9Dxxx-%E5%8F%82%E6%95%B0%E5%9C%A8%E5%93%AA%E7%94%9F%E6%88%90%E2%80%9D%E3%80%81%E2%80%9D%E6%89%BE%E5%8A%A0%E5%AF%86%E5%85%A5%E5%8F%A3%E2%80%9D%E3%80%81%E2%80%9D%E5%AE%9A%E4%BD%8D%E7%AD%BE%E5%90%8D%E5%87%BD%E6%95%B0%E2%80%9D%E3%80%81%E2%80%9D%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%80%8E%E4%B9%88%E5%8A%A0%E5%AF%86%E7%9A%84%E2%80%9D%E6%97%B6%E4%BD%BF%E7%94%A8argument-hint-%E5%8F%82%E6%95%B0%E5%90%8D"><span class="toc-number">2.6.</span> <span class="toc-text">name: find-crypto-entrydescription: 定位 JS 中参数的生成入口。当用户问”xxx 参数在哪生成”、”找加密入口”、”定位签名函数”、”请求参数怎么加密的”时使用argument-hint: [参数名]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#find-crypto-entry"><span class="toc-number">3.</span> <span class="toc-text">find-crypto-entry</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">执行流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-0-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%AE%9A%E4%BD%8D%EF%BC%88%E9%A6%96%E9%80%89%EF%BC%89%E2%AD%90"><span class="toc-number">3.1.1.</span> <span class="toc-text">Step 0: 网络请求定位（首选）⭐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-1-%E9%9D%99%E6%80%81%E6%90%9C%E7%B4%A2"><span class="toc-number">3.1.2.</span> <span class="toc-text">Step 1: 静态搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-2-%E5%8A%A8%E6%80%81%E6%96%AD%E7%82%B9"><span class="toc-number">3.1.3.</span> <span class="toc-text">Step 2: 动态断点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-3-%E5%A0%86%E6%A0%88%E5%88%86%E6%9E%90"><span class="toc-number">3.1.4.</span> <span class="toc-text">Step 3: 堆栈分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-4-%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3"><span class="toc-number">3.1.5.</span> <span class="toc-text">Step 4: 确认入口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="toc-number">3.3.</span> <span class="toc-text">注意事项</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        代码通用提示词+skills
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hybpjx</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-04-02T02:36:15.000Z" class="dt-published" itemprop="datePublished">2026-04-02</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="Golang转换"><a href="#Golang转换" class="headerlink" title="Golang转换"></a>Golang转换</h1><p>转换成Golang。请求部分使用 github.com&#x2F;go-resty&#x2F;resty&#x2F;v2。 JSON解析部分使用 github.com&#x2F;tidwall&#x2F;gjson。</p>
+<p>代码要求：<br>无注释，异常打上中文日志。<br>方便维护。变量名简介易看懂。各方法保持解耦。</p>
+<h1 id="Ast-skills"><a href="#Ast-skills" class="headerlink" title="Ast skills"></a>Ast skills</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">name:</span> <span class="hljs-string">ast-deobfuscate</span><br><span class="hljs-attr">description:</span> <span class="hljs-string">通用</span> <span class="hljs-string">JS</span> <span class="hljs-string">AST</span> <span class="hljs-string">解混淆。当用户说&quot;解混淆&quot;、&quot;还原代码&quot;、&quot;反混淆&quot;、&quot;deobfuscate&quot;、&quot;代码看不懂全是_0x&quot;时使用</span><br><span class="hljs-attr">argument-hint:</span> [<span class="hljs-string">混淆代码文件路径或</span> <span class="hljs-string">URL</span>]<br><span class="hljs-meta">---</span><br><span class="hljs-meta"></span><br><span class="hljs-comment"># ast-deobfuscate</span><br><br><span class="hljs-string">对</span> <span class="hljs-string">**$ARGUMENTS**</span> <span class="hljs-string">执行</span> <span class="hljs-string">AST</span> <span class="hljs-string">解混淆，最大化还原可读代码。</span><br><br><span class="hljs-string">**工具链**:</span> <span class="hljs-string">`@babel/parser`</span> <span class="hljs-string">+</span> <span class="hljs-string">`@babel/traverse`</span> <span class="hljs-string">+</span> <span class="hljs-string">`@babel/generator`</span> <span class="hljs-string">+</span> <span class="hljs-string">`@babel/types`</span><br><br><span class="hljs-meta">---</span><br><span class="hljs-meta"></span><br><span class="hljs-comment">## 工作目录约定</span><br><br></code></pre></td></tr></table></figure>
+<p>project&#x2F;<br>├── source&#x2F;<br>│   └── original&#x2F;          # 原始混淆文件（只读，不修改）<br>│       └── target.js<br>├── scripts&#x2F;               # 解混淆脚本（每步一个，一次性，针对目标定制）<br>│   ├── step1_string_decrypt.js<br>│   ├── step2_expr_simplify.js<br>│   └── …<br>├── intermediate&#x2F;          # 中间产物（每步输出，可回退）<br>│   ├── target_step0.js    # 格式化 + 去反调试<br>│   ├── target_step1.js    # 字符串解密后<br>│   ├── target_step2.js    # 表达式简化后<br>│   └── …<br>└── source&#x2F;<br>    └── deobfuscated&#x2F;      # 最终输出<br>        └── target_deobf.js</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><br>**原则**: 每个步骤读取上一步的中间文件，输出新的中间文件。出错时可从任意中间文件重新开始。<br><br><span class="hljs-comment">### 环境初始化</span><br><br>解混淆脚本基于 <span class="hljs-keyword">Babel </span>工具链运行在 Node.<span class="hljs-keyword">js </span>中。首次执行前检查并安装依赖：<br><br>```<span class="hljs-keyword">bash</span><br><span class="hljs-keyword"></span><span class="hljs-comment"># 在项目根目录检查 package.json，没有则初始化</span><br>npm init -y<br>npm <span class="hljs-keyword">install </span>@<span class="hljs-keyword">babel/parser </span>@<span class="hljs-keyword">babel/traverse </span>@<span class="hljs-keyword">babel/generator </span>@<span class="hljs-keyword">babel/types</span><br><span class="hljs-keyword"></span><span class="hljs-comment"># 如需格式化</span><br>npm <span class="hljs-keyword">install </span>prettier<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="执行策略"><a href="#执行策略" class="headerlink" title="执行策略"></a>执行策略</h2><h3 id="整体原则"><a href="#整体原则" class="headerlink" title="整体原则"></a>整体原则</h3><p>本 skill 是<strong>百科全书</strong>，不是固定流水线。执行者根据实际代码灵活选择步骤：</p>
+<ol>
+<li><strong>进入计划模式</strong>: 先完成 Step 0 分析，然后进入计划模式，向用户展示分析结果和建议的步骤组合，获得确认后再执行</li>
+<li><strong>按需跳步</strong>: 没有字符串数组就跳过 Step 1，没有控制流平坦化就跳过 Step 4</li>
+<li><strong>随时调整</strong>: 任何步骤执行后发现新情况，都可以回退或插入额外步骤</li>
+<li><strong>MCP 用于分析和验证</strong>: js-reverse MCP 用于获取源码、搜索特征、小规模验证方案可行性；大批量转换和验证通过 Node.js 脚本执行</li>
+</ol>
+<h3 id="MCP-使用时机"><a href="#MCP-使用时机" class="headerlink" title="MCP 使用时机"></a>MCP 使用时机</h3><p>MCP 的定位是<strong>分析工具和验证探针</strong>，不是批量执行引擎。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>MCP 用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>分析阶段</strong></td>
+<td><code>search_in_sources</code> 搜索混淆特征；<code>get_script_source</code> 获取目标脚本</td>
+</tr>
+<tr>
+<td><strong>方案验证</strong></td>
+<td><code>evaluate_script</code> 执行几个解密调用，确认方案可行后再写批量脚本</td>
+</tr>
+<tr>
+<td><strong>中间验证</strong></td>
+<td><code>evaluate_script</code> 抽样对比解混淆前后的函数输出</td>
+</tr>
+<tr>
+<td><strong>控制流分析</strong></td>
+<td><code>set_breakpoint</code> + <code>step_over</code> 动态跟踪 switch-case 执行顺序</td>
+</tr>
+<tr>
+<td><strong>最终验证</strong></td>
+<td>在浏览器中用解混淆后的代码替换原始代码，验证功能正常</td>
+</tr>
+</tbody></table>
+<p>大批量字符串解密、表达式简化、死代码移除等转换工作，全部通过 Node.js 脚本 + Babel AST 完成。</p>
+<h3 id="Subagent-并行策略"><a href="#Subagent-并行策略" class="headerlink" title="Subagent 并行策略"></a>Subagent 并行策略</h3><p>可并行的任务组合：</p>
+<ul>
+<li>Step 0 中：特征识别 + 反调试代码搜索</li>
+<li>Step 2 中：Proxy 函数识别 + 对象字典识别（互不依赖）</li>
+<li>验证阶段：多组测试数据可并行验证</li>
+</ul>
+<hr>
+<h2 id="技术手册"><a href="#技术手册" class="headerlink" title="技术手册"></a>技术手册</h2><p>以下是各类解混淆技术的详细参考。<strong>根据 Step 0 的分析结果，选择需要的章节执行。</strong></p>
+<hr>
+<h3 id="Step-0-预分析与特征识别"><a href="#Step-0-预分析与特征识别" class="headerlink" title="Step 0: 预分析与特征识别"></a>Step 0: 预分析与特征识别</h3><p><strong>目标</strong>: 了解混淆类型和程度，为后续步骤提供参考（非硬性路由）。</p>
+<p><strong>0.1 获取源码</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">本地文件: 直接读取 <span class="hljs-variable">$ARGUMENTS</span><br>URL: 下载后保存到 <span class="hljs-built_in">source</span>/original/<br>浏览器中（代码尚未下载到本地）:<br>  - 用 MCP list_scripts → get_script_source 获取<br>  - 可用 search_in_sources 做关键词快速扫描:<br>    <span class="hljs-string">&quot;_0x&quot;</span> → 确认混淆前缀    <span class="hljs-string">&quot;debugger&quot;</span> → 定位反调试<br>    <span class="hljs-string">&quot;push&quot;</span> + <span class="hljs-string">&quot;shift&quot;</span> → 旋转 IIFE    <span class="hljs-string">&quot;split(&#x27;|&#x27;)&quot;</span> → 控制流平坦化<br></code></pre></td></tr></table></figure>
+
+<p><strong>0.2 格式化</strong>: 用 prettier 或 babel generator 统一缩进，保存为 <code>intermediate/target_step0.js</code></p>
+<p><strong>0.3 AST 体检报告</strong>（可选）</p>
+<p>文件较小时直接全文阅读是最快最全面的方式。但即使能读全文，统计脚本的价值在于<strong>把非结构化代码转化为结构化数据</strong> — “callee 频次 Top 5”这类信息，人肉读代码很难准确统计。写一个脚本对 AST 做全局扫描：</p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">统计项</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-attribute">基础指标</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">文件大小、总行数、AST 总节点数</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">FunctionDeclaration / FunctionExpression 数量</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">VariableDeclaration 数量</span><br><br>  <span class="hljs-attribute">字符串数组特征</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">最大的 ArrayExpression 及其元素数量（&gt;50 个元素大概率是字符串数组）</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">该数组所在的行号范围</span><br><br>  <span class="hljs-attribute">访问器函数特征</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">CallExpression 中 callee 名称频次 Top 5（高频调用的大概率是访问器函数）</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">这些函数的参数模式（单参数数字？双参数？）</span><br><br>  <span class="hljs-attribute">控制流特征</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">WhileStatement 内嵌 SwitchStatement 的数量（&gt;0 说明有控制流平坦化）</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">SwitchCase 总数量</span><br><br>  <span class="hljs-attribute">命名模式</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">标识符前缀分布统计（如 _0x、_0X、a0_、_$、__x 等，取 Top 3 前缀及占比）</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">单字符变量占比</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">平均标识符长度</span><br><br>  <span class="hljs-attribute">混淆强度</span><span class="hljs-punctuation">:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">StringLiteral 数量 vs CallExpression 取字符串的数量（比值越低，字符串混淆越重）</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">UnaryExpression 中 ! 运算符数量（大量 ![] !![] 说明布尔值混淆）</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>0.4 特征指纹（仅供参考）</strong></p>
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>混淆类型</th>
+<th>常见处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>高频前缀（如 <code>_0x</code>&#x2F;<code>a0_</code>）+ 大字符串数组 + 旋转 IIFE</td>
+<td>Obfuscator.io 及变种</td>
+<td>Step 1→2→3→4→5→6</td>
+</tr>
+<tr>
+<td>高频前缀但无字符串数组</td>
+<td>轻度混淆</td>
+<td>Step 2→3→5→6</td>
+</tr>
+<tr>
+<td><code>while(true)&#123;switch&#125;</code> + 顺序数组</td>
+<td>控制流平坦化</td>
+<td>Step 2→4→5→6</td>
+</tr>
+<tr>
+<td><code>jsjiami.com</code> 标记</td>
+<td>sojson</td>
+<td>先去壳，再按实际情况选步骤</td>
+</tr>
+<tr>
+<td>Webpack&#x2F;Parcel 模块包裹</td>
+<td>打包工具</td>
+<td>先 unpack 提取模块，再对单模块解混淆</td>
+</tr>
+<tr>
+<td>大量 <code>eval</code> &#x2F; <code>Function()</code></td>
+<td>代码加密</td>
+<td>沙箱执行解密层，再按实际情况选步骤</td>
+</tr>
+</tbody></table>
+<p><strong>0.5 移除反调试</strong>（如存在）</p>
+<p>搜索并删除：</p>
+<ul>
+<li><code>debugger</code> 语句（尤其在定时器&#x2F;循环中）</li>
+<li><code>setInterval(() =&gt; &#123; debugger &#125;, ...)</code></li>
+<li><code>constructor(&quot;debu&quot;)</code> 反格式化检测</li>
+<li><code>console</code> 重写&#x2F;禁用代码</li>
+</ul>
+<p><strong>0.6 进入计划模式</strong></p>
+<p>向用户展示：</p>
+<ol>
+<li>识别到的混淆特征</li>
+<li>建议执行的步骤组合</li>
+<li>预估的复杂度</li>
+</ol>
+<p>用户确认后开始执行。执行过程中发现新情况随时可调整计划。</p>
+<p><strong>产出</strong>: <code>intermediate/target_step0.js</code> + 分析报告</p>
+<hr>
+<h3 id="Step-0-5-Webpack-打包工具-Unpack（可选）"><a href="#Step-0-5-Webpack-打包工具-Unpack（可选）" class="headerlink" title="Step 0.5: Webpack&#x2F;打包工具 Unpack（可选）"></a>Step 0.5: Webpack&#x2F;打包工具 Unpack（可选）</h3><p><strong>适用条件</strong>: 代码是 Webpack&#x2F;Browserify&#x2F;Parcel 打包的 bundle。识别特征：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Webpack</span> 特征:<br>  - 外层 <span class="hljs-variable constant_">IIFE</span> 接收一个模块数组或对象作为参数<br>  - 内部有 __webpack_require__ 或类似的模块加载函数:<br>    <span class="hljs-keyword">function</span>(<span class="hljs-params">modules</span>) &#123;<br>      <span class="hljs-keyword">function</span> <span class="hljs-title function_">__webpack_require__</span>(<span class="hljs-params">moduleId</span>) &#123;<br>        <span class="hljs-keyword">if</span>(installedModules[moduleId]) <span class="hljs-keyword">return</span> installedModules[moduleId].<span class="hljs-property">exports</span>;<br>        <span class="hljs-keyword">var</span> <span class="hljs-variable language_">module</span> = installedModules[moduleId] = &#123; <span class="hljs-attr">exports</span>: &#123;&#125; &#125;;<br>        modules[moduleId].<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span>, <span class="hljs-variable language_">module</span>, <span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span>, __webpack_require__);<br>        ...<br>      &#125;<br>    &#125;<br>  - 每个模块是 <span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-variable language_">module</span>, <span class="hljs-built_in">exports</span>, __webpack_require__</span>) &#123; ... &#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>处理方向</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 识别模块数组/对象（IIFE 的参数）<br><span class="hljs-bullet">2.</span> 提取每个模块函数，保存为独立文件:<br>   intermediate/modules/module<span class="hljs-emphasis">_0.js</span><br><span class="hljs-emphasis">   intermediate/modules/module_</span>1.js<br>   ...<br><span class="hljs-bullet">3.</span> 对 <span class="hljs-strong">__webpack<span class="hljs-emphasis">_require_</span><span class="hljs-emphasis">_(N) 调用，添加注释标注引用了哪个模块</span></span><br><span class="hljs-emphasis"><span class="hljs-strong">4. 识别入口模块（通常是 _</span><span class="hljs-emphasis">_webpack_</span>require__</span>(0)）<br><span class="hljs-bullet">5.</span> 对每个模块独立执行后续解混淆步骤<br><br>Webpack 固定参数重命名（确定性的，不需要猜测）:<br><span class="hljs-bullet">  -</span> 第 1 个参数 → module<br><span class="hljs-bullet">  -</span> 第 2 个参数 → exports<br><span class="hljs-bullet">  -</span> 第 3 个参数 → <span class="hljs-strong">__webpack<span class="hljs-emphasis">_require_</span>_</span><br><span class="hljs-strong">  - __</span>webpack<span class="hljs-emphasis">_require<span class="hljs-strong">__.p → __</span>webpack_</span>public<span class="hljs-emphasis">_path_</span>_<br><span class="hljs-bullet">  -</span> <span class="hljs-strong">__webpack<span class="hljs-emphasis">_require_</span><span class="hljs-emphasis">_.m → _</span><span class="hljs-emphasis">_webpack_</span>modules__</span><br><span class="hljs-bullet">  -</span> <span class="hljs-strong">__webpack<span class="hljs-emphasis">_require_</span><span class="hljs-emphasis">_.c → _</span><span class="hljs-emphasis">_webpack_</span>module<span class="hljs-emphasis">_cache_</span><span class="hljs-emphasis">_</span></span><br></code></pre></td></tr></table></figure>
+
+<p><strong>产出</strong>: <code>intermediate/modules/module_N.js</code>（每个模块独立文件）</p>
+<p>⚠️ unpack 后，后续步骤对每个模块文件独立执行，而非对整个 bundle。</p>
+<hr>
+<h3 id="Step-1-字符串解密与大数组回填"><a href="#Step-1-字符串解密与大数组回填" class="headerlink" title="Step 1: 字符串解密与大数组回填"></a>Step 1: 字符串解密与大数组回填</h3><p><strong>适用条件</strong>: 代码中存在字符串数组 + 访问器函数模式。若无此模式则跳过。</p>
+<p><strong>目标</strong>: 将所有加密&#x2F;编码的字符串还原为明文。这是后续步骤的基础。</p>
+<p><strong>1.1 识别字符串数组结构</strong></p>
+<p>典型模式包含三部分（函数名前缀不固定，可能是 <code>_0x</code>、<code>a0_</code>、<code>_$</code> 或任意混淆名）：</p>
+<ul>
+<li><strong>字符串数组函数</strong>: 返回包含所有字符串的数组</li>
+<li><strong>旋转 IIFE</strong>: 对数组执行 push&#x2F;shift 旋转，打乱原始顺序</li>
+<li><strong>访问器函数</strong>: 接受索引参数，返回数组中对应字符串（通常有偏移量计算）</li>
+</ul>
+<p>识别方法: 通过 AST 体检报告中的”最大 ArrayExpression”和”CallExpression callee 频次 Top 5”定位</p>
+<p><strong>1.2 处理方向</strong></p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">流程</span><span class="hljs-punctuation">:</span> <span class="hljs-string">先用 MCP 小规模验证方案，再写 Node.js 脚本批量执行</span><br><br><span class="hljs-attribute">第一步</span><span class="hljs-punctuation">:</span> <span class="hljs-string">用 MCP 验证方案</span><br>  <span class="hljs-attribute">1. 用 MCP evaluate_script 调用几个访问器函数，确认能正确返回明文</span><br><span class="hljs-attribute">  2. 确认参数模式（单参数？双参数？偏移量？）</span><br><span class="hljs-attribute">  3. 方案验证通过后，再写批量脚本</span><br><span class="hljs-attribute"></span><br><span class="hljs-attribute">第二步</span><span class="hljs-punctuation">:</span> <span class="hljs-string">批量执行（二选一）</span><br><br><span class="hljs-attribute">方案 A（推荐）</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Node.js vm 沙箱</span><br>  <span class="hljs-attribute">1. 从 AST 中提取字符串数组 + 旋转 IIFE + 访问器函数的源码</span><br><span class="hljs-attribute">  2. 在 vm.createContext() 沙箱中执行</span><br><span class="hljs-attribute">  3. 遍历 CallExpression，用沙箱函数计算返回值并替换</span><br><span class="hljs-attribute">  4. 删除已无用的数组函数、旋转 IIFE、访问器函数</span><br><span class="hljs-attribute"></span><br><span class="hljs-attribute">方案 B</span><span class="hljs-punctuation">:</span> <span class="hljs-string">纯静态分析（旋转逻辑简单时）</span><br>  1. 解析数组元素，静态计算旋转次数<br>  2. 手动应用旋转得到最终数组<br>  3. 直接用索引查表替换<br></code></pre></td></tr></table></figure>
+
+<p><strong>1.3 转义字符串还原</strong></p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs llvm">遍历所有 StringLiteral: 删除 node.extra（强制用已解析的 value）<br>  \<span class="hljs-keyword">x</span><span class="hljs-number">48</span>\<span class="hljs-keyword">x</span><span class="hljs-number">65</span>\<span class="hljs-keyword">x</span><span class="hljs-number">6</span><span class="hljs-keyword">c</span>\<span class="hljs-keyword">x</span><span class="hljs-number">6</span><span class="hljs-keyword">c</span>\<span class="hljs-keyword">x</span><span class="hljs-number">6</span>f → <span class="hljs-string">&quot;Hello&quot;</span><br>  \u<span class="hljs-number">0048</span>\u<span class="hljs-number">0065</span> → <span class="hljs-string">&quot;He&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>1.4 数值还原</strong></p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs maxima">遍历所有 NumericLiteral: 删除 node.extra<br>  <span class="hljs-number">0x12</span> → <span class="hljs-number">18</span>, <span class="hljs-number">0b1010</span> → <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>验证</strong>: 用 MCP <code>evaluate_script</code> 抽样对比几个解密结果是否正确</p>
+<p><strong>产出</strong>: <code>intermediate/target_step1.js</code></p>
+<hr>
+<h3 id="Step-2-表达式简化"><a href="#Step-2-表达式简化" class="headerlink" title="Step 2: 表达式简化"></a>Step 2: 表达式简化</h3><p><strong>适用条件</strong>: 几乎所有混淆代码都需要此步骤。与 Step 5 循环执行效果最佳。</p>
+<p><strong>2.1 常量折叠 (Constant Folding)</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs markdown">遍历 BinaryExpression / UnaryExpression / LogicalExpression / ConditionalExpression:<br><span class="hljs-bullet">  1.</span> 调用 path.evaluate()<br><span class="hljs-bullet">  2.</span> 若 confident === true:<br><span class="hljs-bullet">     -</span> 用 t.valueToNode(value) 生成新节点<br><span class="hljs-bullet">     -</span> 验证结果是 Literal 类型（排除 Infinity/undefined 等边界值）<br><span class="hljs-bullet">     -</span> 所有类型都要处理: string, number, boolean（不要只处理部分类型）<br><span class="hljs-bullet">     -</span> 替换原节点<br><span class="hljs-bullet">  3.</span> 若 confident === false:<br><span class="hljs-bullet">     -</span> 检查是否为连续字符串拼接（左子树右叶 + 右叶都是 StringLiteral）<br><span class="hljs-bullet">     -</span> 若是，合并相邻字面量<br></code></pre></td></tr></table></figure>
+
+<p><strong>2.2 布尔值还原</strong></p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs llvm">遍历 UnaryExpression:<br>  ![]  → <span class="hljs-keyword">false</span>    !![] → <span class="hljs-keyword">true</span><br>  <span class="hljs-title">!0</span>   → <span class="hljs-keyword">true</span>     <span class="hljs-title">!1</span>   → <span class="hljs-keyword">false</span><br>  !<span class="hljs-string">&quot;&quot;</span>  → <span class="hljs-keyword">true</span>     !<span class="hljs-string">&quot;x&quot;</span> → <span class="hljs-keyword">false</span><br>  <span class="hljs-type">void</span> <span class="hljs-number">0</span> → undefined<br></code></pre></td></tr></table></figure>
+
+<p><strong>2.3 Proxy 函数内联</strong></p>
+<figure class="highlight wren"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs wren">识别条件: 函数体只有一条 <span class="hljs-keyword">return</span> 语句，且 <span class="hljs-keyword">return</span> 的是:<br>  <span class="hljs-operator">-</span> 二元运算: <span class="hljs-title function_">function</span>(<span class="hljs-params">a</span>,<span class="hljs-params">b</span>)&#123; <span class="hljs-keyword">return</span> <span class="hljs-variable">a</span> <span class="hljs-operator">+</span> <span class="hljs-variable">b</span> &#125;<br>  <span class="hljs-operator">-</span> 函数调用: <span class="hljs-title function_">function</span>(<span class="hljs-params">a</span>,<span class="hljs-params">b</span>)&#123; <span class="hljs-keyword">return</span> <span class="hljs-title function_">a</span>(<span class="hljs-variable">b</span>) &#125;<br>  <span class="hljs-operator">-</span> 属性访问: <span class="hljs-title function_">function</span>(<span class="hljs-params">a</span>,<span class="hljs-params">b</span>)&#123; <span class="hljs-keyword">return</span> <span class="hljs-variable">a</span>[<span class="hljs-variable">b</span>] &#125;<br>  <span class="hljs-operator">-</span> 逻辑运算: <span class="hljs-title function_">function</span>(<span class="hljs-params">a</span>,<span class="hljs-params">b</span>)&#123; <span class="hljs-keyword">return</span> <span class="hljs-variable">a</span> <span class="hljs-operator">&amp;&amp;</span> <span class="hljs-variable">b</span> &#125;<br><br>处理:<br>  <span class="hljs-number">1.</span> 找到所有符合条件的 <span class="hljs-title class_">FunctionDeclaration</span><br>  <span class="hljs-number">2.</span> 确认 <span class="hljs-variable">binding</span>.<span class="hljs-property">constant</span> <span class="hljs-operator">==</span><span class="hljs-operator">=</span> <span class="hljs-literal">true</span>（未被重新赋值）<br>  <span class="hljs-number">3.</span> 找到所有 <span class="hljs-title class_">CallExpression</span> 引用<br>  <span class="hljs-number">4.</span> 将实参代入函数体表达式，替换调用处<br>  <span class="hljs-number">5.</span> 引用归零后删除函数声明<br></code></pre></td></tr></table></figure>
+
+<p><strong>2.4 对象属性字典内联</strong></p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs arcade">识别条件: 对象仅作为属性字典使用<br>  <span class="hljs-keyword">var</span> <span class="hljs-built_in">map</span> = &#123; <span class="hljs-string">&#x27;a&#x27;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">x,y</span>)&#123;<span class="hljs-keyword">return</span> x+y&#125;, <span class="hljs-string">&#x27;b&#x27;</span>: <span class="hljs-string">&#x27;hello&#x27;</span> &#125;<br>  <span class="hljs-built_in">map</span>[<span class="hljs-string">&#x27;a&#x27;</span>](<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)  →  <span class="hljs-number">1</span> + <span class="hljs-number">2</span><br>  <span class="hljs-built_in">map</span>[<span class="hljs-string">&#x27;b&#x27;</span>]        →  <span class="hljs-string">&#x27;hello&#x27;</span><br><br>处理:<br>  <span class="hljs-number">1.</span> 找到对象声明，确认所有属性值为 Literal 或简单函数<br>  <span class="hljs-number">2.</span> 确认 binding.constant === <span class="hljs-literal">true</span><br>  <span class="hljs-number">3.</span> 将所有 MemberExpression 访问替换为对应属性值<br>  <span class="hljs-number">4.</span> 对函数类属性，同时执行 Proxy 函数内联逻辑<br>  <span class="hljs-number">5.</span> 引用归零后删除对象声明<br></code></pre></td></tr></table></figure>
+
+<p><strong>产出</strong>: <code>intermediate/target_step2.js</code></p>
+<hr>
+<h3 id="Step-3-引用与属性访问标准化"><a href="#Step-3-引用与属性访问标准化" class="headerlink" title="Step 3: 引用与属性访问标准化"></a>Step 3: 引用与属性访问标准化</h3><p><strong>适用条件</strong>: 代码中大量使用 <code>obj[&#39;prop&#39;]</code> 方括号访问。需在字符串解密（Step 1）之后执行。</p>
+<p><strong>3.1 方括号转点号</strong></p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs prolog">遍历 <span class="hljs-symbol">MemberExpression</span>:<br>  条件: computed === true 且 property 是 <span class="hljs-symbol">StringLiteral</span><br>  且属性名是合法标识符（匹配 /^[a-zA-<span class="hljs-symbol">Z_</span>$][a-zA-<span class="hljs-symbol">Z0</span><span class="hljs-number">-9</span><span class="hljs-symbol">_</span>$]*$/）<br>  obj[<span class="hljs-string">&#x27;prop&#x27;</span>]     → obj.prop<br>  obj[<span class="hljs-string">&#x27;forEach&#x27;</span>]  → obj.forEach<br>  保留: obj[<span class="hljs-string">&#x27;class&#x27;</span>]（保留字）, obj[<span class="hljs-string">&#x27;data-id&#x27;</span>]（含连字符）, obj[variable]（变量）<br></code></pre></td></tr></table></figure>
+
+<p><strong>3.2 逗号表达式拆分</strong></p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs llvm">逗号表达式不只出现在 ExpressionStatement 中，需覆盖所有位置:<br><br><span class="hljs-number">1</span>. ExpressionStatement:<br>   (a <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span> b <span class="hljs-operator">=</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span> <span class="hljs-keyword">c</span>())  →  a <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">; b = 2; c();</span><br><br><span class="hljs-number">2</span>. ReturnStatement:<br>   return (a <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span> b <span class="hljs-operator">=</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span> result)  →  a <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">; b = 2; return result;</span><br><br><span class="hljs-number">3</span>. IfStatement test / for init / for update 中的逗号表达式也需拆分<br><br><span class="hljs-number">4</span>. 赋值右侧:<br>   <span class="hljs-keyword">x</span> <span class="hljs-operator">=</span> (a()<span class="hljs-punctuation">,</span> b()<span class="hljs-punctuation">,</span> <span class="hljs-keyword">c</span>)  →  a()<span class="hljs-comment">; b(); x = c;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>产出</strong>: <code>intermediate/target_step3.js</code></p>
+<hr>
+<h3 id="Step-4-控制流平坦化还原"><a href="#Step-4-控制流平坦化还原" class="headerlink" title="Step 4: 控制流平坦化还原"></a>Step 4: 控制流平坦化还原</h3><p><strong>适用条件</strong>: 代码中存在 <code>while(true)&#123; switch(...) &#123; case... &#125; &#125;</code> 结构。强依赖 Step 2 的常量折叠。</p>
+<p><strong>4.1 分析实际结构</strong></p>
+<p>不预设固定模式，根据实际代码分析控制流结构：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs markdown">常见特征（仅供参考，实际变种很多）:<br><span class="hljs-bullet">  -</span> WhileStatement，test 恒为 true<br><span class="hljs-bullet">  -</span> 循环体内是 SwitchStatement<br><span class="hljs-bullet">  -</span> 存在某种顺序控制机制（数组索引、状态变量等）<br><span class="hljs-bullet">  -</span> 每个 case 以 continue/break 结尾<br><br>分析方法:<br><span class="hljs-bullet">  1.</span> 阅读具体的 while-switch 代码，理解其控制流逻辑<br><span class="hljs-bullet">  2.</span> 用 MCP set<span class="hljs-emphasis">_breakpoint + step_</span>over 动态跟踪实际执行顺序<br><span class="hljs-bullet">  3.</span> 判断顺序控制机制是静态可解的还是依赖运行时值<br></code></pre></td></tr></table></figure>
+
+<p><strong>4.2 还原方向</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs markdown">根据分析结果制定还原策略。核心思路:<br><span class="hljs-bullet">  1.</span> 确定代码块的执行顺序<br><span class="hljs-bullet">  2.</span> 按顺序提取各 case 的代码块<br><span class="hljs-bullet">  3.</span> 移除控制流包裹（while/switch/continue）<br><span class="hljs-bullet">  4.</span> 用 path.replaceWithMultiple() 替换整个结构<br><br>⚠️ 复杂情况（状态变量动态计算、嵌套多层等）:<br><span class="hljs-bullet">  -</span> 向用户展示分析结果，请求辅助判断<br><span class="hljs-bullet">  -</span> 可用 MCP 动态跟踪辅助理解执行流程<br><span class="hljs-bullet">  -</span> 宁可保留未还原的结构，也不要错误还原<br></code></pre></td></tr></table></figure>
+
+<p><strong>验证</strong>: 用 MCP <code>evaluate_script</code> 执行还原后的函数，对比原始输出</p>
+<p><strong>产出</strong>: <code>intermediate/target_step4.js</code></p>
+<hr>
+<h3 id="Step-5-死代码移除"><a href="#Step-5-死代码移除" class="headerlink" title="Step 5: 死代码移除"></a>Step 5: 死代码移除</h3><p><strong>适用条件</strong>: 几乎所有混淆代码都需要。与 Step 2 循环执行效果最佳。</p>
+<p><strong>5.1 不可达分支清理</strong></p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs nix">遍历 IfStatement <span class="hljs-symbol">/</span> <span class="hljs-params">ConditionalExpression:</span><br>  <span class="hljs-number">1</span>. 用 path.get(<span class="hljs-string">&quot;test&quot;</span>).evaluateTruthy() 求值条件<br>  <span class="hljs-number">2</span>. 若结果 <span class="hljs-operator">==</span><span class="hljs-operator">=</span> <span class="hljs-params">true:</span>  用 consequent 替换整个节点<br>  <span class="hljs-number">3</span>. 若结果 <span class="hljs-operator">==</span><span class="hljs-operator">=</span> <span class="hljs-params">false:</span> 用 alternate 替换（无 alternate 则删除）<br>  <span class="hljs-number">4</span>. 注意: BlockStatement 需展开为语句数组再替换<br></code></pre></td></tr></table></figure>
+
+<p><strong>5.2 无用变量&#x2F;函数剔除</strong></p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs glsl">遍历 VariableDeclarator / FunctionDeclaration:<br>  <span class="hljs-number">1.</span> 获取 <span class="hljs-keyword">binding</span> = scope.getBinding(name)<br>  <span class="hljs-number">2.</span> 若 <span class="hljs-keyword">binding</span>.constant === <span class="hljs-literal">true</span> 且 <span class="hljs-keyword">binding</span>.referenced === <span class="hljs-literal">false</span>:<br>     - 确认 init 无副作用后删除<br>  <span class="hljs-number">3.</span> 若 init 有副作用（函数调用等）: 保留<br></code></pre></td></tr></table></figure>
+
+<p><strong>5.3 空语句清理</strong></p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">遍历 EmptyStatement: 直接删除<br>遍历 <span class="hljs-keyword">BlockStatement: </span>若 <span class="hljs-keyword">body </span>为空且不是函数体，删除<br></code></pre></td></tr></table></figure>
+
+<p><strong>5.4 循环策略（Step 2 + Step 5）— 必须实现，不可跳过</strong></p>
+<p>单次执行 Step 2 和 Step 5 会遗漏大量可简化代码。原因：死代码移除后暴露新的常量表达式，常量折叠后又暴露新的死代码。</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs autoit">实现方式: 在脚本中用循环包裹 <span class="hljs-keyword">Step</span> <span class="hljs-number">2</span> 和 <span class="hljs-keyword">Step</span> <span class="hljs-number">5</span> 的 visitor<br><br>let <span class="hljs-built_in">round</span> = <span class="hljs-number">0</span><span class="hljs-comment">;</span><br><span class="hljs-keyword">do</span> &#123;<br>  changed = <span class="hljs-literal">false</span><br>  执行 <span class="hljs-keyword">Step</span> <span class="hljs-number">2</span> 全部 visitor（常量折叠 + 布尔值 + Proxy + 对象字典）<br>  执行 <span class="hljs-keyword">Step</span> <span class="hljs-number">5</span> 全部 visitor（不可达分支 + 无用变量 + 空语句）<br>  若本轮有任何节点被替换或删除 → changed = <span class="hljs-literal">true</span><br>  <span class="hljs-built_in">round</span>++<br>  保存中间文件: intermediate/target_step5_round&#123;<span class="hljs-built_in">round</span>&#125;.js<br>&#125; <span class="hljs-keyword">while</span> (changed &amp;&amp; <span class="hljs-built_in">round</span> &lt; <span class="hljs-number">50</span>)<br></code></pre></td></tr></table></figure>
+
+<p>每轮循环保存中间文件: <code>intermediate/target_step5_round&#123;N&#125;.js</code></p>
+<p><strong>产出</strong>: <code>intermediate/target_step5.js</code></p>
+<hr>
+<h3 id="Step-6-变量重命名与最终整形"><a href="#Step-6-变量重命名与最终整形" class="headerlink" title="Step 6: 变量重命名与最终整形"></a>Step 6: 变量重命名与最终整形</h3><p><strong>适用条件</strong>: 代码中存在无意义的混淆变量名时执行。仅执行确定性的模式化重命名，不做语义推导。</p>
+<p><strong>6.1 模式化重命名（确定性的）</strong></p>
+<figure class="highlight wren"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs wren">某些变量名可以根据代码模式确定性地重命名，不需要猜测:<br><br><span class="hljs-title class_">Webpack</span> 模块参数（不管原始名是什么前缀）:<br>  <span class="hljs-title function_">function</span>(<span class="hljs-params">xx1</span>, <span class="hljs-params">xx2</span>, <span class="hljs-params">xx3</span>) &#123; <span class="hljs-title function_">xx3</span>(<span class="hljs-number">69</span>) &#125;<br>  → <span class="hljs-title function_">function</span>(<span class="hljs-params">module</span>, <span class="hljs-params">exports</span>, __<span class="hljs-params">webpack_require__</span>) &#123; <span class="hljs-variable">__webpack_require__</span>(<span class="hljs-number">69</span>) &#125;<br>  判断依据: 三参数函数，第三个参数被当作函数调用且参数是数字<br><br>常见回调模式:<br>  .<span class="hljs-property">then</span>(<span class="hljs-title function_">function</span>(<span class="hljs-params">xx</span>) &#123; <span class="hljs-operator">...</span> &#125;)  → .<span class="hljs-property">then</span>(<span class="hljs-title function_">function</span>(<span class="hljs-params">response</span>) &#123; <span class="hljs-operator">...</span> &#125;)<br>  .<span class="hljs-property">catch</span>(<span class="hljs-title function_">function</span>(<span class="hljs-params">xx</span>) &#123; <span class="hljs-operator">...</span> &#125;) → .<span class="hljs-property">catch</span>(<span class="hljs-title function_">function</span>(<span class="hljs-params">error</span>) &#123; <span class="hljs-operator">...</span> &#125;)<br><br>事件处理:<br>  .<span class="hljs-property">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-title function_">function</span>(<span class="hljs-params">xx</span>) &#123; <span class="hljs-operator">...</span> &#125;)<br>  → .<span class="hljs-property">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-title function_">function</span>(<span class="hljs-params">event</span>) &#123; <span class="hljs-operator">...</span> &#125;)<br></code></pre></td></tr></table></figure>
+
+<p>不确定语义的变量保留原始混淆名，不做规则编号（如 var_1）或语义推导，避免引入错误。</p>
+<p><strong>6.2 代码整形</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-number">1.</span> <span class="hljs-keyword">var</span> 声明拆分: 将单行多声明拆为每行一个<br><span class="hljs-number">2.</span> <span class="hljs-keyword">return</span> 简化: <span class="hljs-keyword">if</span>(x) <span class="hljs-keyword">return</span> a; <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> b; → <span class="hljs-keyword">return</span> x ? a : b<br><span class="hljs-number">3.</span> 用 babel generator 输出，配置 compact: <span class="hljs-literal">false</span>, concise: <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>6.3 最终验证</strong></p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">用 MCP evaluate_script</span><span class="hljs-punctuation">:</span><br>  1. 选取关键函数，用相同输入对比原始代码和解混淆代码的输出<br>  2. 若有差异，定位出错的步骤，从对应中间文件回退修复<br></code></pre></td></tr></table></figure>
+
+<p><strong>产出</strong>: <code>source/deobfuscated/target_deobf.js</code> + <code>scripts/deobfuscate_target.js</code></p>
+<hr>
+<h2 id="安全边界"><a href="#安全边界" class="headerlink" title="安全边界"></a>安全边界</h2><ol>
+<li><strong>沙箱隔离</strong>: 执行混淆代码必须在 <code>vm</code> 模块、<code>isolated-vm</code> 或浏览器（MCP）中，禁止直接 <code>eval</code></li>
+<li><strong>迭代上限</strong>: Step 2↔5 循环设硬上限（50 次），防止无限循环</li>
+<li><strong>副作用保护</strong>: 删除代码前检查是否有副作用（网络请求、DOM 操作、赋值）</li>
+<li><strong>作用域安全</strong>: 重命名必须通过 <code>path.scope.rename()</code>，不能直接修改 <code>node.name</code></li>
+<li><strong>验证</strong>: 每步完成后用 <code>@babel/parser</code> 重新解析，确认语法合法</li>
+</ol>
+<hr>
+<h2 id="Babel-关键-API-速查"><a href="#Babel-关键-API-速查" class="headerlink" title="Babel 关键 API 速查"></a>Babel 关键 API 速查</h2><table>
+<thead>
+<tr>
+<th>用途</th>
+<th>API</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态求值</td>
+<td><code>path.evaluate()</code> → <code>&#123; confident, value &#125;</code></td>
+</tr>
+<tr>
+<td>布尔求值</td>
+<td><code>path.get(&quot;test&quot;).evaluateTruthy()</code> → <code>true/false/undefined</code></td>
+</tr>
+<tr>
+<td>替换节点</td>
+<td><code>path.replaceWith(node)</code> &#x2F; <code>path.replaceWithMultiple([nodes])</code></td>
+</tr>
+<tr>
+<td>删除节点</td>
+<td><code>path.remove()</code></td>
+</tr>
+<tr>
+<td>获取绑定</td>
+<td><code>path.scope.getBinding(name)</code> → <code>&#123; constant, referenced, references, referencePaths &#125;</code></td>
+</tr>
+<tr>
+<td>安全重命名</td>
+<td><code>path.scope.rename(oldName, newName)</code></td>
+</tr>
+<tr>
+<td>刷新作用域</td>
+<td><code>path.scope.crawl()</code> — 删除&#x2F;替换节点后必须调用</td>
+</tr>
+<tr>
+<td>值转节点</td>
+<td><code>t.valueToNode(value)</code> — 注意 Infinity&#x2F;undefined 返回非 Literal</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li><strong>Step 2↔5 循环不可省略</strong> — 这是最容易被跳过但影响最大的环节，单次执行会遗漏大量可简化代码</li>
+<li><strong>Webpack bundle 必须先 unpack</strong> — 不拆模块直接解混淆，9000 行混在一起对 LLM 和调试都不友好</li>
+<li><strong>逗号表达式不只在 ExpressionStatement 中</strong> — return、if、for 里都有，必须全部覆盖</li>
+<li><strong>常量折叠要覆盖所有类型</strong> — string、number、boolean 都要处理，不要只处理部分</li>
+<li><strong>模式化重命名优先</strong> — Webpack 参数等确定性模式先处理，不确定的保留原始名</li>
+<li><strong>混淆前缀不只是 <code>_0x</code></strong> — 也可能是 <code>a0_</code>、<code>_$</code>、<code>__x</code> 等，用 AST 统计高频前缀来判断</li>
+<li><strong>每步写独立 visitor</strong> — 不要在一个 traverse 中混合多种转换，容易产生节点失效</li>
+<li><strong>scope 变更后刷新</strong> — 删除&#x2F;替换节点后，后续 traverse 需调用 <code>scope.crawl()</code></li>
+<li><strong>保留不确定的代码</strong> — 宁可保留看不懂的代码，也不要错误删除有用逻辑</li>
+<li><strong>中间文件是安全网</strong> — 任何步骤出错都可以从上一步的中间文件重来</li>
+<li><strong>灵活调整步骤</strong> — 实际混淆千变万化，本手册是参考而非教条</li>
+</ol>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>## find-crypto-entry<br><br></code></pre></td></tr></table></figure>
+<hr>
+<h2 id="name-find-crypto-entrydescription-定位-JS-中参数的生成入口。当用户问”xxx-参数在哪生成”、”找加密入口”、”定位签名函数”、”请求参数怎么加密的”时使用argument-hint-参数名"><a href="#name-find-crypto-entrydescription-定位-JS-中参数的生成入口。当用户问”xxx-参数在哪生成”、”找加密入口”、”定位签名函数”、”请求参数怎么加密的”时使用argument-hint-参数名" class="headerlink" title="name: find-crypto-entrydescription: 定位 JS 中参数的生成入口。当用户问”xxx 参数在哪生成”、”找加密入口”、”定位签名函数”、”请求参数怎么加密的”时使用argument-hint: [参数名]"></a>name: find-crypto-entry<br>description: 定位 JS 中参数的生成入口。当用户问”xxx 参数在哪生成”、”找加密入口”、”定位签名函数”、”请求参数怎么加密的”时使用<br>argument-hint: [参数名]</h2><h1 id="find-crypto-entry"><a href="#find-crypto-entry" class="headerlink" title="find-crypto-entry"></a>find-crypto-entry</h1><p>定位加密参数 <strong>$ARGUMENTS</strong> 的生成入口。</p>
+<p><strong>输出目标</strong>：入口位置（脚本URL + 行号&#x2F;列号 + 函数名）</p>
+<hr>
+<h2 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h2><h3 id="Step-0-网络请求定位（首选）⭐"><a href="#Step-0-网络请求定位（首选）⭐" class="headerlink" title="Step 0: 网络请求定位（首选）⭐"></a>Step 0: 网络请求定位（首选）⭐</h3><p>最高效路径，直接获取已发生请求的调用栈：</p>
+<ol>
+<li><code>list_network_requests(&#123; resourceTypes: [&quot;xhr&quot;, &quot;fetch&quot;] &#125;)</code> - 列出请求</li>
+<li><code>get_network_request(reqid)</code> - 确认 <strong>$ARGUMENTS</strong> 参数位置（URL&#x2F;Header&#x2F;Body）</li>
+<li><code>get_request_initiator(requestId)</code> - <strong>直接获取 JS 调用栈</strong></li>
+</ol>
+<p><strong>结果判断</strong>：</p>
+<ul>
+<li>✅ 调用栈有效 → 跳到 <strong>Step 3</strong></li>
+<li>❌ 调用栈为空或无意义 → 继续 <strong>Step 1</strong></li>
+</ul>
+<hr>
+<h3 id="Step-1-静态搜索"><a href="#Step-1-静态搜索" class="headerlink" title="Step 1: 静态搜索"></a>Step 1: 静态搜索</h3><p>当 Step 0 无法定位时，进行静态分析：</p>
+<ol>
+<li><p><code>search_in_sources(&#123; query: &quot;$ARGUMENTS&quot; &#125;)</code> - 搜索加密参数名</p>
+</li>
+<li><p><strong>分流逻辑</strong>：</p>
+<ul>
+<li>结果 ≤ 50：检查赋值语句（如 <code>headers.$ARGUMENTS = ...</code>）</li>
+<li>结果 &gt; 50：转向搜索拦截器特征：<ul>
+<li><code>interceptors.request.use</code></li>
+<li><code>XMLHttpRequest.prototype.send</code></li>
+<li><code>window.fetch =</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>find_in_script(scriptId, query)</code> - 获取精确行号列号</p>
+</li>
+</ol>
+<p><strong>结果判断</strong>：</p>
+<ul>
+<li>✅ 找到明确赋值位置 → 跳到 <strong>Step 4</strong></li>
+<li>❌ 结果太多或无法确定 → 继续 <strong>Step 2</strong></li>
+</ul>
+<hr>
+<h3 id="Step-2-动态断点"><a href="#Step-2-动态断点" class="headerlink" title="Step 2: 动态断点"></a>Step 2: 动态断点</h3><p>静态搜索无法锁定时，设置断点：</p>
+<p><strong>方案 A</strong>（推荐）：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">set_breakpoint_on_text</span>(&#123; <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;<span class="hljs-subst">$ARGUMENTS</span>&quot;</span>, <span class="hljs-attr">urlFilter</span>: <span class="hljs-string">&quot;main&quot;</span> &#125;)<br></code></pre></td></tr></table></figure>
+
+<p><strong>方案 B</strong>：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">break_on_xhr</span><span class="hljs-params">(&#123; url: <span class="hljs-string">&quot;api关键词&quot;</span> &#125;)</span></span><br></code></pre></td></tr></table></figure>
+
+<p>⚠️ 提示用户：<strong>请在浏览器中触发包含 $ARGUMENTS 参数的请求</strong></p>
+<p><strong>结果判断</strong>：</p>
+<ul>
+<li>✅ 断点命中 → 继续 <strong>Step 3</strong></li>
+<li>❌ 断点未命中 → 检查断点条件是否正确，或尝试其他方案</li>
+</ul>
+<hr>
+<h3 id="Step-3-堆栈分析"><a href="#Step-3-堆栈分析" class="headerlink" title="Step 3: 堆栈分析"></a>Step 3: 堆栈分析</h3><p>获取调用栈后，执行灰名单过滤：</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-function"><span class="hljs-title">get_paused_info</span>(&#123; <span class="hljs-variable">includeScopes</span>: <span class="hljs-variable"><span class="hljs-literal">true</span></span> &#125;)</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>过滤规则</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>特征</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Level 1 跳过</td>
+<td><code>axios</code>, <code>react-dom</code>, <code>vue</code>, <code>jquery</code>, <code>webpack/runtime</code></td>
+<td>框架噪声，跳过</td>
+</tr>
+<tr>
+<td>Level 2 检查</td>
+<td>含 <code>security</code>, <code>encrypt</code>, <code>auth</code>, <code>fingerprint</code> 的 node_modules</td>
+<td>可疑安全SDK，检查</td>
+</tr>
+<tr>
+<td>Level 3 优先</td>
+<td>非 node_modules（<code>/src/</code>, <code>/app/</code>）</td>
+<td>业务代码，优先检查</td>
+</tr>
+</tbody></table>
+<p><strong>结果判断</strong>：</p>
+<ul>
+<li>✅ 找到可疑帧 → 继续 <strong>Step 4</strong></li>
+<li>❌ 全是框架代码 → 返回 <strong>Step 2</strong> 尝试其他断点位置</li>
+</ul>
+<hr>
+<h3 id="Step-4-确认入口"><a href="#Step-4-确认入口" class="headerlink" title="Step 4: 确认入口"></a>Step 4: 确认入口</h3><p>在可疑帧上验证：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts">evaluate_on_callframe(<span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">  expression:</span> <span class="hljs-string">&quot;arguments&quot;</span>,<br><span class="hljs-symbol">  frameIndex:</span> <span class="hljs-number">0</span><br><span class="hljs-punctuation">&#125;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>寻找加密特征：</p>
+<ul>
+<li>位运算：<code>^</code>, <code>&amp;</code>, <code>|</code>, <code>&gt;&gt;&gt;</code></li>
+<li>魔法常量：<code>0x67452301</code>(MD5), <code>0x6a09e667</code>(SHA256)</li>
+</ul>
+<p><strong>结果判断</strong>：</p>
+<ul>
+<li>✅ 确认是加密入口 → 输出结果</li>
+<li>❌ 不是加密逻辑 → 检查调用栈上一帧，或返回 <strong>Step 3</strong> 检查其他帧</li>
+</ul>
+<hr>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>找到入口后，输出：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">入口位置：<br><span class="hljs-bullet">- </span>参数：$ARGUMENTS<br><span class="hljs-bullet">- </span>脚本：https://example.com/static/js/main.abc123.js<br><span class="hljs-bullet">- </span>位置：第 1 行，第 45678 列<br><span class="hljs-bullet">- </span>函数：anonymous (或具体函数名)<br><span class="hljs-bullet">- </span>调用路径：request → addSign → encrypt<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li><strong>优先使用 <code>get_request_initiator</code></strong> - 无需断点，最高效</li>
+<li><strong>优先使用 <code>set_breakpoint_on_text</code></strong> - 对压缩代码友好</li>
+<li><strong>只找入口，不做算法还原</strong> - 保持 skill 单一职责</li>
+<li><strong>每个 Step 失败后有明确跳转</strong> - 避免卡住</li>
+</ol>
+<pre><code>
+</code></pre>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/archives/">🖋️ 片刻记录</a></li>
+        
+          <li><a href="/about/">📜 关于</a></li>
+        
+          <li><a href="/tools/">🛠️ 械所</a></li>
+        
+          <li><a href="/masonry/">🖼️ 相册</a></li>
+        
+          <li><a href="/friends/">🤝 同行者</a></li>
+        
+          <li><a href="/search/">🔍 搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Golang%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text">Golang转换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ast-skills"><span class="toc-number">2.</span> <span class="toc-text">Ast skills</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E7%AD%96%E7%95%A5"><span class="toc-number">2.1.</span> <span class="toc-text">执行策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E5%8E%9F%E5%88%99"><span class="toc-number">2.1.1.</span> <span class="toc-text">整体原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MCP-%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA"><span class="toc-number">2.1.2.</span> <span class="toc-text">MCP 使用时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Subagent-%E5%B9%B6%E8%A1%8C%E7%AD%96%E7%95%A5"><span class="toc-number">2.1.3.</span> <span class="toc-text">Subagent 并行策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%89%8B%E5%86%8C"><span class="toc-number">2.2.</span> <span class="toc-text">技术手册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-0-%E9%A2%84%E5%88%86%E6%9E%90%E4%B8%8E%E7%89%B9%E5%BE%81%E8%AF%86%E5%88%AB"><span class="toc-number">2.2.1.</span> <span class="toc-text">Step 0: 预分析与特征识别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-0-5-Webpack-%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7-Unpack%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">Step 0.5: Webpack&#x2F;打包工具 Unpack（可选）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-1-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E5%AF%86%E4%B8%8E%E5%A4%A7%E6%95%B0%E7%BB%84%E5%9B%9E%E5%A1%AB"><span class="toc-number">2.2.3.</span> <span class="toc-text">Step 1: 字符串解密与大数组回填</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-2-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E5%8C%96"><span class="toc-number">2.2.4.</span> <span class="toc-text">Step 2: 表达式简化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-3-%E5%BC%95%E7%94%A8%E4%B8%8E%E5%B1%9E%E6%80%A7%E8%AE%BF%E9%97%AE%E6%A0%87%E5%87%86%E5%8C%96"><span class="toc-number">2.2.5.</span> <span class="toc-text">Step 3: 引用与属性访问标准化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-4-%E6%8E%A7%E5%88%B6%E6%B5%81%E5%B9%B3%E5%9D%A6%E5%8C%96%E8%BF%98%E5%8E%9F"><span class="toc-number">2.2.6.</span> <span class="toc-text">Step 4: 控制流平坦化还原</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-5-%E6%AD%BB%E4%BB%A3%E7%A0%81%E7%A7%BB%E9%99%A4"><span class="toc-number">2.2.7.</span> <span class="toc-text">Step 5: 死代码移除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-6-%E5%8F%98%E9%87%8F%E9%87%8D%E5%91%BD%E5%90%8D%E4%B8%8E%E6%9C%80%E7%BB%88%E6%95%B4%E5%BD%A2"><span class="toc-number">2.2.8.</span> <span class="toc-text">Step 6: 变量重命名与最终整形</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E8%BE%B9%E7%95%8C"><span class="toc-number">2.3.</span> <span class="toc-text">安全边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Babel-%E5%85%B3%E9%94%AE-API-%E9%80%9F%E6%9F%A5"><span class="toc-number">2.4.</span> <span class="toc-text">Babel 关键 API 速查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">2.5.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#name-find-crypto-entrydescription-%E5%AE%9A%E4%BD%8D-JS-%E4%B8%AD%E5%8F%82%E6%95%B0%E7%9A%84%E7%94%9F%E6%88%90%E5%85%A5%E5%8F%A3%E3%80%82%E5%BD%93%E7%94%A8%E6%88%B7%E9%97%AE%E2%80%9Dxxx-%E5%8F%82%E6%95%B0%E5%9C%A8%E5%93%AA%E7%94%9F%E6%88%90%E2%80%9D%E3%80%81%E2%80%9D%E6%89%BE%E5%8A%A0%E5%AF%86%E5%85%A5%E5%8F%A3%E2%80%9D%E3%80%81%E2%80%9D%E5%AE%9A%E4%BD%8D%E7%AD%BE%E5%90%8D%E5%87%BD%E6%95%B0%E2%80%9D%E3%80%81%E2%80%9D%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%80%8E%E4%B9%88%E5%8A%A0%E5%AF%86%E7%9A%84%E2%80%9D%E6%97%B6%E4%BD%BF%E7%94%A8argument-hint-%E5%8F%82%E6%95%B0%E5%90%8D"><span class="toc-number">2.6.</span> <span class="toc-text">name: find-crypto-entrydescription: 定位 JS 中参数的生成入口。当用户问”xxx 参数在哪生成”、”找加密入口”、”定位签名函数”、”请求参数怎么加密的”时使用argument-hint: [参数名]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#find-crypto-entry"><span class="toc-number">3.</span> <span class="toc-text">find-crypto-entry</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">执行流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-0-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%AE%9A%E4%BD%8D%EF%BC%88%E9%A6%96%E9%80%89%EF%BC%89%E2%AD%90"><span class="toc-number">3.1.1.</span> <span class="toc-text">Step 0: 网络请求定位（首选）⭐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-1-%E9%9D%99%E6%80%81%E6%90%9C%E7%B4%A2"><span class="toc-number">3.1.2.</span> <span class="toc-text">Step 1: 静态搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-2-%E5%8A%A8%E6%80%81%E6%96%AD%E7%82%B9"><span class="toc-number">3.1.3.</span> <span class="toc-text">Step 2: 动态断点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-3-%E5%A0%86%E6%A0%88%E5%88%86%E6%9E%90"><span class="toc-number">3.1.4.</span> <span class="toc-text">Step 3: 堆栈分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-4-%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3"><span class="toc-number">3.1.5.</span> <span class="toc-text">Step 4: 确认入口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="toc-number">3.3.</span> <span class="toc-text">注意事项</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&text=代码通用提示词+skills"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&title=代码通用提示词+skills"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&is_video=false&description=代码通用提示词+skills"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=代码通用提示词+skills&body=Check out this article: https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&title=代码通用提示词+skills"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&title=代码通用提示词+skills"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&title=代码通用提示词+skills"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&title=代码通用提示词+skills"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&name=代码通用提示词+skills&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2026/04/02/%E4%BB%A3%E7%A0%81%E9%80%9A%E7%94%A8%E6%8F%90%E7%A4%BA%E8%AF%8D-skills/&t=代码通用提示词+skills"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    ⚖️ 著作权属 &copy;
+    
+    
+    2025-2099
+    hybpjx
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
+     --><!--
+       --><li><a href="/about/">📜 关于</a></li><!--
+     --><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><!--
+       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
+     --><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><!--
+       --><li><a href="/search/">🔍 搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+<!-- 音乐播放器 -->
+<div id="music-player" class="music-player">
+    <div class="player-controls">
+        <button id="play-pause" class="control-btn">▶</button>
+        <audio id="audio-player" src="/music/遗憾R&B.mp3" preload="metadata"></audio>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <span class="current-time">0:00</span>
+        <span class="total-time">/0:00</span>
+        <div class="volume-control">
+            <button id="mute" class="control-btn">🔊</button>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8">
+        </div>
+        <div class="playlist-control">
+            <button id="playlist-toggle" class="control-btn">🎵</button>
+        </div>
+    </div>
+    <div id="playlist" class="playlist">
+        <div class="playlist-item" data-src="/music/暧昧合伙人.mp3">暧昧合伙人</div>
+        <div class="playlist-item" data-src="/music/遗憾R&B.mp3">遗憾</div>
+    </div>
+</div>
+
+<style>
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.control-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.progress-container {
+    flex: 1;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #007bff;
+    border-radius: 2px;
+    width: 0%;
+}
+
+.current-time, .total-time {
+    font-size: 12px;
+    color: #666;
+    min-width: 35px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#volume {
+    width: 60px;
+}
+
+.playlist {
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+}
+
+.playlist-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.playlist-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.playlist-item.playing {
+    background: #007bff;
+    color: white;
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .music-player {
+        background: rgba(40, 40, 40, 0.9);
+        color: white;
+    }
+    
+    .progress-container {
+        background: #555;
+    }
+    
+    .current-time, .total-time {
+        color: #ccc;
+    }
+    
+    .playlist-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('audio-player');
+    const playPauseBtn = document.getElementById('play-pause');
+    const muteBtn = document.getElementById('mute');
+    const volumeSlider = document.getElementById('volume');
+    const progressContainer = document.querySelector('.progress-container');
+    const progressBar = document.querySelector('.progress-bar');
+    const currentTimeEl = document.querySelector('.current-time');
+    const totalTimeEl = document.querySelector('.total-time');
+    const playlistToggle = document.getElementById('playlist-toggle');
+    const playlist = document.getElementById('playlist');
+    const playlistItems = document.querySelectorAll('.playlist-item');
+
+    // 格式化时间
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // 更新进度条
+    function updateProgress() {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = progress + '%';
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+    }
+
+    // 设置总时间
+    audio.addEventListener('loadedmetadata', function() {
+        totalTimeEl.textContent = '/' + formatTime(audio.duration);
+    });
+
+    // 播放/暂停
+    playPauseBtn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = '▶';
+        }
+    });
+
+    // 静音
+    muteBtn.addEventListener('click', function() {
+        audio.muted = !audio.muted;
+        muteBtn.textContent = audio.muted ? '??' : '🔊';
+    });
+
+    // 音量控制
+    volumeSlider.addEventListener('input', function() {
+        audio.volume = this.value;
+    });
+
+    // 进度条控制
+    progressContainer.addEventListener('click', function(e) {
+        const progressWidth = this.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audio.duration;
+        audio.currentTime = (clickX / progressWidth) * duration;
+    });
+
+    // 播放列表切换
+    playlistToggle.addEventListener('click', function() {
+        playlist.style.display = playlist.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // 播放列表项点击
+    playlistItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const src = this.getAttribute('data-src');
+            audio.src = src;
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+            
+            // 高亮当前播放项
+            playlistItems.forEach(i => i.classList.remove('playing'));
+            this.classList.add('playing');
+        });
+    });
+
+    // 更新进度
+    audio.addEventListener('timeupdate', updateProgress);
+});
+</script>
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'hybpjx-cn';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
