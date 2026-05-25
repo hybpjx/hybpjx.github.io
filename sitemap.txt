@@ -1,3 +1,5 @@
+https://hybpjx.cn/2026/05/12/%E6%9F%90%E9%B1%BC%E8%81%8A%E5%A4%A9ws/
+https://hybpjx.cn/2025/10/13/hybpjx-JS%E9%80%86%E5%90%91%E5%B8%B8%E7%94%A8%E8%84%9A%E6%9C%AC/
 https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/
 https://hybpjx.cn/2026/04/14/quickJSAPI/
 https://hybpjx.cn/2026/04/08/%E8%AE%B0%E5%BD%95AI%E8%BF%87%E6%9F%90%E7%A8%8B%E6%BB%91%E5%9D%97/
@@ -33,7 +35,6 @@ https://hybpjx.cn/2024/12/08/Xposed-API%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8/
 https://hybpjx.cn/2025/12/11/jtype-unidbg/
 https://hybpjx.cn/2025/11/04/xapk%E8%BD%ACapk/
 https://hybpjx.cn/2025/11/05/Golang%E9%AB%98%E5%B9%B6%E5%8F%91/
-https://hybpjx.cn/2025/10/13/hybpjx-JS%E9%80%86%E5%90%91%E5%B8%B8%E7%94%A8%E8%84%9A%E6%9C%AC/
 https://hybpjx.cn/2024/11/26/hybpjx-Python%E5%B0%8F%E6%8A%80%E5%B7%A7/
 https://hybpjx.cn/2022/09/26/Golang%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/
 https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/
@@ -98,6 +99,7 @@ https://hybpjx.cn/tags/Svelte/
 https://hybpjx.cn/tags/Unidbg/
 https://hybpjx.cn/tags/unidbg/
 https://hybpjx.cn/tags/%E6%9D%82%E9%A1%B9/
+https://hybpjx.cn/tags/JS%E9%80%86%E5%90%91/
 https://hybpjx.cn/categories/AST%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/
 https://hybpjx.cn/categories/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/
 https://hybpjx.cn/categories/%E6%9D%82%E8%AE%B0/
