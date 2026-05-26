@@ -101,11 +101,11 @@
    --><!--
      --><li><a href="/about/">📜 关于</a></li><!--
    --><!--
-     --><li><a href="/tools/">🛠️ 械所</a></li><!--
+     --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
    --><!--
      --><li><a href="/masonry/">🖼️ 相册</a></li><!--
    --><!--
-     --><li><a href="/friends/">🤝 同行者</a></li><!--
+     --><li><a href="/friends/">🤝 友链</a></li><!--
    --><!--
      --><li><a href="/search/">🔍 搜索</a></li><!--
    -->
@@ -163,11 +163,11 @@
      --><!--
        --><li><a href="/about/">📜 关于</a></li><!--
      --><!--
-       --><li><a href="/tools/">🛠️ 械所</a></li><!--
+       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
      --><!--
        --><li><a href="/masonry/">🖼️ 相册</a></li><!--
      --><!--
-       --><li><a href="/friends/">🤝 同行者</a></li><!--
+       --><li><a href="/friends/">🤝 友链</a></li><!--
      --><!--
        --><li><a href="/search/">🔍 搜索</a></li><!--
      -->
@@ -180,140 +180,31 @@
 <!-- 音乐播放器 -->
 <div id="music-player" class="music-player">
     <div class="player-controls">
-        <button id="play-pause" class="control-btn">▶</button>
+        <button id="play-pause" class="control-btn" type="button" aria-label="播放">▶</button>
         <audio id="audio-player" src="/music/遗憾R&B.mp3" preload="metadata"></audio>
         <div class="progress-container">
             <div class="progress-bar"></div>
         </div>
-        <span class="current-time">0:00</span>
-        <span class="total-time">/0:00</span>
+        <span class="time-display">
+            <span class="current-time">0:00</span><span class="total-time"> / 0:00</span>
+        </span>
         <div class="volume-control">
-            <button id="mute" class="control-btn">🔊</button>
-            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8">
+            <button id="mute" class="control-btn" type="button" aria-label="静音">🔊</button>
+            <input type="range" id="volume" min="0" max="1" step="0.05" value="0.8">
         </div>
         <div class="playlist-control">
-            <button id="playlist-toggle" class="control-btn">🎵</button>
+            <button id="playlist-toggle" class="control-btn" type="button" aria-label="播放列表">♪</button>
         </div>
     </div>
     <div id="playlist" class="playlist">
-        <div class="playlist-item" data-src="/music/暧昧合伙人.mp3">暧昧合伙人</div>
-        <div class="playlist-item" data-src="/music/遗憾R&B.mp3">遗憾</div>
+        <div class="playlist-item" data-src="/music/暧昧合伙人.mp3" tabindex="0">暧昧合伙人</div>
+        <div class="playlist-item playing" data-src="/music/遗憾R&B.mp3" tabindex="0">遗憾</div>
     </div>
 </div>
 
-<style>
-.music-player {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
-
-.player-controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.control-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-}
-
-.control-btn:hover {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.progress-container {
-    flex: 1;
-    height: 4px;
-    background: #ddd;
-    border-radius: 2px;
-    cursor: pointer;
-}
-
-.progress-bar {
-    height: 100%;
-    background: #007bff;
-    border-radius: 2px;
-    width: 0%;
-}
-
-.current-time, .total-time {
-    font-size: 12px;
-    color: #666;
-    min-width: 35px;
-}
-
-.volume-control {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-#volume {
-    width: 60px;
-}
-
-.playlist {
-    margin-top: 10px;
-    max-height: 150px;
-    overflow-y: auto;
-    display: none;
-}
-
-.playlist-item {
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.playlist-item:hover {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-.playlist-item.playing {
-    background: #007bff;
-    color: white;
-}
-
-/* 暗色模式适配 */
-@media (prefers-color-scheme: dark) {
-    .music-player {
-        background: rgba(40, 40, 40, 0.9);
-        color: white;
-    }
-    
-    .progress-container {
-        background: #555;
-    }
-    
-    .current-time, .total-time {
-        color: #ccc;
-    }
-    
-    .playlist-item:hover {
-        background: rgba(255, 255, 255, 0.1);
-    }
-}
-</style>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    const player = document.getElementById('music-player');
     const audio = document.getElementById('audio-player');
     const playPauseBtn = document.getElementById('play-pause');
     const muteBtn = document.getElementById('mute');
@@ -326,78 +217,179 @@ document.addEventListener('DOMContentLoaded', function() {
     const playlist = document.getElementById('playlist');
     const playlistItems = document.querySelectorAll('.playlist-item');
 
+    if (!player || !audio || !playPauseBtn) {
+        return;
+    }
+
+    audio.volume = Number(volumeSlider.value || 0.8);
+
     // 格式化时间
     function formatTime(seconds) {
+        if (!Number.isFinite(seconds) || seconds < 0) {
+            return '0:00';
+        }
+
         const mins = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
         return `${mins}:${secs.toString().padStart(2, '0')}`;
     }
 
+    function setPlayingState(isPlaying) {
+        playPauseBtn.textContent = isPlaying ? '❚❚' : '▶';
+        playPauseBtn.setAttribute('aria-label', isPlaying ? '暂停' : '播放');
+    }
+
+    function setMuteState() {
+        const muted = audio.muted || audio.volume === 0;
+        muteBtn.textContent = muted ? '🔇' : '🔊';
+        muteBtn.setAttribute('aria-label', muted ? '取消静音' : '静音');
+    }
+
+    function setActiveItem(src) {
+        playlistItems.forEach(function(item) {
+            const itemSrc = item.getAttribute('data-src');
+            item.classList.toggle('playing', itemSrc === src);
+        });
+    }
+
+    function playAudio() {
+        const playPromise = audio.play();
+
+        if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise
+                .then(function() {
+                    player.classList.remove('is-error');
+                    setPlayingState(true);
+                })
+                .catch(function() {
+                    player.classList.add('is-error');
+                    setPlayingState(false);
+                });
+        } else {
+            setPlayingState(true);
+        }
+    }
+
+    function loadTrack(src, autoplay) {
+        if (!src) {
+            return;
+        }
+
+        if (audio.getAttribute('src') !== src) {
+            audio.src = src;
+            audio.currentTime = 0;
+        }
+
+        progressBar.style.width = '0%';
+        currentTimeEl.textContent = '0:00';
+        setActiveItem(src);
+
+        if (autoplay) {
+            playAudio();
+        }
+    }
+
+    function playNext() {
+        const items = Array.from(playlistItems);
+        const currentIndex = items.findIndex(function(item) {
+            return item.classList.contains('playing');
+        });
+        const nextItem = items[(currentIndex + 1 + items.length) % items.length];
+
+        if (nextItem) {
+            loadTrack(nextItem.getAttribute('data-src'), true);
+        }
+    }
+
     // 更新进度条
     function updateProgress() {
-        const progress = (audio.currentTime / audio.duration) * 100;
+        const progress = Number.isFinite(audio.duration) && audio.duration > 0
+            ? (audio.currentTime / audio.duration) * 100
+            : 0;
         progressBar.style.width = progress + '%';
         currentTimeEl.textContent = formatTime(audio.currentTime);
     }
 
     // 设置总时间
     audio.addEventListener('loadedmetadata', function() {
-        totalTimeEl.textContent = '/' + formatTime(audio.duration);
+        totalTimeEl.textContent = ' / ' + formatTime(audio.duration);
     });
 
     // 播放/暂停
     playPauseBtn.addEventListener('click', function() {
         if (audio.paused) {
-            audio.play();
-            playPauseBtn.textContent = '❚❚';
+            playAudio();
         } else {
             audio.pause();
-            playPauseBtn.textContent = '▶';
+            setPlayingState(false);
         }
     });
 
     // 静音
     muteBtn.addEventListener('click', function() {
         audio.muted = !audio.muted;
-        muteBtn.textContent = audio.muted ? '??' : '🔊';
+        setMuteState();
     });
 
     // 音量控制
     volumeSlider.addEventListener('input', function() {
-        audio.volume = this.value;
+        audio.volume = Number(this.value);
+        audio.muted = audio.volume === 0;
+        setMuteState();
     });
 
     // 进度条控制
     progressContainer.addEventListener('click', function(e) {
+        if (!Number.isFinite(audio.duration) || audio.duration <= 0) {
+            return;
+        }
+
         const progressWidth = this.clientWidth;
         const clickX = e.offsetX;
-        const duration = audio.duration;
-        audio.currentTime = (clickX / progressWidth) * duration;
+        audio.currentTime = (clickX / progressWidth) * audio.duration;
     });
 
     // 播放列表切换
     playlistToggle.addEventListener('click', function() {
-        playlist.style.display = playlist.style.display === 'block' ? 'none' : 'block';
+        playlist.classList.toggle('is-open');
     });
 
     // 播放列表项点击
     playlistItems.forEach(item => {
-        item.addEventListener('click', function() {
+        function selectTrack() {
             const src = this.getAttribute('data-src');
-            audio.src = src;
-            audio.play();
-            playPauseBtn.textContent = '❚❚';
-            
-            // 高亮当前播放项
-            playlistItems.forEach(i => i.classList.remove('playing'));
-            this.classList.add('playing');
+            loadTrack(src, true);
+        }
+
+        item.addEventListener('click', selectTrack);
+        item.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                selectTrack.call(this);
+            }
         });
     });
 
     // 更新进度
     audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('play', function() {
+        setPlayingState(true);
+        player.classList.remove('is-error');
+    });
+    audio.addEventListener('pause', function() {
+        setPlayingState(false);
+    });
+    audio.addEventListener('ended', playNext);
+    audio.addEventListener('error', function() {
+        player.classList.add('is-error');
+        setPlayingState(false);
+    });
+
+    setMuteState();
+    setActiveItem(audio.getAttribute('src'));
 });
 </script>
+
     </div>
     <!-- styles -->
 
