@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>买房装修柜子问题</title>
+      <link href="/2026/05/27/%E4%B9%B0%E6%88%BF%E8%A3%85%E4%BF%AE%E6%9F%9C%E5%AD%90%E9%97%AE%E9%A2%98/"/>
+      <url>/2026/05/27/%E4%B9%B0%E6%88%BF%E8%A3%85%E4%BF%AE%E6%9F%9C%E5%AD%90%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<p>1、水性科天F4星实木颗粒板环保等级到底是什么？</p><p>2、有没有柜体和背板的检测报告？</p><p>3、背板是几毫米？</p><p>4、背板多厚？</p><p>5、背板是不是同级环保？</p><p>6、是不是开槽嵌入式安装？</p><p>7、封边没写 是PUR封边还是EVA热熔胶？</p><p>8、五金完全没写。抽屉写了160。导轨品牌？铰链品牌？拉篮品牌？</p><blockquote><p>“铰链是几段力？带阻尼吗？什么品牌？” 最低要求 必须：<strong>带缓冲（阻尼）不是杂牌</strong></p><p>抽屉导轨： 三节轨？还是 隐藏轨？优先 优先隐藏轨｜品牌 依然 Blum的 Tandem ｜Movento 还是  DTC </p><p>抽屉品种：普通三节轨抽屉（便宜）｜隐藏轨木抽（推荐）｜骑马抽（高级） 依然 Blum</p><p>PS：铰链品牌 至少：DTC ｜｜更好：Blum（百隆） 或者 Hettich（海蒂诗）</p><h2 id="普通衣柜"><a href="#普通衣柜" class="headerlink" title="普通衣柜"></a>普通衣柜</h2><ul><li>DTC铰链</li><li>DTC隐藏轨</li></ul><p><img src="http://cdn.hybpjx.cn/uPic/image-20260526112601505.png"></p></blockquote><p>9、阳台柜  这里是洗烘套装 + 扫地机器人。实木颗粒板 不够好容易渗水 最好改成多层板</p><p>10、厨房地柜也是多层板 因为也会受潮</p><p>11、衣帽间 改成折叠门 + 金属衣架。这里衣帽间为什么便宜？是不是没有柜门？是不是不同工艺？</p><p>12、不含灯光和玻璃门 什么地方需要灯光和玻璃门</p><p>13、“板材授权书能看吗？” “检测报告能看吗？”</p><p>13、其他东西 </p><ul><li>见光板算不算</li><li>拉直器算不算</li><li>一门到顶算不算</li><li>柜内灯算不算</li><li>侧封板算不算</li><li>安装费算不算</li><li>上楼算不算</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 生活 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>云手机+云服务器+frpc自动化XPosed部署教程</title>
+      <link href="/2026/05/27/%E4%BA%91%E6%89%8B%E6%9C%BA-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-frpc%E8%87%AA%E5%8A%A8%E5%8C%96XPosed%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/"/>
+      <url>/2026/05/27/%E4%BA%91%E6%89%8B%E6%9C%BA-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-frpc%E8%87%AA%E5%8A%A8%E5%8C%96XPosed%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><p>1、服务器（阿里云 或者腾讯云 有对外输出接口能力）</p><p>2、百度云手机（或者自己的机器）</p><p>3、自己写好的重打包 能forward出去</p><h1 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h1><p>命令如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://github.com/fatedier/frp/releases/download/v0.69.0/frp_0.69.0_linux_amd64.tar.gz<br><br><br>tar -xvzf frp_0.69.0_linux_amd64.tar.gz <br></code></pre></td></tr></table></figure><p>进去<strong>frp_0.69.0_linux_amd64.tar.gz</strong> </p><p>发现里面的目录如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">frpc  frpc.toml  frps  frps.toml  LICENSE  nohup.out<br></code></pre></td></tr></table></figure><p>服务端主要需要使用 frps 以及 frps.toml</p><p> frps.toml 需要如下配置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">bindPort = 7000<br><br>auth.method = <span class="hljs-string">&quot;token&quot;</span><br>auth.token = <span class="hljs-string">&quot;123456&quot;</span><br></code></pre></td></tr></table></figure><p>最终启动如下：</p><p>.&#x2F;frps -c frps.toml </p><h1 id="云手机"><a href="#云手机" class="headerlink" title="云手机"></a>云手机</h1><p>命令如下：</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">wget</span> https://github.com/fatedier/frp/releases/download/v0.<span class="hljs-number">69</span>.<span class="hljs-number">0</span>/frp_0.<span class="hljs-number">69</span>.<span class="hljs-number">0</span>_linux_amd64.tar.gz<br><br><br><span class="hljs-attribute">tar</span> -xvzf frp_0.<span class="hljs-number">69</span>.<span class="hljs-number">0</span>_linux_amd64.tar.gz <br></code></pre></td></tr></table></figure><p>进去<strong>frp_0.69.0_linux_amd64.tar.gz</strong> </p><p>发现里面的目录如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">frpc  frpc.toml  frps  frps.toml  LICENSE  nohup.out<br></code></pre></td></tr></table></figure><p>服务端主要需要使用 frpc 以及 frpc.toml</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">serverAddr</span> = <span class="hljs-string">&quot;xxxx&quot;</span>   <span class="hljs-comment"># 👈 必须填对方的公网服务器 IP</span><br><span class="hljs-attr">serverPort</span> = <span class="hljs-number">7000</span><br><span class="hljs-attr">auth.method</span> = <span class="hljs-string">&quot;token&quot;</span>           <span class="hljs-comment"># 👈 必须加上验证方式</span><br><span class="hljs-attr">auth.token</span> = <span class="hljs-string">&quot;123456&quot;</span>      <span class="hljs-comment"># 👈 必须加上对方给的密码</span><br><br><span class="hljs-section">[[proxies]]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;test-tcp-hybpjx&quot;</span>        <span class="hljs-comment"># 👈 建议加个后缀，防止和别人重名冲突</span><br><span class="hljs-attr">type</span> = <span class="hljs-string">&quot;tcp&quot;</span><br><span class="hljs-attr">localIP</span> = <span class="hljs-string">&quot;127.0.0.1&quot;</span><br><span class="hljs-attr">localPort</span> = <span class="hljs-number">8765</span>                <span class="hljs-comment"># 👈 填你刚才说的本地真实端口（前面你说是8675，如果是8765就填8765）</span><br><span class="hljs-attr">remotePort</span> = <span class="hljs-number">1010</span>             <span class="hljs-comment"># 👈 填别人在外网访问你的端口（尽量用10000以上的高位随机端口，免得跟别人冲突）</span><br></code></pre></td></tr></table></figure><p>最终启动如下：</p><p>.&#x2F;frpc -c frpc.toml       </p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 杂项 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>某鱼聊天ws</title>
       <link href="/2026/05/12/%E6%9F%90%E9%B1%BC%E8%81%8A%E5%A4%A9ws/"/>
       <url>/2026/05/12/%E6%9F%90%E9%B1%BC%E8%81%8A%E5%A4%A9ws/</url>
@@ -479,7 +517,7 @@
       <link href="/2025/09/19/Mac%E5%AE%89%E8%A3%85Mongodb/"/>
       <url>/2025/09/19/Mac%E5%AE%89%E8%A3%85Mongodb/</url>
       
-        <content type="html"><![CDATA[<h1 id="Homebrew-安装"><a href="#Homebrew-安装" class="headerlink" title="Homebrew 安装"></a>Homebrew 安装</h1><ol><li>更新 brew</li></ol><blockquote><p>brew update</p></blockquote><ol start="2"><li>添加 MongoDB 官方 tap</li></ol><blockquote><p>brew tap mongodb&#x2F;brew</p></blockquote><ol start="3"><li>安装最新稳定版</li></ol><blockquote><p>brew install <a href="mailto:&#x6d;&#111;&#x6e;&#x67;&#111;&#x64;&#x62;&#45;&#99;&#x6f;&#109;&#x6d;&#x75;&#110;&#105;&#x74;&#x79;&#64;&#x37;&#x2e;&#x30;">mongodb-community@7.0</a><br>（这里我写的是 7.0，如果你需要特定版本可以改，比如 6.0。）</p></blockquote><ol start="4"><li>启动 MongoDB 服务</li></ol><blockquote><p>brew services start <a href="mailto:&#109;&#x6f;&#x6e;&#x67;&#x6f;&#x64;&#x62;&#x2d;&#x63;&#111;&#x6d;&#x6d;&#x75;&#x6e;&#x69;&#116;&#121;&#64;&#55;&#x2e;&#x30;">mongodb-community@7.0</a><br>brew services start mongodb&#x2F;brew&#x2F;<a href="mailto:&#109;&#x6f;&#x6e;&#103;&#x6f;&#x64;&#98;&#x2d;&#x63;&#x6f;&#x6d;&#109;&#117;&#x6e;&#x69;&#x74;&#121;&#64;&#55;&#x2e;&#48;">mongodb-community@7.0</a></p></blockquote><ol start="5"><li>确认 MongoDB 是否启动成功</li></ol><blockquote><p>ps aux | grep -v grep | grep mongod</p></blockquote><ol start="6"><li>连接 MongoDB</li></ol><blockquote><p>mongosh</p></blockquote><p>默认会连到本地 mongodb:&#x2F;&#x2F;localhost:27017</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="Homebrew-安装"><a href="#Homebrew-安装" class="headerlink" title="Homebrew 安装"></a>Homebrew 安装</h1><ol><li>更新 brew</li></ol><blockquote><p>brew update</p></blockquote><ol start="2"><li>添加 MongoDB 官方 tap</li></ol><blockquote><p>brew tap mongodb&#x2F;brew</p></blockquote><ol start="3"><li>安装最新稳定版</li></ol><blockquote><p>brew install <a href="mailto:&#x6d;&#x6f;&#x6e;&#x67;&#111;&#100;&#x62;&#x2d;&#x63;&#111;&#109;&#109;&#x75;&#110;&#105;&#x74;&#121;&#64;&#55;&#x2e;&#48;">mongodb-community@7.0</a><br>（这里我写的是 7.0，如果你需要特定版本可以改，比如 6.0。）</p></blockquote><ol start="4"><li>启动 MongoDB 服务</li></ol><blockquote><p>brew services start <a href="mailto:&#x6d;&#x6f;&#110;&#103;&#x6f;&#x64;&#x62;&#45;&#x63;&#x6f;&#x6d;&#x6d;&#117;&#110;&#x69;&#x74;&#x79;&#64;&#55;&#x2e;&#48;">mongodb-community@7.0</a><br>brew services start mongodb&#x2F;brew&#x2F;<a href="mailto:&#x6d;&#111;&#x6e;&#x67;&#x6f;&#100;&#98;&#45;&#99;&#111;&#x6d;&#109;&#117;&#110;&#105;&#x74;&#x79;&#64;&#55;&#x2e;&#x30;">mongodb-community@7.0</a></p></blockquote><ol start="5"><li>确认 MongoDB 是否启动成功</li></ol><blockquote><p>ps aux | grep -v grep | grep mongod</p></blockquote><ol start="6"><li>连接 MongoDB</li></ol><blockquote><p>mongosh</p></blockquote><p>默认会连到本地 mongodb:&#x2F;&#x2F;localhost:27017</p>]]></content>
       
       
       <categories>
