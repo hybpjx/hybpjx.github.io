@@ -22,7 +22,6 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
   <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
   <script>hljs.highlightAll();</script>
   
@@ -99,11 +98,11 @@
    --><!--
      --><li><a href="/about/">📜 关于</a></li><!--
    --><!--
-     --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
+     --><li><a href="/tools/">🛠️ 械所</a></li><!--
    --><!--
      --><li><a href="/masonry/">🖼️ 相册</a></li><!--
    --><!--
-     --><li><a href="/friends/">🤝 友链</a></li><!--
+     --><li><a href="/friends/">🤝 同行者</a></li><!--
    --><!--
      --><li><a href="/search/">🔍 搜索</a></li><!--
    -->
@@ -124,14 +123,14 @@
     </header>
 
     <div class="content e-content" itemprop="articleBody">
-        <h2>友邻链接</h2> 
+        <h2>我的朋友们</h2> 
         
             <div class="links-container">
                 
                     <div class="link-card">
-                        <a href="https://lpy30m.github.io/skuukzky.github.io/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://lpy30m.github.io/skuukzky.github.io/" target="_blank" rel="noopener">
                             
-                                <img src="/images/lpy.jpg" alt="小🐑‘s Blog" loading="lazy" decoding="async">
+                                <img src="/images/lpy.jpg" alt="小🐑‘s Blog">
                             
 
                             <div class="link-card-content">
@@ -142,9 +141,9 @@
                     </div>
                 
                     <div class="link-card">
-                        <a href="https://www.cnblogs.com/pigke" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.cnblogs.com/pigke" target="_blank" rel="noopener">
                             
-                                <img src="/images/pig.png" alt="流星🐷Studio" loading="lazy" decoding="async">
+                                <img src="/images/pig.png" alt="流星🐷Studio">
                             
 
                             <div class="link-card-content">
@@ -155,9 +154,9 @@
                     </div>
                 
                     <div class="link-card">
-                        <a href="https://dstbp.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://dstbp.com" target="_blank" rel="noopener">
                             
-                                <img src="/images/kkk.jpeg" alt="dstbp" loading="lazy" decoding="async">
+                                <img src="/images/kkk.jpeg" alt="dstbp">
                             
 
                             <div class="link-card-content">
@@ -171,7 +170,7 @@
         
 
 
-        <h2 id="link-request-title">申请友链可在评论区留言～</h2> 
+        <h2 id="link-request-title">如需要添加友联 可在评论中回复～</h2> 
         </div>
 
     
@@ -183,7 +182,6 @@
 
 
 </article>
-
         
         <footer id="footer">
   <div class="footer-left">
@@ -201,11 +199,11 @@
      --><!--
        --><li><a href="/about/">📜 关于</a></li><!--
      --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
+       --><li><a href="/tools/">🛠️ 械所</a></li><!--
      --><!--
        --><li><a href="/masonry/">🖼️ 相册</a></li><!--
      --><!--
-       --><li><a href="/friends/">🤝 友链</a></li><!--
+       --><li><a href="/friends/">🤝 同行者</a></li><!--
      --><!--
        --><li><a href="/search/">🔍 搜索</a></li><!--
      -->
@@ -216,45 +214,226 @@
 
 
 <!-- 音乐播放器 -->
-<div id="music-player"></div>
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<div id="music-player" class="music-player">
+    <div class="player-controls">
+        <button id="play-pause" class="control-btn">▶</button>
+        <audio id="audio-player" src="/music/遗憾R&B.mp3" preload="metadata"></audio>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <span class="current-time">0:00</span>
+        <span class="total-time">/0:00</span>
+        <div class="volume-control">
+            <button id="mute" class="control-btn">🔊</button>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8">
+        </div>
+        <div class="playlist-control">
+            <button id="playlist-toggle" class="control-btn">🎵</button>
+        </div>
+    </div>
+    <div id="playlist" class="playlist">
+        <div class="playlist-item" data-src="/music/暧昧合伙人.mp3">暧昧合伙人</div>
+        <div class="playlist-item" data-src="/music/遗憾R&B.mp3">遗憾</div>
+    </div>
+</div>
+
+<style>
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.control-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.progress-container {
+    flex: 1;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #007bff;
+    border-radius: 2px;
+    width: 0%;
+}
+
+.current-time, .total-time {
+    font-size: 12px;
+    color: #666;
+    min-width: 35px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#volume {
+    width: 60px;
+}
+
+.playlist {
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+}
+
+.playlist-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.playlist-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.playlist-item.playing {
+    background: #007bff;
+    color: white;
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .music-player {
+        background: rgba(40, 40, 40, 0.9);
+        color: white;
+    }
+    
+    .progress-container {
+        background: #555;
+    }
+    
+    .current-time, .total-time {
+        color: #ccc;
+    }
+    
+    .playlist-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('music-player');
+    const audio = document.getElementById('audio-player');
+    const playPauseBtn = document.getElementById('play-pause');
+    const muteBtn = document.getElementById('mute');
+    const volumeSlider = document.getElementById('volume');
+    const progressContainer = document.querySelector('.progress-container');
+    const progressBar = document.querySelector('.progress-bar');
+    const currentTimeEl = document.querySelector('.current-time');
+    const totalTimeEl = document.querySelector('.total-time');
+    const playlistToggle = document.getElementById('playlist-toggle');
+    const playlist = document.getElementById('playlist');
+    const playlistItems = document.querySelectorAll('.playlist-item');
 
-    if (!container || typeof APlayer === 'undefined') {
-        return;
+    // 格式化时间
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
     }
 
-    window.siteAPlayer = new APlayer({
-        container: container,
-        fixed: true,
-        listFolded: false,
-        listMaxHeight: '160px',
-        theme: '#69c585',
-        loop: 'all',
-        order: 'list',
-        preload: 'metadata',
-        volume: 0.7,
-        mutex: true,
-        audio: [
-            {
-                name: '遗憾',
-                artist: 'Blog Music',
-                url: '/music/%E9%81%97%E6%86%BER&B.mp3',
-                cover: '/images/logo.png'
-            },
-            {
-                name: '暧昧合伙人',
-                artist: 'Blog Music',
-                url: '/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3',
-                cover: '/images/logo.png'
-            }
-        ]
+    // 更新进度条
+    function updateProgress() {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = progress + '%';
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+    }
+
+    // 设置总时间
+    audio.addEventListener('loadedmetadata', function() {
+        totalTimeEl.textContent = '/' + formatTime(audio.duration);
     });
+
+    // 播放/暂停
+    playPauseBtn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = '▶';
+        }
+    });
+
+    // 静音
+    muteBtn.addEventListener('click', function() {
+        audio.muted = !audio.muted;
+        muteBtn.textContent = audio.muted ? '??' : '🔊';
+    });
+
+    // 音量控制
+    volumeSlider.addEventListener('input', function() {
+        audio.volume = this.value;
+    });
+
+    // 进度条控制
+    progressContainer.addEventListener('click', function(e) {
+        const progressWidth = this.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audio.duration;
+        audio.currentTime = (clickX / progressWidth) * duration;
+    });
+
+    // 播放列表切换
+    playlistToggle.addEventListener('click', function() {
+        playlist.style.display = playlist.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // 播放列表项点击
+    playlistItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const src = this.getAttribute('data-src');
+            audio.src = src;
+            audio.play();
+            playPauseBtn.textContent = '❚❚';
+            
+            // 高亮当前播放项
+            playlistItems.forEach(i => i.classList.remove('playing'));
+            this.classList.add('playing');
+        });
+    });
+
+    // 更新进度
+    audio.addEventListener('timeupdate', updateProgress);
 });
 </script>
-
     </div>
     <!-- styles -->
 
