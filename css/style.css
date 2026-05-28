@@ -497,7 +497,7 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: linear-gradient(180deg, rgba(248,244,239,0.82), rgba(248,244,239,0.68)), url("/images/kkk.jpg");
+  background-image: linear-gradient(180deg, rgba(248,244,239,0.8), rgba(248,244,239,0.8)), url("/images/haokan.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2103,6 +2103,18 @@ pre code {
   word-wrap: break-word !important;
   word-break: break-word !important;
 }
+.hljs,
+pre code {
+  background: transparent !important;
+  font-family: "Fira Code", "JetBrains Mono", "Cascadia Code", Consolas, monospace !important;
+  font-size: 14px !important;
+  line-height: 1.6;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+/* 关键修改：允许代码自动换行，从而撑开容器高度 */
+  white-space: pre-wrap !important; /* 保持空格，但允许换行 */
+  word-wrap: break-word !important; /* 强制长单词换行 */
+  word-break: break-all !important;
+}
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-literal {
@@ -2132,6 +2144,19 @@ pre code {
 .hljs-function .hljs-title {
   color: #d2a8ff !important;
 }
+figure.highlight,
+pre {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 8px;
+  border: 1px solid #111;
+!important
+/* 关键修改：取消滚动条限制 */
+  overflow: visible !important; /* 允许内容溢出撑开父容器 */
+  height: auto !important; /* 高度根据内容自动 */
+  max-height: none !important; /* 确保没有最大高度限制 */
+}
+!important
 figure.highlight,
 pre {
   background: rgba(255,255,255,0.62) !important;
