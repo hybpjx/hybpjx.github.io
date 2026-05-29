@@ -662,11 +662,10 @@ blockquote {
   margin: 22px 0 28px;
   max-width: 100%;
   overflow: auto;
-  border: 1px solid #e7ebf0;
-  border-top: 3px solid #4e5b66;
-  border-radius: 5px;
-  background: #fbfcfd;
-  box-shadow: 0 10px 26px rgba(27, 31, 35, 0.07);
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(27, 31, 35, 0.08);
 }
 
 .article-body figure.highlight table {
@@ -706,22 +705,22 @@ blockquote {
   padding: 0 !important;
   border: none !important;
   background: transparent !important;
-  color: #52616b !important;
-  font-size: 14px !important;
-  line-height: 1.72;
+  color: #24292e !important;
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 13.5px !important;
+  line-height: 1.75;
 }
 
 .article-body pre:not(.hljs) {
   margin: 22px 0 28px;
   padding: 16px 18px;
-  border: 1px solid #e7ebf0;
-  border-top: 3px solid #4e5b66;
-  border-radius: 5px;
-  background: #fbfcfd;
-  box-shadow: 0 10px 26px rgba(27, 31, 35, 0.07);
-  color: #2b2f36;
-  line-height: 1.72;
-  font-size: 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(27, 31, 35, 0.08);
+  color: #24292e;
+  line-height: 1.75;
+  font-size: 13.5px;
 }
 
 .article-body pre:not(.hljs) code {
@@ -812,31 +811,45 @@ blockquote {
 
 .code-copy-shell {
   position: relative;
+  padding-top: 38px;
+}
+
+.code-copy-shell::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 16px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff5f56;
+  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+  z-index: 2;
 }
 
 .code-copy-btn {
   position: absolute;
-  top: 9px;
-  right: 9px;
+  top: 12px;
+  right: 12px;
   z-index: 2;
   width: 30px;
   height: 30px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #dfe4ea;
+  border: 1px solid #d0d7de;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.88);
-  color: #5b657a;
+  background: rgba(255, 255, 255, 0.92);
+  color: #6b7280;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(51, 51, 51, 0.08);
+  box-shadow: 0 2px 8px rgba(27, 31, 35, 0.08);
   transition: all 0.2s ease;
 }
 
 .code-copy-btn:hover {
   background: #fff;
-  color: #008aff;
-  border-color: #008aff;
+  color: #24292e;
+  border-color: #aab2bd;
 }
 
 .code-copy-btn svg {
@@ -1336,13 +1349,23 @@ blockquote {
   .article-body figure.highlight pre,
   .article-body pre:not(.hljs) {
     padding: 14px 12px;
-    font-size: 13px !important;
+    font-size: 12.5px !important;
   }
 
   .article-body figure.highlight code,
   .article-body figure.highlight .hljs {
-    font-size: 13px !important;
+    font-size: 12.5px !important;
     line-height: 1.65;
+  }
+
+  .code-copy-shell {
+    padding-top: 34px;
+  }
+
+  .code-copy-shell::before {
+    top: 12px;
+    left: 12px;
+    box-shadow: 16px 0 0 #ffbd2e, 32px 0 0 #27c93f;
   }
 
   .archive-item {
