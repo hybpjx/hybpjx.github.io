@@ -1,0 +1,101 @@
+(function () {
+  "use strict";
+
+  function ready(fn) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fn);
+    } else {
+      fn();
+    }
+  }
+
+  function copyWithAttribution(event) {
+    var selection = window.getSelection ? window.getSelection().toString() : "";
+    if (!selection || selection.length < 80) return;
+
+    var clipboardData = event.clipboardData || window.clipboardData;
+    if (!clipboardData) return;
+
+    event.preventDefault();
+
+    var text = selection + "\n\n著作权归作者所有。\n商业转载请联系作者获得授权，非商业转载请注明出处。\n作者：zichliang（hybpjx/始識）\n链接：" + window.location.href + "\n";
+    var html = selection + "<br><br>著作权归作者所有。<br>商业转载请联系作者获得授权，非商业转载请注明出处。<br>作者：zichliang（hybpjx/始識）<br>链接：" + window.location.href + "<br>";
+
+    clipboardData.setData("text/plain", text);
+    clipboardData.setData("text/html", html);
+  }
+
+  function initSearch() {
+    var input = document.getElementById("search-input");
+    var result = document.getElementById("search-result");
+    if (!input || !result || typeof window.searchFunc !== "function") return;
+
+    input.addEventListener("focus", function () {
+      window.searchFunc("/search.xml", "search-input", "search-result");
+    }, { once: true });
+  }
+
+  function copyText(text) {
+    function fallbackCopy() {
+      var textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      try {
+        document.execCommand("copy");
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).catch(function () {
+        fallbackCopy();
+      });
+    }
+    fallbackCopy();
+    return Promise.resolve();
+  }
+
+  function buildCopyButton() {
+    var button = document.createElement("button");
+    button.type = "button";
+    button.className = "code-copy-btn";
+    button.setAttribute("aria-label", "复制代码");
+    button.title = "复制代码";
+    button.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h10v12H7V7h2v2Zm-4 0h2v12h12v2H5V9Zm4-6h10v2H9v10H7V5c0-1.1.9-2 2-2Z"/></svg>';
+    return button;
+  }
+
+  function initCodeCopy() {
+    var blocks = document.querySelectorAll(".article-body figure.highlight, .article-body pre:not(.hljs)");
+    blocks.forEach(function (block) {
+      if (block.tagName === "PRE" && block.closest("figure.highlight")) return;
+      if (block.querySelector(".code-copy-btn")) return;
+      block.classList.add("code-copy-shell");
+      var button = buildCopyButton();
+      button.addEventListener("click", function () {
+        var code = block.querySelector("code");
+        var text = code ? code.innerText : block.innerText;
+        copyText(text.replace(/\n+$/, "")).then(function () {
+          button.classList.add("is-copied");
+          button.setAttribute("aria-label", "已复制");
+          setTimeout(function () {
+            button.classList.remove("is-copied");
+            button.setAttribute("aria-label", "复制代码");
+          }, 1400);
+        });
+      });
+      block.appendChild(button);
+    });
+  }
+
+  ready(function () {
+    document.body.addEventListener("copy", copyWithAttribution);
+    initSearch();
+    initCodeCopy();
+  });
+}());

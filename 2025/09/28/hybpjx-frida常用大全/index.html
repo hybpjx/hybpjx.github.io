@@ -1,196 +1,72 @@
 <!DOCTYPE html>
-<html lang=zh>
-<head>
-  <!-- so meta -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=5"
-  />
-
-  <!-- <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
-    rel="stylesheet"
-  />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
-  <script>hljs.highlightAll();</script>
+<html lang=&#34;zh&#34;>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>frida常用大全 | 始識’s 博客</title>
+  <meta name="description" content="公众号搜索: 影17">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <meta name="description" content="Hook Register_native123456789101112131415161718192021222324252627282930313233343536373839404142434445464748var addrRegisterNatives &#x3D; null;var symbols &#x3D; Module.enumerateSymbolsSync(&quot;libart.so&amp;quot">
-<meta property="og:type" content="article">
-<meta property="og:title" content="frida常用大全">
-<meta property="og:url" content="https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/index.html">
-<meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="Hook Register_native123456789101112131415161718192021222324252627282930313233343536373839404142434445464748var addrRegisterNatives &#x3D; null;var symbols &#x3D; Module.enumerateSymbolsSync(&quot;libart.so&amp;quot">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-09-28T10:14:21.000Z">
-<meta property="article:modified_time" content="2026-04-30T09:04:49.512Z">
-<meta property="article:author" content="hybpjx">
-<meta property="article:tag" content="frida">
-<meta name="twitter:card" content="summary">
-     
-  <link rel="shortcut icon" href="/images/hbsn.jpg" />
-     
-  <link
-    rel="icon"
-    type="image/png"
-    href="/images/hbsn.jpg"
-    sizes="192x192"
-  />
-     
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/images/hbsn.jpg"
-  />
-    
-  <!-- title -->
-  <title>frida常用大全</title>
-  <!-- async scripts -->
-  <!-- Google Analytics -->
-
- <!-- Umami Analytics -->
-
-
-  <!-- styles -->
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  <!-- persian styles -->
-  
-  <!-- rss -->
-   
-  <!-- mathjax -->
-  
+  <link rel="stylesheet" href="/css/cnblogs.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+  <a class="brand" href="/" aria-label="始識’s 博客">
+    <span class="brand__mark">始</span>
+    <span class="brand__text">
+      <strong>始識</strong>
+      <em>公众号搜索：影17</em>
     </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇" href="/2025/09/19/Mac%E5%AE%89%E8%A3%85Mongodb/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&text=frida常用大全"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&is_video=false&description=frida常用大全"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=frida常用大全&body=Check out this article: https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&name=frida常用大全&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&t=frida常用大全"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
+  </a>
 
-    </div>
+  <nav class="site-nav" aria-label="主导航">
     
+      <a href="/">首页</a>
     
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-Register-native"><span class="toc-number">1.</span> <span class="toc-text">Hook Register_native</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-%E6%A3%80%E6%B5%8B%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">hook 检测函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">修改寄存器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-webview-%E9%A1%B5%E9%9D%A2"><span class="toc-number">5.</span> <span class="toc-text">Hook webview 页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-So%E5%B1%82%E7%9A%84-newStringUTF8"><span class="toc-number">6.</span> <span class="toc-text">hook So层的 newStringUTF8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook%E5%85%B7%E4%BD%93%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80"><span class="toc-number">7.</span> <span class="toc-text">hook具体函数地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap%E6%88%96%E8%BD%ACJson"><span class="toc-number">8.</span> <span class="toc-text">HashMap或转Json</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-OKHTTP"><span class="toc-number">9.</span> <span class="toc-text">hook OKHTTP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-So"><span class="toc-number">10.</span> <span class="toc-text">hook So</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-number">11.</span> <span class="toc-text">hook 线程创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%B1%E5%A3%B3"><span class="toc-number">12.</span> <span class="toc-text">脱壳</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frida%E6%8A%93%E5%8C%85"><span class="toc-number">13.</span> <span class="toc-text">Frida抓包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JNITrace"><span class="toc-number">14.</span> <span class="toc-text">JNITrace</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E5%86%99Java-%E7%9A%84native"><span class="toc-number">15.</span> <span class="toc-text">重写Java 的native</span></a></li></ol>
-      </div>
+      <a href="/archives/">🖋️ 归档</a>
     
-  </span>
-</div>
-
+      <a href="/about/">📜 关于</a>
     
-    <div class="content index py4 ">
-        
-        
-
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+      <a href="/tools/">🛠️ 工具箱</a>
     
-    <h1 class="posttitle p-name" itemprop="name headline">
-        frida常用大全
-    </h1>
+      <a href="/masonry/">🖼️ 相册</a>
+    
+      <a href="/friends/">🤝 友情链接</a>
+    
+      <a href="/search/">🔍 搜索</a>
+    
+  </nav>
+</header>
 
-
-
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">hybpjx</span>
-      </span>
+      <main class="site-main">
+        <article class="article">
+  <header class="article-hero">
+    <a class="article-back" href="/">返回首页</a>
+    <h1>frida常用大全</h1>
+    <div class="article-meta">
+      <time datetime="2025-09-28T10:14:21.000Z">2025-09-28</time>
       
-    <div class="postdate">
+        <span><a class="category-link" href="/categories/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">安卓逆向基础</a></span>
       
-        <time datetime="2025-09-28T10:14:21.000Z" class="dt-published" itemprop="datePublished">2025-09-28</time>
-        
       
-    </div>
-
-
+        <span><a class="tag-span-link" href="/tags/frida/" rel="tag">frida</a></span>
       
-    <div class="article-category">
-        <i class="fa-solid fa-archive"></i>
-        <a class="category-link" href="/categories/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">安卓逆向基础</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/frida/" rel="tag">frida</a>
-    </div>
-
-
     </div>
   </header>
-  
 
-  <div class="content e-content" itemprop="articleBody">
-    <h1 id="Hook-Register-native"><a href="#Hook-Register-native" class="headerlink" title="Hook Register_native"></a>Hook Register_native</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> addrRegisterNatives = <span class="hljs-literal">null</span>;<br><br><span class="hljs-keyword">var</span> symbols = <span class="hljs-title class_">Module</span>.<span class="hljs-title function_">enumerateSymbolsSync</span>(<span class="hljs-string">&quot;libart.so&quot;</span>);<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; symbols.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-keyword">var</span> symbol = symbols[i];<br>    <span class="hljs-keyword">if</span> (symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;art&quot;</span>) &gt;= <span class="hljs-number">0</span> &amp;&amp;<br>        symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;JNI&quot;</span>) &gt;= <span class="hljs-number">0</span> &amp;&amp;<br>        symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;RegisterNatives&quot;</span>) &gt;= <span class="hljs-number">0</span> &amp;&amp;<br>        symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;CheckJNI&quot;</span>) &lt; <span class="hljs-number">0</span>) &#123;<br><br>        addrRegisterNatives = symbol.<span class="hljs-property">address</span>;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;RegisterNatives is at &quot;</span>,  symbol.<span class="hljs-property">address</span>, symbol.<span class="hljs-property">name</span>);<br>        <span class="hljs-keyword">break</span><br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">if</span> (addrRegisterNatives) &#123;<br>    <span class="hljs-title class_">Interceptor</span>.<span class="hljs-title function_">attach</span>(addrRegisterNatives, &#123;<br>        <span class="hljs-attr">onEnter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">args</span>) &#123;<br>            <span class="hljs-keyword">var</span> env = args[<span class="hljs-number">0</span>];        <span class="hljs-comment">// jni对象</span><br>            <span class="hljs-keyword">var</span> java_class = args[<span class="hljs-number">1</span>]; <span class="hljs-comment">// 类</span><br>            <span class="hljs-keyword">var</span> class_name = <span class="hljs-title class_">Java</span>.<span class="hljs-property">vm</span>.<span class="hljs-title function_">tryGetEnv</span>().<span class="hljs-title function_">getClassName</span>(java_class);<br>            <span class="hljs-keyword">var</span> taget_class = <span class="hljs-string">&quot;com.tongcheng.secguard.DunCode&quot;</span>;   <span class="hljs-comment">//111 某个类中动态注册的so</span><br>            <span class="hljs-comment">// var taget_class = &quot;com.ishumei.dfp.SMSDK&quot;;   //111 某个类中动态注册的so</span><br>            <span class="hljs-keyword">if</span> (class_name === taget_class) &#123;<br>                <span class="hljs-comment">//只找我们自己想要类中的动态注册关系</span><br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;\n[RegisterNatives] method_count:&quot;</span>, args[<span class="hljs-number">3</span>]);<br>                <span class="hljs-keyword">var</span> methods_ptr = <span class="hljs-title function_">ptr</span>(args[<span class="hljs-number">2</span>]);<br>                <span class="hljs-keyword">var</span> method_count = <span class="hljs-built_in">parseInt</span>(args[<span class="hljs-number">3</span>]);<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; method_count; i++) &#123;<br>                    <span class="hljs-comment">// Java中函数名字的</span><br>                    <span class="hljs-keyword">var</span> name_ptr = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readPointer</span>(methods_ptr.<span class="hljs-title function_">add</span>(i * <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">3</span>));<br>                    <span class="hljs-comment">// 参数和返回值类型</span><br>                    <span class="hljs-keyword">var</span> sig_ptr = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readPointer</span>(methods_ptr.<span class="hljs-title function_">add</span>(i * <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">3</span> + <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span>));<br>                    <span class="hljs-comment">// C中的函数内存地址</span><br>                    <span class="hljs-keyword">var</span> fnPtr_ptr = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readPointer</span>(methods_ptr.<span class="hljs-title function_">add</span>(i * <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">3</span> + <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">2</span>));<br>                    <span class="hljs-keyword">var</span> name = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readCString</span>(name_ptr);<br>                    <span class="hljs-keyword">var</span> sig = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readCString</span>(sig_ptr);<br>                    <span class="hljs-keyword">var</span> find_module = <span class="hljs-title class_">Process</span>.<span class="hljs-title function_">findModuleByAddress</span>(fnPtr_ptr);<br>                    <span class="hljs-comment">// 地址、偏移量、基地址</span><br>                    <span class="hljs-keyword">var</span> offset = <span class="hljs-title function_">ptr</span>(fnPtr_ptr).<span class="hljs-title function_">sub</span>(find_module.<span class="hljs-property">base</span>);<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;name:&quot;</span>,class_name +<span class="hljs-string">&quot; &quot;</span>+ name, <span class="hljs-string">&quot;sig:&quot;</span>, sig,<span class="hljs-string">&#x27;module_name:&#x27;</span>,find_module.<span class="hljs-property">name</span> ,<span class="hljs-string">&quot;offset:&quot;</span>, offset);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+  
+  <div class="article-layout">
+    <div class="article-body" id="cnblogs_post_body">
+      <h1 id="Hook-Register-native"><a href="#Hook-Register-native" class="headerlink" title="Hook Register_native"></a>Hook Register_native</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> addrRegisterNatives = <span class="hljs-literal">null</span>;<br><br><span class="hljs-keyword">var</span> symbols = <span class="hljs-title class_">Module</span>.<span class="hljs-title function_">enumerateSymbolsSync</span>(<span class="hljs-string">&quot;libart.so&quot;</span>);<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; symbols.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-keyword">var</span> symbol = symbols[i];<br>    <span class="hljs-keyword">if</span> (symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;art&quot;</span>) &gt;= <span class="hljs-number">0</span> &amp;&amp;<br>        symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;JNI&quot;</span>) &gt;= <span class="hljs-number">0</span> &amp;&amp;<br>        symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;RegisterNatives&quot;</span>) &gt;= <span class="hljs-number">0</span> &amp;&amp;<br>        symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;CheckJNI&quot;</span>) &lt; <span class="hljs-number">0</span>) &#123;<br><br>        addrRegisterNatives = symbol.<span class="hljs-property">address</span>;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;RegisterNatives is at &quot;</span>,  symbol.<span class="hljs-property">address</span>, symbol.<span class="hljs-property">name</span>);<br>        <span class="hljs-keyword">break</span><br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">if</span> (addrRegisterNatives) &#123;<br>    <span class="hljs-title class_">Interceptor</span>.<span class="hljs-title function_">attach</span>(addrRegisterNatives, &#123;<br>        <span class="hljs-attr">onEnter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">args</span>) &#123;<br>            <span class="hljs-keyword">var</span> env = args[<span class="hljs-number">0</span>];        <span class="hljs-comment">// jni对象</span><br>            <span class="hljs-keyword">var</span> java_class = args[<span class="hljs-number">1</span>]; <span class="hljs-comment">// 类</span><br>            <span class="hljs-keyword">var</span> class_name = <span class="hljs-title class_">Java</span>.<span class="hljs-property">vm</span>.<span class="hljs-title function_">tryGetEnv</span>().<span class="hljs-title function_">getClassName</span>(java_class);<br>            <span class="hljs-keyword">var</span> taget_class = <span class="hljs-string">&quot;com.tongcheng.secguard.DunCode&quot;</span>;   <span class="hljs-comment">//111 某个类中动态注册的so</span><br>            <span class="hljs-comment">// var taget_class = &quot;com.ishumei.dfp.SMSDK&quot;;   //111 某个类中动态注册的so</span><br>            <span class="hljs-keyword">if</span> (class_name === taget_class) &#123;<br>                <span class="hljs-comment">//只找我们自己想要类中的动态注册关系</span><br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;\n[RegisterNatives] method_count:&quot;</span>, args[<span class="hljs-number">3</span>]);<br>                <span class="hljs-keyword">var</span> methods_ptr = <span class="hljs-title function_">ptr</span>(args[<span class="hljs-number">2</span>]);<br>                <span class="hljs-keyword">var</span> method_count = <span class="hljs-built_in">parseInt</span>(args[<span class="hljs-number">3</span>]);<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; method_count; i++) &#123;<br>                    <span class="hljs-comment">// Java中函数名字的</span><br>                    <span class="hljs-keyword">var</span> name_ptr = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readPointer</span>(methods_ptr.<span class="hljs-title function_">add</span>(i * <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">3</span>));<br>                    <span class="hljs-comment">// 参数和返回值类型</span><br>                    <span class="hljs-keyword">var</span> sig_ptr = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readPointer</span>(methods_ptr.<span class="hljs-title function_">add</span>(i * <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">3</span> + <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span>));<br>                    <span class="hljs-comment">// C中的函数内存地址</span><br>                    <span class="hljs-keyword">var</span> fnPtr_ptr = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readPointer</span>(methods_ptr.<span class="hljs-title function_">add</span>(i * <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">3</span> + <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">2</span>));<br>                    <span class="hljs-keyword">var</span> name = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readCString</span>(name_ptr);<br>                    <span class="hljs-keyword">var</span> sig = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readCString</span>(sig_ptr);<br>                    <span class="hljs-keyword">var</span> find_module = <span class="hljs-title class_">Process</span>.<span class="hljs-title function_">findModuleByAddress</span>(fnPtr_ptr);<br>                    <span class="hljs-comment">// 地址、偏移量、基地址</span><br>                    <span class="hljs-keyword">var</span> offset = <span class="hljs-title function_">ptr</span>(fnPtr_ptr).<span class="hljs-title function_">sub</span>(find_module.<span class="hljs-property">base</span>);<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;name:&quot;</span>,class_name +<span class="hljs-string">&quot; &quot;</span>+ name, <span class="hljs-string">&quot;sig:&quot;</span>, sig,<span class="hljs-string">&#x27;module_name:&#x27;</span>,find_module.<span class="hljs-property">name</span> ,<span class="hljs-string">&quot;offset:&quot;</span>, offset);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;);<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
 <h1 id="hook-检测函数"><a href="#hook-检测函数" class="headerlink" title="hook 检测函数"></a>hook 检测函数</h1><p><a target="_blank" rel="noopener" href="https://github.com/hybpjx/Frida_CMUse/blob/master/dlopen_jd.js">https://github.com/hybpjx/Frida_CMUse/blob/master/dlopen_jd.js</a></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">hook_dlopen</span>(<span class="hljs-params">module_name, fun</span>) &#123;<br>    <span class="hljs-keyword">var</span> android_dlopen_ext = <span class="hljs-title class_">Module</span>.<span class="hljs-title function_">findExportByName</span>(<span class="hljs-literal">null</span>, <span class="hljs-string">&quot;android_dlopen_ext&quot;</span>);<br>    <span class="hljs-keyword">if</span> (android_dlopen_ext) &#123;<br>        <span class="hljs-title class_">Interceptor</span>.<span class="hljs-title function_">attach</span>(android_dlopen_ext, &#123;<br>            <span class="hljs-attr">onEnter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">args</span>) &#123;<br>                <span class="hljs-keyword">var</span> pathptr = args[<span class="hljs-number">0</span>];<br>                <span class="hljs-keyword">if</span> (pathptr) &#123;<br><br>                    <span class="hljs-variable language_">this</span>.<span class="hljs-property">path</span> = (pathptr).<span class="hljs-title function_">readCString</span>();<br>                       <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( <span class="hljs-variable language_">this</span>.<span class="hljs-property">path</span> )<br>                    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">path</span>.<span class="hljs-title function_">indexOf</span>(module_name) &gt;= <span class="hljs-number">0</span>) &#123;<br>                        <span class="hljs-variable language_">this</span>.<span class="hljs-property">canhook</span> = <span class="hljs-literal">true</span>;<br><br>                    &#125;<br><br>                &#125;<br><br>            &#125;,<br>            <span class="hljs-attr">onLeave</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">retval</span>) &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">canhook</span>) &#123;<br>                    <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>                        <br>                    &#125;)<br>                &#125;<br>            &#125;<br>        &#125;);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">main</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">hook_dlopen</span>(<span class="hljs-string">&quot;libPassGuard.so&quot;</span>)<br>&#125;<br><span class="hljs-title function_">setImmediate</span>(main,<span class="hljs-number">500</span>)<br><br><br><span class="hljs-comment">// com.luna.music</span><br></code></pre></td></tr></table></figure>
@@ -227,181 +103,71 @@
 <h1 id="JNITrace"><a href="#JNITrace" class="headerlink" title="JNITrace"></a>JNITrace</h1><p><a target="_blank" rel="noopener" href="https://github.com/hybpjx/Frida_CMUse/blob/master/xjJniTrace.js">https://github.com/hybpjx/Frida_CMUse/blob/master/xjJniTrace.js</a></p>
 <h1 id="重写Java-的native"><a href="#重写Java-的native" class="headerlink" title="重写Java 的native"></a>重写Java 的native</h1><p><a target="_blank" rel="noopener" href="https://github.com/hybpjx/Frida_CMUse/blob/master/agent.js">https://github.com/hybpjx/Frida_CMUse/blob/master/agent.js</a></p>
 
+    </div>
+    
+      <aside class="article-toc">
+        <p class="eyebrow">目录</p>
+        <div class="article-toc__body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-Register-native"><span class="toc-number">1.</span> <span class="toc-text">Hook Register_native</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-%E6%A3%80%E6%B5%8B%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">hook 检测函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">修改寄存器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-webview-%E9%A1%B5%E9%9D%A2"><span class="toc-number">5.</span> <span class="toc-text">Hook webview 页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-So%E5%B1%82%E7%9A%84-newStringUTF8"><span class="toc-number">6.</span> <span class="toc-text">hook So层的 newStringUTF8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook%E5%85%B7%E4%BD%93%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80"><span class="toc-number">7.</span> <span class="toc-text">hook具体函数地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap%E6%88%96%E8%BD%ACJson"><span class="toc-number">8.</span> <span class="toc-text">HashMap或转Json</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-OKHTTP"><span class="toc-number">9.</span> <span class="toc-text">hook OKHTTP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-So"><span class="toc-number">10.</span> <span class="toc-text">hook So</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-number">11.</span> <span class="toc-text">hook 线程创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%B1%E5%A3%B3"><span class="toc-number">12.</span> <span class="toc-text">脱壳</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frida%E6%8A%93%E5%8C%85"><span class="toc-number">13.</span> <span class="toc-text">Frida抓包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JNITrace"><span class="toc-number">14.</span> <span class="toc-text">JNITrace</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E5%86%99Java-%E7%9A%84native"><span class="toc-number">15.</span> <span class="toc-text">重写Java 的native</span></a></li></ol></div>
+      </aside>
+    
   </div>
+
+  <nav class="article-neighbor">
+    
+      <a href="/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/">
+        <span>上一篇</span>
+        <strong>JSVMP插桩快捷指令</strong>
+      </a>
+    
+    
+      <a href="/2025/09/19/Mac%E5%AE%89%E8%A3%85Mongodb/">
+        <span>下一篇</span>
+        <strong>Mac安装Mongodb</strong>
+      </a>
+    
+  </nav>
 </article>
 
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
-        </div>
+
+  <section class="comments-placeholder">
+    <div id="disqus_thread">
+      <noscript>comments.no_js</noscript>
     </div>
+  </section>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/archives/">🖋️ 片刻记录</a></li>
-        
-          <li><a href="/about/">📜 关于</a></li>
-        
-          <li><a href="/tools/">🛠️ 工具箱</a></li>
-        
-          <li><a href="/masonry/">🖼️ 相册</a></li>
-        
-          <li><a href="/friends/">🤝 友情链接</a></li>
-        
-          <li><a href="/search/">🔍 搜索</a></li>
-        
-      </ul>
-    </div>
-
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-Register-native"><span class="toc-number">1.</span> <span class="toc-text">Hook Register_native</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-%E6%A3%80%E6%B5%8B%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">hook 检测函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">修改寄存器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-webview-%E9%A1%B5%E9%9D%A2"><span class="toc-number">5.</span> <span class="toc-text">Hook webview 页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-So%E5%B1%82%E7%9A%84-newStringUTF8"><span class="toc-number">6.</span> <span class="toc-text">hook So层的 newStringUTF8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook%E5%85%B7%E4%BD%93%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80"><span class="toc-number">7.</span> <span class="toc-text">hook具体函数地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap%E6%88%96%E8%BD%ACJson"><span class="toc-number">8.</span> <span class="toc-text">HashMap或转Json</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-OKHTTP"><span class="toc-number">9.</span> <span class="toc-text">hook OKHTTP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-So"><span class="toc-number">10.</span> <span class="toc-text">hook So</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-number">11.</span> <span class="toc-text">hook 线程创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%B1%E5%A3%B3"><span class="toc-number">12.</span> <span class="toc-text">脱壳</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frida%E6%8A%93%E5%8C%85"><span class="toc-number">13.</span> <span class="toc-text">Frida抓包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JNITrace"><span class="toc-number">14.</span> <span class="toc-text">JNITrace</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E5%86%99Java-%E7%9A%84native"><span class="toc-number">15.</span> <span class="toc-text">重写Java 的native</span></a></li></ol>
-      </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&text=frida常用大全"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&is_video=false&description=frida常用大全"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=frida常用大全&body=Check out this article: https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&title=frida常用大全"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&name=frida常用大全&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/&t=frida常用大全"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
+      </main>
+      <footer class="site-footer">
+  <div>
+    <strong>始識’s 博客</strong>
+    <span>© 2026 hybpjx</span>
   </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    ⚖️ 著作权属 &copy;
-    
-    
-    2025-2099
-    hybpjx
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
-    </nav>
+  <div class="site-footer__links">
+    <a href="https://github.com/hybpjx" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.cnblogs.com/zichliang" target="_blank" rel="noopener">博客园</a>
+    <a href="http://zichliang.top/" target="_blank" rel="noopener">个人笔记</a>
   </div>
 </footer>
 
-<div id="site-player" class="site-player"></div>
-<script type="application/json" id="site-player-data">
-{"theme":"#b79a63","volume":0.8,"audio":[{"name":"暧昧合伙人","artist":"hybpjx","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"},{"name":"遗憾","artist":"hybpjx","url":"/music/%E9%81%97%E6%86%BER&B.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"}]}
-</script>
-
     </div>
-    <!-- styles -->
+    <script src="/js/cnblogs.js"></script>
+<script src="/js/search.js"></script>
 
 
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
-    })
-  })
+  <script>
+    var disqus_shortname = 'hybpjx-cn';
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
   </script>
 
 
-<script src="/js/main.js"></script>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js" crossorigin="anonymous"></script>
-
-
-<script src="/js/player.js"></script>
-
-<!-- search -->
-
-<!-- Baidu Analytics -->
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'hybpjx-cn';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
-
-<!-- utterances Comments -->
-
-
-</body>
+  </body>
 </html>

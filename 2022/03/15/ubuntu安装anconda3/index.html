@@ -1,195 +1,72 @@
 <!DOCTYPE html>
-<html lang=zh>
-<head>
-  <!-- so meta -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=5"
-  />
-
-  <!-- <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
-    rel="stylesheet"
-  />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
-  <script>hljs.highlightAll();</script>
+<html lang=&#34;zh&#34;>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ubuntu安装anconda3 与Miniconda | 始識’s 博客</title>
+  <meta name="description" content="公众号搜索: 影17">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <meta name="description" content="ubuntu 安装anaconda3官网:https:&#x2F;&#x2F;www.anaconda.com&#x2F;下载:https:&#x2F;&#x2F;www.anaconda.com&#x2F;products&#x2F;individual#DownloadsMiniAndonda:  https:&#x2F;&#x2F;docs.anaconda.com&#x2F;miniconda&#x2F; 安装输入以下命令执行所下载的安装程序： 123wget https:&#x2F;&#x2F;repo.anaco">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu安装anconda3 与Miniconda">
-<meta property="og:url" content="https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/index.html">
-<meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="ubuntu 安装anaconda3官网:https:&#x2F;&#x2F;www.anaconda.com&#x2F;下载:https:&#x2F;&#x2F;www.anaconda.com&#x2F;products&#x2F;individual#DownloadsMiniAndonda:  https:&#x2F;&#x2F;docs.anaconda.com&#x2F;miniconda&#x2F; 安装输入以下命令执行所下载的安装程序： 123wget https:&#x2F;&#x2F;repo.anaco">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-15T14:57:07.000Z">
-<meta property="article:modified_time" content="2025-10-24T07:30:07.791Z">
-<meta property="article:author" content="hybpjx">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="ubuntu">
-<meta name="twitter:card" content="summary">
-     
-  <link rel="shortcut icon" href="/images/hbsn.jpg" />
-     
-  <link
-    rel="icon"
-    type="image/png"
-    href="/images/hbsn.jpg"
-    sizes="192x192"
-  />
-     
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/images/hbsn.jpg"
-  />
-    
-  <!-- title -->
-  <title>ubuntu安装anconda3 与Miniconda</title>
-  <!-- async scripts -->
-  <!-- Google Analytics -->
-
- <!-- Umami Analytics -->
-
-
-  <!-- styles -->
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  <!-- persian styles -->
-  
-  <!-- rss -->
-   
-  <!-- mathjax -->
-  
+  <link rel="stylesheet" href="/css/cnblogs.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+  <a class="brand" href="/" aria-label="始識’s 博客">
+    <span class="brand__mark">始</span>
+    <span class="brand__text">
+      <strong>始識</strong>
+      <em>公众号搜索：影17</em>
     </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2022/03/26/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85golang/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&text=ubuntu安装anconda3 与Miniconda"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&title=ubuntu安装anconda3 与Miniconda"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&is_video=false&description=ubuntu安装anconda3 与Miniconda"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=ubuntu安装anconda3 与Miniconda&body=Check out this article: https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&title=ubuntu安装anconda3 与Miniconda"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&title=ubuntu安装anconda3 与Miniconda"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&title=ubuntu安装anconda3 与Miniconda"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&title=ubuntu安装anconda3 与Miniconda"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&name=ubuntu安装anconda3 与Miniconda&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&t=ubuntu安装anconda3 与Miniconda"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
+  </a>
 
-    </div>
+  <nav class="site-nav" aria-label="主导航">
     
+      <a href="/">首页</a>
     
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-%E5%AE%89%E8%A3%85anaconda3"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 安装anaconda3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">使用</span></a></li></ol></li></ol>
-      </div>
+      <a href="/archives/">🖋️ 归档</a>
     
-  </span>
-</div>
-
+      <a href="/about/">📜 关于</a>
     
-    <div class="content index py4 ">
-        
-        
-
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+      <a href="/tools/">🛠️ 工具箱</a>
     
-    <h1 class="posttitle p-name" itemprop="name headline">
-        ubuntu安装anconda3 与Miniconda
-    </h1>
+      <a href="/masonry/">🖼️ 相册</a>
+    
+      <a href="/friends/">🤝 友情链接</a>
+    
+      <a href="/search/">🔍 搜索</a>
+    
+  </nav>
+</header>
 
-
-
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">hybpjx</span>
-      </span>
+      <main class="site-main">
+        <article class="article">
+  <header class="article-hero">
+    <a class="article-back" href="/">返回首页</a>
+    <h1>ubuntu安装anconda3 与Miniconda</h1>
+    <div class="article-meta">
+      <time datetime="2022-03-15T14:57:07.000Z">2022-03-15</time>
       
-    <div class="postdate">
+        <span><a class="category-link" href="/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/">快速安装</a></span>
       
-        <time datetime="2022-03-15T14:57:07.000Z" class="dt-published" itemprop="datePublished">2022-03-15</time>
-        
       
-    </div>
-
-
+        <span><a class="tag-span-link" href="/tags/python/" rel="tag">python</a> / <a class="tag-span-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></span>
       
-    <div class="article-category">
-        <i class="fa-solid fa-archive"></i>
-        <a class="category-link" href="/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/">快速安装</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/python/" rel="tag">python</a>, <a class="p-category" href="/tags/ubuntu/" rel="tag">ubuntu</a>
-    </div>
-
-
     </div>
   </header>
-  
 
-  <div class="content e-content" itemprop="articleBody">
-    <h1 id="ubuntu-安装anaconda3"><a href="#ubuntu-安装anaconda3" class="headerlink" title="ubuntu 安装anaconda3"></a>ubuntu 安装anaconda3</h1><p>官网:<a target="_blank" rel="noopener" href="https://www.anaconda.com/">https://www.anaconda.com/</a><br>下载:<a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual#Downloads">https://www.anaconda.com/products/individual#Downloads</a><br>MiniAndonda:  <a target="_blank" rel="noopener" href="https://docs.anaconda.com/miniconda/">https://docs.anaconda.com/miniconda/</a></p>
+  
+  <div class="article-layout">
+    <div class="article-body" id="cnblogs_post_body">
+      <h1 id="ubuntu-安装anaconda3"><a href="#ubuntu-安装anaconda3" class="headerlink" title="ubuntu 安装anaconda3"></a>ubuntu 安装anaconda3</h1><p>官网:<a target="_blank" rel="noopener" href="https://www.anaconda.com/">https://www.anaconda.com/</a><br>下载:<a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual#Downloads">https://www.anaconda.com/products/individual#Downloads</a><br>MiniAndonda:  <a target="_blank" rel="noopener" href="https://docs.anaconda.com/miniconda/">https://docs.anaconda.com/miniconda/</a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>输入以下命令执行所下载的安装程序：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh<br><br>bash Anaconda3-2021.11-Linux-x86_64.sh<br></code></pre></td></tr></table></figure>
 
@@ -237,181 +114,66 @@
 <p>conda install –revision 0</p>
 </blockquote>
 
+    </div>
+    
+      <aside class="article-toc">
+        <p class="eyebrow">目录</p>
+        <div class="article-toc__body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-%E5%AE%89%E8%A3%85anaconda3"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 安装anaconda3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">使用</span></a></li></ol></li></ol></div>
+      </aside>
+    
   </div>
+
+  <nav class="article-neighbor">
+    
+      <a href="/2022/03/26/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85golang/">
+        <span>上一篇</span>
+        <strong>在ubuntu上安装golang</strong>
+      </a>
+    
+    
+  </nav>
 </article>
 
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
-        </div>
+
+  <section class="comments-placeholder">
+    <div id="disqus_thread">
+      <noscript>comments.no_js</noscript>
     </div>
+  </section>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/archives/">🖋️ 片刻记录</a></li>
-        
-          <li><a href="/about/">📜 关于</a></li>
-        
-          <li><a href="/tools/">🛠️ 工具箱</a></li>
-        
-          <li><a href="/masonry/">🖼️ 相册</a></li>
-        
-          <li><a href="/friends/">🤝 友情链接</a></li>
-        
-          <li><a href="/search/">🔍 搜索</a></li>
-        
-      </ul>
-    </div>
-
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-%E5%AE%89%E8%A3%85anaconda3"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 安装anaconda3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">使用</span></a></li></ol></li></ol>
-      </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&text=ubuntu安装anconda3 与Miniconda"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&title=ubuntu安装anconda3 与Miniconda"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&is_video=false&description=ubuntu安装anconda3 与Miniconda"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=ubuntu安装anconda3 与Miniconda&body=Check out this article: https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&title=ubuntu安装anconda3 与Miniconda"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&title=ubuntu安装anconda3 与Miniconda"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&title=ubuntu安装anconda3 与Miniconda"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&title=ubuntu安装anconda3 与Miniconda"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&name=ubuntu安装anconda3 与Miniconda&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2022/03/15/ubuntu%E5%AE%89%E8%A3%85anconda3/&t=ubuntu安装anconda3 与Miniconda"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
+      </main>
+      <footer class="site-footer">
+  <div>
+    <strong>始識’s 博客</strong>
+    <span>© 2026 hybpjx</span>
   </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    ⚖️ 著作权属 &copy;
-    
-    
-    2025-2099
-    hybpjx
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
-    </nav>
+  <div class="site-footer__links">
+    <a href="https://github.com/hybpjx" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.cnblogs.com/zichliang" target="_blank" rel="noopener">博客园</a>
+    <a href="http://zichliang.top/" target="_blank" rel="noopener">个人笔记</a>
   </div>
 </footer>
 
-<div id="site-player" class="site-player"></div>
-<script type="application/json" id="site-player-data">
-{"theme":"#b79a63","volume":0.8,"audio":[{"name":"暧昧合伙人","artist":"hybpjx","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"},{"name":"遗憾","artist":"hybpjx","url":"/music/%E9%81%97%E6%86%BER&B.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"}]}
-</script>
-
     </div>
-    <!-- styles -->
+    <script src="/js/cnblogs.js"></script>
+<script src="/js/search.js"></script>
 
 
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
-    })
-  })
+  <script>
+    var disqus_shortname = 'hybpjx-cn';
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
   </script>
 
 
-<script src="/js/main.js"></script>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js" crossorigin="anonymous"></script>
-
-
-<script src="/js/player.js"></script>
-
-<!-- search -->
-
-<!-- Baidu Analytics -->
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'hybpjx-cn';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
-
-<!-- utterances Comments -->
-
-
-</body>
+  </body>
 </html>

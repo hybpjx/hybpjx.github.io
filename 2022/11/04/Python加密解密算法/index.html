@@ -1,196 +1,72 @@
 <!DOCTYPE html>
-<html lang=zh>
-<head>
-  <!-- so meta -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=5"
-  />
-
-  <!-- <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
-    rel="stylesheet"
-  />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
-  <script>hljs.highlightAll();</script>
+<html lang=&#34;zh&#34;>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python加密解密算法 | 始識’s 博客</title>
+  <meta name="description" content="公众号搜索: 影17">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <meta name="description" content="url encode加密简介：当url地址含有中文，或者参数有中文的时候，这个算是很正常了，但是把这样的url作为参数传递的时候（最常见的callback），需要把一些中文甚至’&#x2F;‘做一下编码转换。 12345678910111213141516# -*- coding: utf-8 -*-# @Time    : 2022&#x2F;9&#x2F;29 10:43# @Author  : lzc# @Em">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Python加密解密算法">
-<meta property="og:url" content="https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/index.html">
-<meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="url encode加密简介：当url地址含有中文，或者参数有中文的时候，这个算是很正常了，但是把这样的url作为参数传递的时候（最常见的callback），需要把一些中文甚至’&#x2F;‘做一下编码转换。 12345678910111213141516# -*- coding: utf-8 -*-# @Time    : 2022&#x2F;9&#x2F;29 10:43# @Author  : lzc# @Em">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-11-04T09:05:55.000Z">
-<meta property="article:modified_time" content="2026-01-13T04:04:02.410Z">
-<meta property="article:author" content="hybpjx">
-<meta property="article:tag" content="python">
-<meta name="twitter:card" content="summary">
-     
-  <link rel="shortcut icon" href="/images/hbsn.jpg" />
-     
-  <link
-    rel="icon"
-    type="image/png"
-    href="/images/hbsn.jpg"
-    sizes="192x192"
-  />
-     
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/images/hbsn.jpg"
-  />
-    
-  <!-- title -->
-  <title>Python加密解密算法</title>
-  <!-- async scripts -->
-  <!-- Google Analytics -->
-
- <!-- Umami Analytics -->
-
-
-  <!-- styles -->
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  <!-- persian styles -->
-  
-  <!-- rss -->
-   
-  <!-- mathjax -->
-  
+  <link rel="stylesheet" href="/css/cnblogs.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+  <a class="brand" href="/" aria-label="始識’s 博客">
+    <span class="brand__mark">始</span>
+    <span class="brand__text">
+      <strong>始識</strong>
+      <em>公众号搜索：影17</em>
     </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2022/11/26/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85redis%E5%B9%B6%E4%B8%94%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86%E5%92%8C%E5%AF%86%E7%A0%81/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇" href="/2022/09/26/Golang%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&text=Python加密解密算法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&title=Python加密解密算法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&is_video=false&description=Python加密解密算法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Python加密解密算法&body=Check out this article: https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&title=Python加密解密算法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&title=Python加密解密算法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&title=Python加密解密算法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&title=Python加密解密算法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&name=Python加密解密算法&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&t=Python加密解密算法"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
+  </a>
 
-    </div>
+  <nav class="site-nav" aria-label="主导航">
     
+      <a href="/">首页</a>
     
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#url-encode%E5%8A%A0%E5%AF%86"><span class="toc-number">1.</span> <span class="toc-text">url encode加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#unicode-%E5%8A%A0%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">unicode 加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Base64-%E5%8A%A0%E5%AF%86"><span class="toc-number">3.</span> <span class="toc-text">Base64 加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD5"><span class="toc-number">4.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PBKDF2"><span class="toc-number">5.</span> <span class="toc-text">PBKDF2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SHA"><span class="toc-number">6.</span> <span class="toc-text">SHA</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HMAC"><span class="toc-number">7.</span> <span class="toc-text">HMAC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DES"><span class="toc-number">8.</span> <span class="toc-text">DES</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3DES"><span class="toc-number">9.</span> <span class="toc-text">3DES</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AES"><span class="toc-number">10.</span> <span class="toc-text">AES</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RC4"><span class="toc-number">11.</span> <span class="toc-text">RC4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Rabbit"><span class="toc-number">12.</span> <span class="toc-text">Rabbit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RSA"><span class="toc-number">13.</span> <span class="toc-text">RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97-Cryptodome%EF%BC%9A"><span class="toc-number">13.1.</span> <span class="toc-text">模块 Cryptodome：</span></a></li></ol></li></ol>
-      </div>
+      <a href="/archives/">🖋️ 归档</a>
     
-  </span>
-</div>
-
+      <a href="/about/">📜 关于</a>
     
-    <div class="content index py4 ">
-        
-        
-
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+      <a href="/tools/">🛠️ 工具箱</a>
     
-    <h1 class="posttitle p-name" itemprop="name headline">
-        Python加密解密算法
-    </h1>
+      <a href="/masonry/">🖼️ 相册</a>
+    
+      <a href="/friends/">🤝 友情链接</a>
+    
+      <a href="/search/">🔍 搜索</a>
+    
+  </nav>
+</header>
 
-
-
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">hybpjx</span>
-      </span>
+      <main class="site-main">
+        <article class="article">
+  <header class="article-hero">
+    <a class="article-back" href="/">返回首页</a>
+    <h1>Python加密解密算法</h1>
+    <div class="article-meta">
+      <time datetime="2022-11-04T09:05:55.000Z">2022-11-04</time>
       
-    <div class="postdate">
+        <span><a class="category-link" href="/categories/%E8%AF%AD%E8%A8%80%E5%8A%A0%E8%A7%A3%E5%AF%86/">语言加解密</a></span>
       
-        <time datetime="2022-11-04T09:05:55.000Z" class="dt-published" itemprop="datePublished">2022-11-04</time>
-        
       
-    </div>
-
-
+        <span><a class="tag-span-link" href="/tags/python/" rel="tag">python</a></span>
       
-    <div class="article-category">
-        <i class="fa-solid fa-archive"></i>
-        <a class="category-link" href="/categories/%E8%AF%AD%E8%A8%80%E5%8A%A0%E8%A7%A3%E5%AF%86/">语言加解密</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/python/" rel="tag">python</a>
-    </div>
-
-
     </div>
   </header>
-  
 
-  <div class="content e-content" itemprop="articleBody">
-    <h1 id="url-encode加密"><a href="#url-encode加密" class="headerlink" title="url encode加密"></a>url encode加密</h1><p>简介：当url地址含有中文，或者参数有中文的时候，这个算是很正常了，但是把这样的url作为参数传递的时候（最常见的callback）<br>，需要把一些中文甚至’&#x2F;‘做一下编码转换。</p>
+  
+  <div class="article-layout">
+    <div class="article-body" id="cnblogs_post_body">
+      <h1 id="url-encode加密"><a href="#url-encode加密" class="headerlink" title="url encode加密"></a>url encode加密</h1><p>简介：当url地址含有中文，或者参数有中文的时候，这个算是很正常了，但是把这样的url作为参数传递的时候（最常见的callback）<br>，需要把一些中文甚至’&#x2F;‘做一下编码转换。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> urllib.parse<br><br><br>text = <span class="hljs-string">&quot;我爱吃鸡腿&quot;</span><br>s = urllib.parse.quote(text)<br><span class="hljs-built_in">print</span>(s) <span class="hljs-comment"># %E6%88%91%E7%88%B1%E5%90%83%E9%B8%A1%E8%85%BF</span><br>u = urllib.parse.unquote(s)<br><span class="hljs-built_in">print</span>(u) <span class="hljs-comment">#我爱吃鸡腿</span><br></code></pre></td></tr></table></figure>
 
 <h1 id="unicode-加密"><a href="#unicode-加密" class="headerlink" title="unicode 加密"></a>unicode 加密</h1><p>其实这应该不算一种加密 更多的应该算是一种编码与解码<br>但是由于运用很广泛 我也加进去了</p>
@@ -233,181 +109,71 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> rsa<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rsa_encrypt</span>(<span class="hljs-params">pu_key, t</span>):<br>    <span class="hljs-comment"># 公钥加密</span><br>    rsa = rsa.encrypt(t.encode(<span class="hljs-string">&quot;utf-8&quot;</span>), pu_key)<br>    <span class="hljs-keyword">return</span> rsa<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rsa_decrypt</span>(<span class="hljs-params">pr_key, t</span>):<br>    <span class="hljs-comment"># 私钥解密</span><br>    rsa = rsa.decrypt(t, pr_key).decode(<span class="hljs-string">&quot;utf-8&quot;</span>)<br>    <span class="hljs-keyword">return</span> rsa<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    public_key, private_key = rsa.newkeys(<span class="hljs-number">512</span>)   <span class="hljs-comment"># 生成公钥、私钥</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;公钥：&#x27;</span>, public_key)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;私钥：&#x27;</span>, private_key)<br>    text = <span class="hljs-string">&#x27;I love Python!&#x27;</span>  <span class="hljs-comment"># 加密对象</span><br>    encrypted_str = rsa_encrypt(public_key, text)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;加密字符串：&#x27;</span>, encrypted_str)<br>    decrypted_str = rsa_decrypt(private_key, encrypted_str)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;解密字符串：&#x27;</span>, decrypted_str)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">公钥： PublicKey(7636479066127060956100056267701318377455704072072698049978592945665550579944731953431504993757594103617537700972424661030900303472123028864161050235168613, 65537)</span><br><span class="hljs-string">私钥： PrivateKey(7636479066127060956100056267701318377455704072072698049978592945665550579944731953431504993757594103617537700972424661030900303472123028864161050235168613, 65537, 3850457767980968449796700480128630632818465005441846698224554128042451115530564586537997896922067523638756079019054611200173122138274839877369624069360253, 4713180694194659323798858305046043997526301456820208338158979730140812744181638767, 1620238976946735819854194349514460863335347861649166352709029254680140139)</span><br><span class="hljs-string">加密字符串： b&quot;\x1aaeps\xa0c&#125;\xb6\xcf\xa3\xb0\xbb\xedA\x7f&#125;\x03\xdc\xd5\x1c\x9b\xdb\xda\xf9q\x80[=\xf5\x91\r\xd0&#x27;f\xce\x1f\x01\xef\xa5\xdb3\x96\t0qIxF\xbd\x11\xd6\xb25\xc5\xe1pM\xb4M\xc2\xd4\x03\xa6&quot;</span><br><span class="hljs-string">解密字符串： I love Python!</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
 <h2 id="模块-Cryptodome："><a href="#模块-Cryptodome：" class="headerlink" title="模块 Cryptodome："></a>模块 Cryptodome：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">from</span> Cryptodome.PublicKey <span class="hljs-keyword">import</span> RSA<br><span class="hljs-keyword">from</span> Cryptodome.Cipher <span class="hljs-keyword">import</span> PKCS1_v1_5<br><br><br>data = <span class="hljs-string">&quot;cKK8B2rWwfwWeXhz&quot;</span><br>public_key = <span class="hljs-string">&quot;MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAM1xhOWaThSMpfxFsjV5YaWOFHt+6RvS+zH2Pa47VVr8PkZYnRaaKKy2MYBuEh7mZfM/R1dUXTgu0gp6VTNeNQkCAwEAAQ==&quot;</span><br>rsa_key = RSA.import_key(base64.b64decode(public_key))  <span class="hljs-comment"># 导入读取到的公钥</span><br>cipher = PKCS1_v1_5.new(rsa_key)                        <span class="hljs-comment"># 生成对象</span><br>cipher_text = base64.b64encode(cipher.encrypt(data.encode(encoding=<span class="hljs-string">&quot;utf-8&quot;</span>)))<br><span class="hljs-built_in">print</span>(cipher_text)<br></code></pre></td></tr></table></figure>
 
+    </div>
+    
+      <aside class="article-toc">
+        <p class="eyebrow">目录</p>
+        <div class="article-toc__body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#url-encode%E5%8A%A0%E5%AF%86"><span class="toc-number">1.</span> <span class="toc-text">url encode加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#unicode-%E5%8A%A0%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">unicode 加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Base64-%E5%8A%A0%E5%AF%86"><span class="toc-number">3.</span> <span class="toc-text">Base64 加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD5"><span class="toc-number">4.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PBKDF2"><span class="toc-number">5.</span> <span class="toc-text">PBKDF2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SHA"><span class="toc-number">6.</span> <span class="toc-text">SHA</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HMAC"><span class="toc-number">7.</span> <span class="toc-text">HMAC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DES"><span class="toc-number">8.</span> <span class="toc-text">DES</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3DES"><span class="toc-number">9.</span> <span class="toc-text">3DES</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AES"><span class="toc-number">10.</span> <span class="toc-text">AES</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RC4"><span class="toc-number">11.</span> <span class="toc-text">RC4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Rabbit"><span class="toc-number">12.</span> <span class="toc-text">Rabbit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RSA"><span class="toc-number">13.</span> <span class="toc-text">RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97-Cryptodome%EF%BC%9A"><span class="toc-number">13.1.</span> <span class="toc-text">模块 Cryptodome：</span></a></li></ol></li></ol></div>
+      </aside>
+    
   </div>
+
+  <nav class="article-neighbor">
+    
+      <a href="/2022/11/26/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85redis%E5%B9%B6%E4%B8%94%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86%E5%92%8C%E5%AF%86%E7%A0%81/">
+        <span>上一篇</span>
+        <strong>Ubuntu下安装redis并且设置远程登陆和密码</strong>
+      </a>
+    
+    
+      <a href="/2022/09/26/Golang%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/">
+        <span>下一篇</span>
+        <strong>Golang加密解密算法</strong>
+      </a>
+    
+  </nav>
 </article>
 
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
-        </div>
+
+  <section class="comments-placeholder">
+    <div id="disqus_thread">
+      <noscript>comments.no_js</noscript>
     </div>
+  </section>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/archives/">🖋️ 片刻记录</a></li>
-        
-          <li><a href="/about/">📜 关于</a></li>
-        
-          <li><a href="/tools/">🛠️ 工具箱</a></li>
-        
-          <li><a href="/masonry/">🖼️ 相册</a></li>
-        
-          <li><a href="/friends/">🤝 友情链接</a></li>
-        
-          <li><a href="/search/">🔍 搜索</a></li>
-        
-      </ul>
-    </div>
-
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#url-encode%E5%8A%A0%E5%AF%86"><span class="toc-number">1.</span> <span class="toc-text">url encode加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#unicode-%E5%8A%A0%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">unicode 加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Base64-%E5%8A%A0%E5%AF%86"><span class="toc-number">3.</span> <span class="toc-text">Base64 加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD5"><span class="toc-number">4.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PBKDF2"><span class="toc-number">5.</span> <span class="toc-text">PBKDF2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SHA"><span class="toc-number">6.</span> <span class="toc-text">SHA</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HMAC"><span class="toc-number">7.</span> <span class="toc-text">HMAC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DES"><span class="toc-number">8.</span> <span class="toc-text">DES</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3DES"><span class="toc-number">9.</span> <span class="toc-text">3DES</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AES"><span class="toc-number">10.</span> <span class="toc-text">AES</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RC4"><span class="toc-number">11.</span> <span class="toc-text">RC4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Rabbit"><span class="toc-number">12.</span> <span class="toc-text">Rabbit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RSA"><span class="toc-number">13.</span> <span class="toc-text">RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97-Cryptodome%EF%BC%9A"><span class="toc-number">13.1.</span> <span class="toc-text">模块 Cryptodome：</span></a></li></ol></li></ol>
-      </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&text=Python加密解密算法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&title=Python加密解密算法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&is_video=false&description=Python加密解密算法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Python加密解密算法&body=Check out this article: https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&title=Python加密解密算法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&title=Python加密解密算法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&title=Python加密解密算法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&title=Python加密解密算法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&name=Python加密解密算法&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2022/11/04/Python%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/&t=Python加密解密算法"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
+      </main>
+      <footer class="site-footer">
+  <div>
+    <strong>始識’s 博客</strong>
+    <span>© 2026 hybpjx</span>
   </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    ⚖️ 著作权属 &copy;
-    
-    
-    2025-2099
-    hybpjx
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
-    </nav>
+  <div class="site-footer__links">
+    <a href="https://github.com/hybpjx" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.cnblogs.com/zichliang" target="_blank" rel="noopener">博客园</a>
+    <a href="http://zichliang.top/" target="_blank" rel="noopener">个人笔记</a>
   </div>
 </footer>
 
-<div id="site-player" class="site-player"></div>
-<script type="application/json" id="site-player-data">
-{"theme":"#b79a63","volume":0.8,"audio":[{"name":"暧昧合伙人","artist":"hybpjx","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"},{"name":"遗憾","artist":"hybpjx","url":"/music/%E9%81%97%E6%86%BER&B.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"}]}
-</script>
-
     </div>
-    <!-- styles -->
+    <script src="/js/cnblogs.js"></script>
+<script src="/js/search.js"></script>
 
 
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
-    })
-  })
+  <script>
+    var disqus_shortname = 'hybpjx-cn';
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
   </script>
 
 
-<script src="/js/main.js"></script>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js" crossorigin="anonymous"></script>
-
-
-<script src="/js/player.js"></script>
-
-<!-- search -->
-
-<!-- Baidu Analytics -->
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'hybpjx-cn';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
-
-<!-- utterances Comments -->
-
-
-</body>
+  </body>
 </html>

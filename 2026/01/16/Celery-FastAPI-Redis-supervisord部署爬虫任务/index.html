@@ -1,185 +1,68 @@
 <!DOCTYPE html>
-<html lang=zh>
-<head>
-  <!-- so meta -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=5"
-  />
-
-  <!-- <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
-    rel="stylesheet"
-  />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
-  <script>hljs.highlightAll();</script>
+<html lang=&#34;zh&#34;>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Celery+FastAPI+Redis+supervisord部署爬虫任务 | 始識’s 博客</title>
+  <meta name="description" content="公众号搜索: 影17">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <meta name="description" content="目标：用最少的组件、最清晰的方式，把一个爬虫任务系统从本地跑起来，并能稳定部署。  关键词：FastAPI &#x2F; Celery &#x2F; Redis &#x2F; supervisord 常见任务需求在爬虫或异步任务场景中，常见需求是：  Web 接口负责接收请求（FastAPI）任务异步执行，不阻塞接口（Celery）任务队列和结果存储（Redis）一个命令启动所有进程（super">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Celery+FastAPI+Redis+supervisord部署爬虫任务">
-<meta property="og:url" content="https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/index.html">
-<meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="目标：用最少的组件、最清晰的方式，把一个爬虫任务系统从本地跑起来，并能稳定部署。  关键词：FastAPI &#x2F; Celery &#x2F; Redis &#x2F; supervisord 常见任务需求在爬虫或异步任务场景中，常见需求是：  Web 接口负责接收请求（FastAPI）任务异步执行，不阻塞接口（Celery）任务队列和结果存储（Redis）一个命令启动所有进程（super">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-16T03:48:09.000Z">
-<meta property="article:modified_time" content="2026-01-18T03:01:11.211Z">
-<meta property="article:author" content="hybpjx">
-<meta name="twitter:card" content="summary">
-     
-  <link rel="shortcut icon" href="/images/hbsn.jpg" />
-     
-  <link
-    rel="icon"
-    type="image/png"
-    href="/images/hbsn.jpg"
-    sizes="192x192"
-  />
-     
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/images/hbsn.jpg"
-  />
-    
-  <!-- title -->
-  <title>Celery+FastAPI+Redis+supervisord部署爬虫任务</title>
-  <!-- async scripts -->
-  <!-- Google Analytics -->
-
- <!-- Umami Analytics -->
-
-
-  <!-- styles -->
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  <!-- persian styles -->
-  
-  <!-- rss -->
-   
-  <!-- mathjax -->
-  
+  <link rel="stylesheet" href="/css/cnblogs.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+  <a class="brand" href="/" aria-label="始識’s 博客">
+    <span class="brand__mark">始</span>
+    <span class="brand__text">
+      <strong>始識</strong>
+      <em>公众号搜索：影17</em>
     </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2026/01/22/Unidbg_hookZz_Pointer%E8%A7%A3%E8%AF%BB/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇" href="/2026/01/15/unidbg%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&text=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&title=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&is_video=false&description=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Celery+FastAPI+Redis+supervisord部署爬虫任务&body=Check out this article: https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&title=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&title=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&title=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&title=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&name=Celery+FastAPI+Redis+supervisord部署爬虫任务&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&t=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
+  </a>
 
-    </div>
+  <nav class="site-nav" aria-label="主导航">
     
+      <a href="/">首页</a>
     
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E4%BB%BB%E5%8A%A1%E9%9C%80%E6%B1%82"><span class="toc-number">1.</span> <span class="toc-text">常见任务需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">整体架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">统一配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text">日志系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FastAPI"><span class="toc-number">6.</span> <span class="toc-text">FastAPI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Celery%EF%BC%88%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">Celery（爬虫任务执行）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#supervisord"><span class="toc-number">8.</span> <span class="toc-text">supervisord</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">9.</span> <span class="toc-text">启动方式</span></a></li></ol>
-      </div>
+      <a href="/archives/">🖋️ 归档</a>
     
-  </span>
-</div>
-
+      <a href="/about/">📜 关于</a>
     
-    <div class="content index py4 ">
-        
-        
-
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+      <a href="/tools/">🛠️ 工具箱</a>
     
-    <h1 class="posttitle p-name" itemprop="name headline">
-        Celery+FastAPI+Redis+supervisord部署爬虫任务
-    </h1>
+      <a href="/masonry/">🖼️ 相册</a>
+    
+      <a href="/friends/">🤝 友情链接</a>
+    
+      <a href="/search/">🔍 搜索</a>
+    
+  </nav>
+</header>
 
-
-
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">hybpjx</span>
-      </span>
+      <main class="site-main">
+        <article class="article">
+  <header class="article-hero">
+    <a class="article-back" href="/">返回首页</a>
+    <h1>Celery+FastAPI+Redis+supervisord部署爬虫任务</h1>
+    <div class="article-meta">
+      <time datetime="2026-01-16T03:48:09.000Z">2026-01-16</time>
       
-    <div class="postdate">
       
-        <time datetime="2026-01-16T03:48:09.000Z" class="dt-published" itemprop="datePublished">2026-01-16</time>
-        
-      
-    </div>
-
-
-      
-
-      
-
     </div>
   </header>
-  
 
-  <div class="content e-content" itemprop="articleBody">
-    <blockquote>
+  
+  <div class="article-layout">
+    <div class="article-body" id="cnblogs_post_body">
+      <blockquote>
 <p>目标：用最少的组件、最清晰的方式，把一个爬虫任务系统从本地跑起来，并能稳定部署。</p>
 </blockquote>
 <p>关键词：FastAPI &#x2F; Celery &#x2F; Redis &#x2F; supervisord</p>
@@ -227,181 +110,71 @@
 <h1 id="supervisord"><a href="#supervisord" class="headerlink" title="supervisord"></a>supervisord</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs conf">[supervisord]<br>nodaemon=true<br>environment=APP_ENV=&quot;local&quot;,PYTHONPATH=&quot;.&quot;<br>logfile=logs/supervisord.log<br>pidfile=logs/supervisord.pid<br><br><br>[program:uvicorn]<br>command=uvicorn main:app --host 127.0.0.1 --port 8000<br>directory=.<br>autostart=true<br>autorestart=true<br>stdout_logfile=logs/uvicorn.out.log<br>stderr_logfile=logs/uvicorn.err.log<br><br><br>[program:celery]<br>command=celery -A tasks worker -l info<br>directory=.<br>autostart=true<br>autorestart=true<br>stdout_logfile=logs/celery.out.log<br>stderr_logfile=logs/celery.err.log<br></code></pre></td></tr></table></figure>
 
 <h1 id="启动方式"><a href="#启动方式" class="headerlink" title="启动方式"></a>启动方式</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">supervisord -c supervisord.conf<br><span class="hljs-comment"># 切环境：</span><br>APP_ENV=qa supervisord -c supervisord.conf<br></code></pre></td></tr></table></figure>
+    </div>
+    
+      <aside class="article-toc">
+        <p class="eyebrow">目录</p>
+        <div class="article-toc__body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E4%BB%BB%E5%8A%A1%E9%9C%80%E6%B1%82"><span class="toc-number">1.</span> <span class="toc-text">常见任务需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">整体架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">统一配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text">日志系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FastAPI"><span class="toc-number">6.</span> <span class="toc-text">FastAPI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Celery%EF%BC%88%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">Celery（爬虫任务执行）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#supervisord"><span class="toc-number">8.</span> <span class="toc-text">supervisord</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">9.</span> <span class="toc-text">启动方式</span></a></li></ol></div>
+      </aside>
+    
   </div>
+
+  <nav class="article-neighbor">
+    
+      <a href="/2026/01/22/Unidbg_hookZz_Pointer%E8%A7%A3%E8%AF%BB/">
+        <span>上一篇</span>
+        <strong>Unidbg_hookZz_Pointer解读</strong>
+      </a>
+    
+    
+      <a href="/2026/01/15/unidbg%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        <span>下一篇</span>
+        <strong>unidbg学习笔记</strong>
+      </a>
+    
+  </nav>
 </article>
 
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
-        </div>
+
+  <section class="comments-placeholder">
+    <div id="disqus_thread">
+      <noscript>comments.no_js</noscript>
     </div>
+  </section>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/archives/">🖋️ 片刻记录</a></li>
-        
-          <li><a href="/about/">📜 关于</a></li>
-        
-          <li><a href="/tools/">🛠️ 工具箱</a></li>
-        
-          <li><a href="/masonry/">🖼️ 相册</a></li>
-        
-          <li><a href="/friends/">🤝 友情链接</a></li>
-        
-          <li><a href="/search/">🔍 搜索</a></li>
-        
-      </ul>
-    </div>
-
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E4%BB%BB%E5%8A%A1%E9%9C%80%E6%B1%82"><span class="toc-number">1.</span> <span class="toc-text">常见任务需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">整体架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">统一配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text">日志系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FastAPI"><span class="toc-number">6.</span> <span class="toc-text">FastAPI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Celery%EF%BC%88%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">Celery（爬虫任务执行）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#supervisord"><span class="toc-number">8.</span> <span class="toc-text">supervisord</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">9.</span> <span class="toc-text">启动方式</span></a></li></ol>
-      </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&text=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&title=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&is_video=false&description=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Celery+FastAPI+Redis+supervisord部署爬虫任务&body=Check out this article: https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&title=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&title=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&title=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&title=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&name=Celery+FastAPI+Redis+supervisord部署爬虫任务&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2026/01/16/Celery-FastAPI-Redis-supervisord%E9%83%A8%E7%BD%B2%E7%88%AC%E8%99%AB%E4%BB%BB%E5%8A%A1/&t=Celery+FastAPI+Redis+supervisord部署爬虫任务"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
+      </main>
+      <footer class="site-footer">
+  <div>
+    <strong>始識’s 博客</strong>
+    <span>© 2026 hybpjx</span>
   </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    ⚖️ 著作权属 &copy;
-    
-    
-    2025-2099
-    hybpjx
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
-    </nav>
+  <div class="site-footer__links">
+    <a href="https://github.com/hybpjx" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.cnblogs.com/zichliang" target="_blank" rel="noopener">博客园</a>
+    <a href="http://zichliang.top/" target="_blank" rel="noopener">个人笔记</a>
   </div>
 </footer>
 
-<div id="site-player" class="site-player"></div>
-<script type="application/json" id="site-player-data">
-{"theme":"#b79a63","volume":0.8,"audio":[{"name":"暧昧合伙人","artist":"hybpjx","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"},{"name":"遗憾","artist":"hybpjx","url":"/music/%E9%81%97%E6%86%BER&B.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"}]}
-</script>
-
     </div>
-    <!-- styles -->
+    <script src="/js/cnblogs.js"></script>
+<script src="/js/search.js"></script>
 
 
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
-    })
-  })
+  <script>
+    var disqus_shortname = 'hybpjx-cn';
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
   </script>
 
 
-<script src="/js/main.js"></script>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js" crossorigin="anonymous"></script>
-
-
-<script src="/js/player.js"></script>
-
-<!-- search -->
-
-<!-- Baidu Analytics -->
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'hybpjx-cn';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
-
-<!-- utterances Comments -->
-
-
-</body>
+  </body>
 </html>

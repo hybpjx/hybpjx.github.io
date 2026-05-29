@@ -1,190 +1,70 @@
 <!DOCTYPE html>
-<html lang=zh>
-<head>
-  <!-- so meta -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=5"
-  />
-
-  <!-- <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
-    rel="stylesheet"
-  />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
-  <script>hljs.highlightAll();</script>
+<html lang=&#34;zh&#34;>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vscode 自定义配置操作 | 始識’s 博客</title>
+  <meta name="description" content="公众号搜索: 影17">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <meta name="description" content="vscode 自定义配置必装插件与配置 Go，python——跟着你要运行代码来  Code Runner ——代码运行工具  IntelliJ IDEA Keybindings——使用IDEA快捷键  Pylance——修正python语法与感知  Black Formatter——代码格式化工具  Better Comments ——美化注释的插件  Bracket Pair Colorize">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Vscode 自定义配置操作">
-<meta property="og:url" content="https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/index.html">
-<meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="vscode 自定义配置必装插件与配置 Go，python——跟着你要运行代码来  Code Runner ——代码运行工具  IntelliJ IDEA Keybindings——使用IDEA快捷键  Pylance——修正python语法与感知  Black Formatter——代码格式化工具  Better Comments ——美化注释的插件  Bracket Pair Colorize">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-24T09:25:00.000Z">
-<meta property="article:modified_time" content="2025-08-13T17:08:34.163Z">
-<meta property="article:author" content="hybpjx">
-<meta name="twitter:card" content="summary">
-     
-  <link rel="shortcut icon" href="/images/hbsn.jpg" />
-     
-  <link
-    rel="icon"
-    type="image/png"
-    href="/images/hbsn.jpg"
-    sizes="192x192"
-  />
-     
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/images/hbsn.jpg"
-  />
-    
-  <!-- title -->
-  <title>Vscode 自定义配置操作</title>
-  <!-- async scripts -->
-  <!-- Google Analytics -->
-
- <!-- Umami Analytics -->
-
-
-  <!-- styles -->
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  <!-- persian styles -->
-  
-  <!-- rss -->
-   
-  <!-- mathjax -->
-  
+  <link rel="stylesheet" href="/css/cnblogs.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+  <a class="brand" href="/" aria-label="始識’s 博客">
+    <span class="brand__mark">始</span>
+    <span class="brand__text">
+      <strong>始識</strong>
+      <em>公众号搜索：影17</em>
     </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2025/03/26/Mac-%E7%94%A8Jenv%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AAJava%E7%8E%AF%E5%A2%83/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇" href="/2025/03/10/akamai-%E6%9F%90%E7%8E%AF%E5%A2%83%E5%8F%82%E6%95%B0VMP%E9%80%86%E5%90%91/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&text=Vscode 自定义配置操作"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&title=Vscode 自定义配置操作"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&is_video=false&description=Vscode 自定义配置操作"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Vscode 自定义配置操作&body=Check out this article: https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&title=Vscode 自定义配置操作"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&title=Vscode 自定义配置操作"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&title=Vscode 自定义配置操作"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&title=Vscode 自定义配置操作"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&name=Vscode 自定义配置操作&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&t=Vscode 自定义配置操作"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
+  </a>
 
-    </div>
+  <nav class="site-nav" aria-label="主导航">
     
+      <a href="/">首页</a>
     
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">vscode 自定义配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%85%E8%A3%85%E6%8F%92%E4%BB%B6%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">必装插件与配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mac%E4%B8%AD%E8%87%AA%E5%8A%A8%E9%80%89%E6%8B%A9Python%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">Mac中自动选择Python环境</span></a></li></ol>
-      </div>
+      <a href="/archives/">🖋️ 归档</a>
     
-  </span>
-</div>
-
+      <a href="/about/">📜 关于</a>
     
-    <div class="content index py4 ">
-        
-        
-
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+      <a href="/tools/">🛠️ 工具箱</a>
     
-    <h1 class="posttitle p-name" itemprop="name headline">
-        Vscode 自定义配置操作
-    </h1>
+      <a href="/masonry/">🖼️ 相册</a>
+    
+      <a href="/friends/">🤝 友情链接</a>
+    
+      <a href="/search/">🔍 搜索</a>
+    
+  </nav>
+</header>
 
-
-
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">hybpjx</span>
-      </span>
+      <main class="site-main">
+        <article class="article">
+  <header class="article-hero">
+    <a class="article-back" href="/">返回首页</a>
+    <h1>Vscode 自定义配置操作</h1>
+    <div class="article-meta">
+      <time datetime="2025-03-24T09:25:00.000Z">2025-03-24</time>
       
-    <div class="postdate">
+        <span><a class="category-link" href="/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/">快速安装</a></span>
       
-        <time datetime="2025-03-24T09:25:00.000Z" class="dt-published" itemprop="datePublished">2025-03-24</time>
-        
       
-    </div>
-
-
-      
-    <div class="article-category">
-        <i class="fa-solid fa-archive"></i>
-        <a class="category-link" href="/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/">快速安装</a>
-    </div>
-
-
-      
-
     </div>
   </header>
-  
 
-  <div class="content e-content" itemprop="articleBody">
-    <h1 id="vscode-自定义配置"><a href="#vscode-自定义配置" class="headerlink" title="vscode 自定义配置"></a>vscode 自定义配置</h1><h1 id="必装插件与配置"><a href="#必装插件与配置" class="headerlink" title="必装插件与配置"></a>必装插件与配置</h1><ol>
+  
+  <div class="article-layout">
+    <div class="article-body" id="cnblogs_post_body">
+      <h1 id="vscode-自定义配置"><a href="#vscode-自定义配置" class="headerlink" title="vscode 自定义配置"></a>vscode 自定义配置</h1><h1 id="必装插件与配置"><a href="#必装插件与配置" class="headerlink" title="必装插件与配置"></a>必装插件与配置</h1><ol>
 <li><p><strong>Go，python</strong>——跟着你要运行代码来</p>
 </li>
 <li><p><strong>Code Runner</strong> ——代码运行工具</p>
@@ -238,181 +118,71 @@
 <h1 id="Mac中自动选择Python环境"><a href="#Mac中自动选择Python环境" class="headerlink" title="Mac中自动选择Python环境"></a>Mac中自动选择Python环境</h1><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;python.condaPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/Users/hybpjx/miniconda3/bin/conda&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;terminal.integrated.profiles.osx&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;bash&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;path&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bash&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;-l&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-comment">// 加载登录 shell 的环境变量</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;zsh&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;path&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;zsh&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;-l&quot;</span><span class="hljs-punctuation">]</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;terminal.integrated.defaultProfile.osx&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;zsh&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;code-runner.executorMap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;javascript&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;source ~/.nvm/nvm.sh &amp;&amp; node&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;java&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; javac $fileName &amp;&amp; java $fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;c&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; gcc $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;zig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;zig run&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;cpp&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; g++ $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;objective-c&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; gcc -framework Cocoa $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;php&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;php&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;python.pythonPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;$&#123;env:CONDA_PREFIX&#125;/bin/python&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;perl&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;perl&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;perl6&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;perl6&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;ruby&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ruby&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;go&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;go run&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;lua&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;lua&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;groovy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;groovy&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;powershell&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;powershell -ExecutionPolicy ByPass -File&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;bat&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cmd /c&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;shellscript&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bash&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;fsharp&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;fsi&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;csharp&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;scriptcs&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;vbscript&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cscript //Nologo&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;typescript&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ts-node&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;coffeescript&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;coffee&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;scala&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;scala&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;swift&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;swift&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;julia&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;julia&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;crystal&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;crystal&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;ocaml&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ocaml&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;r&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Rscript&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;applescript&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;osascript&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;clojure&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;lein exec&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;haxe&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;rust&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; rustc $fileName &amp;&amp; $dir$fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;racket&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;racket&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;scheme&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;csi -script&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;ahk&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;autohotkey&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;autoit&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;autoit3&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;dart&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;dart&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;pascal&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; fpc $fileName &amp;&amp; $dir$fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;d&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; dmd $fileName &amp;&amp; $dir$fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;haskell&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;runghc&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;nim&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nim compile --verbosity:0 --hints:off --run&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;lisp&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sbcl --script&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;kit&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;kitc --run&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;v&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;v run&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;sass&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sass --style expanded&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;scss&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;scss --style expanded&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;less&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; lessc $fileName $fileNameWithoutExt.css&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;FortranFreeForm&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; gfortran $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;fortran-modern&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; gfortran $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;fortran_fixed-form&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; gfortran $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;fortran&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; gfortran $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;sml&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; sml $fileName&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;mojo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;mojo run&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;erlang&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;escript&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;spwn&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;spwn build&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;pkl&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cd $dir &amp;&amp; pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;gleam&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;gleam run -m $fileNameWithoutExt&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
 
 
+    </div>
+    
+      <aside class="article-toc">
+        <p class="eyebrow">目录</p>
+        <div class="article-toc__body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">vscode 自定义配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%85%E8%A3%85%E6%8F%92%E4%BB%B6%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">必装插件与配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mac%E4%B8%AD%E8%87%AA%E5%8A%A8%E9%80%89%E6%8B%A9Python%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">Mac中自动选择Python环境</span></a></li></ol></div>
+      </aside>
+    
   </div>
+
+  <nav class="article-neighbor">
+    
+      <a href="/2025/03/26/Mac-%E7%94%A8Jenv%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AAJava%E7%8E%AF%E5%A2%83/">
+        <span>上一篇</span>
+        <strong>Mac 用Jenv安装多个Java环境</strong>
+      </a>
+    
+    
+      <a href="/2025/03/10/akamai-%E6%9F%90%E7%8E%AF%E5%A2%83%E5%8F%82%E6%95%B0VMP%E9%80%86%E5%90%91/">
+        <span>下一篇</span>
+        <strong>akamai 某环境参数VMP逆向</strong>
+      </a>
+    
+  </nav>
 </article>
 
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
-        </div>
+
+  <section class="comments-placeholder">
+    <div id="disqus_thread">
+      <noscript>comments.no_js</noscript>
     </div>
+  </section>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/archives/">🖋️ 片刻记录</a></li>
-        
-          <li><a href="/about/">📜 关于</a></li>
-        
-          <li><a href="/tools/">🛠️ 工具箱</a></li>
-        
-          <li><a href="/masonry/">🖼️ 相册</a></li>
-        
-          <li><a href="/friends/">🤝 友情链接</a></li>
-        
-          <li><a href="/search/">🔍 搜索</a></li>
-        
-      </ul>
-    </div>
-
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">vscode 自定义配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%85%E8%A3%85%E6%8F%92%E4%BB%B6%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">必装插件与配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mac%E4%B8%AD%E8%87%AA%E5%8A%A8%E9%80%89%E6%8B%A9Python%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">Mac中自动选择Python环境</span></a></li></ol>
-      </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&text=Vscode 自定义配置操作"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&title=Vscode 自定义配置操作"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&is_video=false&description=Vscode 自定义配置操作"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Vscode 自定义配置操作&body=Check out this article: https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&title=Vscode 自定义配置操作"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&title=Vscode 自定义配置操作"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&title=Vscode 自定义配置操作"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&title=Vscode 自定义配置操作"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&name=Vscode 自定义配置操作&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2025/03/24/Vscode-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/&t=Vscode 自定义配置操作"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
+      </main>
+      <footer class="site-footer">
+  <div>
+    <strong>始識’s 博客</strong>
+    <span>© 2026 hybpjx</span>
   </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    ⚖️ 著作权属 &copy;
-    
-    
-    2025-2099
-    hybpjx
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
-    </nav>
+  <div class="site-footer__links">
+    <a href="https://github.com/hybpjx" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.cnblogs.com/zichliang" target="_blank" rel="noopener">博客园</a>
+    <a href="http://zichliang.top/" target="_blank" rel="noopener">个人笔记</a>
   </div>
 </footer>
 
-<div id="site-player" class="site-player"></div>
-<script type="application/json" id="site-player-data">
-{"theme":"#b79a63","volume":0.8,"audio":[{"name":"暧昧合伙人","artist":"hybpjx","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"},{"name":"遗憾","artist":"hybpjx","url":"/music/%E9%81%97%E6%86%BER&B.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"}]}
-</script>
-
     </div>
-    <!-- styles -->
+    <script src="/js/cnblogs.js"></script>
+<script src="/js/search.js"></script>
 
 
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
-    })
-  })
+  <script>
+    var disqus_shortname = 'hybpjx-cn';
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
   </script>
 
 
-<script src="/js/main.js"></script>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js" crossorigin="anonymous"></script>
-
-
-<script src="/js/player.js"></script>
-
-<!-- search -->
-
-<!-- Baidu Analytics -->
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'hybpjx-cn';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
-
-<!-- utterances Comments -->
-
-
-</body>
+  </body>
 </html>

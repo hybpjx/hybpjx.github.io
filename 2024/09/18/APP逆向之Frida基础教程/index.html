@@ -1,198 +1,72 @@
 <!DOCTYPE html>
-<html lang=zh>
-<head>
-  <!-- so meta -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=5"
-  />
-
-  <!-- <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css"
-    rel="stylesheet"
-  />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
-  <script>hljs.highlightAll();</script>
+<html lang=&#34;zh&#34;>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>APP逆向之Frida基础教程 | 始識’s 博客</title>
+  <meta name="description" content="公众号搜索: 影17">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <meta name="description" content="入门安装123Frida 代码自动补全&#96;&#96;&#96;bashnpm install --save @types&#x2F;frida-gum  安装Frida 12pip install frida-toolspip install objection  找到相应版本的Frida 推送到设备中 https:&#x2F;&#x2F;github.com&#x2F;frida&#x2F;frida&#x2F;releases&#x2F;tag&#x2F;16.5.1  命令 1adb p">
-<meta property="og:type" content="article">
-<meta property="og:title" content="APP逆向之Frida基础教程">
-<meta property="og:url" content="https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/index.html">
-<meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="入门安装123Frida 代码自动补全&#96;&#96;&#96;bashnpm install --save @types&#x2F;frida-gum  安装Frida 12pip install frida-toolspip install objection  找到相应版本的Frida 推送到设备中 https:&#x2F;&#x2F;github.com&#x2F;frida&#x2F;frida&#x2F;releases&#x2F;tag&#x2F;16.5.1  命令 1adb p">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2024/09/18/yqCbzJ1QaZfipFn.png">
-<meta property="article:published_time" content="2024-09-18T14:38:36.000Z">
-<meta property="article:modified_time" content="2026-01-13T04:25:25.109Z">
-<meta property="article:author" content="hybpjx">
-<meta property="article:tag" content="Android">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2024/09/18/yqCbzJ1QaZfipFn.png">
-     
-  <link rel="shortcut icon" href="/images/hbsn.jpg" />
-     
-  <link
-    rel="icon"
-    type="image/png"
-    href="/images/hbsn.jpg"
-    sizes="192x192"
-  />
-     
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/images/hbsn.jpg"
-  />
-    
-  <!-- title -->
-  <title>APP逆向之Frida基础教程</title>
-  <!-- async scripts -->
-  <!-- Google Analytics -->
-
- <!-- Umami Analytics -->
-
-
-  <!-- styles -->
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  <!-- persian styles -->
-  
-  <!-- rss -->
-   
-  <!-- mathjax -->
-  
+  <link rel="stylesheet" href="/css/cnblogs.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="⏫ 升空" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+  <a class="brand" href="/" aria-label="始識’s 博客">
+    <span class="brand__mark">始</span>
+    <span class="brand__text">
+      <strong>始識</strong>
+      <em>公众号搜索：影17</em>
     </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2024/10/18/APP%E9%80%86%E5%90%91%E4%B9%8BJava%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇" href="/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&text=APP逆向之Frida基础教程"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=APP逆向之Frida基础教程"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&is_video=false&description=APP逆向之Frida基础教程"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=APP逆向之Frida基础教程&body=Check out this article: https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=APP逆向之Frida基础教程"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=APP逆向之Frida基础教程"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=APP逆向之Frida基础教程"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=APP逆向之Frida基础教程"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&name=APP逆向之Frida基础教程&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&t=APP逆向之Frida基础教程"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
+  </a>
 
-    </div>
+  <nav class="site-nav" aria-label="主导航">
     
+      <a href="/">首页</a>
     
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">基础命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">Hook 构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8API"><span class="toc-number">2.1.</span> <span class="toc-text">常用API:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-perform"><span class="toc-number">2.1.1.</span> <span class="toc-text">Java.perform</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-available"><span class="toc-number">2.1.2.</span> <span class="toc-text">Java.available</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-androidVersion"><span class="toc-number">2.1.3.</span> <span class="toc-text">Java.androidVersion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-use"><span class="toc-number">2.1.4.</span> <span class="toc-text">Java.use</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-use-%E7%B1%BB%E5%90%8D-%E6%96%B9%E6%B3%95%E5%90%8D-implementation"><span class="toc-number">2.1.5.</span> <span class="toc-text">Java.use(类名).方法名.implementation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#overload"><span class="toc-number">2.1.6.</span> <span class="toc-text">overload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init"><span class="toc-number">2.1.7.</span> <span class="toc-text">.$init()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%B3%A8%E5%85%A5%E6%88%96%E8%80%85%E5%BB%B6%E8%BF%9F%E6%B3%A8%E5%85%A5"><span class="toc-number">2.1.8.</span> <span class="toc-text">立即注入或者延迟注入</span></a></li></ol></li></ol></li></ol>
-      </div>
+      <a href="/archives/">🖋️ 归档</a>
     
-  </span>
-</div>
-
+      <a href="/about/">📜 关于</a>
     
-    <div class="content index py4 ">
-        
-        
-
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+      <a href="/tools/">🛠️ 工具箱</a>
     
-    <h1 class="posttitle p-name" itemprop="name headline">
-        APP逆向之Frida基础教程
-    </h1>
+      <a href="/masonry/">🖼️ 相册</a>
+    
+      <a href="/friends/">🤝 友情链接</a>
+    
+      <a href="/search/">🔍 搜索</a>
+    
+  </nav>
+</header>
 
-
-
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">hybpjx</span>
-      </span>
+      <main class="site-main">
+        <article class="article">
+  <header class="article-hero">
+    <a class="article-back" href="/">返回首页</a>
+    <h1>APP逆向之Frida基础教程</h1>
+    <div class="article-meta">
+      <time datetime="2024-09-18T14:38:36.000Z">2024-09-18</time>
       
-    <div class="postdate">
+        <span><a class="category-link" href="/categories/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">安卓逆向基础</a></span>
       
-        <time datetime="2024-09-18T14:38:36.000Z" class="dt-published" itemprop="datePublished">2024-09-18</time>
-        
       
-    </div>
-
-
+        <span><a class="tag-span-link" href="/tags/Android/" rel="tag">Android</a></span>
       
-    <div class="article-category">
-        <i class="fa-solid fa-archive"></i>
-        <a class="category-link" href="/categories/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">安卓逆向基础</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/Android/" rel="tag">Android</a>
-    </div>
-
-
     </div>
   </header>
-  
 
-  <div class="content e-content" itemprop="articleBody">
-    <h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">Frida 代码自动补全<br>```bash<br>npm install --save @types/frida-gum<br></code></pre></td></tr></table></figure>
+  
+  <div class="article-layout">
+    <div class="article-body" id="cnblogs_post_body">
+      <h1 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">Frida 代码自动补全<br>```bash<br>npm install --save @types/frida-gum<br></code></pre></td></tr></table></figure>
 
 <p>安装Frida</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install frida-tools<br>pip install objection<br></code></pre></td></tr></table></figure>
@@ -283,181 +157,71 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">main</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Java</span>.<span class="hljs-property">available</span>) &#123;<br>            <span class="hljs-keyword">var</span> <span class="hljs-title class_">Person</span>_class = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.example.hookdemo.Person&quot;</span>);<br><br>            <span class="hljs-comment">//hook构造函数</span><br>            <span class="hljs-title class_">Person</span>_class.<span class="hljs-property">$init</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;java.lang.String&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>, <span class="hljs-string">&#x27;java.lang.String&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a1, a2, a3</span>) &#123;<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a1, a2, a3);<br>                <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.$init(a1, a2, a3);<br>                <span class="hljs-keyword">return</span> result;<br><br>            &#125;<br><br>            <span class="hljs-comment">//查看参数</span><br>            <span class="hljs-title class_">Person</span>_class.<span class="hljs-property">setAddress</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">address</span>) &#123;<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;address=&gt;&quot;</span>, address);<br>                <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setAddress</span>(<span class="hljs-string">&quot;address&quot;</span>);<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;result=&gt;&quot;</span>, result);<br>                <span class="hljs-keyword">return</span> result;<br>            &#125;<br><br>            <span class="hljs-comment">//查看返回值</span><br>            <span class="hljs-title class_">Person</span>_class.<span class="hljs-property">getName</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>                <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getName</span>();<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;result=&gt;&quot;</span>, result);<br>                <span class="hljs-keyword">return</span> result;<br>            &#125;<br><br><br>            <span class="hljs-comment">//重载函数</span><br>            <span class="hljs-title class_">Person</span>_class.<span class="hljs-property">print</span>.<span class="hljs-title function_">overload</span>(<span class="hljs-string">&#x27;java.lang.String&#x27;</span>, <span class="hljs-string">&#x27;int&#x27;</span>, <span class="hljs-string">&#x27;java.lang.String&#x27;</span>).<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">a1, a2, a3</span>) &#123;<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a1, a2, a3);<br>                <span class="hljs-keyword">var</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">print</span>(a1, a2, a3);<br>                <span class="hljs-keyword">return</span> result;<br>            &#125;<br>        &#125;<br>    &#125;)<br>&#125;<br><br><span class="hljs-title function_">setImmediate</span>(main)<br></code></pre></td></tr></table></figure>
 
 
+    </div>
+    
+      <aside class="article-toc">
+        <p class="eyebrow">目录</p>
+        <div class="article-toc__body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">基础命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">Hook 构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8API"><span class="toc-number">2.1.</span> <span class="toc-text">常用API:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-perform"><span class="toc-number">2.1.1.</span> <span class="toc-text">Java.perform</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-available"><span class="toc-number">2.1.2.</span> <span class="toc-text">Java.available</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-androidVersion"><span class="toc-number">2.1.3.</span> <span class="toc-text">Java.androidVersion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-use"><span class="toc-number">2.1.4.</span> <span class="toc-text">Java.use</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-use-%E7%B1%BB%E5%90%8D-%E6%96%B9%E6%B3%95%E5%90%8D-implementation"><span class="toc-number">2.1.5.</span> <span class="toc-text">Java.use(类名).方法名.implementation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#overload"><span class="toc-number">2.1.6.</span> <span class="toc-text">overload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init"><span class="toc-number">2.1.7.</span> <span class="toc-text">.$init()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%B3%A8%E5%85%A5%E6%88%96%E8%80%85%E5%BB%B6%E8%BF%9F%E6%B3%A8%E5%85%A5"><span class="toc-number">2.1.8.</span> <span class="toc-text">立即注入或者延迟注入</span></a></li></ol></li></ol></li></ol></div>
+      </aside>
+    
   </div>
+
+  <nav class="article-neighbor">
+    
+      <a href="/2024/10/18/APP%E9%80%86%E5%90%91%E4%B9%8BJava%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">
+        <span>上一篇</span>
+        <strong>安卓逆向基础之Java</strong>
+      </a>
+    
+    
+      <a href="/2024/09/11/%E6%9F%90%E5%9B%A2%E6%96%B0%E7%89%88Web%20mtgsig/">
+        <span>下一篇</span>
+        <strong>某团新版Web mtgsig1.2 算法分析</strong>
+      </a>
+    
+  </nav>
 </article>
 
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
-        </div>
+
+  <section class="comments-placeholder">
+    <div id="disqus_thread">
+      <noscript>comments.no_js</noscript>
     </div>
+  </section>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/archives/">🖋️ 片刻记录</a></li>
-        
-          <li><a href="/about/">📜 关于</a></li>
-        
-          <li><a href="/tools/">🛠️ 工具箱</a></li>
-        
-          <li><a href="/masonry/">🖼️ 相册</a></li>
-        
-          <li><a href="/friends/">🤝 友情链接</a></li>
-        
-          <li><a href="/search/">🔍 搜索</a></li>
-        
-      </ul>
-    </div>
-
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">基础命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">Hook 构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8API"><span class="toc-number">2.1.</span> <span class="toc-text">常用API:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-perform"><span class="toc-number">2.1.1.</span> <span class="toc-text">Java.perform</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-available"><span class="toc-number">2.1.2.</span> <span class="toc-text">Java.available</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-androidVersion"><span class="toc-number">2.1.3.</span> <span class="toc-text">Java.androidVersion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-use"><span class="toc-number">2.1.4.</span> <span class="toc-text">Java.use</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-use-%E7%B1%BB%E5%90%8D-%E6%96%B9%E6%B3%95%E5%90%8D-implementation"><span class="toc-number">2.1.5.</span> <span class="toc-text">Java.use(类名).方法名.implementation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#overload"><span class="toc-number">2.1.6.</span> <span class="toc-text">overload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init"><span class="toc-number">2.1.7.</span> <span class="toc-text">.$init()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%B3%A8%E5%85%A5%E6%88%96%E8%80%85%E5%BB%B6%E8%BF%9F%E6%B3%A8%E5%85%A5"><span class="toc-number">2.1.8.</span> <span class="toc-text">立即注入或者延迟注入</span></a></li></ol></li></ol></li></ol>
-      </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&text=APP逆向之Frida基础教程"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=APP逆向之Frida基础教程"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&is_video=false&description=APP逆向之Frida基础教程"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=APP逆向之Frida基础教程&body=Check out this article: https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=APP逆向之Frida基础教程"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=APP逆向之Frida基础教程"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=APP逆向之Frida基础教程"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&title=APP逆向之Frida基础教程"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&name=APP逆向之Frida基础教程&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hybpjx.cn/2024/09/18/APP%E9%80%86%E5%90%91%E4%B9%8BFrida%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/&t=APP逆向之Frida基础教程"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
+      </main>
+      <footer class="site-footer">
+  <div>
+    <strong>始識’s 博客</strong>
+    <span>© 2026 hybpjx</span>
   </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    ⚖️ 著作权属 &copy;
-    
-    
-    2025-2099
-    hybpjx
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/archives/">🖋️ 片刻记录</a></li><!--
-     --><!--
-       --><li><a href="/about/">📜 关于</a></li><!--
-     --><!--
-       --><li><a href="/tools/">🛠️ 工具箱</a></li><!--
-     --><!--
-       --><li><a href="/masonry/">🖼️ 相册</a></li><!--
-     --><!--
-       --><li><a href="/friends/">🤝 友情链接</a></li><!--
-     --><!--
-       --><li><a href="/search/">🔍 搜索</a></li><!--
-     -->
-      </ul>
-    </nav>
+  <div class="site-footer__links">
+    <a href="https://github.com/hybpjx" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.cnblogs.com/zichliang" target="_blank" rel="noopener">博客园</a>
+    <a href="http://zichliang.top/" target="_blank" rel="noopener">个人笔记</a>
   </div>
 </footer>
 
-<div id="site-player" class="site-player"></div>
-<script type="application/json" id="site-player-data">
-{"theme":"#b79a63","volume":0.8,"audio":[{"name":"暧昧合伙人","artist":"hybpjx","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"},{"name":"遗憾","artist":"hybpjx","url":"/music/%E9%81%97%E6%86%BER&B.mp3","cover":"/images/hbsn.jpg","theme":"#b79a63"}]}
-</script>
-
     </div>
-    <!-- styles -->
+    <script src="/js/cnblogs.js"></script>
+<script src="/js/search.js"></script>
 
 
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
-    })
-  })
+  <script>
+    var disqus_shortname = 'hybpjx-cn';
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
   </script>
 
 
-<script src="/js/main.js"></script>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js" crossorigin="anonymous"></script>
-
-
-<script src="/js/player.js"></script>
-
-<!-- search -->
-
-<!-- Baidu Analytics -->
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'hybpjx-cn';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
-
-<!-- utterances Comments -->
-
-
-</body>
+  </body>
 </html>
