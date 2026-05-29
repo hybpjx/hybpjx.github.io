@@ -407,7 +407,6 @@ blockquote {
 }
 
 /* 分页 */
-.pager,
 .page-number,
 .extend,
 .space {
@@ -416,10 +415,13 @@ blockquote {
 }
 
 .pager {
+  display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
   margin: 30px 0;
   gap: 4px;
+  text-align: center;
 }
 
 .page-number,
@@ -657,21 +659,30 @@ blockquote {
 }
 
 .article-body figure.highlight {
-  margin: 18px 0 24px;
+  margin: 22px 0 28px;
   max-width: 100%;
   overflow: auto;
-  border: 1px solid #e1e4ea;
-  border-radius: 4px;
-  background: #fffffe;
-  box-shadow: 0 6px 18px rgba(27, 31, 35, 0.08);
+  border: 1px solid #e7ebf0;
+  border-top: 3px solid #4e5b66;
+  border-radius: 5px;
+  background: #fbfcfd;
+  box-shadow: 0 10px 26px rgba(27, 31, 35, 0.07);
 }
 
 .article-body figure.highlight table {
+  display: block;
   width: 100%;
   margin: 0;
 }
 
+.article-body figure.highlight tbody,
+.article-body figure.highlight tr {
+  display: block;
+  width: 100%;
+}
+
 .article-body figure.highlight td {
+  display: block;
   padding: 0;
 }
 
@@ -679,9 +690,13 @@ blockquote {
   display: none;
 }
 
+.article-body figure.highlight .code {
+  width: 100%;
+}
+
 .article-body figure.highlight pre {
   margin: 0;
-  padding: 12px 16px;
+  padding: 16px 18px;
   background: transparent;
 }
 
@@ -691,20 +706,21 @@ blockquote {
   padding: 0 !important;
   border: none !important;
   background: transparent !important;
-  color: #657b83 !important;
+  color: #52616b !important;
   font-size: 14px !important;
-  line-height: 1.65;
+  line-height: 1.72;
 }
 
 .article-body pre:not(.hljs) {
-  margin: 18px 0 24px;
-  padding: 12px 16px;
-  border: 1px solid #e1e4ea;
-  border-radius: 4px;
-  background: #fffffe;
-  box-shadow: 0 6px 18px rgba(27, 31, 35, 0.08);
+  margin: 22px 0 28px;
+  padding: 16px 18px;
+  border: 1px solid #e7ebf0;
+  border-top: 3px solid #4e5b66;
+  border-radius: 5px;
+  background: #fbfcfd;
+  box-shadow: 0 10px 26px rgba(27, 31, 35, 0.07);
   color: #2b2f36;
-  line-height: 1.65;
+  line-height: 1.72;
   font-size: 14px;
 }
 
@@ -800,17 +816,17 @@ blockquote {
 
 .code-copy-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 9px;
+  right: 9px;
   z-index: 2;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #dfe4ea;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.88);
   color: #5b657a;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(51, 51, 51, 0.08);
@@ -824,8 +840,8 @@ blockquote {
 }
 
 .code-copy-btn svg {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   fill: currentColor;
 }
 
@@ -886,7 +902,8 @@ blockquote {
   box-shadow: 0 0.05rem 1rem rgba(51, 51, 51, 0.05);
 }
 
-.archive-list h2 {
+.archive-list h2,
+.archive-year {
   padding-bottom: 16px;
   border-bottom: 1px solid #f0f0f0;
   color: #000;
@@ -895,12 +912,22 @@ blockquote {
   text-shadow: 2px 2px 8px #eee;
 }
 
+.archive-month {
+  margin: 24px 0 8px;
+  padding-left: 12px;
+  border-left: 4px solid #008aff;
+  color: #4e5b66;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
 .archive-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  margin: 16px 0;
+  margin: 10px 0;
   padding: 14px 18px;
   border: 1px solid transparent;
   border-left: 2px solid #f0f0f0;
@@ -1202,22 +1229,39 @@ blockquote {
     overflow-x: hidden;
   }
 
+  .site-header {
+    height: auto;
+    min-height: 40px;
+  }
+
   .site-shell,
   .site-nav {
     width: 100%;
   }
 
+  .site-shell {
+    padding-top: 54px;
+  }
+
   .site-nav {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     padding: 0 6px;
     font-size: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
   }
 
   .site-nav a {
-    padding: 0 5px;
+    flex: 0 0 auto;
+    padding: 0 7px;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .hero,
@@ -1261,13 +1305,14 @@ blockquote {
     width: 100%;
     max-height: none;
     margin-bottom: 20px;
+    padding: 14px 0 14px 12px;
     order: 0;
     flex: 0 0 auto;
   }
 
   .code-copy-btn {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
   }
 
   .post-card footer,
@@ -1280,6 +1325,34 @@ blockquote {
   .post-card__excerpt {
     font-size: 0.9rem;
     line-height: 1.8;
+  }
+
+  .article-body figure.highlight,
+  .article-body pre:not(.hljs) {
+    margin: 18px 0 22px;
+    border-radius: 4px;
+  }
+
+  .article-body figure.highlight pre,
+  .article-body pre:not(.hljs) {
+    padding: 14px 12px;
+    font-size: 13px !important;
+  }
+
+  .article-body figure.highlight code,
+  .article-body figure.highlight .hljs {
+    font-size: 13px !important;
+    line-height: 1.65;
+  }
+
+  .archive-item {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .archive-item__title {
+    font-size: 16px;
   }
 
   .article-body img {
