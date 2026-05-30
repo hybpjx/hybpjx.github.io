@@ -399,9 +399,9 @@ blockquote {
 }
 
 .post-card footer {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   color: #b5b5b5;
-  font-size: 12px;
+  font-size: 17px;
   text-align: right;
   font-weight: 300;
 }
