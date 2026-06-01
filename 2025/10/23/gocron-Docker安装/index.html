@@ -91,12 +91,10 @@
 <h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><p>需要新建一个配置文件 以及 配置文件中提到的crawl文件夹</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker stop gocron<br>docker <span class="hljs-built_in">rm</span> gocron<br>docker run -d \<br>  --name gocron \<br>  -p 8156:8156 \<br>  -v ./config/:/app/config/ \<br>  -v ./crawl/tc:/app/crawl/tc \<br>  ghcr.io/flohoss/gocron:latest<br></code></pre></td></tr></table></figure>
     </div>
-    
-      <aside class="article-toc">
-        <p class="eyebrow">目录</p>
-        <div class="article-toc__body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Docker"><span class="toc-number">1.</span> <span class="toc-text">安装Docker</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">修改配置文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">3.</span> <span class="toc-text">启动</span></a></li></ol></div>
-      </aside>
-    
+    <aside class="article-toc ">
+      <p class="eyebrow">目录</p>
+      <div class="article-toc__body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Docker"><span class="toc-number">1.</span> <span class="toc-text">安装Docker</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">修改配置文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">3.</span> <span class="toc-text">启动</span></a></li></ol></div>
+    </aside>
   </div>
 
   <nav class="article-neighbor">

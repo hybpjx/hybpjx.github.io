@@ -71,12 +71,10 @@
 <h1 id="hook-时间保持一致"><a href="#hook-时间保持一致" class="headerlink" title="hook 时间保持一致"></a>hook 时间保持一致</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Date</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getTime</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1759243630429</span><br>&#125;;<br><span class="hljs-title class_">Math</span>.<span class="hljs-property">random</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0.466434605063042</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
     </div>
-    
-      <aside class="article-toc">
-        <p class="eyebrow">目录</p>
-        <div class="article-toc__body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%88%E5%88%A4%E6%96%ADwindow%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">对象序列化（判断window）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%88%E5%88%A4%E6%96%AD%E9%95%BF%E5%BA%A6%E4%BB%A5%E5%8F%8Awindow%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">对象序列化（判断长度以及window）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-%E6%97%B6%E9%97%B4%E4%BF%9D%E6%8C%81%E4%B8%80%E8%87%B4"><span class="toc-number">3.</span> <span class="toc-text">hook 时间保持一致</span></a></li></ol></div>
-      </aside>
-    
+    <aside class="article-toc ">
+      <p class="eyebrow">目录</p>
+      <div class="article-toc__body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%88%E5%88%A4%E6%96%ADwindow%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">对象序列化（判断window）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%88%E5%88%A4%E6%96%AD%E9%95%BF%E5%BA%A6%E4%BB%A5%E5%8F%8Awindow%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">对象序列化（判断长度以及window）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hook-%E6%97%B6%E9%97%B4%E4%BF%9D%E6%8C%81%E4%B8%80%E8%87%B4"><span class="toc-number">3.</span> <span class="toc-text">hook 时间保持一致</span></a></li></ol></div>
+    </aside>
   </div>
 
   <nav class="article-neighbor">

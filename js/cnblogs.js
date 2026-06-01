@@ -93,9 +93,149 @@
     });
   }
 
+  function getAnchorOffset() {
+    var header = document.querySelector(".site-header");
+    var height = header ? header.getBoundingClientRect().height : 0;
+    return height + 18;
+  }
+
+  function getHeadingText(heading) {
+    var clone = heading.cloneNode(true);
+    var headerLinks = clone.querySelectorAll(".headerlink");
+    headerLinks.forEach(function (link) {
+      link.parentNode.removeChild(link);
+    });
+    return clone.textContent.replace(/\s+/g, " ").trim();
+  }
+
+  function ensureHeadingId(heading, index) {
+    if (heading.id) return heading.id;
+
+    var base = getHeadingText(heading)
+      .toLowerCase()
+      .replace(/[^\w\u4e00-\u9fa5-]+/g, "-")
+      .replace(/^-+|-+$/g, "") || "heading";
+    var id = base;
+    var count = 1;
+
+    while (document.getElementById(id)) {
+      id = base + "-" + count;
+      count += 1;
+    }
+
+    heading.id = id || ("heading-" + index);
+    return heading.id;
+  }
+
+  function buildTocNumber(counters, level, baseLevel) {
+    var depth = Math.max(level - baseLevel, 0);
+    counters[depth] = (counters[depth] || 0) + 1;
+    counters.length = depth + 1;
+    return counters.join(".") + ".";
+  }
+
+  function rebuildArticleToc() {
+    var article = document.querySelector(".article-body");
+    var toc = document.querySelector(".article-toc");
+    var tocBody = document.querySelector(".article-toc__body");
+    if (!article || !toc || !tocBody) return false;
+
+    var headings = article.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    tocBody.innerHTML = "";
+
+    if (!headings.length) {
+      toc.classList.add("is-empty");
+      return false;
+    }
+
+    var list = document.createElement("ol");
+    list.className = "toc";
+    var counters = [];
+    var baseLevel = Array.prototype.reduce.call(headings, function (min, heading) {
+      var level = parseInt(heading.tagName.slice(1), 10);
+      return Math.min(min, level);
+    }, 6);
+
+    headings.forEach(function (heading, index) {
+      var level = parseInt(heading.tagName.slice(1), 10);
+      var id = ensureHeadingId(heading, index);
+      var text = getHeadingText(heading);
+      if (!text) return;
+
+      var item = document.createElement("li");
+      item.className = "toc-item toc-level-" + level;
+
+      var link = document.createElement("a");
+      link.className = "toc-link";
+      link.href = "#" + id;
+      link.setAttribute("data-target-id", id);
+
+      var number = document.createElement("span");
+      number.className = "toc-number";
+      number.textContent = buildTocNumber(counters, level, baseLevel);
+
+      var label = document.createElement("span");
+      label.className = "toc-text";
+      label.textContent = text;
+
+      link.appendChild(number);
+      link.appendChild(label);
+      item.appendChild(link);
+      list.appendChild(item);
+    });
+
+    tocBody.appendChild(list);
+    toc.classList.remove("is-empty");
+    return true;
+  }
+
+  function scrollToHeading(heading) {
+    var top = heading.getBoundingClientRect().top + window.pageYOffset - getAnchorOffset();
+    window.scrollTo({
+      top: Math.max(top, 0),
+      behavior: "smooth"
+    });
+  }
+
+  function initTocScrollOffset() {
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest ? event.target.closest(".article-toc a[href^='#']") : null;
+      if (!link) return;
+
+      var id = link.getAttribute("data-target-id") || decodeURIComponent(link.getAttribute("href").slice(1));
+      var heading = document.getElementById(id);
+      if (!heading) return;
+
+      event.preventDefault();
+      scrollToHeading(heading);
+
+      if (history.pushState) {
+        history.pushState(null, "", "#" + id);
+      } else {
+        window.location.hash = id;
+      }
+    });
+  }
+
+  function rebuildArticleTocWhenReady() {
+    var attempts = 0;
+    var timer = setInterval(function () {
+      attempts += 1;
+      if (rebuildArticleToc() || attempts >= 20) {
+        clearInterval(timer);
+      }
+    }, 150);
+  }
+
   ready(function () {
     document.body.addEventListener("copy", copyWithAttribution);
     initSearch();
     initCodeCopy();
+    initTocScrollOffset();
+    rebuildArticleToc();
+    window.addEventListener("hexo-blog-decrypt", function () {
+      rebuildArticleTocWhenReady();
+      setTimeout(initCodeCopy, 200);
+    });
   });
 }());
