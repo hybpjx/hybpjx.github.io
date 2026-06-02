@@ -13,7 +13,10 @@
     <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <link rel="stylesheet" href="/css/cnblogs.css">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  <link rel="stylesheet" href="/css/hybpjxBG.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
@@ -61,7 +64,7 @@
 
   
   <div class="article-layout">
-    <div class="article-body" id="cnblogs_post_body">
+    <div class="article-body" id="hybpjxBG_post_body">
       <h1 id="配置项说明"><a href="#配置项说明" class="headerlink" title="配置项说明"></a>配置项说明</h1><p>区域: 对象储存空间所属的区域，可在七牛云控制台查看。<br>空间名称: 对象储存空间名称，可在七牛云控制台查看。<br>Access Key: 密钥。<br>Secret Key: 密钥。<br>域名: 使用七牛云默认提供的测试域名或者你的自定义域名。测试域名可在七牛云控制台查看。域名需以http:&#x2F;&#x2F;或者https:&#x2F;&#x2F;开头。<br>保存路径: 文件储存的路径（包括文件夹）。 支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} 等变量。比如：上传的图片为 uPic.jpg，设定为 “uPic&#x2F;{filename}{.suffix}”，则会保存到 “uPic&#x2F;uPic.jpg”。<br>在保存路径输入框后面的是网址后缀: 用于自定义图片处理。在七牛云对象储存中可以配置图片处理样式。例如：规则名称为w的规则来标识水印版本，分隔符为!，则可以在网址后缀中填写!w。之后每次上传的图片生成连接后面都会追加上-w，即表示访问水印版本。</p>
 <h1 id="区域、空间名称、域名信息获取"><a href="#区域、空间名称、域名信息获取" class="headerlink" title="区域、空间名称、域名信息获取"></a>区域、空间名称、域名信息获取</h1><p>进入 <a target="_blank" rel="noopener" href="https://portal.qiniu.com/bucket">对象储存</a> 控制台查看</p>
 <p><img src="http://cdn.hybpjx.cn/uPic/image-20260304232708978.png"></p>
@@ -126,7 +129,11 @@
 </footer>
 
     </div>
-    <script src="/js/cnblogs.js"></script>
+    
+  <div id="hybpjx-music-player" class="hybpjx-music" aria-label="音乐播放器"></div>
+
+
+    <script src="/js/hybpjxBG.js"></script>
 <script src="/js/search.js"></script>
 
 
@@ -142,6 +149,30 @@
   </script>
 
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('hybpjx-music-player');
+    if (!container || !window.APlayer) return;
+    new APlayer({
+      container: container,
+      fixed: false,
+      mini: false,
+      autoplay: false,
+      theme: '#008aff',
+      loop: 'all',
+      order: 'list',
+      preload: 'metadata',
+      volume: 0.55,
+      mutex: true,
+      audio: [{"name":"遗憾R&B","artist":"DinDin","url":"/music/%E9%81%97%E6%86%BER&B.mp3"},{"name":"暧昧合伙人","artist":"烟(许佳豪)","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3"},{"name":"去年夏天","artist":"王大毛","url":"/music/%E5%8E%BB%E5%B9%B4%E5%A4%8F%E5%A4%A9.mp3"}]
+    });
+  });
+</script>
 
 
   </body>

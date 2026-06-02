@@ -13,7 +13,10 @@
     <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <link rel="stylesheet" href="/css/cnblogs.css">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  <link rel="stylesheet" href="/css/hybpjxBG.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
@@ -65,7 +68,7 @@
 
   
   <div class="article-layout">
-    <div class="article-body" id="cnblogs_post_body">
+    <div class="article-body" id="hybpjxBG_post_body">
       <!--toc-->
 <hr>
 <p><a target="_blank" rel="noopener" href="https://golang.google.cn/dl/">https://golang.google.cn/dl/</a></p>
@@ -138,7 +141,11 @@
 </footer>
 
     </div>
-    <script src="/js/cnblogs.js"></script>
+    
+  <div id="hybpjx-music-player" class="hybpjx-music" aria-label="音乐播放器"></div>
+
+
+    <script src="/js/hybpjxBG.js"></script>
 <script src="/js/search.js"></script>
 
 
@@ -154,6 +161,30 @@
   </script>
 
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('hybpjx-music-player');
+    if (!container || !window.APlayer) return;
+    new APlayer({
+      container: container,
+      fixed: false,
+      mini: false,
+      autoplay: false,
+      theme: '#008aff',
+      loop: 'all',
+      order: 'list',
+      preload: 'metadata',
+      volume: 0.55,
+      mutex: true,
+      audio: [{"name":"遗憾R&B","artist":"DinDin","url":"/music/%E9%81%97%E6%86%BER&B.mp3"},{"name":"暧昧合伙人","artist":"烟(许佳豪)","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3"},{"name":"去年夏天","artist":"王大毛","url":"/music/%E5%8E%BB%E5%B9%B4%E5%A4%8F%E5%A4%A9.mp3"}]
+    });
+  });
+</script>
 
 
   </body>

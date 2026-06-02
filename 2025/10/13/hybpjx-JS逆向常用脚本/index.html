@@ -13,7 +13,10 @@
     <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <link rel="stylesheet" href="/css/cnblogs.css">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  <link rel="stylesheet" href="/css/hybpjxBG.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
@@ -65,7 +68,7 @@
 
   
   <div class="article-layout">
-    <div class="article-body" id="cnblogs_post_body">
+    <div class="article-body" id="hybpjxBG_post_body">
       <h1 id="反调试脚本——开控制台闪退-以及刷新"><a href="#反调试脚本——开控制台闪退-以及刷新" class="headerlink" title="反调试脚本——开控制台闪退 以及刷新"></a>反调试脚本——开控制台闪退 以及刷新</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js">(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-string">&#x27;use strict&#x27;</span>;<br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-property">log</span>=<span class="hljs-keyword">function</span> <span class="hljs-title function_">log</span>(<span class="hljs-params"></span>)&#123;&#125;;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-property">clear</span>=<span class="hljs-keyword">function</span> <span class="hljs-title function_">clear</span>(<span class="hljs-params"></span>)&#123;&#125;;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-property">table</span>=<span class="hljs-keyword">function</span> <span class="hljs-title function_">table</span>(<span class="hljs-params"></span>)&#123;&#125;;<br>    <span class="hljs-variable language_">window</span>.<span class="hljs-property">clear</span>=<span class="hljs-keyword">function</span> <span class="hljs-title function_">clear</span>(<span class="hljs-params"></span>)&#123;&#125;;<br>    history.<span class="hljs-property">back</span>=<span class="hljs-keyword">function</span> <span class="hljs-title function_">back</span>(<span class="hljs-params"></span>)&#123;&#125;;<br>    <span class="hljs-built_in">setInterval</span>=<span class="hljs-keyword">function</span> <span class="hljs-title function_">setInterval</span>(<span class="hljs-params"></span>)&#123;&#125;;<br>&#125;)();<br></code></pre></td></tr></table></figure>
 
 <h1 id="反调试脚本——开控制台闪退"><a href="#反调试脚本——开控制台闪退" class="headerlink" title="反调试脚本——开控制台闪退"></a>反调试脚本——开控制台闪退</h1><p>某招聘</p>
@@ -135,7 +138,11 @@
 </footer>
 
     </div>
-    <script src="/js/cnblogs.js"></script>
+    
+  <div id="hybpjx-music-player" class="hybpjx-music" aria-label="音乐播放器"></div>
+
+
+    <script src="/js/hybpjxBG.js"></script>
 <script src="/js/search.js"></script>
 
 
@@ -151,6 +158,30 @@
   </script>
 
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('hybpjx-music-player');
+    if (!container || !window.APlayer) return;
+    new APlayer({
+      container: container,
+      fixed: false,
+      mini: false,
+      autoplay: false,
+      theme: '#008aff',
+      loop: 'all',
+      order: 'list',
+      preload: 'metadata',
+      volume: 0.55,
+      mutex: true,
+      audio: [{"name":"遗憾R&B","artist":"DinDin","url":"/music/%E9%81%97%E6%86%BER&B.mp3"},{"name":"暧昧合伙人","artist":"烟(许佳豪)","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3"},{"name":"去年夏天","artist":"王大毛","url":"/music/%E5%8E%BB%E5%B9%B4%E5%A4%8F%E5%A4%A9.mp3"}]
+    });
+  });
+</script>
 
 
   </body>

@@ -13,7 +13,10 @@
     <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <link rel="stylesheet" href="/css/cnblogs.css">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  <link rel="stylesheet" href="/css/hybpjxBG.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
@@ -65,7 +68,7 @@
 
   
   <div class="article-layout">
-    <div class="article-body" id="cnblogs_post_body">
+    <div class="article-body" id="hybpjxBG_post_body">
       <h1 id="url-encode加密"><a href="#url-encode加密" class="headerlink" title="url encode加密"></a>url encode加密</h1><p>简介：当url地址含有中文，或者参数有中文的时候，这个算是很正常了，但是把这样的url作为参数传递的时候（最常见的callback）<br>，需要把一些中文甚至’&#x2F;‘做一下编码转换。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Time    : 2022/9/29 10:43</span><br><span class="hljs-comment"># @Author  : lzc</span><br><span class="hljs-comment"># @Email   : hybpjx@163.com</span><br><span class="hljs-comment"># @File    : utilsMiddlewares.py</span><br><span class="hljs-comment"># @cnblogs : https://www.cnblogs.com/zichliang/</span><br><span class="hljs-comment"># @Software: PyCharm</span><br><br><span class="hljs-keyword">import</span> urllib.parse<br><br><br>text = <span class="hljs-string">&quot;我爱吃鸡腿&quot;</span><br>s = urllib.parse.quote(text)<br><span class="hljs-built_in">print</span>(s) <span class="hljs-comment"># %E6%88%91%E7%88%B1%E5%90%83%E9%B8%A1%E8%85%BF</span><br>u = urllib.parse.unquote(s)<br><span class="hljs-built_in">print</span>(u) <span class="hljs-comment">#我爱吃鸡腿</span><br></code></pre></td></tr></table></figure>
 
@@ -155,7 +158,11 @@
 </footer>
 
     </div>
-    <script src="/js/cnblogs.js"></script>
+    
+  <div id="hybpjx-music-player" class="hybpjx-music" aria-label="音乐播放器"></div>
+
+
+    <script src="/js/hybpjxBG.js"></script>
 <script src="/js/search.js"></script>
 
 
@@ -171,6 +178,30 @@
   </script>
 
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('hybpjx-music-player');
+    if (!container || !window.APlayer) return;
+    new APlayer({
+      container: container,
+      fixed: false,
+      mini: false,
+      autoplay: false,
+      theme: '#008aff',
+      loop: 'all',
+      order: 'list',
+      preload: 'metadata',
+      volume: 0.55,
+      mutex: true,
+      audio: [{"name":"遗憾R&B","artist":"DinDin","url":"/music/%E9%81%97%E6%86%BER&B.mp3"},{"name":"暧昧合伙人","artist":"烟(许佳豪)","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3"},{"name":"去年夏天","artist":"王大毛","url":"/music/%E5%8E%BB%E5%B9%B4%E5%A4%8F%E5%A4%A9.mp3"}]
+    });
+  });
+</script>
 
 
   </body>

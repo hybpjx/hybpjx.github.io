@@ -13,7 +13,10 @@
     <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <link rel="stylesheet" href="/css/cnblogs.css">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  <link rel="stylesheet" href="/css/hybpjxBG.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
@@ -65,7 +68,7 @@
 
   
   <div class="article-layout">
-    <div class="article-body" id="cnblogs_post_body">
+    <div class="article-body" id="hybpjxBG_post_body">
       <h1 id="Hook-Register-native"><a href="#Hook-Register-native" class="headerlink" title="Hook Register_native"></a>Hook Register_native</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> addrRegisterNatives = <span class="hljs-literal">null</span>;<br><br><span class="hljs-keyword">var</span> symbols = <span class="hljs-title class_">Module</span>.<span class="hljs-title function_">enumerateSymbolsSync</span>(<span class="hljs-string">&quot;libart.so&quot;</span>);<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; symbols.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-keyword">var</span> symbol = symbols[i];<br>    <span class="hljs-keyword">if</span> (symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;art&quot;</span>) &gt;= <span class="hljs-number">0</span> &amp;&amp;<br>        symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;JNI&quot;</span>) &gt;= <span class="hljs-number">0</span> &amp;&amp;<br>        symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;RegisterNatives&quot;</span>) &gt;= <span class="hljs-number">0</span> &amp;&amp;<br>        symbol.<span class="hljs-property">name</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;CheckJNI&quot;</span>) &lt; <span class="hljs-number">0</span>) &#123;<br><br>        addrRegisterNatives = symbol.<span class="hljs-property">address</span>;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;RegisterNatives is at &quot;</span>,  symbol.<span class="hljs-property">address</span>, symbol.<span class="hljs-property">name</span>);<br>        <span class="hljs-keyword">break</span><br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">if</span> (addrRegisterNatives) &#123;<br>    <span class="hljs-title class_">Interceptor</span>.<span class="hljs-title function_">attach</span>(addrRegisterNatives, &#123;<br>        <span class="hljs-attr">onEnter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">args</span>) &#123;<br>            <span class="hljs-keyword">var</span> env = args[<span class="hljs-number">0</span>];        <span class="hljs-comment">// jni对象</span><br>            <span class="hljs-keyword">var</span> java_class = args[<span class="hljs-number">1</span>]; <span class="hljs-comment">// 类</span><br>            <span class="hljs-keyword">var</span> class_name = <span class="hljs-title class_">Java</span>.<span class="hljs-property">vm</span>.<span class="hljs-title function_">tryGetEnv</span>().<span class="hljs-title function_">getClassName</span>(java_class);<br>            <span class="hljs-keyword">var</span> taget_class = <span class="hljs-string">&quot;com.tongcheng.secguard.DunCode&quot;</span>;   <span class="hljs-comment">//111 某个类中动态注册的so</span><br>            <span class="hljs-comment">// var taget_class = &quot;com.ishumei.dfp.SMSDK&quot;;   //111 某个类中动态注册的so</span><br>            <span class="hljs-keyword">if</span> (class_name === taget_class) &#123;<br>                <span class="hljs-comment">//只找我们自己想要类中的动态注册关系</span><br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;\n[RegisterNatives] method_count:&quot;</span>, args[<span class="hljs-number">3</span>]);<br>                <span class="hljs-keyword">var</span> methods_ptr = <span class="hljs-title function_">ptr</span>(args[<span class="hljs-number">2</span>]);<br>                <span class="hljs-keyword">var</span> method_count = <span class="hljs-built_in">parseInt</span>(args[<span class="hljs-number">3</span>]);<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; method_count; i++) &#123;<br>                    <span class="hljs-comment">// Java中函数名字的</span><br>                    <span class="hljs-keyword">var</span> name_ptr = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readPointer</span>(methods_ptr.<span class="hljs-title function_">add</span>(i * <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">3</span>));<br>                    <span class="hljs-comment">// 参数和返回值类型</span><br>                    <span class="hljs-keyword">var</span> sig_ptr = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readPointer</span>(methods_ptr.<span class="hljs-title function_">add</span>(i * <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">3</span> + <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span>));<br>                    <span class="hljs-comment">// C中的函数内存地址</span><br>                    <span class="hljs-keyword">var</span> fnPtr_ptr = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readPointer</span>(methods_ptr.<span class="hljs-title function_">add</span>(i * <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">3</span> + <span class="hljs-title class_">Process</span>.<span class="hljs-property">pointerSize</span> * <span class="hljs-number">2</span>));<br>                    <span class="hljs-keyword">var</span> name = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readCString</span>(name_ptr);<br>                    <span class="hljs-keyword">var</span> sig = <span class="hljs-title class_">Memory</span>.<span class="hljs-title function_">readCString</span>(sig_ptr);<br>                    <span class="hljs-keyword">var</span> find_module = <span class="hljs-title class_">Process</span>.<span class="hljs-title function_">findModuleByAddress</span>(fnPtr_ptr);<br>                    <span class="hljs-comment">// 地址、偏移量、基地址</span><br>                    <span class="hljs-keyword">var</span> offset = <span class="hljs-title function_">ptr</span>(fnPtr_ptr).<span class="hljs-title function_">sub</span>(find_module.<span class="hljs-property">base</span>);<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;name:&quot;</span>,class_name +<span class="hljs-string">&quot; &quot;</span>+ name, <span class="hljs-string">&quot;sig:&quot;</span>, sig,<span class="hljs-string">&#x27;module_name:&#x27;</span>,find_module.<span class="hljs-property">name</span> ,<span class="hljs-string">&quot;offset:&quot;</span>, offset);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;);<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
 <h1 id="hook-检测函数"><a href="#hook-检测函数" class="headerlink" title="hook 检测函数"></a>hook 检测函数</h1><p><a target="_blank" rel="noopener" href="https://github.com/hybpjx/Frida_CMUse/blob/master/dlopen_jd.js">https://github.com/hybpjx/Frida_CMUse/blob/master/dlopen_jd.js</a></p>
@@ -149,7 +152,11 @@
 </footer>
 
     </div>
-    <script src="/js/cnblogs.js"></script>
+    
+  <div id="hybpjx-music-player" class="hybpjx-music" aria-label="音乐播放器"></div>
+
+
+    <script src="/js/hybpjxBG.js"></script>
 <script src="/js/search.js"></script>
 
 
@@ -165,6 +172,30 @@
   </script>
 
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('hybpjx-music-player');
+    if (!container || !window.APlayer) return;
+    new APlayer({
+      container: container,
+      fixed: false,
+      mini: false,
+      autoplay: false,
+      theme: '#008aff',
+      loop: 'all',
+      order: 'list',
+      preload: 'metadata',
+      volume: 0.55,
+      mutex: true,
+      audio: [{"name":"遗憾R&B","artist":"DinDin","url":"/music/%E9%81%97%E6%86%BER&B.mp3"},{"name":"暧昧合伙人","artist":"烟(许佳豪)","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3"},{"name":"去年夏天","artist":"王大毛","url":"/music/%E5%8E%BB%E5%B9%B4%E5%A4%8F%E5%A4%A9.mp3"}]
+    });
+  });
+</script>
 
 
   </body>

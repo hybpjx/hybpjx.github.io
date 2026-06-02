@@ -13,7 +13,10 @@
     <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <link rel="stylesheet" href="/css/cnblogs.css">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  <link rel="stylesheet" href="/css/hybpjxBG.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
@@ -63,7 +66,7 @@
 
   
   <div class="article-layout">
-    <div class="article-body" id="cnblogs_post_body">
+    <div class="article-body" id="hybpjxBG_post_body">
       <h1 id="ARM64SyscallHandler"><a href="#ARM64SyscallHandler" class="headerlink" title="ARM64SyscallHandler"></a>ARM64SyscallHandler</h1><p>原始</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">CLOCK_REALTIME</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">CLOCK_MONOTONIC</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">CLOCK_THREAD_CPUTIME_ID</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">CLOCK_MONOTONIC_RAW</span> <span class="hljs-operator">=</span> <span class="hljs-number">4</span>;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">CLOCK_MONOTONIC_COARSE</span> <span class="hljs-operator">=</span> <span class="hljs-number">6</span>;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">CLOCK_BOOTTIME</span> <span class="hljs-operator">=</span> <span class="hljs-number">7</span>;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">nanoTime</span> <span class="hljs-operator">=</span> System.nanoTime();<br><br><span class="hljs-keyword">protected</span> <span class="hljs-type">int</span> <span class="hljs-title function_">clock_gettime</span><span class="hljs-params">(Emulator&lt;?&gt; emulator)</span> &#123;<br>    <span class="hljs-type">RegisterContext</span> <span class="hljs-variable">context</span> <span class="hljs-operator">=</span> emulator.getContext();<br>    <span class="hljs-type">int</span> <span class="hljs-variable">clk_id</span> <span class="hljs-operator">=</span> context.getIntArg(<span class="hljs-number">0</span>) &amp; <span class="hljs-number">0x7</span>;<br>    <span class="hljs-type">Pointer</span> <span class="hljs-variable">tp</span> <span class="hljs-operator">=</span> context.getPointerArg(<span class="hljs-number">1</span>);<br>    <span class="hljs-type">long</span> <span class="hljs-variable">offset</span> <span class="hljs-operator">=</span> clk_id == CLOCK_REALTIME ? currentTimeMillis() * <span class="hljs-number">1000000L</span> : System.nanoTime() - nanoTime;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">tv_sec</span> <span class="hljs-operator">=</span> offset / <span class="hljs-number">1000000000L</span>;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">tv_nsec</span> <span class="hljs-operator">=</span> offset % <span class="hljs-number">1000000000L</span>;<br>    <span class="hljs-keyword">if</span> (log.isDebugEnabled()) &#123;<br>        log.debug(<span class="hljs-string">&quot;clock_gettime clk_id=&#123;&#125;, tp=&#123;&#125;, offset=&#123;&#125;, tv_sec=&#123;&#125;, tv_nsec=&#123;&#125;&quot;</span>, clk_id, tp, offset, tv_sec, tv_nsec);<br>    &#125;<br>    <span class="hljs-keyword">switch</span> (clk_id) &#123;<br>        <span class="hljs-keyword">case</span> CLOCK_REALTIME:<br>        <span class="hljs-keyword">case</span> CLOCK_MONOTONIC:<br>        <span class="hljs-keyword">case</span> CLOCK_THREAD_CPUTIME_ID:<br>        <span class="hljs-keyword">case</span> CLOCK_MONOTONIC_RAW:<br>        <span class="hljs-keyword">case</span> CLOCK_MONOTONIC_COARSE:<br>        <span class="hljs-keyword">case</span> CLOCK_BOOTTIME:<br>            tp.setLong(<span class="hljs-number">0</span>, tv_sec);<br>            tp.setLong(<span class="hljs-number">8</span>, tv_nsec);<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (log.isDebugEnabled()) &#123;<br>        emulator.attach().debug();<br>        &#125;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UnsupportedOperationException</span>(<span class="hljs-string">&quot;clk_id=&quot;</span> + clk_id);<br>    &#125;<br><br></code></pre></td></tr></table></figure>
 
@@ -121,7 +124,11 @@
 </footer>
 
     </div>
-    <script src="/js/cnblogs.js"></script>
+    
+  <div id="hybpjx-music-player" class="hybpjx-music" aria-label="音乐播放器"></div>
+
+
+    <script src="/js/hybpjxBG.js"></script>
 <script src="/js/search.js"></script>
 
 
@@ -137,6 +144,30 @@
   </script>
 
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('hybpjx-music-player');
+    if (!container || !window.APlayer) return;
+    new APlayer({
+      container: container,
+      fixed: false,
+      mini: false,
+      autoplay: false,
+      theme: '#008aff',
+      loop: 'all',
+      order: 'list',
+      preload: 'metadata',
+      volume: 0.55,
+      mutex: true,
+      audio: [{"name":"遗憾R&B","artist":"DinDin","url":"/music/%E9%81%97%E6%86%BER&B.mp3"},{"name":"暧昧合伙人","artist":"烟(许佳豪)","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3"},{"name":"去年夏天","artist":"王大毛","url":"/music/%E5%8E%BB%E5%B9%B4%E5%A4%8F%E5%A4%A9.mp3"}]
+    });
+  });
+</script>
 
 
   </body>

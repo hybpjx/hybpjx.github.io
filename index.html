@@ -13,7 +13,10 @@
     <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
   
   
-  <link rel="stylesheet" href="/css/cnblogs.css">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  <link rel="stylesheet" href="/css/hybpjxBG.css">
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
@@ -80,7 +83,7 @@
 
 <section class="post-grid">
   
-    <article class="post-card">
+    <article class="post-card" data-pinned="true" aria-label="置顶文章">
       <a class="post-card__title" href="/2025/10/13/hybpjx-JS%E9%80%86%E5%90%91%E5%B8%B8%E7%94%A8%E8%84%9A%E6%9C%AC/">JS逆向常用脚本</a>
       <p class="post-card__excerpt">反调试脚本——开控制台闪退 以及刷新12345678910(function() &#123; &#x27;use strict&#x27;; console.log=function log()&#123;&#125;; console.</p>
       <footer>
@@ -88,7 +91,7 @@
       </footer>
     </article>
   
-    <article class="post-card">
+    <article class="post-card" data-pinned="true" aria-label="置顶文章">
       <a class="post-card__title" href="/2025/09/28/hybpjx-frida%E5%B8%B8%E7%94%A8%E5%A4%A7%E5%85%A8/">frida常用大全</a>
       <p class="post-card__excerpt">Hook Register_native123456789101112131415161718192021222324252627282930313233343536373839404142434445464748var addrRegis</p>
       <footer>
@@ -196,11 +199,39 @@
 </footer>
 
     </div>
-    <script src="/js/cnblogs.js"></script>
+    
+  <div id="hybpjx-music-player" class="hybpjx-music" aria-label="音乐播放器"></div>
+
+
+    <script src="/js/hybpjxBG.js"></script>
 <script src="/js/search.js"></script>
 
 
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('hybpjx-music-player');
+    if (!container || !window.APlayer) return;
+    new APlayer({
+      container: container,
+      fixed: false,
+      mini: false,
+      autoplay: false,
+      theme: '#008aff',
+      loop: 'all',
+      order: 'list',
+      preload: 'metadata',
+      volume: 0.55,
+      mutex: true,
+      audio: [{"name":"遗憾R&B","artist":"DinDin","url":"/music/%E9%81%97%E6%86%BER&B.mp3"},{"name":"暧昧合伙人","artist":"烟(许佳豪)","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3"},{"name":"去年夏天","artist":"王大毛","url":"/music/%E5%8E%BB%E5%B9%B4%E5%A4%8F%E5%A4%A9.mp3"}]
+    });
+  });
+</script>
 
 
   </body>

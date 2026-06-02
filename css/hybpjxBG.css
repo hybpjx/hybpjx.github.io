@@ -360,6 +360,7 @@ blockquote {
 
 .post-card {
   position: relative;
+  box-sizing: border-box;
   display: block;
   padding: 32px;
   margin: 15px 0;
@@ -369,9 +370,33 @@ blockquote {
   transition: all 0.5s ease;
 }
 
+.post-card[data-pinned="true"] {
+  box-shadow: 0 0.05rem 1rem rgba(51, 51, 51, 0.05), inset 3px 0 0 rgba(0, 138, 255, 0.32);
+}
+
+.post-card[data-pinned="true"]::after {
+  content: "置顶";
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(0, 138, 255, 0.06);
+  color: rgba(0, 138, 255, 0.72);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
 .post-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 0.3rem 1.5rem rgba(51, 51, 51, 0.22);
+}
+
+.post-card[data-pinned="true"]:hover {
+  box-shadow: 0 0.3rem 1.5rem rgba(51, 51, 51, 0.22), inset 3px 0 0 rgba(0, 138, 255, 0.32);
 }
 
 .post-card__title {
@@ -535,13 +560,13 @@ blockquote {
   width: 100%;
 }
 
-#cnblogs_post_body a,
+#hybpjxBG_post_body a,
 .article-body a {
   color: #4b6f89;
   text-decoration: none;
 }
 
-#cnblogs_post_body a:hover,
+#hybpjxBG_post_body a:hover,
 .article-body a:hover {
   border-bottom: 2px solid #4b6f89;
   padding-bottom: 2px;
@@ -1245,6 +1270,42 @@ blockquote {
   background: #2cc2d7;
 }
 
+/* 右侧音乐播放器 */
+.hybpjx-music {
+  position: fixed;
+  right: 0px;
+  bottom: 24px;
+  z-index: 999;
+  width: 320px;
+  opacity: 0.92;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.hybpjx-music:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.hybpjx-music .aplayer {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0.2rem;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 0.28rem 1.4rem rgba(51, 51, 51, 0.16);
+}
+
+.hybpjx-music .aplayer .aplayer-info {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+.hybpjx-music .aplayer.aplayer-withlist .aplayer-list {
+  max-height: 168px;
+}
+
+.hybpjx-music .aplayer .aplayer-list ol li {
+  border-top-color: rgba(0, 0, 0, 0.05);
+}
+
 /* 响应式 */
 @media (max-width: 1500px) {
   #navigatorDiv {
@@ -1255,6 +1316,12 @@ blockquote {
 @media (max-width: 900px) {
   body {
     overflow-x: hidden;
+  }
+
+  .hybpjx-music {
+    right: 14px;
+    bottom: 14px;
+    width: 290px;
   }
 
   .site-header {
@@ -1404,6 +1471,13 @@ blockquote {
 }
 
 @media (max-width: 500px) {
+  .hybpjx-music {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    width: auto;
+  }
+
   .article-hero h1,
   .page-hero h1 {
     font-size: 25px;
