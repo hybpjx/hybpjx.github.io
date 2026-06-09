@@ -228,7 +228,7 @@
   }
 
   ready(function () {
-    document.body.addEventListener("copy", copyWithAttribution);
+    // document.body.addEventListener("copy", copyWithAttribution);
     initSearch();
     initCodeCopy();
     initTocScrollOffset();

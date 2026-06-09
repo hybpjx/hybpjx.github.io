@@ -88,10 +88,22 @@ textarea {
 
 body {
   position: relative;
-  background: #fff;
+  min-height: 100vh;
+  margin: 0;
   color: #27282d;
   font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu, sans-serif;
 }
+
+
+/* body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("/images/haokan.jpg") center center / cover no-repeat;
+    opacity: 0.3; /* 透明度 0~1 */
+    z-index: -1;
+} */
+
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
@@ -233,7 +245,7 @@ blockquote {
 }
 
 .site-header {
-  background: #fff;
+  /* background: #fff; */
   height: 40px;
   width: 100%;
   position: fixed;
@@ -292,7 +304,7 @@ blockquote {
 .hero {
   padding: 32px;
   margin: 15px 0;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 0.2rem;
   box-shadow: 0 0.05rem 1rem rgba(51, 51, 51, 0.05);
   transition: all 0.5s ease;
@@ -364,7 +376,7 @@ blockquote {
   display: block;
   padding: 32px;
   margin: 15px 0;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 0.2rem;
   box-shadow: 0 0.05rem 1rem rgba(51, 51, 51, 0.05);
   transition: all 0.5s ease;
@@ -491,7 +503,7 @@ blockquote {
 .tools-section {
   padding: 32px 30px 10px;
   width: 100%;
-  background: #fff;
+  /* background: #fff; */
 }
 
 .article-hero {
@@ -694,7 +706,7 @@ blockquote {
   overflow: auto;
   border: 1px solid #d0d7de;
   border-radius: 8px;
-  background: #fff;
+  /* background: #fff; */
   box-shadow: 0 10px 24px rgba(27, 31, 35, 0.08);
 }
 
@@ -771,7 +783,7 @@ blockquote {
   border: 1px solid #eaeaea;
   border-left: 2px solid #008aff;
   border-bottom: 3px solid #008aff;
-  background: #fff;
+  /* background: #fff; */
   box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 3px;
   z-index: 50;
 }
@@ -887,7 +899,7 @@ blockquote {
 }
 
 .code-copy-btn:hover {
-  background: #fff;
+  /* background: #fff; */
   color: #24292e;
   border-color: #aab2bd;
 }
