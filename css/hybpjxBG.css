@@ -100,7 +100,7 @@ body {
     position: fixed;
     inset: 0;
     background: url("/images/haokan.jpg") center center / cover no-repeat;
-    opacity: 0.3; /* 透明度 0~1 */
+    opacity: 0.;
     z-index: -1;
 } */
 
@@ -245,7 +245,7 @@ blockquote {
 }
 
 .site-header {
-  /* background: #fff; */
+  background: #fff;
   height: 40px;
   width: 100%;
   position: fixed;
@@ -304,7 +304,7 @@ blockquote {
 .hero {
   padding: 32px;
   margin: 15px 0;
-  /* background: #fff; */
+  background: #fff;
   border-radius: 0.2rem;
   box-shadow: 0 0.05rem 1rem rgba(51, 51, 51, 0.05);
   transition: all 0.5s ease;
