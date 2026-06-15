@@ -967,7 +967,65 @@ blockquote {
   box-shadow: 0 0.05rem 1rem rgba(51, 51, 51, 0.05);
 }
 
-.archive-list h2,
+.archive-year-group,
+.archive-month-group {
+  border: 0;
+}
+
+.archive-year-group + .archive-year-group {
+  margin-top: 24px;
+}
+
+.archive-year,
+.archive-month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.archive-year::-webkit-details-marker,
+.archive-month::-webkit-details-marker {
+  display: none;
+}
+
+.archive-toggle__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.archive-toggle__label::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  margin-top: -2px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  opacity: 0.75;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+}
+
+.archive-year-group[open] > .archive-year .archive-toggle__label::before,
+.archive-month-group[open] > .archive-month .archive-toggle__label::before {
+  transform: rotate(45deg);
+}
+
+.archive-toggle__meta {
+  flex: 0 0 auto;
+  color: #98a4b3;
+  font-size: 13px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
 .archive-year {
   padding-bottom: 16px;
   border-bottom: 1px solid #f0f0f0;
@@ -975,16 +1033,35 @@ blockquote {
   font-size: 22px;
   font-weight: 300;
   text-shadow: 2px 2px 8px #eee;
+  transition: color 0.2s ease;
+}
+
+.archive-year:hover,
+.archive-month:hover {
+  color: #008aff;
+}
+
+.archive-year__content {
+  padding-top: 10px;
+}
+
+.archive-month-group + .archive-month-group {
+  margin-top: 18px;
 }
 
 .archive-month {
-  margin: 24px 0 8px;
+  margin: 6px 0 8px;
   padding-left: 12px;
   border-left: 4px solid #008aff;
   color: #4e5b66;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.archive-month__content {
+  padding-left: 16px;
 }
 
 .archive-item {

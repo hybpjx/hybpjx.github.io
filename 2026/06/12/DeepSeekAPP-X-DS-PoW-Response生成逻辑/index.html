@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang=&#34;zh&#34;>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeepSeekAPP_X-DS-PoW-Response生成逻辑 | 始識’s 博客</title>
+  <meta name="description" content="公众号搜索: 影17">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
+    <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  <link rel="stylesheet" href="/css/hybpjxBG.css">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
+</head>
+
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+  <a class="brand" href="/" aria-label="始識’s 博客">
+    <span class="brand__mark">始</span>
+    <span class="brand__text">
+      <strong>始識</strong>
+      <em>公众号搜索：影17</em>
+    </span>
+  </a>
+
+  <nav class="site-nav" aria-label="主导航">
+    
+      <a href="/">始識’s</a>
+    
+      <a href="/archives/">🖋️ 归档</a>
+    
+      <a href="/categories/">🗂️ 分类</a>
+    
+      <a href="/tags/">🏷️ 标签</a>
+    
+      <a href="/about/">📜 关于</a>
+    
+      <a href="/tools/">🛠️ 工具箱</a>
+    
+      <a href="/masonry/">🖼️ 相册</a>
+    
+      <a href="/friends/">🤝 友情链接</a>
+    
+      <a href="/search/">🔍 搜索</a>
+    
+  </nav>
+</header>
+
+      <main class="site-main">
+        <article class="article">
+  <header class="article-hero">
+    <a class="article-back" href="/">返回首页</a>
+    <h1>DeepSeekAPP_X-DS-PoW-Response生成逻辑</h1>
+    <div class="article-meta">
+      <time datetime="2026-06-12T09:52:57.000Z">2026-06-12</time>
+      
+      
+        <span><a class="tag-span-link" href="/tags/Android/" rel="tag">Android</a> / <a class="tag-span-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a></span>
+      
+    </div>
+  </header>
+
+  
+  <div class="article-layout">
+    <div class="article-body" id="hybpjxBG_post_body">
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文主要是逆向的APP层的。Web层的也是一样的 不同的是wasm 。</p>
+<p>实际上调用也是非常简单。这里就简单说一下 </p>
+<blockquote>
+<p>from wasmtime import Linker, Module, Store</p>
+</blockquote>
+<p>将wasm的方法导出 直接再封装计算下 就可以了。 算法应该都是一样的。这里不多说了</p>
+<p>直接看APP流程。</p>
+<p>这里逆向什么参数我就不说了每个请求头里都挂着一个 <code>x-ds-pow-response</code></p>
+<p>解码之后长这个样子</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;algorithm&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;DeepSeekHashV1&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;challenge&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;xxxx&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;salt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;xxx&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;signature&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;xxxx&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;answer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1234123</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;target_path&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/api/v0/chat/completion&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>其中只有answer是生成的 </p>
+<h1 id="定位点"><a href="#定位点" class="headerlink" title="定位点"></a>定位点</h1><p><img src="http://cdn.hybpjx.cn/uPic/image-20260612175336008.png"></p>
+<p>实际上和web 走的应该是同一个算法。web上走的是wasm</p>
+<p>这里只分析算法 不研究流程。</p>
+<h1 id="Frida"><a href="#Frida" class="headerlink" title="Frida"></a>Frida</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> P = <span class="hljs-title class_">Java</span>.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;com.deepseek.crypto.PowCalculator&quot;</span>);<br>    P.<span class="hljs-property">nativeCalculateDeepSeekHashV1Pow</span>.<span class="hljs-property">implementation</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">base, challenge, difficulty</span>) &#123;<br>        <span class="hljs-keyword">var</span> r = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">nativeCalculateDeepSeekHashV1Pow</span>(base, challenge, difficulty);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[POW] base=&quot;</span> + base + <span class="hljs-string">&quot; challenge=&quot;</span> + challenge + <span class="hljs-string">&quot; diff=&quot;</span> + difficulty + <span class="hljs-string">&quot; =&gt; &quot;</span> + r);<br>        <span class="hljs-keyword">return</span> r;<br>    &#125;;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[POW] hook installed, waiting for prefetch...&quot;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>如上 hook 没数据 原因应该是Java层应该是走了缓存信息了。PoW 是从缓存池里取的预取结果。</p>
+<p>所以这里 我们简单点</p>
+<p><strong>直接 hook native 层</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 找 librscrypto.so 里的 JNI 导出函数</span><br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> addr = <span class="hljs-title class_">Module</span>.<span class="hljs-title function_">findExportByName</span>(<span class="hljs-string">&quot;librscrypto.so&quot;</span>,<br>        <span class="hljs-string">&quot;Java_com_deepseek_crypto_PowCalculator_nativeCalculateDeepSeekHashV1Pow&quot;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;native addr = &quot;</span> + addr);<br>    <span class="hljs-title class_">Interceptor</span>.<span class="hljs-title function_">attach</span>(addr, &#123;<br>        <span class="hljs-attr">onEnter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">args</span>) &#123;<br>            <span class="hljs-comment">// args[0]=JNIEnv, args[1]=jobject, args[2]=base(jstring), args[3]=challenge, args[4]=difficulty(jlong)</span><br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">base</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-property">vm</span>.<span class="hljs-title function_">getEnv</span>().<span class="hljs-title function_">getStringUtfChars</span>(args[<span class="hljs-number">2</span>], <span class="hljs-literal">null</span>).<span class="hljs-title function_">readUtf8String</span>();<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">chal</span> = <span class="hljs-title class_">Java</span>.<span class="hljs-property">vm</span>.<span class="hljs-title function_">getEnv</span>().<span class="hljs-title function_">getStringUtfChars</span>(args[<span class="hljs-number">3</span>], <span class="hljs-literal">null</span>).<span class="hljs-title function_">readUtf8String</span>();<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">diff</span> = args[<span class="hljs-number">4</span>].<span class="hljs-title function_">toInt32</span>();<br>        &#125;,<br>        <span class="hljs-attr">onLeave</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">retval</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[NATIVE POW] base=&quot;</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-property">base</span> + <span class="hljs-string">&quot; challenge=&quot;</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-property">chal</span> +<br>                        <span class="hljs-string">&quot; diff=&quot;</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-property">diff</span> + <span class="hljs-string">&quot; =&gt; &quot;</span> + retval);<br>        &#125;<br>    &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>这里直接获取到了传参数据了</p>
+<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612175609783.png"></p>
+<h1 id="So"><a href="#So" class="headerlink" title="So"></a>So</h1><p>重点还是看下So层的数据</p>
+<p>可谓是非常简单了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-number">0x18E40</span>  Java_com_deepseek_crypto_PowCalculator_nativeCalculateDeepSeekHashV1Pow<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612175848198.png"></p>
+<p>入口进入sub_1AB74 调用 get_string </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">v11 = sub_19BC0(challenge_ptr, challenge_len, base_ptr, base_len, difficulty);<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://cdn.hybpjx.cn/uPic/image-20260613223824016.png"></p>
+<blockquote>
+<p>注意参数顺序,JNI 进来是 <code>(base, challenge, difficulty)</code>,到内层变成了 <code>(challenge, base, difficulty)</code>,base 和 challenge 换了位置</p>
+</blockquote>
+<p>乍一看 </p>
+<p>这个应该是sha3 至少是 编译时链接了 Rust 的 <code>sha3</code> 库。</p>
+<p><img src="http://cdn.hybpjx.cn/uPic/image-20260613224028485.png"></p>
+<p>看得到一堆 <code>veorq_s8</code>(NEON 异或)、一个吸收循环、block 大小 <code>0x88</code>(136),还有个常量 <code>0x06</code></p>
+<p>rate&#x3D;136 正是 SHA3-256 的 rate(capacity 512),padding 字节 0x06 是 SHA3 的域分隔符.</p>
+<p>由此可以判断诗歌 sha3-256</p>
+<p><img src="http://cdn.hybpjx.cn/uPic/image-20260613224444648.png"></p>
+<p>这段So主要</p>
+<ul>
+<li>一上来 <code>bytes.fromhex(challenge)</code>,把 64 个 hex 字符解成 32 字节,这是比对目标 <code>target</code>。</li>
+<li>主循环 <code>nonce</code> 从 0 数到 <code>difficulty</code>,每次把 <code>base + str(nonce)</code> 喂进哈希。</li>
+<li>哈希出来的 32 字节跟 <code>target</code> <strong>逐字节全等</strong>就返回当前 <code>nonce</code>,数到头没找到返回 -1。</li>
+</ul>
+<p>但是后面实际走了 标准 sha3</p>
+<p>发现得到的值对应不上</p>
+<p>基础值是：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">base</span>       <span class="hljs-operator">=</span> <span class="hljs-number">4</span>a5a3ebe482ca78553f1_1781258202446_<br><span class="hljs-attribute">challenge</span>  <span class="hljs-operator">=</span> <span class="hljs-number">8868</span>f19fb77e23cf1fc41d1af76a552bce58a24517d7e0920e9848c2013eba7c<br><span class="hljs-attribute">difficulty</span> <span class="hljs-operator">=</span> <span class="hljs-number">144000</span><br><span class="hljs-attribute">answer</span>     <span class="hljs-operator">=</span> <span class="hljs-number">102773</span>  <br></code></pre></td></tr></table></figure>
+
+<p>然后反推</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">hashlib.sha3_256(base + <span class="hljs-string">&quot;102773&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>对不上</p>
+<p><img src="http://cdn.hybpjx.cn/uPic/image-20260613225026070.png"></p>
+<p>这是 Rust <code>keccak</code> crate 的通用置换,圈数是参数传进来的。</p>
+<blockquote>
+<p> 标准 SHA3-256 必须是 24 圈,而这里传的是 23。</p>
+</blockquote>
+<p>光少一圈还不够,轮常量(round constant)的取法也被动了。轮常量表在 <code>0x8E78</code>,dump 出来是标准的 24 个 Keccak RC。但 so 里访问它的方式是:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">v3 = <span class="hljs-number">-8</span> * <span class="hljs-number">23</span>;                          <span class="hljs-comment">// 从 -184 起步</span><br>RC_ptr = unk_8E78 + v3 + <span class="hljs-number">192</span>;          <span class="hljs-comment">// = unk_8E78 + 8</span><br></code></pre></td></tr></table></figure>
+
+<p><code>+8</code> 字节,正好是跳过第一个 8 字节常量 <code>RC[0]</code>,<strong>从 RC[1] 开始用,一直用到 RC[23]</strong>。</p>
+<p>最后验证确实是23圈</p>
+<blockquote>
+<p> SHA3_256_魔改(base + “102773”) &#x3D;&#x3D; challenge 一致</p>
+</blockquote>
+<p>最后有个简单方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fn = <span class="hljs-keyword">new</span> <span class="hljs-title class_">NativeFunction</span>(soBase.<span class="hljs-title function_">add</span>(<span class="hljs-number">0x19BC0</span>),<br>    <span class="hljs-string">&#x27;int64&#x27;</span>, [<span class="hljs-string">&#x27;pointer&#x27;</span>, <span class="hljs-string">&#x27;uint32&#x27;</span>, <span class="hljs-string">&#x27;pointer&#x27;</span>, <span class="hljs-string">&#x27;uint32&#x27;</span>, <span class="hljs-string">&#x27;int64&#x27;</span>]);<br><span class="hljs-keyword">var</span> r = <span class="hljs-title function_">fn</span>(chBuf, <span class="hljs-number">64</span>, baBuf, baLen, <span class="hljs-title function_">int64</span>(<span class="hljs-number">144000</span>));<br></code></pre></td></tr></table></figure>
+
+<p>直接调用</p>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>最后结果如下</p>
+<p><img src="http://cdn.hybpjx.cn/uPic/image-20260613225323116.png"></p>
+
+    </div>
+    <aside class="article-toc ">
+      <p class="eyebrow">目录</p>
+      <div class="article-toc__body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">定位点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frida"><span class="toc-number">3.</span> <span class="toc-text">Frida</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#So"><span class="toc-number">4.</span> <span class="toc-text">So</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">5.</span> <span class="toc-text">结果</span></a></li></ol></div>
+    </aside>
+  </div>
+
+  <nav class="article-neighbor">
+    
+      <a href="/2026/06/12/%E8%AE%BA%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E7%88%AC%E8%99%AB/">
+        <span>上一篇</span>
+        <strong>论浏览器插件爬虫</strong>
+      </a>
+    
+    
+      <a href="/2026/06/09/%E6%9F%90%E8%A7%86%E9%A2%91%E5%8E%BB%E5%B9%BF%E5%91%8A%E5%AE%9E%E6%88%98/">
+        <span>下一篇</span>
+        <strong>某视频去广告实战</strong>
+      </a>
+    
+  </nav>
+</article>
+
+
+  <section class="comments-placeholder">
+    <div id="disqus_thread">
+      <noscript>comments.no_js</noscript>
+    </div>
+  </section>
+
+
+
+      </main>
+      <footer class="site-footer">
+  <div>
+    <strong>始識’s 博客</strong>
+    <span>© 2026 hybpjx</span>
+  </div>
+  <div class="site-footer__links">
+    <a href="https://github.com/hybpjx" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.cnblogs.com/zichliang" target="_blank" rel="noopener">博客园</a>
+    <a href="http://zichliang.top/" target="_blank" rel="noopener">个人笔记</a>
+  </div>
+</footer>
+
+    </div>
+    
+  <div id="hybpjx-music-player" class="hybpjx-music" aria-label="音乐播放器"></div>
+
+
+    <script src="/js/hybpjxBG.js"></script>
+<script src="/js/search.js"></script>
+
+
+  <script>
+    var disqus_shortname = 'hybpjx-cn';
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+  </script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('hybpjx-music-player');
+    if (!container || !window.APlayer) return;
+    new APlayer({
+      container: container,
+      fixed: false,
+      mini: false,
+      autoplay: false,
+      theme: '#008aff',
+      loop: 'all',
+      order: 'list',
+      preload: 'metadata',
+      volume: 0.55,
+      mutex: true,
+      audio: [{"name":"遗憾R&B","artist":"DinDin","url":"/music/%E9%81%97%E6%86%BER&B.mp3"},{"name":"暧昧合伙人","artist":"烟(许佳豪)","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3"},{"name":"去年夏天","artist":"王大毛","url":"/music/%E5%8E%BB%E5%B9%B4%E5%A4%8F%E5%A4%A9.mp3"}]
+    });
+  });
+</script>
+
+
+  </body>
+</html>
