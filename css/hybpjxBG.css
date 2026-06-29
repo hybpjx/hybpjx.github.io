@@ -1959,56 +1959,6 @@ blockquote {
   font-size: 11px;
 }
 
-.home-tags__list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.home-tags__list a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 38px;
-  padding: 7px 13px;
-  border: 1px solid #edf0f5;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #fff, #f8fafc);
-  color: #3f4654;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(31, 41, 55, 0.04);
-  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, color 0.22s ease;
-}
-
-.home-tags__list a::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #008aff;
-  box-shadow: 0 0 0 4px rgba(0, 138, 255, 0.1);
-}
-
-.home-tags__list a:hover {
-  transform: translateY(-2px);
-  border-color: rgba(0, 138, 255, 0.22);
-  color: #008aff !important;
-  box-shadow: 0 8px 18px rgba(0, 138, 255, 0.1);
-}
-
-.home-tags__list em {
-  min-width: 20px;
-  padding: 1px 6px;
-  border-radius: 999px;
-  background: rgba(0, 138, 255, 0.08);
-  color: #008aff;
-  font-family: "Source Code Pro", "Courier New", monospace;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1.5;
-  text-align: center;
-}
 
 @media (max-width: 900px) {
   .post-grid {
