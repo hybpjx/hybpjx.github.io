@@ -21,6 +21,17 @@
 </head>
 
   <body>
+    <div id="Loadanimation" class="site-loading" aria-label="页面加载中" role="status">
+  <div id="Loadanimation-center">
+    <div id="Loadanimation-center-absolute">
+      <div class="xccx_object" id="xccx_four"></div>
+      <div class="xccx_object" id="xccx_three"></div>
+      <div class="xccx_object" id="xccx_two"></div>
+      <div class="xccx_object" id="xccx_one"></div>
+    </div>
+  </div>
+</div>
+
     <div class="site-shell">
       <header class="site-header">
   <a class="brand" href="/" aria-label="始識’s 博客">
@@ -88,7 +99,7 @@
 <blockquote>
 <p>浏览器插件天然拥有“真实用户”的身份。</p>
 </blockquote>
-<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612184059974.png"></p>
+<p><img src="https://cdn.hybpjx.cn/uPic/image-20260612184059974.png"></p>
 <hr>
 <h2 id="传统爬虫的痛点"><a href="#传统爬虫的痛点" class="headerlink" title="传统爬虫的痛点"></a>传统爬虫的痛点</h2><p>做过爬虫的人应该都遇到过这些问题。</p>
 <h3 id="登录问题"><a href="#登录问题" class="headerlink" title="登录问题"></a>登录问题</h3><p>很多网站登录流程越来越复杂：</p>
@@ -101,7 +112,7 @@
 </ul>
 <p>传统爬虫需要模拟这一整套流程。</p>
 <p>有时候验证码比业务逻辑都复杂。</p>
-<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612183653052.png"></p>
+<p><img src="https://cdn.hybpjx.cn/uPic/image-20260612183653052.png"></p>
 <p>其实这种很多基于风控行为的 到现在 你无论自动化还是插件或者RPC都不好解决。要不你就烧成本</p>
 <h3 id="Cookie维护"><a href="#Cookie维护" class="headerlink" title="Cookie维护"></a>Cookie维护</h3><p>传统爬虫经常需要：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">抓Cookie<br>↓<br>保存Cookie<br>↓<br>Cookie过期<br>↓<br>重新登录<br></code></pre></td></tr></table></figure>
@@ -121,7 +132,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">navigator.<span class="hljs-property">webdriver</span><br></code></pre></td></tr></table></figure>
 
 <p>只要返回 true。</p>
-<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612184006425.png"></p>
+<p><img src="https://cdn.hybpjx.cn/uPic/image-20260612184006425.png"></p>
 <p>直接给你空数据。但时至今日 这种反爬应该有很多种解决方式了。这里也只是个举个例子</p>
 <h3 id="动态渲染"><a href="#动态渲染" class="headerlink" title="动态渲染"></a>动态渲染</h3><p>现在越来越多的网站：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">React<br>Vue<br>Next.js<br>Nuxt<br></code></pre></td></tr></table></figure>
@@ -131,7 +142,7 @@
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">启动浏览器<br>↓<br>等待渲染<br>↓<br>执行JS<br>↓<br>获取DOM<br></code></pre></td></tr></table></figure>
 
 <p>资源消耗很大。</p>
-<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612184122797.png"></p>
+<p><img src="https://cdn.hybpjx.cn/uPic/image-20260612184122797.png"></p>
 <hr>
 <h2 id="插件爬虫的优势"><a href="#插件爬虫的优势" class="headerlink" title="插件爬虫的优势"></a>插件爬虫的优势</h2><h3 id="天然拥有登录态"><a href="#天然拥有登录态" class="headerlink" title="天然拥有登录态"></a>天然拥有登录态</h3><p>插件运行在用户浏览器。</p>
 <p>Cookie 本身就在浏览器里。</p>
@@ -143,7 +154,7 @@
 <p>插件长期复用。</p>
 <p>不需要重复登录。</p>
 <p>这里用我写的图来表示下</p>
-<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612184230557.png"></p>
+<p><img src="https://cdn.hybpjx.cn/uPic/image-20260612184230557.png"></p>
 <p>用小红书来举例 像这种websession http only的cookie 正常document.cookie 无法获取的 。但是你通过Chrome插件就能很轻松获取了。</p>
 <hr>
 <h3 id="更像真实用户"><a href="#更像真实用户" class="headerlink" title="更像真实用户"></a>更像真实用户</h3><p>插件本质就是浏览器的一部分。</p>
@@ -171,7 +182,7 @@
 
 <p>简单粗暴。</p>
 <p>当然这里还是有一些问题的 我用一张图来举例</p>
-<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612184409817.png"></p>
+<p><img src="https://cdn.hybpjx.cn/uPic/image-20260612184409817.png"></p>
 <p>内外dom要交互 需要发送message</p>
 <hr>
 <h3 id="获取接口数据更方便"><a href="#获取接口数据更方便" class="headerlink" title="获取接口数据更方便"></a>获取接口数据更方便</h3><p>插件可以 Hook：</p>
@@ -200,7 +211,7 @@
 <li>招聘信息收集；</li>
 <li>社媒运营工具。</li>
 </ul>
-<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612184519923.png"></p>
+<p><img src="https://cdn.hybpjx.cn/uPic/image-20260612184519923.png"></p>
 <hr>
 <h2 id="插件爬虫的劣势"><a href="#插件爬虫的劣势" class="headerlink" title="插件爬虫的劣势"></a>插件爬虫的劣势</h2><p>当然。</p>
 <p>插件也不是万能的。</p>
@@ -218,7 +229,7 @@
 <li>自动化操作；</li>
 </ul>
 <p>审核周期可能比较长。</p>
-<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612184611847.png"></p>
+<p><img src="https://cdn.hybpjx.cn/uPic/image-20260612184611847.png"></p>
 <h3 id="遇到翻页验证码-逻辑复杂"><a href="#遇到翻页验证码-逻辑复杂" class="headerlink" title="遇到翻页验证码 逻辑复杂"></a>遇到翻页验证码 逻辑复杂</h3><p>要是真的遇到这种交互性的东西 可能逻辑就比较复杂。尤其是用了AI 你压根看不懂。</p>
 <hr>
 <h2 id="WXT：现代浏览器插件开发框架"><a href="#WXT：现代浏览器插件开发框架" class="headerlink" title="WXT：现代浏览器插件开发框架"></a>WXT：现代浏览器插件开发框架</h2><p>以前写插件。</p>
@@ -246,7 +257,7 @@
 <li>TypeScript支持。</li>
 </ul>
 <p>开发体验提升非常明显。</p>
-<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612184736719.png"></p>
+<p><img src="https://cdn.hybpjx.cn/uPic/image-20260612184736719.png"></p>
 <hr>
 <h2 id="WXT的优点"><a href="#WXT的优点" class="headerlink" title="WXT的优点"></a>WXT的优点</h2><hr>
 <h3 id="支持主流框架"><a href="#支持主流框架" class="headerlink" title="支持主流框架"></a>支持主流框架</h3><p>支持：</p>
@@ -266,12 +277,12 @@
 <h3 id="开发效率高"><a href="#开发效率高" class="headerlink" title="开发效率高"></a>开发效率高</h3><p>修改代码：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">保存<br>↓<br>自动重新构建<br>↓<br>浏览器刷新<br></code></pre></td></tr></table></figure>
 
-<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612185010574.png"></p>
+<p><img src="https://cdn.hybpjx.cn/uPic/image-20260612185010574.png"></p>
 <p>这一点真的舒服…</p>
 <p>个屁。实际也会有BUG 各有各的好吧。</p>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这里我也不废话了 直接放图</p>
-<p><img src="http://cdn.hybpjx.cn/uPic/image-20260612184854590.png"></p>
+<p><img src="https://cdn.hybpjx.cn/uPic/image-20260612184854590.png"></p>
 <p>优点还是比较多的。相当于web端重打包。本来想建群的。后面想想算了。现在AI直接秒杀了 哪有它不会的API～</p>
 
     </div>
@@ -286,7 +297,7 @@
     
       <a href="/2026/06/12/DeepSeekAPP-X-DS-PoW-Response%E7%94%9F%E6%88%90%E9%80%BB%E8%BE%91/">
         <span>下一篇</span>
-        <strong>DeepSeekAPP_</strong>
+        <strong>DeepSeekAPP-X-DS-PoW-Response生成逻辑</strong>
       </a>
     
   </nav>
@@ -320,7 +331,7 @@
 
 
     <script src="/js/hybpjxBG.js"></script>
-<script src="/js/search.js"></script>
+<script src="/js/hybpjxBG-search.js"></script>
 
 
   <script>

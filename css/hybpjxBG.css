@@ -2084,3 +2084,102 @@ blockquote {
     animation: none;
   }
 }
+
+/* 页面加载动画：迁移自旧博客园皮肤，仅保留 loading 层 */
+#Loadanimation {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(135, 206, 250, 0.1), transparent 32%),
+    #fff;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+#Loadanimation.is-loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#Loadanimation-center {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#Loadanimation-center-absolute {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+}
+
+.xccx_object {
+  position: absolute;
+  border: 5px solid transparent;
+  border-left-color: #87cefa;
+  border-right-color: #ffc0cb;
+  border-radius: 50%;
+  animation: xccx-loading-spin 2.5s infinite;
+}
+
+#xccx_one {
+  left: 75px;
+  top: 75px;
+  width: 50px;
+  height: 50px;
+}
+
+#xccx_two {
+  left: 65px;
+  top: 65px;
+  width: 70px;
+  height: 70px;
+  animation-delay: 0.1s;
+}
+
+#xccx_three {
+  left: 55px;
+  top: 55px;
+  width: 90px;
+  height: 90px;
+  animation-delay: 0.2s;
+}
+
+#xccx_four {
+  left: 45px;
+  top: 45px;
+  width: 110px;
+  height: 110px;
+  animation-delay: 0.3s;
+}
+
+@keyframes xccx-loading-spin {
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xccx_object {
+    animation: none;
+  }
+
+  #Loadanimation {
+    transition: none;
+  }
+}

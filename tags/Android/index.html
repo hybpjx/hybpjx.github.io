@@ -21,6 +21,17 @@
 </head>
 
   <body>
+    <div id="Loadanimation" class="site-loading" aria-label="页面加载中" role="status">
+  <div id="Loadanimation-center">
+    <div id="Loadanimation-center-absolute">
+      <div class="xccx_object" id="xccx_four"></div>
+      <div class="xccx_object" id="xccx_three"></div>
+      <div class="xccx_object" id="xccx_two"></div>
+      <div class="xccx_object" id="xccx_one"></div>
+    </div>
+  </div>
+</div>
+
     <div class="site-shell">
       <header class="site-header">
   <a class="brand" href="/" aria-label="始識’s 博客">
@@ -57,7 +68,7 @@
       <main class="site-main">
         <section class="page-hero">
   <p class="eyebrow">ARCHIVE</p>
-  <h1>Android</h1>
+  <h1>android</h1>
 </section>
 
 <section class="archive-list">
@@ -80,9 +91,9 @@
 
             <div class="archive-month__content">
               
-                <a class="archive-item" href="/2026/06/12/DeepSeekAPP-X-DS-PoW-Response%E7%94%9F%E6%88%90%E9%80%BB%E8%BE%91/">
-                  <span class="archive-item__title">DeepSeekAPP_</span>
-                  <time class="archive-item__date">12日</time>
+                <a class="archive-item" href="/2026/06/09/%E6%9F%90%E8%A7%86%E9%A2%91%E5%8E%BB%E5%B9%BF%E5%91%8A%E5%AE%9E%E6%88%98/">
+                  <span class="archive-item__title">某视频去广告实战</span>
+                  <time class="archive-item__date">09日</time>
                 </a>
               
             </div>
@@ -91,50 +102,64 @@
       </div>
     </details>
   
-    <details class="archive-year-group" open>
-      <summary class="archive-year">
-        <span class="archive-toggle__label">2025</span>
-        <span class="archive-toggle__meta">1 篇</span>
-      </summary>
+</section>
 
-      <div class="archive-year__content">
-        
-          <details class="archive-month-group" open>
-            <summary class="archive-month">
-              <span class="archive-toggle__label">10月</span>
-              <span class="archive-toggle__meta">1 篇</span>
-            </summary>
 
-            <div class="archive-month__content">
-              
-                <a class="archive-item" href="/2025/10/10/Unidbg%E6%89%93DirectoryFileIO%E8%A1%A5%E4%B8%81/">
-                  <span class="archive-item__title">Unidbg打DirectoryFileIO补丁</span>
-                  <time class="archive-item__date">10日</time>
-                </a>
-              
-            </div>
-          </details>
-        
-      </div>
-    </details>
-  
-    <details class="archive-year-group" open>
-      <summary class="archive-year">
-        <span class="archive-toggle__label">2024</span>
-        <span class="archive-toggle__meta">3 篇</span>
-      </summary>
 
-      <div class="archive-year__content">
-        
-          <details class="archive-month-group" open>
-            <summary class="archive-month">
-              <span class="archive-toggle__label">12月</span>
-              <span class="archive-toggle__meta">1 篇</span>
-            </summary>
 
-            <div class="archive-month__content">
-              
-                <a class="archive-item" href="/2024/12/08/Xposed-API%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8/">
+
+      </main>
+      <footer class="site-footer">
+  <div>
+    <strong>始識’s 博客</strong>
+    <span>© 2026 hybpjx</span>
+  </div>
+  <div class="site-footer__links">
+    <a href="https://github.com/hybpjx" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.cnblogs.com/zichliang" target="_blank" rel="noopener">博客园</a>
+    <a href="http://zichliang.top/" target="_blank" rel="noopener">个人笔记</a>
+  </div>
+</footer>
+
+    </div>
+    
+  <div id="hybpjx-music-player" class="hybpjx-music" aria-label="音乐播放器"></div>
+
+
+    <script src="/js/hybpjxBG.js"></script>
+<script src="/js/hybpjxBG-search.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('hybpjx-music-player');
+    if (!container || !window.APlayer) return;
+    new APlayer({
+      container: container,
+      fixed: false,
+      mini: false,
+      autoplay: false,
+      theme: '#008aff',
+      loop: 'all',
+      order: 'list',
+      preload: 'metadata',
+      volume: 0.55,
+      mutex: true,
+      audio: [{"name":"遗憾R&B","artist":"DinDin","url":"/music/%E9%81%97%E6%86%BER&B.mp3"},{"name":"暧昧合伙人","artist":"烟(许佳豪)","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3"},{"name":"去年夏天","artist":"王大毛","url":"/music/%E5%8E%BB%E5%B9%B4%E5%A4%8F%E5%A4%A9.mp3"}]
+    });
+  });
+</script>
+
+
+  </body>
+</html>
+%E5%A4%A7%E5%85%A8/">
                   <span class="archive-item__title">Xposed API使用大全</span>
                   <time class="archive-item__date">08日</time>
                 </a>
@@ -229,7 +254,7 @@
 
 
     <script src="/js/hybpjxBG.js"></script>
-<script src="/js/search.js"></script>
+<script src="/js/hybpjxBG-search.js"></script>
 
 
 

@@ -30,9 +30,7 @@
     var result = document.getElementById("search-result");
     if (!input || !result || typeof window.searchFunc !== "function") return;
 
-    input.addEventListener("focus", function () {
-      window.searchFunc("/search.xml", "search-input", "search-result");
-    }, { once: true });
+    window.searchFunc("/search.xml", "search-input", "search-result");
   }
 
   function copyText(text) {
@@ -227,7 +225,33 @@
     }, 150);
   }
 
+  function hideLoading() {
+    var loading = document.getElementById("Loadanimation");
+    if (!loading || loading.classList.contains("is-loaded")) return;
+
+    loading.classList.add("is-loaded");
+    setTimeout(function () {
+      if (loading && loading.parentNode) {
+        loading.parentNode.removeChild(loading);
+      }
+    }, 650);
+  }
+
+  function initLoading() {
+    if (document.readyState === "complete") {
+      setTimeout(hideLoading, 180);
+    } else {
+      window.addEventListener("load", function () {
+        setTimeout(hideLoading, 180);
+      }, { once: true });
+    }
+
+    // 外链资源异常或播放器 CDN 慢时，避免 loading 长时间遮挡页面。
+    setTimeout(hideLoading, 4500);
+  }
+
   ready(function () {
+    initLoading();
     // document.body.addEventListener("copy", copyWithAttribution);
     initSearch();
     initCodeCopy();
