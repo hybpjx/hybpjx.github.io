@@ -1,193 +1,747 @@
-<!DOCTYPE html>
-<html lang=&#34;zh&#34;>
-  <head>
+<!doctype html>
+
+<html lang="zh-CN">
+<head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>始識’s 博客</title>
-  <meta name="description" content="公众号搜索: 影17">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f3e9" data-flatpaper-theme-color>
+
+<title>分类：一日一库 | 始識’s 博客</title>
+<meta name="description" content="分类「一日一库」收录 3 篇文章，包括Wails+svelte开发入门、GoRequests库、bcrypt库。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="分类：一日一库 | 始識’s 博客">
+<meta property="og:url" content="https://hybpjx.cn/categories/%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93/">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="分类「一日一库」收录 3 篇文章，包括Wails+svelte开发入门、GoRequests库、bcrypt库。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="hybpjx">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://hybpjx.cn/categories/%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93/">
+
+<link rel="icon" href="/images/favicon.png" type="image/png">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","headline":"分类：一日一库 | 始識’s 博客","name":"分类：一日一库 | 始識’s 博客","description":"分类「一日一库」收录 3 篇文章，包括Wails+svelte开发入门、GoRequests库、bcrypt库。","url":"https://hybpjx.cn/categories/%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93/","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","name":"始識’s 博客","url":"https://hybpjx.cn/"},"about":"分类：一日一库"}</script>
+
+<script>
+  (function () {
+    var accents = { orange: 1, purple: 1, sakura: 1, blue: 1, pink: 1, green: 1, black: 1 };
+    var match = document.cookie.match(/(?:^|;\s*)flatpaper-accent=([^;]+)/);
+    var accent = 'green';
+    if (match) {
+      try { accent = decodeURIComponent(match[1]); } catch (e) {}
+    }
+    if (!accents[accent]) accent = 'green';
+    document.documentElement.setAttribute('data-accent', accent);
+    try {
+      if (localStorage.getItem('flatpaper-mode') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
-    <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
+
   
+
   
+
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+
   
-  <link rel="stylesheet" href="/css/hybpjxBG.css">
+
+  
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
-  <body>
-    <div id="Loadanimation" class="site-loading" aria-label="页面加载中" role="status">
-  <div id="Loadanimation-center">
-    <div id="Loadanimation-center-absolute">
-      <div class="xccx_object" id="xccx_four"></div>
-      <div class="xccx_object" id="xccx_three"></div>
-      <div class="xccx_object" id="xccx_two"></div>
-      <div class="xccx_object" id="xccx_one"></div>
-    </div>
-  </div>
-</div>
+<body
+  class="is-list tag-style-tape bg-style-grid"
+  data-default-accent="green"
+  data-code-theme="dark"
+  data-note-style="sticky"
+  data-note-icons="on"
+  data-button-style="circle"
+  data-strong-accent="on"
+>
+  
+  <svg width="0" height="0" style="position:absolute;z-index:-1;" aria-hidden="true">
+    <defs>
+      <filter id="paper-edge" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+  
+  <header class="site-header">
+  
+  <button class="icon-button js-sidebar-toggle sidebar-toggle" type="button" aria-label="打开侧边栏" aria-controls="paper-sidebar-drawer" aria-expanded="false">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-menu"></use></svg>
 
-    <div class="site-shell">
-      <header class="site-header">
-  <a class="brand" href="/" aria-label="始識’s 博客">
-    <span class="brand__mark">始</span>
-    <span class="brand__text">
-      <strong>始識</strong>
-      <em>公众号搜索：影17</em>
-    </span>
-  </a>
+  </button>
+
+  <div class="brand">
+    <div class="brand-mark-wrapper">
+      
+        <button class="brand-mark" type="button" aria-label="打开站点导航" aria-haspopup="true" aria-expanded="false" aria-controls="brand-nav-menu">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-layout-grid"></use></svg>
+
+        </button>
+        <div class="brand-nav-menu" id="brand-nav-menu" role="menu">
+          
+            <div class="brand-nav-group">
+              <div class="brand-nav-title">Live DEMO</div>
+              
+                <a role="menuitem" href="https://hybpjx.cn" target="_blank" rel="noopener noreferrer">
+                  
+                    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-leaf"></use></svg>
+
+                  
+                  <span>hybpjx&#39;s Blogs</span>
+                </a>
+              
+                <a role="menuitem" href="https://zichliang.top" target="_blank" rel="noopener noreferrer">
+                  
+                    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-book"></use></svg>
+
+                  
+                  <span>collect</span>
+                </a>
+              
+            </div>
+          
+            <div class="brand-nav-group">
+              <div class="brand-nav-title">Project</div>
+              
+                <a role="menuitem" href="https://github.com/hybpjx" target="_blank" rel="noopener noreferrer">
+                  
+                    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-github flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-github"></use></svg>
+
+                  
+                  <span>github</span>
+                </a>
+              
+            </div>
+          
+        </div>
+      
+    </div>
+    <a class="brand-text" href="/">始識’s 博客</a>
+  </div>
 
   <nav class="site-nav" aria-label="主导航">
     
-      <a href="/">始識’s</a>
+      
+        <a class="site-nav-link " href="/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-house"></use></svg>
+
+          <span>首页</span>
+        </a>
+      
     
-      <a href="/archives/">🖋️ 归档</a>
+      
+        <a class="site-nav-link " href="/friends/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-link"></use></svg>
+
+          <span>友链</span>
+        </a>
+      
     
-      <a href="/categories/">🗂️ 分类</a>
+      
+        <a class="site-nav-link " href="/about/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-user"></use></svg>
+
+          <span>关于</span>
+        </a>
+      
     
-      <a href="/tags/">🏷️ 标签</a>
-    
-      <a href="/about/">📜 关于</a>
-    
-      <a href="/tools/">🛠️ 工具箱</a>
-    
-      <a href="/masonry/">🖼️ 相册</a>
-    
-      <a href="/friends/">🤝 友情链接</a>
-    
-      <a href="/search/">🔍 搜索</a>
+      
+        <div class="site-nav-item has-children active">
+          <button class="site-nav-link site-nav-parent" type="button" aria-haspopup="true" aria-expanded="false">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-folder"></use></svg>
+
+            <span>文章</span>
+          </button>
+          <div class="site-nav-menu" role="menu">
+            
+              <a role="menuitem" class="active" href="/categories/">
+                
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-folder"></use></svg>
+
+                <span>分类</span>
+              </a>
+            
+              <a role="menuitem" class="" href="/tags/">
+                
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-tag"></use></svg>
+
+                <span>标签</span>
+              </a>
+            
+              <a role="menuitem" class="" href="/archives/">
+                
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-archive"></use></svg>
+
+                <span>归档</span>
+              </a>
+            
+          </div>
+        </div>
+      
     
   </nav>
+
+  <div class="header-tools">
+    <button class="icon-button js-search-open" type="button" aria-label="搜索文章">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-search"></use></svg>
+
+    </button>
+    <div class="accent-picker">
+      <button class="icon-button accent-toggle" type="button" aria-label="选择主题色" title="选择主题色" aria-haspopup="true" aria-expanded="false" aria-controls="accent-menu">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-palette"></use></svg>
+
+      </button>
+      <div class="accent-menu" id="accent-menu" role="menu" aria-label="主题色">
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="橙色" aria-checked="false" data-accent-option="orange">
+          <span class="accent-swatch accent-swatch--orange" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="紫色" aria-checked="false" data-accent-option="purple">
+          <span class="accent-swatch accent-swatch--purple" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="樱花粉" aria-checked="false" data-accent-option="sakura">
+          <span class="accent-swatch accent-swatch--sakura" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="蓝色" aria-checked="false" data-accent-option="blue">
+          <span class="accent-swatch accent-swatch--blue" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="粉色" aria-checked="false" data-accent-option="pink">
+          <span class="accent-swatch accent-swatch--pink" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="绿色" aria-checked="false" data-accent-option="green">
+          <span class="accent-swatch accent-swatch--green" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="黑色" aria-checked="false" data-accent-option="black">
+          <span class="accent-swatch accent-swatch--black" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="切换颜色模式">
+      <span class="theme-icon theme-icon--sun">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-sun"></use></svg>
+</span>
+      <span class="theme-icon theme-icon--moon">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-moon"></use></svg>
+</span>
+    </button>
+  </div>
 </header>
 
-      <main class="site-main">
-        <section class="page-hero">
-  <p class="eyebrow">ARCHIVE</p>
-  <h1>一日一库</h1>
-</section>
-
-<section class="archive-list">
-  
 
   
-    <details class="archive-year-group" open>
-      <summary class="archive-year">
-        <span class="archive-toggle__label">2025</span>
-        <span class="archive-toggle__meta">1 篇</span>
-      </summary>
+  <main class="paper-shell ">
+    
 
-      <div class="archive-year__content">
+<aside id="paper-sidebar-drawer" class="paper-sidebar paper-sidebar--right" aria-label="侧边栏">
+  <div class="drawer-toolbar" aria-label="侧边栏工具">
+    <div class="drawer-accent-options" role="group" aria-label="主题色">
+      <button type="button" class="accent-option" aria-label="橙色" aria-pressed="false" data-accent-option="orange">
+        <span class="accent-swatch accent-swatch--orange" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="紫色" aria-pressed="false" data-accent-option="purple">
+        <span class="accent-swatch accent-swatch--purple" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="樱花粉" aria-pressed="false" data-accent-option="sakura">
+        <span class="accent-swatch accent-swatch--sakura" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="蓝色" aria-pressed="false" data-accent-option="blue">
+        <span class="accent-swatch accent-swatch--blue" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="粉色" aria-pressed="false" data-accent-option="pink">
+        <span class="accent-swatch accent-swatch--pink" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="绿色" aria-pressed="false" data-accent-option="green">
+        <span class="accent-swatch accent-swatch--green" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="黑色" aria-pressed="false" data-accent-option="black">
+        <span class="accent-swatch accent-swatch--black" aria-hidden="true"></span>
+      </button>
+    </div>
+    <button class="icon-button drawer-close js-sidebar-close" type="button" aria-label="关闭侧边栏">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-x"></use></svg>
+
+    </button>
+  </div>
+
+  <section class="side-card nav-card">
+    <nav class="site-nav-drawer" aria-label="移动端导航">
+      
         
-          <details class="archive-month-group" open>
-            <summary class="archive-month">
-              <span class="archive-toggle__label">09月</span>
-              <span class="archive-toggle__meta">1 篇</span>
-            </summary>
+          <a class="" href="/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-house"></use></svg>
 
-            <div class="archive-month__content">
+            <span>首页</span>
+          </a>
+        
+      
+        
+          <a class="" href="/friends/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-link"></use></svg>
+
+            <span>友链</span>
+          </a>
+        
+      
+        
+          <a class="" href="/about/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-user"></use></svg>
+
+            <span>关于</span>
+          </a>
+        
+      
+        
+          <div class="drawer-nav-group is-open active">
+            <button class="drawer-nav-parent" type="button" aria-expanded="true">
               
-                <a class="archive-item" href="/2025/09/07/Wails-svelte%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/">
-                  <span class="archive-item__title">Wails+svelte开发入门</span>
-                  <time class="archive-item__date">07日</time>
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-folder"></use></svg>
+
+              <span>文章</span>
+            </button>
+            <div class="drawer-nav-children">
+              
+                <a class="active" href="/categories/">
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-folder"></use></svg>
+
+                  <span>分类</span>
+                </a>
+              
+                <a class="" href="/tags/">
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-tag"></use></svg>
+
+                  <span>标签</span>
+                </a>
+              
+                <a class="" href="/archives/">
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-archive"></use></svg>
+
+                  <span>归档</span>
                 </a>
               
             </div>
-          </details>
+          </div>
+        
+      
+    </nav>
+  </section>
+
+  <section class="side-card profile-card">
+    
+      <div class="avatar avatar--image">
+        <img src="/images/yanjing.gif" alt="hybpjx" loading="lazy" referrerpolicy="no-referrer">
+      </div>
+    
+    <h3>hybpjx</h3>
+    <p class="profile-role">日常记录</p>
+    <p>一个帅哥罢了</p>
+    
+      <div class="site-info" aria-label="站点信息">
+        
+          
+            <a class="site-info__item" href="/archives/">
+              <strong>80</strong>
+              <span>文章</span>
+            </a>
+          
+        
+          
+            <a class="site-info__item" href="/categories/">
+              <strong>12</strong>
+              <span>分类</span>
+            </a>
+          
+        
+          
+            <a class="site-info__item" href="/tags/">
+              <strong>21</strong>
+              <span>标签</span>
+            </a>
+          
         
       </div>
-    </details>
-  
-    <details class="archive-year-group" open>
-      <summary class="archive-year">
-        <span class="archive-toggle__label">2023</span>
-        <span class="archive-toggle__meta">2 篇</span>
-      </summary>
+    
+    <div class="socials">
+      
+        <a href="https://github.com/hybpjx" target="_blank" rel="noopener" aria-label="GitHub" data-tooltip="GitHub">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-github flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-github"></use></svg>
 
-      <div class="archive-year__content">
+          
+        </a>
+      
+        <a href="https://twitter.com/vicnilas" target="_blank" rel="noopener" aria-label="Twitter" data-tooltip="Twitter">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" fill="currentColor" class="lucide lucide-twitter flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-twitter"></use></svg>
+
+          
+        </a>
+      
+        <a href="mailto:hybpjx@gmail.com" target="_blank" rel="noopener" aria-label="Email" data-tooltip="Email">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-mail"></use></svg>
+
+          
+        </a>
+      
+        <a href="https://x.com/vicnilas" target="_blank" rel="noopener" aria-label="X" data-tooltip="X">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" fill="currentColor" class="lucide lucide-x-twitter flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-x-twitter"></use></svg>
+
+          
+        </a>
+      
+        <a href="https://youtube.com/@hybpjx" target="_blank" rel="noopener" aria-label="YouTube" data-tooltip="YouTube">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 576 512" fill="currentColor" class="lucide lucide-youtube flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-youtube"></use></svg>
+
+          
+        </a>
+      
+        <a href="https://space.bilibili.com/481309876" target="_blank" rel="noopener" aria-label="Bilibili" data-tooltip="Bilibili">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" fill="currentColor" class="lucide lucide-bilibili flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-bilibili"></use></svg>
+
+          
+        </a>
+      
+        <a href="https://weibo.com/u/5868422298" target="_blank" rel="noopener" aria-label="Weibo" data-tooltip="Weibo">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" fill="currentColor" class="lucide lucide-weibo flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-weibo"></use></svg>
+
+          
+        </a>
+      
+      
         
-          <details class="archive-month-group" open>
-            <summary class="archive-month">
-              <span class="archive-toggle__label">04月</span>
-              <span class="archive-toggle__meta">2 篇</span>
-            </summary>
+        
+        <a href="/atom.xml" aria-label="RSS feed" data-tooltip="RSS feed">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rss flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-rss"></use></svg>
 
-            <div class="archive-month__content">
-              
-                <a class="archive-item" href="/2023/04/26/Golang%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93%E4%B9%8BGoRequests/">
-                  <span class="archive-item__title">GoRequests库</span>
-                  <time class="archive-item__date">26日</time>
-                </a>
-              
-                <a class="archive-item" href="/2023/04/26/Golang%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93%E4%B9%8Bbcrypt/">
-                  <span class="archive-item__title">bcrypt库</span>
-                  <time class="archive-item__date">26日</time>
-                </a>
-              
-            </div>
-          </details>
+        </a>
+      
+    </div>
+  </section>
+
+  
+    <section class="side-card brand-link-card" aria-label="站点链接">
+      
+        <div class="brand-link-group">
+          <div class="brand-link-title">Live DEMO</div>
+          <div class="brand-link-list">
+            
+              <a href="https://hybpjx.cn" target="_blank" rel="noopener noreferrer">
+                
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-leaf"></use></svg>
+
+                
+                <span>hybpjx&#39;s Blogs</span>
+              </a>
+            
+              <a href="https://zichliang.top" target="_blank" rel="noopener noreferrer">
+                
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-book"></use></svg>
+
+                
+                <span>collect</span>
+              </a>
+            
+          </div>
+        </div>
+      
+        <div class="brand-link-group">
+          <div class="brand-link-title">Project</div>
+          <div class="brand-link-list">
+            
+              <a href="https://github.com/hybpjx" target="_blank" rel="noopener noreferrer">
+                
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-github flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-github"></use></svg>
+
+                
+                <span>github</span>
+              </a>
+            
+          </div>
+        </div>
+      
+    </section>
+  
+
+  
+    <section class="side-card categories-card">
+      <h2>
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-folder"></use></svg>
+分类</h2>
+      
+        <a href="/categories/AST%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/">
+          <span class="dot dot-0"></span>
+          <strong>AST学习日记</strong>
+          <em>1</em>
+        </a>
+      
+        <a href="/categories/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">
+          <span class="dot dot-1"></span>
+          <strong>安卓逆向基础</strong>
+          <em>6</em>
+        </a>
+      
+        <a href="/categories/%E6%9D%82%E8%AE%B0/">
+          <span class="dot dot-2"></span>
+          <strong>杂记</strong>
+          <em>11</em>
+        </a>
+      
+        <a href="/categories/%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85/">
+          <span class="dot dot-3"></span>
+          <strong>快速安装</strong>
+          <em>14</em>
+        </a>
+      
+        <a href="/categories/Gin%E9%80%9F%E7%94%A8/">
+          <span class="dot dot-0"></span>
+          <strong>Gin速用</strong>
+          <em>2</em>
+        </a>
+      
+        <a href="/categories/%E8%AF%AD%E8%A8%80%E5%8A%A0%E8%A7%A3%E5%AF%86/">
+          <span class="dot dot-1"></span>
+          <strong>语言加解密</strong>
+          <em>3</em>
+        </a>
+      
+    </section>
+
+    <section class="side-card tag-card">
+      <header class="tag-card__head">
+        <h2>
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-flame"></use></svg>
+热门标签</h2>
+        <a class="tag-card__more" href="/tags/">
+          <span>查看全部</span>
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-arrow-right"></use></svg>
+
+        </a>
+      </header>
+      <div class="tag-cloud">
+        
+        
+          <a class="tag-chip tag-chip-0" href="/tags/JavaScript/">JavaScript</a>
+        
+          <a class="tag-chip tag-chip-1" href="/tags/python/">python</a>
+        
+          <a class="tag-chip tag-chip-2" href="/tags/Golang/">Golang</a>
+        
+          <a class="tag-chip tag-chip-3" href="/tags/Android/">Android</a>
+        
+          <a class="tag-chip tag-chip-4" href="/tags/%E9%80%86%E5%90%91/">逆向</a>
+        
+          <a class="tag-chip tag-chip-5" href="/tags/ubuntu/">ubuntu</a>
+        
+          <a class="tag-chip tag-chip-0" href="/tags/unidbg/">unidbg</a>
+        
+          <a class="tag-chip tag-chip-1" href="/tags/Java/">Java</a>
+        
+          <a class="tag-chip tag-chip-2" href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a>
+        
+          <a class="tag-chip tag-chip-3" href="/tags/JS%E9%80%86%E5%90%91/">JS逆向</a>
+        
+          <a class="tag-chip tag-chip-4" href="/tags/ida/">ida</a>
+        
+          <a class="tag-chip tag-chip-5" href="/tags/frida/">frida</a>
         
       </div>
-    </details>
+    </section>
   
+
+  
+
+</aside>
+
+    <section class="paper-main">
+      
+<section class="archive-paper">
+  
+    <h1>一日一库</h1>
+  
+  <div class="archive-list">
+    
+      <a class="archive-item" href="/2025/09/07/Wails-svelte%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/">
+        <span>2025-09-07</span>
+        <strong>Wails+svelte开发入门</strong>
+        <em></em>
+      </a>
+    
+      <a class="archive-item" href="/2023/04/26/Golang%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93%E4%B9%8BGoRequests/">
+        <span>2023-04-26</span>
+        <strong>GoRequests库</strong>
+        <em></em>
+      </a>
+    
+      <a class="archive-item" href="/2023/04/26/Golang%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93%E4%B9%8Bbcrypt/">
+        <span>2023-04-26</span>
+        <strong>bcrypt库</strong>
+        <em></em>
+      </a>
+    
+  </div>
 </section>
 
 
 
 
+      
 
-      </main>
-      <footer class="site-footer">
-  <div>
-    <strong>始識’s 博客</strong>
-    <span>© 2026 hybpjx</span>
-  </div>
-  <div class="site-footer__links">
-    <a href="https://github.com/hybpjx" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.cnblogs.com/zichliang" target="_blank" rel="noopener">博客园</a>
-    <a href="http://zichliang.top/" target="_blank" rel="noopener">个人笔记</a>
-  </div>
+
+    </section>
+    
+      <aside class="paper-sidebar paper-sidebar--left">
+  
+  
+
+  <section class="side-card recent-card" data-random-posts-limit="5" data-random-posts-url="/flatpaper-random-posts.json" data-random-posts-current="/categories/%E4%B8%80%E6%97%A5%E4%B8%80%E5%BA%93/index.html">
+    <h2>
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shuffle flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-shuffle"></use></svg>
+随机文章</h2>
+    <ul class="recent-list js-random-posts">
+      
+        <li>
+          <a class="recent-item" href="/2026/07/13/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%BB%8F%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/">
+            <strong>安卓逆向面试中经常遇到的几个问题</strong>
+            <em>2026-07-13</em>
+          </a>
+        </li>
+      
+        <li>
+          <a class="recent-item" href="/2026/07/10/ARM64%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%8430%E6%9D%A1%E6%8C%87%E4%BB%A4/">
+            <strong>ARM64最常见的30条指令</strong>
+            <em>2026-07-10</em>
+          </a>
+        </li>
+      
+        <li>
+          <a class="recent-item" href="/2026/06/12/%E8%AE%BA%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E7%88%AC%E8%99%AB/">
+            <strong>论浏览器插件爬虫</strong>
+            <em>2026-06-12</em>
+          </a>
+        </li>
+      
+        <li>
+          <a class="recent-item" href="/2026/06/12/DeepSeekAPP-X-DS-PoW-Response%E7%94%9F%E6%88%90%E9%80%BB%E8%BE%91/">
+            <strong>DeepSeekAPP-X-DS-PoW-Response生成逻辑</strong>
+            <em>2026-06-12</em>
+          </a>
+        </li>
+      
+        <li>
+          <a class="recent-item" href="/2026/06/09/%E6%9F%90%E8%A7%86%E9%A2%91%E5%8E%BB%E5%B9%BF%E5%91%8A%E5%AE%9E%E6%88%98/">
+            <strong>某视频去广告实战</strong>
+            <em>2026-06-09</em>
+          </a>
+        </li>
+      
+    </ul>
+  </section>
+
+
+</aside>
+
+    
+  </main>
+
+  <div class="sidebar-backdrop js-sidebar-close" aria-hidden="true"></div>
+
+  
+<footer class="site-footer">
+  <span class="site-footer__left">© 2026 By hybpjx</span>
+  
+    <span class="site-footer__right">
+      
+        <span class="site-footer__row"><span class="site-footer__powered-prefix">Powered by Theme</span> <a href="https://github.com/Homulilly/hexo-theme-flatpaper" target="_blank" rel="noopener">FlatPaper</a></span>
+      
+        <span class="site-footer__row"><a href="/terms">服务条款</a><span class="site-footer__separator"> · </span><a href="/privacy">隐私政策</a></span>
+      
+        <span class="site-footer__row"><a href="https://hexotag.nep.me/" target="_blank" rel="noopener">Flatpaper Tools</a></span>
+      
+    </span>
+  
 </footer>
 
+  
+<div class="search-panel" aria-hidden="true" data-index-url="/flatpaper-search.json">
+  <div class="search-backdrop js-search-close"></div>
+  <section class="search-dialog" role="dialog" aria-modal="true" aria-label="搜索文章">
+    <span class="tape tape--top-left" aria-hidden="true"></span>
+    <header class="search-head">
+      <h2><span class="green-dot"></span>搜索文章</h2>
+      <button class="icon-button js-search-close" type="button" aria-label="关闭搜索">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-x"></use></svg>
+
+      </button>
+    </header>
+    <label class="search-field">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-search"></use></svg>
+
+      <input id="flatpaper-search" class="search-input" type="search" placeholder="输入关键词，按 Esc 关闭" autocomplete="off">
+    </label>
+    <div class="search-results" data-empty="输入关键词后显示匹配的文章">
+      <p class="search-empty">输入关键词后显示匹配的文章</p>
     </div>
-    
-  <div id="hybpjx-music-player" class="hybpjx-music" aria-label="音乐播放器"></div>
+  </section>
+</div>
 
+  <script>
+  window.FLATPAPER_I18N = {"language":"zh-CN","common.posts":"文章","common.categories":"分类","common.tags":"标签","common.comments":"评论","common.share":"分享","common.page":"页面","common.archive":"归档","common.post_list":"文章列表","common.search_posts":"搜索文章","common.random_posts":"随机文章","common.reward":"赞赏","common.view_all":"查看全部","pagination.prev":"上一页","pagination.next":"下一页","pagination.post_pager":"文章分页","pagination.archive_pager":"归档分页","index.featured":"精选文章","index.pinned":"置顶","index.read_more":"阅读全文","index.previous_slide":"上一张","index.next_slide":"下一张","index.carousel_pagination":"轮播页码","index.carousel_slide":"第 %d 张","index.latest_posts":"最新文章","index.empty_posts":"还没有文章。创建第一篇文章后，这里会显示最新内容。","archive.title":"归档","archive.post_list":"文章列表","taxonomy.category_count":"%d 篇","taxonomy.empty_categories":"暂时还没有分类。","taxonomy.empty_tags":"暂时还没有标签。","links.label":"友链","links.title":"友情链接","links.empty_data":"暂未加载到友链数据。请确认 source/_data/links.yml 存在并已 hexo clean。","links.rss_label":"%s 的 RSS","friends_feed.label":"朋友圈","friends_feed.title":"友链朋友圈","friends_feed.loading":"正在加载友链动态…","friends_feed.missing_url":"暂未配置 all.json 地址。","friends_feed.load_failed":"友链动态加载失败，请稍后再试。","friends_feed.empty":"暂时没有抓取到友链文章。","friends_feed.load_more":"加载更多","friends_feed.updated_at":"更新于 %s","friends_feed.friend_count":"%d 位友邻","friends_feed.active_count":"%d 位活跃","friends_feed.article_count":"%d 篇文章","friends_feed.unknown_author":"未知站点","friends_feed.date_unknown":"时间未知","guestbook.label":"留言板","guestbook.title":"留言板","guestbook.loading":"正在铺开留言墙…","guestbook.missing_config":"留言墙需要评论系统：请在主题配置中设置 comments: twikoo（并填写 envId）或 comments: artalk（并填写 server）。","guestbook.load_failed":"留言加载失败，请稍后再试。","guestbook.empty":"墙上还空着，来贴第一张留言吧！","guestbook.load_more":"展开更多留言","guestbook.total_count":"共 %d 条留言","guestbook.latest_note":"墙上展示最新 %d 条","guestbook.jump_to_comment":"查看留言","guestbook.sort_time":"查看最新","guestbook.sort_random":"随机排序","guestbook.anonymous":"匿名访客","guestbook.write_hint":"在下方留言，刷新后就会贴到墙上","post.scroll_to_comments":"跳转到评论区","post.previous":"上一篇","post.next":"下一篇","post.no_previous":"没有更早的文章了","post.no_next":"已经是最新的一篇","post.back_to_top":"返回顶部","post.related_posts":"相关文章","post.view_more":"查看更多","not_found.label":"页面走丢了","not_found.title":"找不到这个页面","not_found.text":"这个地址可能已经移动、删除，或者从未存在。","not_found.home":"返回首页","not_found.search":"搜索文章","search.placeholder":"输入关键词，按 Esc 关闭","search.empty":"输入关键词后显示匹配的文章","search.loading":"正在加载搜索索引…","search.load_failed":"搜索索引加载失败，请重新打开搜索重试","search.no_result":"没有找到与 \"%s\" 相关的文章","search.close":"关闭搜索","code.copy":"复制代码","code.collapse":"折叠代码","code.expand":"展开代码","heading.anchor":"链接到此节: %s","head.tag":"标签：%s","head.category":"分类：%s","head.archive":"归档","head.archive_with_date":"归档：%s","head.page_number":"第 %d 页","navigation.primary":"主导航","navigation.mobile":"移动端导航","navigation.brand_home":"FlatPaper 首页","navigation.brand_menu":"打开站点导航","navigation.open_sidebar":"打开侧边栏","navigation.close_sidebar":"关闭侧边栏","navigation.sidebar":"侧边栏","navigation.sidebar_tools":"侧边栏工具","navigation.site_links":"站点链接","navigation.site_info":"站点信息","colors.choose_theme_color":"选择主题色","colors.theme_color":"主题色","colors.toggle_color_mode":"切换颜色模式","colors.green":"绿色","colors.purple":"紫色","colors.pink":"粉色","colors.sakura":"樱花粉","colors.blue":"蓝色","colors.orange":"橙色","colors.black":"黑色","profile.default_bio":"热爱生活，热爱代码，喜欢分享技术与生活中的点滴。","welcome.cta":"开始阅读","welcome.title":"欢迎来到 FlatPaper","welcome.text":"一个专注于内容与阅读体验的博客主题。","home_hero.label":"首页开屏","home_hero.enter":"开始阅读","home_hero.note":"今日","home_hero.default_subtitle":"日常记录","home_hero.nav_links":"开屏导航","home_hero.profile_links":"个人链接","home_hero.tools":"开屏工具","home_hero.shuffle_stickers":"打乱贴纸位置","home_hero.link":"链接","home_hero.sticker_image":"贴纸图片","home_hero.visit_confirm":"要访问 %s 吗？","home_hero.visit":"访问","home_hero.cancel":"取消","toc.title":"文章目录","toc.empty":"目录会根据文章标题自动生成。","toc.expand_all":"展开全部目录","toc.collapse_all":"收起全部目录","sidebar.hot_tags":"热门标签","sidebar.latest_posts":"最新文章"};
+  </script>
+  
+<script src="/js/main.js"></script>
 
-    <script src="/js/hybpjxBG.js"></script>
-<script src="/js/hybpjxBG-search.js"></script>
-
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
-<script>
-  window.addEventListener('DOMContentLoaded', function () {
-    var container = document.getElementById('hybpjx-music-player');
-    if (!container || !window.APlayer) return;
-    new APlayer({
-      container: container,
-      fixed: false,
-      mini: false,
-      autoplay: false,
-      theme: '#008aff',
-      loop: 'all',
-      order: 'list',
-      preload: 'metadata',
-      volume: 0.55,
-      mutex: true,
-      audio: [{"name":"遗憾R&B","artist":"DinDin","url":"/music/%E9%81%97%E6%86%BER&B.mp3"},{"name":"暧昧合伙人","artist":"烟(许佳豪)","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3"},{"name":"去年夏天","artist":"王大毛","url":"/music/%E5%8E%BB%E5%B9%B4%E5%A4%8F%E5%A4%A9.mp3"}]
-    });
-  });
-</script>
-
-
-  </body>
+  
+</body>
 </html>

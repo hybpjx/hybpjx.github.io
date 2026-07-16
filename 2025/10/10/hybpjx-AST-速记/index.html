@@ -1,192 +1,813 @@
-<!DOCTYPE html>
-<html lang=&#34;zh&#34;>
-  <head>
+<!doctype html>
+
+<html lang="zh-CN" data-fancybox-enabled="1">
+<head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AST_通用插件 | 始識’s 博客</title>
-  <meta name="description" content="公众号搜索: 影17">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f3e9" data-flatpaper-theme-color>
+
+<title>AST_通用插件 | 始識’s 博客</title>
+<meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AST_通用插件 | 始識’s 博客">
+<meta property="og:url" content="https://hybpjx.cn/2025/10/10/hybpjx-AST-%E9%80%9F%E8%AE%B0/">
+<meta property="og:site_name" content="始識’s 博客">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-10T10:16:29.000Z">
+<meta property="article:modified_time" content="2025-10-10T10:16:29.000Z">
+<meta property="article:author" content="hybpjx">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://hybpjx.cn/2025/10/10/hybpjx-AST-%E9%80%9F%E8%AE%B0/">
+
+<link rel="icon" href="/images/favicon.png" type="image/png">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"AST_通用插件","name":"AST_通用插件 | 始識’s 博客","description":"Here's something encrypted, password is required to continue reading.","url":"https://hybpjx.cn/2025/10/10/hybpjx-AST-%E9%80%9F%E8%AE%B0/","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","name":"始識’s 博客","url":"https://hybpjx.cn/"},"mainEntityOfPage":"https://hybpjx.cn/2025/10/10/hybpjx-AST-%E9%80%9F%E8%AE%B0/","datePublished":"2025-10-10T10:16:29.000Z","dateModified":"2025-10-10T10:16:29.000Z","author":{"@type":"Person","name":"hybpjx"},"publisher":{"@type":"Organization","name":"始識’s 博客"},"keywords":"JavaScript"}</script>
+
+<script>
+  (function () {
+    var accents = { orange: 1, purple: 1, sakura: 1, blue: 1, pink: 1, green: 1, black: 1 };
+    var match = document.cookie.match(/(?:^|;\s*)flatpaper-accent=([^;]+)/);
+    var accent = 'green';
+    if (match) {
+      try { accent = decodeURIComponent(match[1]); } catch (e) {}
+    }
+    if (!accents[accent]) accent = 'green';
+    document.documentElement.setAttribute('data-accent', accent);
+    try {
+      if (localStorage.getItem('flatpaper-mode') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js/styles/github.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/highlight.js"></script>
-    <script>window.addEventListener('DOMContentLoaded', function () { if (window.hljs) { hljs.highlightAll(); } });</script>
+
   
+
   
+
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/twikoo@1.7.9/dist/twikoo.all.min.js"></script>
+
+
   
-  <link rel="stylesheet" href="/css/hybpjxBG.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="始識’s 博客" type="application/atom+xml">
 </head>
 
-  <body>
-    <div id="Loadanimation" class="site-loading" aria-label="页面加载中" role="status">
-  <div id="Loadanimation-center">
-    <div id="Loadanimation-center-absolute">
-      <div class="xccx_object" id="xccx_four"></div>
-      <div class="xccx_object" id="xccx_three"></div>
-      <div class="xccx_object" id="xccx_two"></div>
-      <div class="xccx_object" id="xccx_one"></div>
-    </div>
-  </div>
-</div>
+<body
+  class="is-post tag-style-tape bg-style-grid"
+  data-default-accent="green"
+  data-code-theme="dark"
+  data-note-style="sticky"
+  data-note-icons="on"
+  data-button-style="circle"
+  data-strong-accent="on"
+>
+  
+  <svg width="0" height="0" style="position:absolute;z-index:-1;" aria-hidden="true">
+    <defs>
+      <filter id="paper-edge" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+  
+  <header class="site-header">
+  
+  <button class="icon-button js-sidebar-toggle sidebar-toggle" type="button" aria-label="打开侧边栏" aria-controls="paper-sidebar-drawer" aria-expanded="false">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-menu"></use></svg>
 
-    <div class="site-shell">
-      <header class="site-header">
-  <a class="brand" href="/" aria-label="始識’s 博客">
-    <span class="brand__mark">始</span>
-    <span class="brand__text">
-      <strong>始識</strong>
-      <em>公众号搜索：影17</em>
-    </span>
-  </a>
+  </button>
+
+  <div class="brand">
+    <div class="brand-mark-wrapper">
+      
+        <button class="brand-mark" type="button" aria-label="打开站点导航" aria-haspopup="true" aria-expanded="false" aria-controls="brand-nav-menu">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-layout-grid"></use></svg>
+
+        </button>
+        <div class="brand-nav-menu" id="brand-nav-menu" role="menu">
+          
+            <div class="brand-nav-group">
+              <div class="brand-nav-title">Live DEMO</div>
+              
+                <a role="menuitem" href="https://hybpjx.cn" target="_blank" rel="noopener noreferrer">
+                  
+                    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-leaf"></use></svg>
+
+                  
+                  <span>hybpjx&#39;s Blogs</span>
+                </a>
+              
+                <a role="menuitem" href="https://zichliang.top" target="_blank" rel="noopener noreferrer">
+                  
+                    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-book"></use></svg>
+
+                  
+                  <span>collect</span>
+                </a>
+              
+            </div>
+          
+            <div class="brand-nav-group">
+              <div class="brand-nav-title">Project</div>
+              
+                <a role="menuitem" href="https://github.com/hybpjx" target="_blank" rel="noopener noreferrer">
+                  
+                    
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-github flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-github"></use></svg>
+
+                  
+                  <span>github</span>
+                </a>
+              
+            </div>
+          
+        </div>
+      
+    </div>
+    <a class="brand-text" href="/">始識’s 博客</a>
+  </div>
 
   <nav class="site-nav" aria-label="主导航">
     
-      <a href="/">始識’s</a>
+      
+        <a class="site-nav-link " href="/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-house"></use></svg>
+
+          <span>首页</span>
+        </a>
+      
     
-      <a href="/archives/">🖋️ 归档</a>
+      
+        <a class="site-nav-link " href="/friends/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-link"></use></svg>
+
+          <span>友链</span>
+        </a>
+      
     
-      <a href="/categories/">🗂️ 分类</a>
+      
+        <a class="site-nav-link " href="/about/">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-user"></use></svg>
+
+          <span>关于</span>
+        </a>
+      
     
-      <a href="/tags/">🏷️ 标签</a>
-    
-      <a href="/about/">📜 关于</a>
-    
-      <a href="/tools/">🛠️ 工具箱</a>
-    
-      <a href="/masonry/">🖼️ 相册</a>
-    
-      <a href="/friends/">🤝 友情链接</a>
-    
-      <a href="/search/">🔍 搜索</a>
+      
+        <div class="site-nav-item has-children">
+          <button class="site-nav-link site-nav-parent" type="button" aria-haspopup="true" aria-expanded="false">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-folder"></use></svg>
+
+            <span>文章</span>
+          </button>
+          <div class="site-nav-menu" role="menu">
+            
+              <a role="menuitem" class="" href="/categories/">
+                
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-folder"></use></svg>
+
+                <span>分类</span>
+              </a>
+            
+              <a role="menuitem" class="" href="/tags/">
+                
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-tag"></use></svg>
+
+                <span>标签</span>
+              </a>
+            
+              <a role="menuitem" class="" href="/archives/">
+                
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-archive"></use></svg>
+
+                <span>归档</span>
+              </a>
+            
+          </div>
+        </div>
+      
     
   </nav>
+
+  <div class="header-tools">
+    <button class="icon-button js-search-open" type="button" aria-label="搜索文章">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-search"></use></svg>
+
+    </button>
+    <div class="accent-picker">
+      <button class="icon-button accent-toggle" type="button" aria-label="选择主题色" title="选择主题色" aria-haspopup="true" aria-expanded="false" aria-controls="accent-menu">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-palette"></use></svg>
+
+      </button>
+      <div class="accent-menu" id="accent-menu" role="menu" aria-label="主题色">
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="橙色" aria-checked="false" data-accent-option="orange">
+          <span class="accent-swatch accent-swatch--orange" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="紫色" aria-checked="false" data-accent-option="purple">
+          <span class="accent-swatch accent-swatch--purple" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="樱花粉" aria-checked="false" data-accent-option="sakura">
+          <span class="accent-swatch accent-swatch--sakura" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="蓝色" aria-checked="false" data-accent-option="blue">
+          <span class="accent-swatch accent-swatch--blue" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="粉色" aria-checked="false" data-accent-option="pink">
+          <span class="accent-swatch accent-swatch--pink" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="绿色" aria-checked="false" data-accent-option="green">
+          <span class="accent-swatch accent-swatch--green" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="accent-option" role="menuitemradio" aria-label="黑色" aria-checked="false" data-accent-option="black">
+          <span class="accent-swatch accent-swatch--black" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="切换颜色模式">
+      <span class="theme-icon theme-icon--sun">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-sun"></use></svg>
+</span>
+      <span class="theme-icon theme-icon--moon">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-moon"></use></svg>
+</span>
+    </button>
+  </div>
 </header>
 
-      <main class="site-main">
-        <article class="article">
-  <header class="article-hero">
-    <a class="article-back" href="/">返回首页</a>
+
+  
+  <main class="paper-shell paper-shell--article">
+    
+
+<aside id="paper-sidebar-drawer" class="paper-sidebar paper-sidebar--right" aria-label="侧边栏">
+  <div class="drawer-toolbar" aria-label="侧边栏工具">
+    <div class="drawer-accent-options" role="group" aria-label="主题色">
+      <button type="button" class="accent-option" aria-label="橙色" aria-pressed="false" data-accent-option="orange">
+        <span class="accent-swatch accent-swatch--orange" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="紫色" aria-pressed="false" data-accent-option="purple">
+        <span class="accent-swatch accent-swatch--purple" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="樱花粉" aria-pressed="false" data-accent-option="sakura">
+        <span class="accent-swatch accent-swatch--sakura" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="蓝色" aria-pressed="false" data-accent-option="blue">
+        <span class="accent-swatch accent-swatch--blue" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="粉色" aria-pressed="false" data-accent-option="pink">
+        <span class="accent-swatch accent-swatch--pink" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="绿色" aria-pressed="false" data-accent-option="green">
+        <span class="accent-swatch accent-swatch--green" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="accent-option" aria-label="黑色" aria-pressed="false" data-accent-option="black">
+        <span class="accent-swatch accent-swatch--black" aria-hidden="true"></span>
+      </button>
+    </div>
+    <button class="icon-button drawer-close js-sidebar-close" type="button" aria-label="关闭侧边栏">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-x"></use></svg>
+
+    </button>
+  </div>
+
+  <section class="side-card nav-card">
+    <nav class="site-nav-drawer" aria-label="移动端导航">
+      
+        
+          <a class="" href="/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-house"></use></svg>
+
+            <span>首页</span>
+          </a>
+        
+      
+        
+          <a class="" href="/friends/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-link"></use></svg>
+
+            <span>友链</span>
+          </a>
+        
+      
+        
+          <a class="" href="/about/">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-user"></use></svg>
+
+            <span>关于</span>
+          </a>
+        
+      
+        
+          <div class="drawer-nav-group">
+            <button class="drawer-nav-parent" type="button" aria-expanded="false">
+              
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-folder"></use></svg>
+
+              <span>文章</span>
+            </button>
+            <div class="drawer-nav-children">
+              
+                <a class="" href="/categories/">
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-folder"></use></svg>
+
+                  <span>分类</span>
+                </a>
+              
+                <a class="" href="/tags/">
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-tag"></use></svg>
+
+                  <span>标签</span>
+                </a>
+              
+                <a class="" href="/archives/">
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-archive"></use></svg>
+
+                  <span>归档</span>
+                </a>
+              
+            </div>
+          </div>
+        
+      
+    </nav>
+  </section>
+
+  <section class="side-card profile-card">
+    
+      <div class="avatar avatar--image">
+        <img src="/images/yanjing.gif" alt="hybpjx" loading="lazy" referrerpolicy="no-referrer">
+      </div>
+    
+    <h3>hybpjx</h3>
+    <p class="profile-role">日常记录</p>
+    <p>一个帅哥罢了</p>
+    
+      <div class="site-info" aria-label="站点信息">
+        
+          
+            <a class="site-info__item" href="/archives/">
+              <strong>80</strong>
+              <span>文章</span>
+            </a>
+          
+        
+          
+            <a class="site-info__item" href="/categories/">
+              <strong>12</strong>
+              <span>分类</span>
+            </a>
+          
+        
+          
+            <a class="site-info__item" href="/tags/">
+              <strong>21</strong>
+              <span>标签</span>
+            </a>
+          
+        
+      </div>
+    
+    <div class="socials">
+      
+        <a href="https://github.com/hybpjx" target="_blank" rel="noopener" aria-label="GitHub" data-tooltip="GitHub">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-github flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-github"></use></svg>
+
+          
+        </a>
+      
+        <a href="https://twitter.com/vicnilas" target="_blank" rel="noopener" aria-label="Twitter" data-tooltip="Twitter">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" fill="currentColor" class="lucide lucide-twitter flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-twitter"></use></svg>
+
+          
+        </a>
+      
+        <a href="mailto:hybpjx@gmail.com" target="_blank" rel="noopener" aria-label="Email" data-tooltip="Email">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-mail"></use></svg>
+
+          
+        </a>
+      
+        <a href="https://x.com/vicnilas" target="_blank" rel="noopener" aria-label="X" data-tooltip="X">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" fill="currentColor" class="lucide lucide-x-twitter flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-x-twitter"></use></svg>
+
+          
+        </a>
+      
+        <a href="https://youtube.com/@hybpjx" target="_blank" rel="noopener" aria-label="YouTube" data-tooltip="YouTube">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 576 512" fill="currentColor" class="lucide lucide-youtube flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-youtube"></use></svg>
+
+          
+        </a>
+      
+        <a href="https://space.bilibili.com/481309876" target="_blank" rel="noopener" aria-label="Bilibili" data-tooltip="Bilibili">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" fill="currentColor" class="lucide lucide-bilibili flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-bilibili"></use></svg>
+
+          
+        </a>
+      
+        <a href="https://weibo.com/u/5868422298" target="_blank" rel="noopener" aria-label="Weibo" data-tooltip="Weibo">
+          
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" fill="currentColor" class="lucide lucide-weibo flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-weibo"></use></svg>
+
+          
+        </a>
+      
+      
+        
+        
+        <a href="/atom.xml" aria-label="RSS feed" data-tooltip="RSS feed">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rss flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-rss"></use></svg>
+
+        </a>
+      
+    </div>
+  </section>
+
+  
+    <section class="side-card brand-link-card" aria-label="站点链接">
+      
+        <div class="brand-link-group">
+          <div class="brand-link-title">Live DEMO</div>
+          <div class="brand-link-list">
+            
+              <a href="https://hybpjx.cn" target="_blank" rel="noopener noreferrer">
+                
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-leaf"></use></svg>
+
+                
+                <span>hybpjx&#39;s Blogs</span>
+              </a>
+            
+              <a href="https://zichliang.top" target="_blank" rel="noopener noreferrer">
+                
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-book"></use></svg>
+
+                
+                <span>collect</span>
+              </a>
+            
+          </div>
+        </div>
+      
+        <div class="brand-link-group">
+          <div class="brand-link-title">Project</div>
+          <div class="brand-link-list">
+            
+              <a href="https://github.com/hybpjx" target="_blank" rel="noopener noreferrer">
+                
+                  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-github flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-github"></use></svg>
+
+                
+                <span>github</span>
+              </a>
+            
+          </div>
+        </div>
+      
+    </section>
+  
+
+  
+    <div class="post-sticky-stack">
+      <section class="side-card toc-card">
+        <header class="toc-card__head">
+          <h2>
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-table-of-contents flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-table-of-contents"></use></svg>
+文章目录</h2>
+          <button type="button" class="toc-toggle-all" data-action="toggle-toc" aria-pressed="false" aria-label="展开全部目录" title="展开全部目录">
+            
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-chevron-down"></use></svg>
+
+          </button>
+        </header>
+        <div class="toc-content">
+          
+            
+          
+        </div>
+      </section>
+      
+
+
+    </div>
+  
+
+  
+
+</aside>
+
+    <section class="paper-main">
+      
+
+<div class="article-tape-wrap">
+<span class="tape tape--top-right" aria-hidden="true"></span>
+<article class="article-paper">
+  
+  <header class="article-header">
+    
+      <a class="label-pill" href="/categories/AST%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-folder"></use></svg>
+
+        AST学习日记
+      </a>
+    
     <h1>AST_通用插件</h1>
-    <div class="article-meta">
-      <time datetime="2025-10-10T10:16:29.000Z">2025-10-10</time>
+    <div class="meta-line meta-line--article">
+      <span class="meta-date">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-calendar"></use></svg>
+2025-10-10</span>
       
-        <span><a class="category-link" href="/categories/AST%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/">AST学习日记</a></span>
-      
-      
-        <span><a class="tag-span-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></span>
+        <span class="meta-tags">
+          
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-tag"></use></svg>
+
+          <a class="meta-tag-link" href="/tags/JavaScript/">#JavaScript</a>
+        </span>
       
     </div>
   </header>
 
   
-  <div class="article-layout">
-    <div class="article-body" id="hybpjxBG_post_body">
-      <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="哦~这个密码无效。请检查后再试一次。" data-whm="哎呀，这些解密的内容可能已被更改，但你仍然可以查看。">
+
+
+  <div class="article-content">
+    <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
   <script id="hbeData" type="hbeData" data-hmacdigest="73666b37e4014140409c0350e3748c44f9ff63a2a69ddb5b0afad37193f627a5">83e5631915b29311d4c3e64518d9116cd82725197ef8dd179ab4fdc2110a6cc3c475c4cdd90a557dcbd238828277a19caad800c3c8caef9ed15a913ac60147188debec377d0aca8d88b3939127242825092021788d72ea79684e3f7d89726eef18d12c52de1e5ea905c9c27eaefc146a61711e481a660e6b1f54d000fa410e2457d4f96b401361772ef8be7df40945bf3bed6f8e17fd2ad405403f9e3674e47941aac44b1a50c56da3955595168d18f111e77d15c336ef590317d71c36b5dce9c443ee4d1eea0f03d457e28e45eda2793a3c53649912283e22be79b292e6a03f0ea278a714fce14650eba40d5feac9451fe7a77d36cc292649ee62b21beb3066269573a8c1b99deb914de8678699eb19ee6366573a348ccbcf03c65f19b8cdcda6bab90efc362e034156c5c2aac607ea2dd9c1ccba02104547dbf1af546e69f9aefdbef511b49ba5178d5b9b93c21ed2715cdfe3404347b5cc36a1a30c705b761cfeff698a0f1ec43b5b2afc2b5b45a2ee7948556b1c52d1ecb7fe13d8190ff6dd5daf3cac02398e0b8b49c15311ef960281b8ad8397629a2c15e96c0267ea6cc86bd4d2097aaaac41d1bcf804314ff1a86213412c3ffb8250370361d19e578a544e56024626e59bed411bc2bea293de7a135452d5f7669ba2f5a3571eef010ad82cf2e436bfcc91e75c8921d22a6886feff4e3139c23438145286a151ee1246e63a51a4f42fbd2e3a124e03e678a54856bbf544d80ed94d42d6aabc7e21bec9bd87309e6a0a51bfe6ad1c847298a016c9320d96ca440443281c5a3e07153b0cf32e153a76759ef1880c3ff3647e9b0649cbddc77d9d7ef70dfcd94e6338ee6a0a2a342943c4791ba4da92d3f4f7d0b947c9059b9cf0bbdd9ea92806436e8618c7334b50a5cf8a97c20168c4406322b4a70234d60eeee6da74b6b4b4d06f2ae6f0805382f2ecdd1cc6b47964e03f63e100c0f324e35f7d4460fbe9784b318ac93e80c4e578eeb6e133a58422da821360ad63da2d283c669d863dbc6bf7371d3f4db609b2bf8ef6b08cc8315b771e5bdfe601c584a595a75610a072452e729558a598a626170d3e313357a27fac9071939c5d1be2453be9c81a76e9acaeb1d1925a8d2f02deeb19b0beda5a90baef8d4cb09ce3c7242ad4139c26855295f3eb8967ede2e0e54815356f7aa007e2fb5c438e8e4e08e5ceb3b55f82154de487a198cbd1bede17085f24e9db852ef03300584b29b14ae300daf12c76e9174fa48f0dd049a9cad6686de5d38413bbd9aab67bc6b79685edaf7e01ee2c836d668159a85c3883cb2beac48c26e890b710e2f0627a35e095478aab4a59c02a8e44186e3ddaad2e7addab504b5d7da124b1994951bc84f06000388fa73c75b0abd901ca4a925ae731754f6f4e18a496f9cc845dfdd11ac8ba3f0906a7c20a31a373048854b1c89cad822cf4c9a2ebd75ee0df7ef6ca9fda620f2c8d31fa91ca577828b388bf7dcdbe9c66e28a66eeb479e2958971e20799bfe669f2041056852ea193cfd8e3b237d392205a75453c3f30c2274bb960f2e997f2bf1a2cf2ec51c95f5d0d7a14c48ed13d2aeb3a493dd638dda6fbfd346feb547b53315b1eef7a513c23d8c0be166a4347fbec129c8045df850feaae1e31e89b7d280ffee9ac268665ecfdc48a06dbd72a6b189d0c1531055afb04702fd869d9321883b00ed66c2e9a56c0d668a32eb1374cd2fb8ae344dc6d3667138c7c53409178cae0ddca174336a0969e09c9325c1b83440da299d2ba62ab18564a4089a4bc2a558e0e8b2f388a9b0a4d71902e308247799dce22dbeed1995ffd537abe5b7cfeba0e337d0c3d3f9ce2a66e2639e89c93ac220724f93d7599c37dd73cbc8296adc272d2980604f51dadf3a29892b4361ed4e9ee51e2d9c26797de9c0652c3eb28022d67699d58bf25874924c4c1eb8065ee440e49d5d8809dc9dbc67adb92b48c3ce2683faaa92f33cfd3f553fa4b9d3172bce7eb5a381b6175a739ab5523924326143e6e043ab61242943b89a8ede32519ed1b5a99ed7126aeea81c023838368a508ccebbb40cda3a2f7b11e04758a3ab5c6a3f563759764aab3530aaa47c426c00fac81b6b62d837e1de482bf3fdd3b41449527ed0cda83b5b1bbf35b3a5ec1e2c60216693a6f1c901efff38f183f59e9c422ebab69c8859a049de39b62273660c1d322127a3329f18190f75a9135d29f8a6cd10664c59e6ba030158967295cf1280dc872bdb91310d8e544e9a4b6e7f60995b429166923d7ee8f953b2793190c37c70fbe5270d5f02eb006cfc03a3e65bc23e6fd363899af508bcb3ca24a98f52069e4d894b097b614b6f9eecc1ca5f096783010d830671dc727fa9199b8a4190ab67c1368071aaba8088cdeb15f11e3acc9d31c9f8b7b5d65d881596e6be38ee4a7769252aa9f373c8f492d11cf6fe67b75300e8c37c46c03a08d447a8141897e7d7c1ec8227942e1dad633bab85ce9a7e93b62ab92aa2e019da09f1330e913bdaa3c017e644b7706278b7d6a0cb50cfed12cf581c14b417899e695d878471045938f128e3d7515bc929429e0e2d96480e2140ed00f02610facf966ff006f8e2f047dba247fee8ba276291889512e4bc6798baaa9ad772154ebd2f9c27dec2112c80f3a3a106f5f034d3a320f6c783a3260546be8c34c84bc39f53c9602e141ae248975927797b86bf96884b1a75c2f2e533d937256cf78e06f7a43a5ea4a26cf7e4fd79e18ecfd66b1a84bf9b4725ed6589ca1c0938cea80634273933f27b473004f7b20ab45d007ab50a519488853aba41b81ae6d29adac52386ae06609bf53a3ebc89f63379a75606af11a47e1e0f2a0e46fd92e18063df32aed90b7872c1ea2cc10d2bafa78769c96fe6a44d56e93121df1ab273874ec218231adbc6b02014771840c634daf68f759fe93d5b83c658d8dcb7446e658a02781c06038f45d24d5511b41f633da1aca0312a58abad28791cfbed818f7e5d178bf18fd321e0e0a869a9c196e6b44fa7bd3e7954fb7424b8608ca7c7642ced8025d53988f04a993741fb7f861ce9c360efa2bf24499e767d4f1d97aafc9740ed66276a29790ce12a017fc106fc55740210c45f3506f263f3e583e29db99b8e10c986300304cc00956eb05b5c3eb85d9994f2d6f809460c1806f4ec41f72ac37894e8d607dff2e40622fb03d043a3ad4101f2b7a3b00c11d64232716c3894208bb943b2e9d0bcfa478f9442072b6dc68b3b8153d6cfeb77fcbd5c703980fccdf40815b53a96d0c018b4b113cd2b1527c1a94f6c3c7ddacb07070ea37be55f075e85833d54526d0b3c2e0194f94656eead4c1b811c5b2767277ef08ab279d66f2967f4d0d0a35f709e89d729920f0f4f009fd4ac35e0d24e39e158ed56c5cc4fe9b7b0fdc06f9d4a2e255e3b2c7ac729fbf16be8bec26e0bd80dc4999a25833334d46df72ee15daf5c317ed033b86ee58d5fba16f1f5202a930560d399f01cc29c816c397746b79035cb3f1be5938db37f17491a5548c240560e4aa754c437d87e852647c3e5e27be390528ea9e9e990d6890922912ad16dd7a3c1db1ba77a365ffe0ed906fecd0e99f70b22347866d4e1457674abc928709fad4246f7a7e3e33874d673f777bfb4ce7a36c34519321024f71d73c14c6040686660430d5029be503ca1dede5a06662f7317d945a7bcf2cee066468fe49eed88b50a52ff467d43d9687f24345737994db7cae0408d633cd7650a19fefb11ef36d1029826241a9ad563127eb4697a498c563be4200e4bfb3429850f01e035c28d4102bcb5543be1016f00ecbfc9203e77624c21369eb7feb84de4a28f98ff57c3798e8dde57d597d652c25fd676fa91127dc4c76749245940fa25d8fa0413e2836ff1122fc9ed428c64f4a93e47a3c3feb5a101e4b1ad6ed64815a80c60e6385c3d0fcb5e0650ee080a06ab6de7122e09b3ed686a9d11515f5a6168df493280a5bfa702fbe92839c533f34549c70d7bbdd1394f1571afe5cb619872e10608fe4fa54866a83946082627d4ab8c43ec4c55b9367c47ae060c99616c76063ffa7227ea88c77b1e1b0ea273d18c05bc7fb46cbc25246c8e1cb499a62a1705402affd4514f6ea31ae246ccbb484f9127e82bf7431ca5deb0589a03632acf71ddbb8d5e4c2c9ecde87877dad90e52e17fe4761cf968ed7a6b01ee9acb7f3c4763abf781fa49b19729d43f70ae2e368768c3b1e1b3bd9816d87ebebe7ef13667170c9bd175de839ecab48f89c427655daee41382983e99533481d57701acfe53c30b67bc16dfeaf0b1d589df84a8dc6f4cd2a3dd05a00f2528e2bf888d0cc6ed9959dd5d806bd9e9e53fcaff36afe53666fd7ef9c5d5a59cb992fa3fcb11662a30864b5cfb691d2d333e341861333f8a190525a71375b00a14c004361d576ebbd4a021269a25f52bdc147db0dcae6cb686f2b7330f7295674cfdea903f929ec9b3d64294ac072c19162287473e17ee57b2c8a6a356e93016ba75b512174e05ff2ea360dce30cdf299d1fd3580a1ff69cd6657f825f96fcc562df2e58bd39019d511b553ea1846dd18a00a0f275483ae1b40ce443df693358547b769d0abe96c524bc0d8c5eacbf0df2b1278e758d8eb0112286368bc2b41f6f1f74a750b284c5740a4d76eb643d2835df4c2304bb5774801626ef54e1df7326cf659e7029ab1ca8da53adb4c3aa57bafb7e42e71e82bdbcaeb38c7a2c68f0b81a99501a01ab7e23f2b49143bc0fc7a2c7a2237fa273cfea61fe0bf93819d689723929bc845e622c98fa438e45c0b371b2650902306be532e33a9904fbb9de58827172b5acdcd01cd096506faa2c0c0de051d5e62155ed0359b4f2b9b646e6a231b428e825ff041f9acae0bc716d93d5ba58317258f9ee50e7d776467f1c566e94d4c7b04a96d05a4b24774c907bae335b6b73a2dd4fcfab08aa063d0723fef0526480acdf7d194d9286d749fd24079edb93f8ce7fa9dde83c08641305f247cacad1e3d7950f3b98af3574eab5a11e77607fbc21c8bd0e93a0c078730e7e7aab5f85fab0022a250c7e25389796676a599c8a4ac3a09995b82dbef474a29e8d908327ba087aae99fb1daa47267c43f3ea8eb37d6cd34a768c43cac4765ce2e02999cf5d2c0034295337c87c2fd67048dedae506fcb529a147d322568475463d4d0b14d31081543c142e2f3c79c0b7159f55149bfe9bcaa934d25ca454c6757d2de104aae89892385ea41775fd00e44814934ee4aee0dedc9b4995df2dd5eced35099d56a0cb59f88d1d9b76ad51c4dff419aaa77d76ae28e78712ca8d7adbf09732c91f68f0120bbb25695280fec8514df86186dc7ea6fd49aadabf5b956e38e3bf1c2bacbc48ef1c6ee964963a0c7aafaba2b9252c86ad306d2e2c9fdde1b4482c08f0282189e182e872559d6eb3fbd4f5a82781bf33a3ed0c2153c554b6548e2dc5b26e2946d7844504b3e2c22d5a1fe3870ce74142e04d10b90a06d2586a486e25ae9150d0ee5ef7637d5e67cc98fbebef24ca565531ddb6d74f76c62609c75282f7ace8abc79ebb409ebb12dcbd62b3a95ac806afd21ca1c2dc6a6a2d1f476d1485c73146ca212fe45355f45e8081787a4c83cc0fddc4723b480e476873e294778c9928643b60981f2f856ec71b07ee41c38dbc6b47c58cbc7211a352329993dece25c4a47ab2ad6f923fcf7cdb79d207a12c6765bd7c5ad93ed6ab094d6dd3f302506b6c3c09722583b93c12f411d91e962d7f69a9cbce3e852b2bd5482ea9eee86104348d992b53d0874677c1285a03fced7cfe36fc05bea4eef6d2b9192eaddd49e74c42142c3983375205dcf43fa8f83220d4879319e9401524c80f2be0538772d6d83e47227aa5bf25026f984922f4d6242d4e5e591eca33d2a7f0a8d38b6f337911c6af282219d7338ee32b829c87ccab8d8c4869a1bb493243d3b5ca05d7e8dc13440f83a102c8296bfbd139efd9e6fc867a59a481f721eca93e62f32170b0fafee1d5631a695606289ae1e672643429c9ce3f80c92a5fd239c29e8f724dae9594eb4aa8ff635c0acb17b7b0e81e1366bd44a45c29e2f8bcccff47b269858f2f513ec77ca8f61943b3a575172cfd6782dbab6b64fb9f0a713d001c997ab985d8715aa87ca2b90aec4cc41c88227c5c78e0369f1b84878d0d1c40dee114636851e156545c4774bc6d8b3c9dceea95025115e0487a0a0a3dd5409bae7d1cba1c5b13d21be78007f068bb5a2f597c53a54a30ebff7c22a313149ffaddf5af90aeb432547975e833566c0cf9034b57297525ff8932dd12ad3f25a2bcc120c5e510fa98385c8721713c6bbc98f54c1e265669f54e41c03db3a44cda02453a7d7b692b666c6b207f3e68cbbdc980f9f375a66768a6ca64c9bfe7398c3d6ee0b483e8dc1590ff2b2d50cb02d3bd23ebb1745e13f43efaf9eb9ac0709ed9cf65ed2c82a56d0efd668ee221cf59b415b40487255f2af7f3083ccf3bd032e30020104a784618454969b95c15cddb76668efe843d6b3de5e01b0ef2c89c0320fd247f4173923bd03ea7d0919285ef254f3c9fb4be55d6a90fac846b338ad688671f0fba5d0b484e937030170a82e0ca0ee327d2d6c5c6dd630b14eef8aa883f60360fd5a6f720ac2f6efb05fc819c40d6e282991627bd8691ff072a99bd32db72de9bc7b0f09e2dd73510863245084dbc3425513a4fb5f4214cf65f144d8987d8798fd402e87c928ecb05f499cb7398ce76394c51fab9311a0ab0e71a1ee200c9ff164fb081abfe401a97be9e119469e684c4ccf3faf1470358a634744d9a668c3eeec116f235f0495657e2ebd8d4efb98395492ce96f4a71cc1c000b685363a3f6c0a6cd825558dfc5c92ce291929563131f064dfb11fa3dd102b67945dc3c69890fbf891a23479d703533177afb752dcacc1fd784ba51c685a9599bef045d863bac05e9c1e4fd5a2015804aa2ddf44f8dddf04e95428d8b0713c192fa163f68fb6fe04b66c65c6328627532bf1b7c06fc8de26a6c343e55832072c8624c86d546d1dfca6feed9f61b616fdb122fd2da1b0e4e97f51a907914dbc69a0f5783e1311a69fb0dc642f096b3b8dc0b29dcbd8d4e075af3d739d46355742b3769c62d5b8b7b548d3f316058fc9fa496e0261a493ea1359d743cd029541b77a20999f89e69a9a0b1fad83d16e86109c2c835d41dde74aa8fc9ffc2a24f5dbb88019682558670dfc4099fc417a763c721d0c073cd10e532c44f9166cb66ad72d1a79e32ebc1262ef07f516687a6654c241832f2d36415b4a2795e016f20904e9cb374c23871bd7eeeca6894565ae51f4097144ae9e65283ab5bb0293309327c6e3c71720a2aa0cba4ec78078d1bff553810cd4c5244789030c1c3bef6bac480ed6b6a6702b6122a98600926b0acad5ba000f36dbfe2f89bd6d0963c83d7a8bc662fa6e659c3a404e6f37af51df56c50aaac1f3cac0354f2bb9f7e7780d78c953783561df91bde3756bf0881a5e76425d6c0210b8a5ea6382b411a3d4f217d34e84610a2059a06e4cb3c3fd7da32603f0698c0186f3b2cb753933acfb30512e71ac8c1792121253fbc451cacbdf05522c13d9aab64bdf12286fb5633359671b1d500ebe140ff24fa98e4ad5b2be8f29be6c8cb26bfd6f4e382d851848ae89054471212ac4280edc2ea0e346e2ac4b5ca98c5fa71a741975449b00924b4ddc03967c313b7d1aac3f1942b9b038007481f1f2b8332e5ffe0df1f5e9a4c7cb041f869960ba1fee07b5932022e325fd60f66fdce6ce8d8fe5645be590af583067e3ce5258cee8df5bf36b55ef2720c56f4615f616c2d6dc2176cd48bfbddbe8c5276de519ebdfa59ceca7dc0df5d2fc41fb83e93ed11d8ab4ca60c5a6c31a68de0336df330eb934e667c760caf965352001c23d50d7ad10e1ad7ff2bde4841c23129cfc1639ba85769f99e0e7aa3a58ff7992ca0f1484edcce9d60c31a8ea2329adb32449107c9a6245e521a34a652ecdd8fc46e0fa3b9370ff432b30537e2f935f516235cba23884364a7b2989f7e0869124a2e170380492025d92b8666f69391a0f345073622ae0928830faa5d71c385a40c24d6d5b5e29ed566218dbbec1fb16ae543ee18ab29c9f0aa5c4bbf2d5c60d174ec5596ee08c84b34e6cd25a7dfb351c7c5260f834ee6414457fcce863f8a161f02f8c4aa09b7830f8f0948122c8f1d65f5476e8626e27af747189696bbb8957082341c9b2d0f84125cd226223de9048d587057a820ce1d50efb9c2b55c571788ca6e49a058a6dbc6dc2de724534dff46d3eecd94a22a619411c0383a3e833ad05fda844a88b53519a84464f0e9acfdfb28c863281748ccc651408641cd1fa567c86206417af6fce444430804d36d574b6b96d619f898b0352d0b7525d66431e65f331cf02863e0ffc57987faa7e315f1bcbdd8380e166cbbb263e25ae7eb3c76a8ebe7d351a3509306f7e25144368ffa0bb4011375b07da34a6d9cad6c7baef2aa6504c8cd0d5761fd33b5d5cc96d8f0fc96ab1e1d711250b96a830430b5833233b40deab4dcfdb9d04a27400ff2c2f69d8ac10fa83766c770652a55c164afb02062896d3eda4b1a521e2d8575710607aad5533e2d7b57e738427d3bb92f569704edd3c245a3587727dadd86f64facd385ca64118e59e3d4d94a181a0fb098746f48bfe31d0073b1a12f720026a173b57e1db6d5b1ab11eccb0a9e4c7013ab4a0f30e51a7f7fcb1b84181ed19c72f0cbfd57c7d46d87ef47520a5f974434384f1d4053113a036ad33705a39fd3cea07b49ff2f2c18e54f7b8afdad29a6f5c7a85a530065f42ed316ff27a6dbfeb8bd4111eee188be4dfd4c4540a4ab512946f00cc2fffe0ff4e724b3d3268669bba4507525d1ffe8a1c475b3d09c6a389d044823896440137b71f430f3a9c5b071a7b7e31ced416d01c8770410ad694524845330a140571e3a84d6df6d419760374016e3f6d06223cecc674c5d318f8c4c69b3b5ca9ad3d2889ab7c3134bca30c6c940d5d6f930e3b949f9b3540c0f614d795c3c52bb06014ca0bd36a262b7b90370057699ffadd4a1022c725cb79e192a3c5b4f86e9039b2f441b0f42e72e16889de34473c0f3d3655282cadb27bcc8659479f6a91707c36625bd2fe386d856be033692abcf4a0eef355009bec1478e371e6b3c3d5e2f8a038c23fbf43ade67a82e5bf0d5fc41e518a9b217daacae922e7d5dbca7f688beaddb9d1c2b63e0c5508792fb7cffd3c89a80851bc4b7cb4e78de50d4e007becdb1ce3228ea744dbf06a51db3634d0c548c45c004993424f83f9a95c6f52281b90203b4da81fd4a71c3cc5bd388c83c90c1082f5f0530dbcc6e408a7838486ae1ee549f3e70d8f25f3ba2daf3878220a7b47d4fc19b3f529f77664780925026b8251e156c1d7437a66bb818cb987e4351039974afde9ba85639b1ff22512d6bd235a1695a85deffd4596c7bf9c1a0aa17f689ea5e3f7640e283a732dfdbbb78947e8bcbe5f9ae3c7bbb714de9874d3b97c01718b0f4ebe453496c1ac9f7735b491962941ea8ecbce2d6b777afce487b9a79ec50ad91c78510a784d1a99e04c20f8e33c3bb49fac8649dd3c481765258b9bf5107bd6204d2078420f2de2f627326a60af02f5ccc22ae271735f4709a19a852b476e0df846aff263d89e25165ab2ffc44acd1062a9f2a7e08c52d99006abb2bc8ba6b5ad8deb9bb3ce0ff25ca23c0c49ff32236128f706972e1c2d2b49e7bfda899348e7ae398d53d3a01f75590be0e5d8c5c1d64c17f871fcaedf7e3135fc7840728e53878ea4f4f923c35bfa66b7d1ca6f3b03bd997eab9f7e89a35a64376f68b63373c9f95b5eb27e7b96525b508bf0c089bb3b98edc81e730ced2627d1bf60f73fb53bed47d44328d24f1d7aa1751a6f10a7ad88629edbdebdb62b1447623eba76240e381bb46c9bb0125d561d64883612f0ee894891d67bf796657a66baaa7d25602212296780a5bef9a0a553b8587f0c8a1dbfce99caf3ae73d312178bddc2bee4d35f3d52b847a7f6d435022175978b8ccd094b17f291fa7d32b676411d409932356e13ac08ee38610156844df8c1e176989b884e30b144197a01b4cfdd1f58027619d4063f41bbc7925b24b40c5b8f50fde1a25576d2b20fe8db30c3aff2632eec435c604596b9950e6449a9fe8f064be4cf9cdad35b16c6e51dc8dc1e704cdc03d0102df5fe8d8760c4a960f5ffb510b44f0fc830d2bf720f0364195a65949c71e44315a2e0bee77825982e89ed5956811f5608bf9b37bd956a9f13fe9a46fb2b48108b76e77bb679ff1a77a582f8ec1dd86f96be064df39185aeeeaf9b81165dd27fda7db595dc0b16486ef6fcb2ed00b5a066f228eb0b05db3a9c25102bee973089e9d7790269878cc05a31ce497d6ef92caf9d90585b08fccf12acc4142288172d334fa03ba0f77e30947f4c51254253b93ca65a0b9645a2be8b9a340509b66acaeab589e37a4ab847776035a675e7469fced4b6dfbc532e0eab5b8e6c91bdaa508d868c757a558ec417e68581e33b01ee82f856f5e03fe18a27350c2a1cdbb078fc73b3e68bd54b2a64a01f1ba7d57242e38b1f086cf0d9e3f8d177941e3b127e93a1652bb7a10214d620ba0033fc1b252b38e23b2b1f5744fe45fa250469eafdc2f0b0632cfab2679cad055dc9d3e37574a654f17114b62400e915e597e6331d88a7889468b8261e834158371e670903f1b15cb23938c358e353a5bde4dcfe3029428c5528f343b104bad8ab11256bfe67eb0c4297689880a3aa88d269e1efc9a6a46495c90d042915a6686b7c226d195f5fbb4e2c39b301c65f35e595e03cfc696f5bec88b297c0c046448f9e4c0c4c19feababc30f82de68d9f145eee3b3af6d6082933044c8ccd6ed8d26735cdbf6a15fe93ea4dfcaff9c9e86422114b5a2fefa62b0397ccd75f8cfac7d87ee6a790a5f5888237380425cf16162fd67518e794e5d4e429ccf4c7a88790c1adaa79e219f29fb1b7e43e15ccaf45363d492f126327c438d6960a00b1efbfcf4157c0f792bb69d882e1e49706467b204117f3215e212da80676549721a88b7c69b20e330e4c0c547a64d48928ddd2b6738aeb656c841dd65e67dd0f3b32af60f2bfda260d708aaf3a3af30ea5f33295cd2d83950c70b5e6ea467078670f8af6862c8a468e8aa7d95ef866392b13603483b2499d4cd03fcaec5509c056367824da107ea739557147ae0ceea4e43bbaf9ec239970130a586c9d0a441eb98a564365f3882010efa02665e4d7840e5c36644bb4785534f3b8e5d811ec85db753ea4b3decf145f1b7ffb9a8d5d0fbb14dfea61a92a05b2610ed925a4713ab4982417034f0431cba8694ead235e47b5d5c18008e866c9c2d026cb132a458793acac9e324841986c7081a776ba4355f4a698853645854141c1538ae14e7f31ef526d773c2b6489aa08788bb45152c01b19c2e4ad4ba1efbf3d17d0e7bc50287a5d0ebc1f0c463d7e824d8324d7b6b7698b64d785863f7ff39b21bfd827fe1e4624bb55e59fb4f1d2452dd7f45cb153db9b862a54b4bade9f1b7c79ccb33ee7225bf608996d0636a988c918129326ce5e00944d4c44c8a669167935a1e08c216a96aacf06826c5232ab460ad0ff3fc0a664f1deba0398b46a08c0d537d0a398cc63dc99c7caf107d0683074db53e59be35a21951a1e51ae2e503f9753e30744f85c74433d07b899785805a129621cfaa9018eca01a007e5862d7aba1bbe717172af021a55ab448c7c102ccc1b151ae69a64f5164766c5116d32005fd2885a2aa0bc118fb2f36206e68d8d1d05fdc583359454fca8defb181fcfb32abaaa4f9a088ff9ef5d0dee976c35ea87e7d90b9f5f3ef15900ad0f22199ee0f7b2c9c37ca6fba5db7b8654e435ee6fda1036702deb0799e94f59a18b0f4f038198b19851aa7844b1b9dbff18ec641159885a1b5b6f177f550cee7c5e394f4927e2b011108e55bc6d2fb9551651b12ea8357a1b9b6613883166eb858effd6e30de35bd0a6172de1caf7df42fa30a837a080ed76912e8e7bdb24f5fa15f9f3989d81fee6e2ec17e2c04452b3f901930778a64d9c4fd07612508121ce0fa35977380db9b773cae3a1da6faa5ed85682a72a9a8e4d5359f866a2c19c9b00a8557f3548c74e3c986b5af9f483f602f62c3862c65304e6959717705f55f59aef28b40dea0c6bd78b909bbd5f6eeb65abcceaa70ea973062aaeddfe0dc58263117f05c9ffc31eb4b2171e94cb85ce6c48d686a83cc996e2f9448de76172827599a5abd7eb8e5b2d178b0aa2e7bb4d697c8a1be9dc5e15787ad4484de8a2829af295e1b438bc4eeb7ca934c5a446f3eb423bf114b4eaf070615a789ac5a2be0b5f0515893ef0c1dc3aa0dfe4742a1626a68e9e2d8ffaf2a6b7dc0db16d45fd03d54cee07396ab2032a7cdd2739e8388fa09aae1d26581ea61671d0c01e83383fbe2eaf15c9db0ea8ee6649558e310e550275a054fd01074e5df2b58ac9d9a8ff869feac3ca721e8ed5363c5a3b0157d1d5f8e7546dbb60e708bd6339581b20e6e95c6d06e5b17a8733f477b59586afa8fa5bd2210e6f91fa28b60cd42fba6ae86a6e1e9af9db62576e1d8ef7cdb161e0ea3d5d94e50b767179f7cfabecee308e849ff01465e8f2142dd8472bb5aa2c8442f5c3801e99dddf042d9389040418b78efbe780fb998f533ebbc5fc82c6920583b1fee4c2d471ad434548c213379c01372d38fecae75b8b293faf57816771969b73d33fdec14106a185c43014c482ba4f7b1c194eb0d4c15b5fa2e18301ea742d7e752935ddaa03a56e4d5a3c8105049ee2ec6725e8c8d797ebbb0209a8c80825d51decaba6888e3f1b2973befda9fcafbad765000a032765bd31de1ab3bfa1dbca117470a9aafbdf849b920b79b878fcb6f9ef13fef7ed80cdaec3e98ecbeae2437acc33683a5253ab46c0d51a87dcc640dbd92f51cde123329dfe9891c6d7e0c7a3776574078e1bc71fc46be3def90aba306a6b06ece104837c53c30e986eb5f9b3b0ef67e751046dc630ba8f88c535be078fa2ba97bcc84e4ce2ff5ee06737d8faf947d2cf18b511f2ece29a5b8a6ffe6f7e693419e8e935f98e02b99a6a6eb88ea864419f7e1c4ef51d762a2664e80a3f7a94dbbbb783544e5d753c88ab7232558006571a4b45ed2e2fd73423789a5cdeaab6030ef3afac3bf7682cec8664ed8b44c65da30411f5976836c28c9ba521f02505bf74cfe1483f362049479c42f53130472a8b19404aae269bd7a335e388d1aa904d25a521fd120fc9cc8bede38fd40f33e0d4fd25b53e6df588c699ddac297c6f0da7c1825d6f533042777d010f11f906e74f1649db57dc83755a969403967bc336b34d2ab9408b7f38c0649b25efdb627f85d4008cc5fe0df62add4e1f2c8c4332872fee844267ffbe7d1816a2c50a8c1e1952e15d07cb06509a12b9c6d43b86bc4b62e79db28de53e8ee32796d589d1f5c424acc491b2c40f2ff96877890652ec7e0e307ff8423638b3cef6ba80b3c79d78e515482cf88618e38067e5821ba9c5fbef63a43eb682a6b6dcccd0f44d8cd59c93b660f9f9f99971c713aee0c14770ece6e0a4de6b8d85edee6f0590b69b0819c361f9317d5808711479fda3c256431a502bc2d6f2ac84c4b0bf1f70b0960d2b65791d4c080878e71197dc328355a5260c67a07f2707fe482e80e3c2a981d30dea50652fa7cd6a5c22e65f094e446a2154690055e4c638eeab95c9da5ea9b6ae46d5c99c98d33cff1e4debe34ebaa523941b392adb548912baa9cdd6a9961800046bb8e3db8d873ca868999cd589b732b8fce5ef049fb9c314d7b164378ab5a76576d3da14455aa8420354e95b856b85a33f5c2f314d5aa68434483605983e6bd9b4f4c8251495ed5c3d76a741da1acf975ea9cf41ab0d745ea512e70c398e00932aad2bc5b2fe72747a31c47b17adcc18e19f417e82d1b43f317b9d84b232884954be348ed9dfbcd3830dfae4e4aca9cff66ee215e201d1924a3a4072be92366486323c6e946141ecb2b71319f4aa95a843dfbd595ce6738c0fc88715560d1375018df34090498f390437505a295db540c8cdcb32c53c9ade1cb8a3c3b1f234997be968be4d0686c24474a524157deb11779a74c52d8af07fc3141168e2714e6d99ca5ae4e6f8bb6767cd903efe9e890b2e27cbee4e7cd49cfe0168010bbea558aadf94c01bd7f11559bd599e22873745ca3cd410ffd8ef3b633a0377c4f9604dc212ab43bfd3513cef57bc995b12f2a7c18bb16ad31eea5654c63ffff131e6ebc7ff487d76c5077f56300bb9a995ed3c44ee68b61bc757705042bc3eabfa40463f263c40bbb9ef156f7b1eca49f4d6d9d6fa9ebae4e1a7b30daaf7e763fcce2f13f388e474ab36b73aa5e68b330944b2316d1e01d828b90c91055becd84c14b3abb9a84454a04962dddd460ef231012cf8404e441cb024930d6cf8d65aee09fe737221d4384313268d3e99d93c68d9ab2b2a02065357529d82e7c9bf4e2033df80ca8c278336c17dd8982b12cbf978abb6132f7b306698bd7378635a131c7f4b72d8097d2c5a25fc5adc45db1ac20d2f8bddda34dd550769f24e479f5587fcb16bca1bf0c4441759fee1ad5d6456c31fa60a8fc7469e476a6af3a9bdac02fb7c9e9e3af3016e50f75faae3abfa9cef1711898b965fec08199c97b1cc8c390cb0b5449e45a7509034428fdcf809a4106e7e9f9c18d7ecb3073202ddd60cf5ba9b0a31964813fee2f2ffe176ce54e7540b149f802e40a4a484e1345c0d6b46f65b0f4a38ae82962ab95dc2bd639feb55e51ba4d599c7373e232c34913e4cc929723f85aebfa76fdb0259feb4ca132eae27115be852941cc6590c7ce9bfacfcffca84b77b6033f2026af78f49beda23c563897b718d64044b52b38af347d1731ad8c9e757dfbc9f047e9cd6ec611bef5e429d993b712899d549e950b630e73c2331062a6af0df90078dc34f588954cd3002765833e0732804fef4776e62d01e9b89556b9ea76eca0fdd60c6f2fe7e0ba2f2742125062217c25fc6ffad797295ccff641a8a1a16eaeda4b53bac7f62e5d64dadf45b47aa860174d07ab893592ed1e2922d2904e6d054f2552df9377b940724b2c30efde92119ba29abdb57c0bd01bb8b54e2d8d646c03c71dcef8246b3b324f783a44d73abeb879f7da07c9fcf11e12519804cb18e04df210aee84dbb8939a82458067e9c2f56d4220bdb099272e698b86332a27e5a3b96aaec36bc6442b24358ab5192e941d47053fa401de57e00c0923f38bab9fcf8c7cb8ffba95c668d4fa845d894f0e09ecedf479024fc8424034a95cb79fb195c58873038318aed8cb17511375bada5ecd44403f89930088b5079114abda028b9b74fa73d2dfbc1a92607f1a6e3cda711a73893431684cd228c3c73dfbc960ddb111cbb258e2cbe8637505c5aa6f7367fc956cb892aa653b3e20b58c40fc29bae0ab4aed9c173b20ab239083d13178fede772327a160afaec2ef15e69d867829c42adeedda0da62579da83ff7a7a0e225340f2b3e889c9276806715b20dcda86e43247f103ce4cc16e09179cc2d22008c06eae67fad496408dedaa86cf42886f5989a67a101358d057232fa205fba5324d94a27530cc2149cd171c57783d159050ad9dd16cc970513f661543658bcf9d7b46d2647bd6af571dbacbffb750f1931b9fe5671f9c9936bb1ef78bd131d8c85e3a441b41b9a9297bb958e063bfda3ff984ba297953f4ff157f766a384b7aaf3833f264fb21bbcd87e604ca076edf8fe26e650ad68ff35ee5f1c9d6f4a41a8f4e2cd12a5541b8bbec83b3c259c713a651b821420ce44876cdc6ee7afd4b5b23744aed07522c0e28b989d67853321910bc323ef5887a757f46bed0a87fb2a8df6b290c59debb21fa492cc76d8a7cc2f47f893381836ad3c37243b0e201135cb9e9b4121e57ee107d3024ef4a8669b4d1eaf5212e6708ebec895c618895c6926c4862af5b94356951dada6943c3364dae5f16007298fcf4452d2c9aba4ebcdf08ef921c00a0ff7a6670e3122461997dd35ded1e57f98a56ade8713d8b162255f4585618d927832aa5b2b0c8ea61d535f3a91df653031605293658efb1357c1f1fc6e7af944c62f12934544f21e34d8c7654ddc709f28a94975e286304c7325f75d74447f24be00a346840050725e4a02d19ad34f7c91fa1c0fe596e63a0263aa88472726f9ca0020ab967d455e5b3e682e71155b0e052b0bf7ae9f9056818d13381ab972c5ee8473a1dba1080613ded9f31d2a63be935983ed2a0b0a4da2a92601df7070b1f6b54a64cb743437f824d568f062f937c6f47f58f8ce4eb6dd7dac777760dc971d293a049456b58789ee01d59cbc2587f020314aaf83ded5a4906a9fe733d569534eb86d62f87d50cef6a7b259ed5728c769d549d71310343fadf33338843733345d9bc48f7659d3135f7a58dfc78a15a3a2cb73b43053a54f21bc15401366eac49ad5e134fe924d3ea86440ab4bf56267ba466674d544602bf9ff03b2b901486cdb3fb36b6a23f1c386507f41c8239489060a5d7f600605e9a7f6e4f60668efa15c4ad54b5b3a62fa19f29715c8fa3b9a8a1a7fea7724a4de5292add4bfb6d1a4aea56eccd22332654d360ba4ab9b72f688a788d0e264c9abe64712ca5ccde1cb81b626680512df62573dcd8b2691a9666cd314c832d1fce12bd8def92dd738c7b8a8b9ce31a0bdc6e98f3c2910a26ef95622dd489c24681d8fc7cca9672583bab40c3bc821d7375cd10ac2ec444394a36c68cfd1dfba8be2e6da7b6011311d4baa6313a6f38beaff96336f305940e450678f24295e0c626939028d05b64b4e0309d7dcffded158819bd55b59b3d3e8da4cf84af6dbdcd3786cc178b895b9c288530aa6ad04f8b735769b30c9b553257feddab067031aaad2e6255b814c9053dc07681b48c07a25f8e9654c0ef3cf23f938dd857e02d874faaabc9b35135dc59f0b0acebfa368861bab110ad742f4c2ce89cdd5df8b2b7456a4e3a04bd0966be6502ccae817833fcd869fa16670240ca2c79c949c260eac78620c8de28caf1a1a9580bf7ad4ba1f6845b04f682c1d97a1666a1c467efd6a95259bbdcd039778986ffa134c1f6878ac7b5cea5dfe5763ccd9ee1fd2bcdbae23a0ac56d374a7b9255bedeb7f58c7c5917fc4a5dad38666be2fbdcf759613c577d6355ea42dbd072801c819c7131a176d36ea4e8f5068ffd3416e0914f369341b957318eb822ab47dd48d2585281cb18ccf71fc1e76c6582ee6ed397591bfd6652890cc78093b9fd346bd2eb7657b5dfd28030c55ef619b368aa2b8ce4f378169ec534fe5053a931825c5f460f64c8e192e225537d3a2357ce63ff3f32d316d663292d6a6ff0a8684d097ae1a81eee6d7562509dbbec8ebde6234e277bff9811cad6aa21f8b7fa61cb140d7a579d97a97fe601e5cbd4511a1c3d9e5654db0c3dea0904e56b2d293712eecfc25131e70f4e839308d90bfb502ed6569626607d539e3af78fd3c802d01bb8ca44ffe79161a349cd073854423063fffcf684132df6e1e51ad49bd39e751575987b7d2e87844708cc76ee1be6ab00adc94a139bbc64c2a0dc3835d3be5c4a3fc83e60073f3d402ba2f9131ae52de84248fc751f34d9eee25f7915d39359683caba02b3d289feca568a43a15bc67baba9291750791b28fa192b86ecee659e79d311533405165b2319dc8d401e5a5614ab8f3c6fdaa2949a984406ce2d23c0d5a6080aaf78eb5a6723fdd6798ec08abc03630dfff0f403755079f091a387317d89cb2a8b331ee50f82fe21efc2cde464c579c394a57109f6cdc278f22ead11e38e84f0b26b673b84f3a070142850cb6cd342cdbdfabc9f41db6fc0c7ed2f7a50e38cc3f2a114f2987f760c2110812382b77c637ed74a0892f0e002ba44050d5f0b2fe9364553b28c399decb32a5aacc2df4ddaf393b09d4accae8643cea0676d27b3f214b5db5387de7b320469c417df299fc4af0c0dac8a2a5c5ba872c1c3fba519241450e059ff6822120c2726bb70ff1b174d42225965b6c45ab19893527d8fa30dd2d268300f8529fb691ded4543e44d57bbed90f76b6184c4ce9b9c920a7dd03aba4c7887354e8a014d843aa55d46bd5094f72b6c6dcaf5afbf427dbd847b820404c47e0481b8a13b6e4ba391fd72fde95da86757042605cf0aa14704dd27c26ed9d0880f6d82b6dc6a90b3a704042921920993d5a0c7d0691e587ef2af153e57d236b69d031d55425a14fb0e41380e797490e2d4d8cfe394444816954f0cd014a4772dd5df986e5de675fdee2bb54453204c8ec9a88fab2d725aead6d0cb33acd1b866d4c2ec5819b12ffd126ce5bd5a507ddfee950af5314d45aa8c206941</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-default">
       <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
       <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这篇文章已被作者加密，请输入密码</span>
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
       </label>
     </div>
   </div>
 </div>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
-    </div>
-    <aside class="article-toc is-empty">
-      <p class="eyebrow">目录</p>
-      <div class="article-toc__body"></div>
-    </aside>
   </div>
 
-  <nav class="article-neighbor">
+  <footer class="article-reactions">
+    <div class="reaction-group">
+      <button type="button" class="reaction reaction--comment" aria-label="跳转到评论区" data-action="scroll-to-comments">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-message-circle"></use></svg>
+
+      </button>
+      <span class="reaction-label">评论</span>
+      
+    </div>
+    <div class="reaction-group reaction-group--right">
+      
+      <button type="button" class="reaction reaction--share" aria-label="分享" data-action="share">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share-2 flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-share-2"></use></svg>
+
+      </button>
+      <span class="reaction-label">分享</span>
+    </div>
+  </footer>
+
+  
+
+
+  <nav class="article-actions">
     
-      <a href="/2025/10/10/Unidbg%E6%89%93DirectoryFileIO%E8%A1%A5%E4%B8%81/">
-        <span>上一篇</span>
-        <strong>Unidbg打DirectoryFileIO补丁</strong>
+      <a class="article-action article-action--prev" href="/2025/10/10/Unidbg%E6%89%93DirectoryFileIO%E8%A1%A5%E4%B8%81/">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-arrow-left"></use></svg>
+
+        <span class="action-label">上一篇</span>
+        <span class="action-title">Unidbg打DirectoryFileIO补丁</span>
       </a>
     
     
-      <a href="/2025/10/09/python-UV%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/">
-        <span>下一篇</span>
-        <strong>python-UV包管理工具安装</strong>
+      <a class="article-action article-action--next" href="/2025/10/09/python-UV%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/">
+        <span class="action-label">下一篇</span>
+        <span class="action-title">python-UV包管理工具安装</span>
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-arrow-right"></use></svg>
+
       </a>
     
   </nav>
 </article>
+</div>
+
+<button type="button" class="back-to-top" data-action="scroll-to-top" aria-label="返回顶部" hidden>
+  
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-arrow-up"></use></svg>
+
+</button>
 
 
-  <section class="comments-placeholder">
-    <div id="disqus_thread">
-      <noscript>comments.no_js</noscript>
+  <section class="related-paper">
+    <header class="related-paper__head">
+      <h2>
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-link"></use></svg>
+相关文章</h2>
+      <a class="related-paper__more" href="/archives/">
+        <span>查看更多</span>
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-arrow-right"></use></svg>
+
+      </a>
+    </header>
+    <div class="related-paper__grid">
+      
+        <a class="related-card" href="/2025/10/13/hybpjx-JS%E9%80%86%E5%90%91%E5%B8%B8%E7%94%A8%E8%84%9A%E6%9C%AC/">
+          <span class="related-card__thumb">
+            
+<div class="paper-thumb paper-thumb-0 paper-thumb--cover">
+  
+    <img class="paper-thumb__img" src="/images/cover/camera.webp" alt="" loading="lazy" referrerpolicy="no-referrer">
+  
+</div>
+
+          </span>
+          <span class="related-card__body">
+            <strong class="related-card__title">JS逆向常用脚本</strong>
+            <em class="related-card__date">2025-10-13</em>
+          </span>
+        </a>
+      
+        <a class="related-card" href="/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/">
+          <span class="related-card__thumb">
+            
+<div class="paper-thumb paper-thumb-1 paper-thumb--cover">
+  
+    <img class="paper-thumb__img" src="/images/cover/mountain.webp" alt="" loading="lazy" referrerpolicy="no-referrer">
+  
+</div>
+
+          </span>
+          <span class="related-card__body">
+            <strong class="related-card__title">JSVMP插桩快捷指令</strong>
+            <em class="related-card__date">2025-09-30</em>
+          </span>
+        </a>
+      
+        <a class="related-card" href="/2025/09/07/Wails-svelte%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/">
+          <span class="related-card__thumb">
+            
+<div class="paper-thumb paper-thumb-2 paper-thumb--cover">
+  
+    <img class="paper-thumb__img" src="/images/cover/notebook.webp" alt="" loading="lazy" referrerpolicy="no-referrer">
+  
+</div>
+
+          </span>
+          <span class="related-card__body">
+            <strong class="related-card__title">Wails+svelte开发入门</strong>
+            <em class="related-card__date">2025-09-07</em>
+          </span>
+        </a>
+      
+        <a class="related-card" href="/2025/08/26/%E8%A1%A5%E7%8E%AF%E5%A2%83%E5%A4%8D%E5%88%B6%E5%8E%9F%E5%9E%8B%E5%B1%9E%E6%80%A7%E8%84%9A%E6%9C%AC/">
+          <span class="related-card__thumb">
+            
+<div class="paper-thumb paper-thumb-0 paper-thumb--cover">
+  
+    <img class="paper-thumb__img" src="/images/cover/port.webp" alt="" loading="lazy" referrerpolicy="no-referrer">
+  
+</div>
+
+          </span>
+          <span class="related-card__body">
+            <strong class="related-card__title">补环境复制原型属性脚本</strong>
+            <em class="related-card__date">2025-08-26</em>
+          </span>
+        </a>
+      
     </div>
   </section>
 
 
+      
 
-      </main>
-      <footer class="site-footer">
-  <div>
-    <strong>始識’s 博客</strong>
-    <span>© 2026 hybpjx</span>
-  </div>
-  <div class="site-footer__links">
-    <a href="https://github.com/hybpjx" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.cnblogs.com/zichliang" target="_blank" rel="noopener">博客园</a>
-    <a href="http://zichliang.top/" target="_blank" rel="noopener">个人笔记</a>
-  </div>
-</footer>
-
-    </div>
-    
-  <div id="hybpjx-music-player" class="hybpjx-music" aria-label="音乐播放器"></div>
-
-
-    <script src="/js/hybpjxBG.js"></script>
-<script src="/js/hybpjxBG-search.js"></script>
-
-
-  <script>
-    var disqus_shortname = 'hybpjx-cn';
-    (function () {
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-  </script>
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+<section class="comments-section" aria-label="评论">
+  <header class="comments-section__head">
+    <h2>
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-message-circle"></use></svg>
+评论</h2>
+  </header>
+  <div id="tcomment"></div>
+</section>
 <script>
-  window.addEventListener('DOMContentLoaded', function () {
-    var container = document.getElementById('hybpjx-music-player');
-    if (!container || !window.APlayer) return;
-    new APlayer({
-      container: container,
-      fixed: false,
-      mini: false,
-      autoplay: false,
-      theme: '#008aff',
-      loop: 'all',
-      order: 'list',
-      preload: 'metadata',
-      volume: 0.55,
-      mutex: true,
-      audio: [{"name":"遗憾R&B","artist":"DinDin","url":"/music/%E9%81%97%E6%86%BER&B.mp3"},{"name":"暧昧合伙人","artist":"烟(许佳豪)","url":"/music/%E6%9A%A7%E6%98%A7%E5%90%88%E4%BC%99%E4%BA%BA.mp3"},{"name":"去年夏天","artist":"王大毛","url":"/music/%E5%8E%BB%E5%B9%B4%E5%A4%8F%E5%A4%A9.mp3"}]
-    });
+window.addEventListener('load', function () {
+  if (typeof twikoo === 'undefined') return;
+  twikoo.init({
+    envId: "https://hybpjx.netlify.app/.netlify/functions/twikoo",
+    el: '#tcomment'
   });
+});
 </script>
 
 
-  </body>
+    </section>
+    
+  </main>
+
+  <div class="sidebar-backdrop js-sidebar-close" aria-hidden="true"></div>
+
+  
+<footer class="site-footer">
+  <span class="site-footer__left">© 2026 By hybpjx</span>
+  
+    <span class="site-footer__right">
+      
+        <span class="site-footer__row"><span class="site-footer__powered-prefix">Powered by Theme</span> <a href="https://github.com/Homulilly/hexo-theme-flatpaper" target="_blank" rel="noopener">FlatPaper</a></span>
+      
+        <span class="site-footer__row"><a href="/terms">服务条款</a><span class="site-footer__separator"> · </span><a href="/privacy">隐私政策</a></span>
+      
+        <span class="site-footer__row"><a href="https://hexotag.nep.me/" target="_blank" rel="noopener">Flatpaper Tools</a></span>
+      
+    </span>
+  
+</footer>
+
+  
+<div class="search-panel" aria-hidden="true" data-index-url="/flatpaper-search.json">
+  <div class="search-backdrop js-search-close"></div>
+  <section class="search-dialog" role="dialog" aria-modal="true" aria-label="搜索文章">
+    <span class="tape tape--top-left" aria-hidden="true"></span>
+    <header class="search-head">
+      <h2><span class="green-dot"></span>搜索文章</h2>
+      <button class="icon-button js-search-close" type="button" aria-label="关闭搜索">
+        
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-x"></use></svg>
+
+      </button>
+    </header>
+    <label class="search-field">
+      
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-search"></use></svg>
+
+      <input id="flatpaper-search" class="search-input" type="search" placeholder="输入关键词，按 Esc 关闭" autocomplete="off">
+    </label>
+    <div class="search-results" data-empty="输入关键词后显示匹配的文章">
+      <p class="search-empty">输入关键词后显示匹配的文章</p>
+    </div>
+  </section>
+</div>
+
+  <script>
+  window.FLATPAPER_I18N = {"language":"zh-CN","common.posts":"文章","common.categories":"分类","common.tags":"标签","common.comments":"评论","common.share":"分享","common.page":"页面","common.archive":"归档","common.post_list":"文章列表","common.search_posts":"搜索文章","common.random_posts":"随机文章","common.reward":"赞赏","common.view_all":"查看全部","pagination.prev":"上一页","pagination.next":"下一页","pagination.post_pager":"文章分页","pagination.archive_pager":"归档分页","index.featured":"精选文章","index.pinned":"置顶","index.read_more":"阅读全文","index.previous_slide":"上一张","index.next_slide":"下一张","index.carousel_pagination":"轮播页码","index.carousel_slide":"第 %d 张","index.latest_posts":"最新文章","index.empty_posts":"还没有文章。创建第一篇文章后，这里会显示最新内容。","archive.title":"归档","archive.post_list":"文章列表","taxonomy.category_count":"%d 篇","taxonomy.empty_categories":"暂时还没有分类。","taxonomy.empty_tags":"暂时还没有标签。","links.label":"友链","links.title":"友情链接","links.empty_data":"暂未加载到友链数据。请确认 source/_data/links.yml 存在并已 hexo clean。","links.rss_label":"%s 的 RSS","friends_feed.label":"朋友圈","friends_feed.title":"友链朋友圈","friends_feed.loading":"正在加载友链动态…","friends_feed.missing_url":"暂未配置 all.json 地址。","friends_feed.load_failed":"友链动态加载失败，请稍后再试。","friends_feed.empty":"暂时没有抓取到友链文章。","friends_feed.load_more":"加载更多","friends_feed.updated_at":"更新于 %s","friends_feed.friend_count":"%d 位友邻","friends_feed.active_count":"%d 位活跃","friends_feed.article_count":"%d 篇文章","friends_feed.unknown_author":"未知站点","friends_feed.date_unknown":"时间未知","guestbook.label":"留言板","guestbook.title":"留言板","guestbook.loading":"正在铺开留言墙…","guestbook.missing_config":"留言墙需要评论系统：请在主题配置中设置 comments: twikoo（并填写 envId）或 comments: artalk（并填写 server）。","guestbook.load_failed":"留言加载失败，请稍后再试。","guestbook.empty":"墙上还空着，来贴第一张留言吧！","guestbook.load_more":"展开更多留言","guestbook.total_count":"共 %d 条留言","guestbook.latest_note":"墙上展示最新 %d 条","guestbook.jump_to_comment":"查看留言","guestbook.sort_time":"查看最新","guestbook.sort_random":"随机排序","guestbook.anonymous":"匿名访客","guestbook.write_hint":"在下方留言，刷新后就会贴到墙上","post.scroll_to_comments":"跳转到评论区","post.previous":"上一篇","post.next":"下一篇","post.no_previous":"没有更早的文章了","post.no_next":"已经是最新的一篇","post.back_to_top":"返回顶部","post.related_posts":"相关文章","post.view_more":"查看更多","not_found.label":"页面走丢了","not_found.title":"找不到这个页面","not_found.text":"这个地址可能已经移动、删除，或者从未存在。","not_found.home":"返回首页","not_found.search":"搜索文章","search.placeholder":"输入关键词，按 Esc 关闭","search.empty":"输入关键词后显示匹配的文章","search.loading":"正在加载搜索索引…","search.load_failed":"搜索索引加载失败，请重新打开搜索重试","search.no_result":"没有找到与 \"%s\" 相关的文章","search.close":"关闭搜索","code.copy":"复制代码","code.collapse":"折叠代码","code.expand":"展开代码","heading.anchor":"链接到此节: %s","head.tag":"标签：%s","head.category":"分类：%s","head.archive":"归档","head.archive_with_date":"归档：%s","head.page_number":"第 %d 页","navigation.primary":"主导航","navigation.mobile":"移动端导航","navigation.brand_home":"FlatPaper 首页","navigation.brand_menu":"打开站点导航","navigation.open_sidebar":"打开侧边栏","navigation.close_sidebar":"关闭侧边栏","navigation.sidebar":"侧边栏","navigation.sidebar_tools":"侧边栏工具","navigation.site_links":"站点链接","navigation.site_info":"站点信息","colors.choose_theme_color":"选择主题色","colors.theme_color":"主题色","colors.toggle_color_mode":"切换颜色模式","colors.green":"绿色","colors.purple":"紫色","colors.pink":"粉色","colors.sakura":"樱花粉","colors.blue":"蓝色","colors.orange":"橙色","colors.black":"黑色","profile.default_bio":"热爱生活，热爱代码，喜欢分享技术与生活中的点滴。","welcome.cta":"开始阅读","welcome.title":"欢迎来到 FlatPaper","welcome.text":"一个专注于内容与阅读体验的博客主题。","home_hero.label":"首页开屏","home_hero.enter":"开始阅读","home_hero.note":"今日","home_hero.default_subtitle":"日常记录","home_hero.nav_links":"开屏导航","home_hero.profile_links":"个人链接","home_hero.tools":"开屏工具","home_hero.shuffle_stickers":"打乱贴纸位置","home_hero.link":"链接","home_hero.sticker_image":"贴纸图片","home_hero.visit_confirm":"要访问 %s 吗？","home_hero.visit":"访问","home_hero.cancel":"取消","toc.title":"文章目录","toc.empty":"目录会根据文章标题自动生成。","toc.expand_all":"展开全部目录","toc.collapse_all":"收起全部目录","sidebar.hot_tags":"热门标签","sidebar.latest_posts":"最新文章"};
+  </script>
+  
+<script src="/js/main.js"></script>
+
+  
+</body>
 </html>
