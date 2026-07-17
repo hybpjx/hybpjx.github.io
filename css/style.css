@@ -2145,7 +2145,7 @@ body.has-home-hero.is-hero-active::before {
   line-height: 1;
   letter-spacing: 0;
   text-decoration: none;
-  background-image: var(--hero-cta-bg, url("/images/home/cta/webp/cta-bg-01.webp"));
+  background-image: var(--hero-cta-bg, url("/images/home/cta/webp/cta-bg-02.webp"));
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

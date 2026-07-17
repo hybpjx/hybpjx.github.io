@@ -1015,10 +1015,22 @@
       images = images.filter(function (image) {
         return typeof image === 'string' && image;
       });
-      if (images.length < 2) return;
+      if (!images.length) return;
+      // Prefer a different image than the one already painted server-side,
+      // so refresh feels random even when Math.random hits the same index.
+      var current = trigger.style.getPropertyValue('--hero-cta-bg').trim();
       var selected = images[Math.floor(Math.random() * images.length)];
+      if (images.length > 1) {
+        var guard = 0;
+        while (guard < 6) {
+          var candidate = 'url("' + selected.replace(/"/g, '\\"') + '")';
+          if (candidate !== current) break;
+          selected = images[Math.floor(Math.random() * images.length)];
+          guard += 1;
+        }
+      }
       var next = 'url("' + selected.replace(/"/g, '\\"') + '")';
-      if (trigger.style.getPropertyValue('--hero-cta-bg').trim() === next) return;
+      if (current === next) return;
       trigger.style.setProperty('--hero-cta-bg', next);
     }
 
