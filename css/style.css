@@ -2836,12 +2836,71 @@ body.has-home-hero.is-hero-active::before {
   gap: 18px;
 }
 .post-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 14px;
   color: inherit;
   text-decoration: none;
-  transition: transform 0.22s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.post-card--pinned {
+  border: 1px dashed var(--color-accent);
+  border-radius: 8px 6px 10px 7px;
+  background: linear-gradient(165deg, var(--color-accent-soft) 0%, rgba(255,253,246,0.55) 42%, transparent 72%);
+  box-shadow: 0 10px 22px rgba(var(--paper-shadow-rgb), 0.08);
+}
+.post-pin-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px 4px 8px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--color-accent-strong);
+  box-shadow: 0 6px 14px rgba(var(--paper-shadow-rgb), 0.18);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  pointer-events: none;
+  transform: rotate(-3deg);
+}
+.post-pin-badge em {
+  font-style: normal;
+}
+.post-pin-badge .flatpaper-icon,
+.post-pin-badge svg {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+}
+.post-card--pinned .post-thumb-link {
+/* Keep thumb clear of the floating badge */
+  position: relative;
+}
+.post-pin-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--color-accent-strong);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+  vertical-align: 1px;
+}
+.dark-mode .post-card--pinned {
+  background: linear-gradient(165deg, var(--color-accent-soft) 0%, rgba(35,39,50,0.45) 48%, transparent 78%);
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+}
+.dark-mode .post-pin-badge {
+  background: var(--color-accent);
+  color: #fff;
 }
 .post-card::after {
   content: "";
@@ -5436,6 +5495,103 @@ img.friends-feed-card__avatar {
     height: 40px;
   }
 }
+.album-page {
+  padding-bottom: 40px;
+}
+.album-subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.album-intro {
+  margin: 12px 0 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.album-intro > :first-child {
+  margin-top: 0;
+}
+.album-intro > :last-child {
+  margin-bottom: 0;
+}
+.album-empty {
+  margin: 28px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.album-grid {
+  column-count: 3;
+  column-gap: 14px;
+  margin-top: 22px;
+}
+.album-card {
+  position: relative;
+  display: block;
+  margin: 0 0 14px;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px dashed color-mix(in srgb, var(--line) 80%, transparent);
+  background: color-mix(in srgb, var(--paper-warm) 38%, transparent);
+  text-decoration: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 2px 3px 0 rgba(var(--paper-shadow-rgb), 0.06);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.album-card:hover,
+.album-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--color-accent) 45%, var(--line));
+  box-shadow: 3px 6px 0 rgba(var(--paper-shadow-rgb), 0.08), var(--soft-shadow);
+}
+.album-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.album-card__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+.album-card:hover .album-card__image {
+  transform: scale(1.02);
+  filter: brightness(1.02);
+}
+.album-card__caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 28px 14px 12px;
+  background: linear-gradient(180deg, rgba(28,24,18,0) 0%, rgba(28,24,18,0.62) 100%);
+  color: #fff;
+  pointer-events: none;
+}
+.album-card__caption h3 {
+  margin: 0 0 4px;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.album-card__caption p {
+  margin: 0;
+  color: rgba(255,255,255,0.86);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.dark-mode .album-card {
+  background: color-mix(in srgb, var(--paper-warm) 55%, transparent);
+  box-shadow: 2px 3px 0 rgba(0,0,0,0.18);
+}
+.dark-mode .album-card:hover,
+.dark-mode .album-card:focus-visible {
+  box-shadow: 3px 6px 0 rgba(0,0,0,0.22), var(--soft-shadow);
+}
 .article-paper.guestbook-page {
   padding-bottom: 64px;
 }
@@ -6753,6 +6909,10 @@ b) {
   font-size: 14px;
   transition: color 0.22s ease;
 }
+.archive-list--nested .archive-item {
+  grid-template-columns: 72px 1fr 16px;
+  padding: 12px 0;
+}
 .archive-item:last-child {
   border-bottom: 0;
 }
@@ -6781,6 +6941,102 @@ b) {
 }
 .dark-mode .archive-item:hover strong {
   color: var(--color-accent-muted);
+}
+.archive-timeline {
+  display: grid;
+  gap: 8px;
+}
+.archive-year,
+.archive-month {
+  border: 1px dashed color-mix(in srgb, var(--line) 65%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--paper-warm) 42%, transparent);
+  overflow: clip;
+}
+.archive-month {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--line) 45%, transparent);
+  border-radius: 10px;
+}
+.archive-year__body {
+  display: grid;
+  gap: 6px;
+  padding: 0 12px 12px;
+}
+.archive-month--root {
+  background: color-mix(in srgb, var(--paper-warm) 42%, transparent);
+  border-color: color-mix(in srgb, var(--line) 65%, transparent);
+}
+.archive-year__summary,
+.archive-month__summary {
+  display: grid;
+  grid-template-columns: 14px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background 0.18s ease;
+}
+.archive-month__summary {
+  padding: 10px 12px;
+}
+.archive-year__summary::-webkit-details-marker,
+.archive-month__summary::-webkit-details-marker {
+  display: none;
+}
+.archive-year__summary::marker,
+.archive-month__summary::marker {
+  content: "";
+}
+.archive-year__summary:hover,
+.archive-month__summary:hover {
+  background: rgba(0,0,0,0.02);
+}
+.dark-mode .archive-year__summary:hover,
+.dark-mode .archive-month__summary:hover {
+  background: rgba(255,255,255,0.03);
+}
+.archive-fold-chevron {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid color-mix(in srgb, var(--muted) 70%, transparent);
+  border-bottom: 1.5px solid color-mix(in srgb, var(--muted) 70%, transparent);
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  justify-self: center;
+}
+.archive-year[open] > .archive-year__summary .archive-fold-chevron,
+.archive-month[open] > .archive-month__summary .archive-fold-chevron {
+  transform: rotate(45deg);
+  border-color: color-mix(in srgb, var(--color-accent) 55%, var(--muted));
+}
+.archive-year__label {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+}
+.archive-month__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.archive-count {
+  font-size: 11px;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--muted) 85%, transparent);
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--line) 35%, transparent);
+  white-space: nowrap;
+}
+.archive-list--nested {
+  padding: 0 14px 4px 28px;
+}
+.archive-list--nested .archive-item:first-child {
+  border-top: 1px dashed color-mix(in srgb, var(--line) 55%, transparent);
 }
 .taxonomy-grid {
   display: flex;
@@ -7658,6 +7914,9 @@ body[data-code-theme="simple"] .article-content > pre::-webkit-scrollbar-thumb {
   background: rgba(0,0,0,0.55);
 }
 @media (max-width: 960px) {
+  .album-grid {
+    column-count: 2;
+  }
   .site-header,
   .paper-shell,
   .site-footer {
@@ -7977,6 +8236,13 @@ body[data-code-theme="simple"] .article-content > pre::-webkit-scrollbar-thumb {
   }
 }
 @media (max-width: 600px) {
+  .album-grid {
+    column-count: 1;
+    column-gap: 12px;
+  }
+  .album-card {
+    margin-bottom: 12px;
+  }
   .post-list {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -8133,8 +8399,18 @@ body[data-code-theme="simple"] .article-content > pre::-webkit-scrollbar-thumb {
   .archive-item {
     grid-template-columns: 1fr 14px;
   }
+  .archive-list--nested .archive-item {
+    grid-template-columns: 1fr 14px;
+  }
   .archive-item span {
     grid-column: 1/-1;
+  }
+  .archive-year__summary,
+  .archive-month__summary {
+    padding-inline: 14px;
+  }
+  .archive-list--nested {
+    padding: 0 12px 2px 18px;
   }
   .side-card,
   .welcome-card {

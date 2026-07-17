@@ -2146,6 +2146,7 @@
       if (typeof window.Fancybox !== 'undefined') {
         window.Fancybox.bind('[data-fancybox="gallery"]');
         window.Fancybox.bind('[data-fancybox="guestbook-wall"]');
+        window.Fancybox.bind('[data-fancybox="album"]');
       }
     });
   }
