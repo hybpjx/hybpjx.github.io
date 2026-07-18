@@ -5530,17 +5530,22 @@ img.friends-feed-card__avatar {
   font-size: 14px;
 }
 .album-grid {
-  column-count: 3;
-  column-gap: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
   margin-top: 22px;
+}
+.album-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 .album-card {
   position: relative;
   display: block;
-  margin: 0 0 14px;
-  break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
+  margin: 0;
   border-radius: 12px;
   overflow: hidden;
   border: 1px dashed color-mix(in srgb, var(--line) 80%, transparent);
@@ -7973,7 +7978,10 @@ body[data-code-theme="simple"] .article-content > pre::-webkit-scrollbar-thumb {
 }
 @media (max-width: 960px) {
   .album-grid {
-    column-count: 2;
+    gap: 12px;
+  }
+  .album-col {
+    gap: 12px;
   }
   .site-header,
   .paper-shell,
@@ -8299,11 +8307,10 @@ body[data-code-theme="simple"] .article-content > pre::-webkit-scrollbar-thumb {
 }
 @media (max-width: 600px) {
   .album-grid {
-    column-count: 1;
-    column-gap: 12px;
+    gap: 12px;
   }
-  .album-card {
-    margin-bottom: 12px;
+  .album-col {
+    gap: 12px;
   }
   .post-list {
     grid-template-columns: minmax(0, 1fr);

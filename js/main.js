@@ -2164,6 +2164,8 @@
   }
 
   // ---- Album progressive load: first batch SSR, rest from flatpaper-album.json ----
+  // Cards sit in .album-col buckets (round-robin) so load order reads L→R while
+  // keeping a multi-column masonry look (not a flat equal-height CSS grid).
   function initAlbumProgressiveLoad() {
     var roots = document.querySelectorAll('[data-album-root]');
     if (!roots.length) return;
@@ -2172,6 +2174,13 @@
       return String(template || 'Showing {shown} / {total}')
         .replace(/\{shown\}/g, String(shown))
         .replace(/\{total\}/g, String(total));
+    }
+
+    function albumColCount() {
+      var w = window.innerWidth || document.documentElement.clientWidth || 1200;
+      if (w <= 600) return 1;
+      if (w <= 960) return 2;
+      return 3;
     }
 
     function rebindAlbumFancybox() {
@@ -2198,6 +2207,9 @@
       a.className = 'album-card';
       a.href = image;
       a.setAttribute('aria-label', label);
+      if (typeof opts.index === 'number') {
+        a.setAttribute('data-album-index', String(opts.index));
+      }
       if (opts.fancybox) {
         a.setAttribute('data-fancybox', 'album');
         if (caption) a.setAttribute('data-caption', caption);
@@ -2252,6 +2264,46 @@
       var loading = false;
       var done = shown >= totalHint;
       var io = null;
+      var colCount = albumColCount();
+
+      function ensureColumns(count) {
+        var cols = grid.querySelectorAll('[data-album-col]');
+        if (cols.length === count) return cols;
+        var cards = Array.prototype.slice.call(grid.querySelectorAll('.album-card'));
+        cards.sort(function (a, b) {
+          return (parseInt(a.getAttribute('data-album-index'), 10) || 0)
+            - (parseInt(b.getAttribute('data-album-index'), 10) || 0);
+        });
+        grid.innerHTML = '';
+        for (var c = 0; c < count; c++) {
+          var col = document.createElement('div');
+          col.className = 'album-col';
+          col.setAttribute('data-album-col', String(c));
+          grid.appendChild(col);
+        }
+        cols = grid.querySelectorAll('[data-album-col]');
+        for (var i = 0; i < cards.length; i++) {
+          var idx = parseInt(cards[i].getAttribute('data-album-index'), 10);
+          if (isNaN(idx)) idx = i;
+          cols[idx % count].appendChild(cards[i]);
+        }
+        grid.setAttribute('data-album-cols', String(count));
+        return cols;
+      }
+
+      function reflowIfNeeded() {
+        var next = albumColCount();
+        if (next === colCount && grid.querySelectorAll('[data-album-col]').length === next) {
+          return;
+        }
+        colCount = next;
+        ensureColumns(colCount);
+      }
+
+      function colForIndex(index) {
+        var cols = ensureColumns(colCount);
+        return cols[index % colCount];
+      }
 
       function updateProgress() {
         var total = items ? items.length : totalHint;
@@ -2259,9 +2311,6 @@
         if (done || (items && shown >= items.length)) {
           done = true;
           moreBtn.hidden = true;
-          if (footer && shown >= total) {
-            // keep progress visible; hide only the button
-          }
           if (io) {
             io.disconnect();
             io = null;
@@ -2284,13 +2333,19 @@
         moreBtn.classList.add('is-loading');
         moreBtn.textContent = t('album.loading');
 
-        var frag = document.createDocumentFragment();
+        reflowIfNeeded();
         var end = Math.min(shown + pageSize, items.length);
         for (var i = shown; i < end; i++) {
-          var card = createCard(items[i], { fancybox: fancybox, imageLabel: imageLabel });
-          if (card) frag.appendChild(card);
+          var card = createCard(items[i], {
+            fancybox: fancybox,
+            imageLabel: imageLabel,
+            index: i
+          });
+          if (!card) continue;
+          var col = colForIndex(i);
+          if (col) col.appendChild(card);
+          else grid.appendChild(card);
         }
-        grid.appendChild(frag);
         shown = end;
         if (shown >= items.length) done = true;
 
@@ -2364,6 +2419,16 @@
         }, { root: null, rootMargin: '400px 0px', threshold: 0 });
         io.observe(sentinel);
       }
+
+      // Match column count to viewport (SSR defaults to 3).
+      reflowIfNeeded();
+      var resizeTimer = null;
+      window.addEventListener('resize', function () {
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          reflowIfNeeded();
+        }, 120);
+      });
 
       updateProgress();
     });
