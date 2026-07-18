@@ -2748,9 +2748,18 @@ body.has-home-hero.is-hero-active::before {
 }
 .featured-paper p {
   margin: 0;
+  max-width: 100%;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.7;
+/* Keep excerpt from running under the right-side tape/thumbnail edge. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 .meta-line {
   display: flex;
@@ -5592,6 +5601,55 @@ img.friends-feed-card__avatar {
 .dark-mode .album-card:focus-visible {
   box-shadow: 3px 6px 0 rgba(0,0,0,0.22), var(--soft-shadow);
 }
+.album-footer {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  padding: 8px 0 4px;
+}
+.album-progress {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+.album-more {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 18px;
+  border: 1px dashed var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper-warm) 50%, transparent);
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+.album-more:hover,
+.album-more:focus-visible {
+  border-color: color-mix(in srgb, var(--color-accent) 45%, var(--line));
+  color: var(--color-accent-strong);
+  background: var(--color-accent-soft);
+  transform: translateY(-1px);
+}
+.album-more:disabled,
+.album-more.is-loading {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+.album-sentinel {
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  visibility: hidden;
+}
 .article-paper.guestbook-page {
   padding-bottom: 64px;
 }
@@ -8173,6 +8231,10 @@ body[data-code-theme="simple"] .article-content > pre::-webkit-scrollbar-thumb {
   }
   .featured-copy {
     padding: 26px 28px 22px;
+  }
+  .featured-paper p {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
   }
   .featured-thumb {
     min-height: 180px;

@@ -265,9 +265,9 @@
     <link href="https://hybpjx.cn/2026/04/02/%E5%AE%89%E5%8D%93%E6%8A%93%E5%8C%85%E9%A3%9F%E7%94%A8/"/>
     <id>https://hybpjx.cn/2026/04/02/%E5%AE%89%E5%8D%93%E6%8A%93%E5%8C%85%E9%A3%9F%E7%94%A8/</id>
     <published>2026-04-02T11:06:52.000Z</published>
-    <updated>2026-04-03T05:54:25.000Z</updated>
+    <updated>2026-07-18T01:33:28.924Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="不使用模块"><a href="#不使用模块" class="headerlink" title="不使用模块"></a>不使用模块</h1><p>打开Charles  直接点击保存证书为Pem</p><p><img src="http://cdn.hybpjx.cn/uPic/image-20260402191004293.png" alt="image-20260402191004293"></p><p>然后在终端执行命令</p><blockquote><p>openssl x509 -subject_hash -in xxxx. </p></blockquote><p>执行完之后 返回了这样的东西。 保存这个</p><p><img src="/Users/hybpjx/Library/Application%20Support/typora-user-images/image-20260402191240318.png"></p><p><strong>执行命令后将 xxxx.pem 文件重命名为 a178d9c4.0 (a178d9c4 需要根据自己生成的结果进行命名)</strong></p><p>然后执行Push命令  放到&#x2F;sdcard&#x2F;下面</p><blockquote><p>adb push a178d9c4.0 &#x2F;sdcard&#x2F;</p></blockquote><p><img src="http://cdn.hybpjx.cn/uPic/image-20260402191436308.png"></p><p>然后把这个 证书复制到 &#x2F;system&#x2F;etc&#x2F;security&#x2F;cacerts 目录下面 即可正常抓包</p><h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>直接导出证书 到&#x2F;data&#x2F;local&#x2F;tmp&#x2F;cert 重启 即可。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="不使用模块"><a href="#不使用模块" class="headerlink" title="不使用模块"></a>不使用模块</h1><p>打开Charles  直接点击保存证书为Pem</p><p><img src="http://cdn.hybpjx.cn/uPic/image-20260402191004293.png" alt="image-20260402191004293"></p><p>然后在终端执行命令</p><blockquote><p>openssl x509 -subject_hash -in xxxx. </p></blockquote><p>执行完之后 返回了这样的东西。 保存这个</p><p><img src="http://cdn.hybpjx.cn/uPic/image-20260402191240318.png"></p><p><strong>执行命令后将 xxxx.pem 文件重命名为 a178d9c4.0 (a178d9c4 需要根据自己生成的结果进行命名)</strong></p><p>然后执行Push命令  放到&#x2F;sdcard&#x2F;下面</p><blockquote><p>adb push a178d9c4.0 &#x2F;sdcard&#x2F;</p></blockquote><p><img src="http://cdn.hybpjx.cn/uPic/image-20260402191436308.png"></p><p>然后把这个 证书复制到 &#x2F;system&#x2F;etc&#x2F;security&#x2F;cacerts 目录下面 即可正常抓包</p><h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><p>直接导出证书 到&#x2F;data&#x2F;local&#x2F;tmp&#x2F;cert 重启 即可。</p>]]></content>
     
     
       

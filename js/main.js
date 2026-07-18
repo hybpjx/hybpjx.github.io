@@ -2163,6 +2163,214 @@
     });
   }
 
+  // ---- Album progressive load: first batch SSR, rest from flatpaper-album.json ----
+  function initAlbumProgressiveLoad() {
+    var roots = document.querySelectorAll('[data-album-root]');
+    if (!roots.length) return;
+
+    function formatShown(template, shown, total) {
+      return String(template || 'Showing {shown} / {total}')
+        .replace(/\{shown\}/g, String(shown))
+        .replace(/\{total\}/g, String(total));
+    }
+
+    function rebindAlbumFancybox() {
+      if (typeof window.Fancybox === 'undefined') return;
+      try {
+        if (typeof window.Fancybox.unbind === 'function') {
+          window.Fancybox.unbind('[data-fancybox="album"]');
+        }
+        window.Fancybox.bind('[data-fancybox="album"]');
+      } catch (e) {
+        try { window.Fancybox.bind('[data-fancybox="album"]'); } catch (err) { /* ignore */ }
+      }
+    }
+
+    function createCard(item, opts) {
+      var image = String(item.image || '').trim();
+      if (!image) return null;
+      var preview = String(item.thumb || item.thumbnail || image).trim();
+      var title = String(item.title || '').trim();
+      var desc = String(item.description || '').trim();
+      var caption = title || desc || '';
+      var label = title || opts.imageLabel || 'Photo';
+      var a = document.createElement('a');
+      a.className = 'album-card';
+      a.href = image;
+      a.setAttribute('aria-label', label);
+      if (opts.fancybox) {
+        a.setAttribute('data-fancybox', 'album');
+        if (caption) a.setAttribute('data-caption', caption);
+      } else {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+
+      var img = document.createElement('img');
+      img.className = 'album-card__image';
+      img.src = preview;
+      img.alt = label;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      a.appendChild(img);
+
+      if (title || desc) {
+        var cap = document.createElement('div');
+        cap.className = 'album-card__caption';
+        if (title) {
+          var h3 = document.createElement('h3');
+          h3.textContent = title;
+          cap.appendChild(h3);
+        }
+        if (desc) {
+          var p = document.createElement('p');
+          p.textContent = desc;
+          cap.appendChild(p);
+        }
+        a.appendChild(cap);
+      }
+      return a;
+    }
+
+    Array.prototype.forEach.call(roots, function (root) {
+      var grid = root.querySelector('[data-album-grid]');
+      var moreBtn = root.querySelector('[data-album-more]');
+      var progress = root.querySelector('[data-album-progress]');
+      var footer = root.querySelector('[data-album-footer]');
+      var sentinel = root.querySelector('[data-album-sentinel]');
+      if (!grid || !moreBtn) return;
+
+      var pageSize = parseInt(root.getAttribute('data-album-page-size'), 10);
+      if (!pageSize || pageSize < 6) pageSize = 24;
+      var shown = parseInt(root.getAttribute('data-album-initial'), 10) || grid.querySelectorAll('.album-card').length;
+      var totalHint = parseInt(root.getAttribute('data-album-total'), 10) || shown;
+      var fancybox = root.getAttribute('data-album-fancybox') === '1';
+      var imageLabel = root.getAttribute('data-album-image-label') || t('album.image');
+      var shownLabel = root.getAttribute('data-album-shown-tpl') || t('album.shown_tpl') || 'Showing {shown} / {total}';
+      var jsonUrl = root.getAttribute('data-album-json') || '/flatpaper-album.json';
+      var items = null;
+      var loading = false;
+      var done = shown >= totalHint;
+      var io = null;
+
+      function updateProgress() {
+        var total = items ? items.length : totalHint;
+        if (progress) progress.textContent = formatShown(shownLabel, shown, total);
+        if (done || (items && shown >= items.length)) {
+          done = true;
+          moreBtn.hidden = true;
+          if (footer && shown >= total) {
+            // keep progress visible; hide only the button
+          }
+          if (io) {
+            io.disconnect();
+            io = null;
+          }
+        } else {
+          moreBtn.hidden = false;
+          if (footer) footer.hidden = false;
+        }
+      }
+
+      function appendBatch() {
+        if (!items || loading || done) return;
+        if (shown >= items.length) {
+          done = true;
+          updateProgress();
+          return;
+        }
+        loading = true;
+        moreBtn.disabled = true;
+        moreBtn.classList.add('is-loading');
+        moreBtn.textContent = t('album.loading');
+
+        var frag = document.createDocumentFragment();
+        var end = Math.min(shown + pageSize, items.length);
+        for (var i = shown; i < end; i++) {
+          var card = createCard(items[i], { fancybox: fancybox, imageLabel: imageLabel });
+          if (card) frag.appendChild(card);
+        }
+        grid.appendChild(frag);
+        shown = end;
+        if (shown >= items.length) done = true;
+
+        if (fancybox) rebindAlbumFancybox();
+
+        loading = false;
+        moreBtn.disabled = false;
+        moreBtn.classList.remove('is-loading');
+        moreBtn.textContent = t('album.load_more');
+        updateProgress();
+      }
+
+      function ensureItems(thenLoad) {
+        if (items) {
+          if (thenLoad) appendBatch();
+          return;
+        }
+        if (loading) return;
+        loading = true;
+        moreBtn.disabled = true;
+        moreBtn.classList.add('is-loading');
+        moreBtn.textContent = t('album.loading');
+
+        fetch(jsonUrl, { headers: { Accept: 'application/json' } })
+          .then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+          })
+          .then(function (payload) {
+            var list = payload && Array.isArray(payload.items) ? payload.items : [];
+            items = list.filter(function (it) { return it && it.image; });
+            if (payload && payload.pageSize) {
+              var ps = parseInt(payload.pageSize, 10);
+              if (ps >= 6 && ps <= 60) pageSize = ps;
+            }
+            totalHint = items.length;
+            // Already SSR'd first pageSize items; continue from there.
+            if (shown > items.length) shown = items.length;
+            loading = false;
+            moreBtn.disabled = false;
+            moreBtn.classList.remove('is-loading');
+            moreBtn.textContent = t('album.load_more');
+            if (shown >= items.length) {
+              done = true;
+              updateProgress();
+              return;
+            }
+            if (thenLoad) appendBatch();
+            else updateProgress();
+          })
+          .catch(function () {
+            loading = false;
+            moreBtn.disabled = false;
+            moreBtn.classList.remove('is-loading');
+            moreBtn.textContent = t('album.load_more');
+          });
+      }
+
+      moreBtn.addEventListener('click', function () {
+        ensureItems(true);
+      });
+
+      // Infinite scroll: when sentinel nears viewport, load next batch.
+      if (sentinel && 'IntersectionObserver' in window) {
+        io = new IntersectionObserver(function (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (!entries[i].isIntersecting) continue;
+            if (done || loading) return;
+            ensureItems(true);
+          }
+        }, { root: null, rootMargin: '400px 0px', threshold: 0 });
+        io.observe(sentinel);
+      }
+
+      updateProgress();
+    });
+  }
+
+  initAlbumProgressiveLoad();
+
   // ---- Back-to-top button: reveal once the reader has scrolled down ----
   var backToTop = document.querySelector('.back-to-top');
   if (backToTop) {
