@@ -1749,7 +1749,7 @@
   }
 
   (function () {
-    var headings = document.querySelectorAll('.article-content h2, .article-content h3');
+    var headings = document.querySelectorAll('.article-content h1, .article-content h2, .article-content h3');
     if (!headings.length) return;
     var used = {};
 
