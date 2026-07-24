@@ -668,25 +668,25 @@
 <h1 id="命令行激活"><a href="#命令行激活" class="headerlink" title="命令行激活"></a>命令行激活</h1><p>输入命令</p>
 <p>1、右键开始按钮，在快捷菜单点击命令提示符(管理员)，或者Windows PowerShell(管理员)；</p>
 <p>2、卸载产品密钥命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">slmgr.vbs /upk<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slmgr.vbs /upk</span><br></pre></td></tr></table></figure>
 
 <p>按回车确定，卸载之前的密钥，弹出窗口显示“成功地卸载了产品密钥”；【如果提示找不到密钥，不用管，直接跳到下一步】</p>
 <p>3.安装产品密钥命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">slmgr /ipk xxxxxxxxx<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slmgr /ipk xxxxxxxxx</span><br></pre></td></tr></table></figure>
 
 <p>按回车执行，弹出窗口显示“成功地安装了产品密钥”。这个密钥是企业系统用户密钥，家庭版或者专业版请百度搜索；</p>
 <p>4.设置KMS服务器命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">slmgr /skms zh.us.to<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slmgr /skms zh.us.to</span><br></pre></td></tr></table></figure>
 
 
 
 <h1 id="报错-0xC004F069"><a href="#报错-0xC004F069" class="headerlink" title="报错 0xC004F069"></a>报错 0xC004F069</h1><p>如果是评估版本，则需要先把评估版本升级为正式版本，才能正确的使用。</p>
 <p>1、右键开始按钮，在快捷菜单点击命令提示符(管理员)，或者Windows PowerShell(管理员)；</p>
 <p>2、输入命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">DISM /online /Get-CurrentEdition<br><br>DISM /online /Set-Edition:这一步输入上层需要的当前版本 /ProductKey:XXXXX-XXXXX-XXXXX-XXXXX-XXXXX /AcceptEula<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DISM /online /Get-CurrentEdition</span><br><span class="line"></span><br><span class="line">DISM /online /Set-Edition:这一步输入上层需要的当前版本 /ProductKey:XXXXX-XXXXX-XXXXX-XXXXX-XXXXX /AcceptEula</span><br></pre></td></tr></table></figure>
 
 <p>正常应该是如下流程</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">开始升级组件…<br>开始安装产品密钥…<br>产品密钥安装已完成。<br><br>正在删除程序包 Microsoft-Windows-ServerDatacenterEvalEdition31bf3856ad364e35amd64~~<span class="hljs-number">10.0</span><span class="hljs-number">.14393</span><span class="hljs-number">.0</span><br><span class="hljs-string">[100.0%]</span><br>组件升级已完成。<br></code></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">开始升级组件…</span><br><span class="line">开始安装产品密钥…</span><br><span class="line">产品密钥安装已完成。</span><br><span class="line"></span><br><span class="line">正在删除程序包 Microsoft-Windows-ServerDatacenterEvalEdition31bf3856ad364e35amd64~~<span class="number">10.0</span><span class="number">.14393</span><span class="number">.0</span></span><br><span class="line"><span class="string">[100.0%]</span></span><br><span class="line">组件升级已完成。</span><br></pre></td></tr></table></figure>
 
 
 
@@ -696,7 +696,7 @@
 <li>打开 PowerShell（不是 CMD）。为此，请右键单击 Windows 开始菜单并选择 PowerShell 或终端。</li>
 <li>复制并粘贴下面的代码，然后按 Enter 键</li>
 </ol>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">irm https://get.activated.win | iex<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">irm https://get.activated.win | iex</span><br></pre></td></tr></table></figure>
 
 <p>选择6 改变版本 </p>
 <p>如下图即成功</p>

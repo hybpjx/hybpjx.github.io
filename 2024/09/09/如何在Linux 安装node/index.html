@@ -678,24 +678,24 @@
 <p> <img src="https://s2.loli.net/2024/09/09/vnRrQaoEWYFbZjs.png"></p>
 <p>然后 执行如下命令</p>
 <p>-C 是指定目录解压</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xvf node-v20.17.0-linux-x64.tar.xz -C /usr/local/bin<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf node-v20.17.0-linux-x64.tar.xz -C /usr/local/bin</span><br></pre></td></tr></table></figure>
 
 <p>重命名一下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> node-v20.17.0-linux-x64/ node-v20<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> node-v20.17.0-linux-x64/ node-v20</span><br></pre></td></tr></table></figure>
 
 <p>建立软连接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -sf /usr/local/bin/node-v20/bin/node /usr/local/bin/node<br><br><span class="hljs-built_in">ln</span> -sf /usr/local/bin/node-v20/bin/npm /usr/local/bin/npm<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -sf /usr/local/bin/node-v20/bin/node /usr/local/bin/node</span><br><span class="line"></span><br><span class="line"><span class="built_in">ln</span> -sf /usr/local/bin/node-v20/bin/npm /usr/local/bin/npm</span><br></pre></td></tr></table></figure>
 
 <p>如果报错就</p>
 <p>把 <strong>-s</strong> 命令修改成 <strong>-sf</strong> 命令；<strong>-f</strong> 命令的意思是强制执行，也就意味着如果不存在就执行创建，存在就执行覆盖掉</p>
 <h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>编译环境文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/profile<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
 
 <p>新增如下内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> NODE_HOME=/usr/local/bin/node-v20/bin<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$NODE_HOME</span>:/usr/local/bin/<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NODE_HOME=/usr/local/bin/node-v20/bin</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$NODE_HOME</span>:/usr/local/bin/</span><br></pre></td></tr></table></figure>
 
 <p>然后刷新配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> /etc/profile<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
 
 
 

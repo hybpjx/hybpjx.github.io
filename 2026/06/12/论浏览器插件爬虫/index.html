@@ -669,10 +669,10 @@
 <hr>
 <h2 id="什么是浏览器插件爬虫？"><a href="#什么是浏览器插件爬虫？" class="headerlink" title="什么是浏览器插件爬虫？"></a>什么是浏览器插件爬虫？</h2><p>简单来说，就是把原本运行在服务器上的爬虫代码，放到浏览器插件里面执行。</p>
 <p>传统模式：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">服务器<br>    ↓<br>HTTP请求<br>    ↓<br>目标网站<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">服务器</span><br><span class="line">    ↓</span><br><span class="line">HTTP请求</span><br><span class="line">    ↓</span><br><span class="line">目标网站</span><br></pre></td></tr></table></figure>
 
 <p>插件模式：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">用户浏览器<br>    ↓<br>插件注入页面<br>    ↓<br>直接获取页面数据<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户浏览器</span><br><span class="line">    ↓</span><br><span class="line">插件注入页面</span><br><span class="line">    ↓</span><br><span class="line">直接获取页面数据</span><br></pre></td></tr></table></figure>
 
 <p>插件运行在用户浏览器内部，它本质上已经成为浏览器环境的一部分。</p>
 <p>而大部分网站设计的时候，本身就是给浏览器访问的。</p>
@@ -696,7 +696,7 @@
 <p><img src="http://cdn.hybpjx.cn/uPic/image-20260612183653052.png"></p>
 <p>其实这种很多基于风控行为的 到现在 你无论自动化还是插件或者RPC都不好解决。要不你就烧成本</p>
 <h3 id="Cookie维护"><a href="#Cookie维护" class="headerlink" title="Cookie维护"></a>Cookie维护</h3><p>传统爬虫经常需要：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">抓Cookie<br>↓<br>保存Cookie<br>↓<br>Cookie过期<br>↓<br>重新登录<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">抓Cookie</span><br><span class="line">↓</span><br><span class="line">保存Cookie</span><br><span class="line">↓</span><br><span class="line">Cookie过期</span><br><span class="line">↓</span><br><span class="line">重新登录</span><br></pre></td></tr></table></figure>
 
 <p>维护成本很高。</p>
 <p>尤其是你在做任何一个网站。哪怕你要短期获取数据。你也需要他的ck来获取数据。</p>
@@ -710,17 +710,17 @@
 <li>行为检测。</li>
 </ul>
 <p>很多网站甚至会检测：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">navigator.<span class="hljs-property">webdriver</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigator.<span class="property">webdriver</span></span><br></pre></td></tr></table></figure>
 
 <p>只要返回 true。</p>
 <p><img src="http://cdn.hybpjx.cn/uPic/image-20260612184006425.png"></p>
 <p>直接给你空数据。但时至今日 这种反爬应该有很多种解决方式了。这里也只是个举个例子</p>
 <h3 id="动态渲染"><a href="#动态渲染" class="headerlink" title="动态渲染"></a>动态渲染</h3><p>现在越来越多的网站：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">React<br>Vue<br>Next.js<br>Nuxt<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">React</span><br><span class="line">Vue</span><br><span class="line">Next.js</span><br><span class="line">Nuxt</span><br></pre></td></tr></table></figure>
 
 <p>接口数据不一定好找。</p>
 <p>很多时候只能：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">启动浏览器<br>↓<br>等待渲染<br>↓<br>执行JS<br>↓<br>获取DOM<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">启动浏览器</span><br><span class="line">↓</span><br><span class="line">等待渲染</span><br><span class="line">↓</span><br><span class="line">执行JS</span><br><span class="line">↓</span><br><span class="line">获取DOM</span><br></pre></td></tr></table></figure>
 
 <p>资源消耗很大。</p>
 <p><img src="http://cdn.hybpjx.cn/uPic/image-20260612184122797.png"></p>
@@ -728,7 +728,7 @@
 <h2 id="插件爬虫的优势"><a href="#插件爬虫的优势" class="headerlink" title="插件爬虫的优势"></a>插件爬虫的优势</h2><h3 id="天然拥有登录态"><a href="#天然拥有登录态" class="headerlink" title="天然拥有登录态"></a>天然拥有登录态</h3><p>插件运行在用户浏览器。</p>
 <p>Cookie 本身就在浏览器里。</p>
 <p>例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">chrome.<span class="hljs-property">cookies</span>.<span class="hljs-title function_">getAll</span>(...)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome.<span class="property">cookies</span>.<span class="title function_">getAll</span>(...)</span><br></pre></td></tr></table></figure>
 
 <p>就可以获取当前域名 Cookie。</p>
 <p>用户登录一次。</p>
@@ -741,25 +741,25 @@
 <h3 id="更像真实用户"><a href="#更像真实用户" class="headerlink" title="更像真实用户"></a>更像真实用户</h3><p>插件本质就是浏览器的一部分。</p>
 <p>很多检测根本不会触发。</p>
 <p>例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">navigator.<span class="hljs-property">webdriver</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigator.<span class="property">webdriver</span></span><br></pre></td></tr></table></figure>
 
 <p>正常浏览器：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-literal">undefined</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
 
 <p>Selenium：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>很多简单反爬在这里就失效了。虽然是简单反爬。但也是比较极致的伪装</p>
 <hr>
 <h3 id="直接读取页面DOM"><a href="#直接读取页面DOM" class="headerlink" title="直接读取页面DOM"></a>直接读取页面DOM</h3><p>传统爬虫：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">requests<br>↓<br>HTML<br>↓<br>BeautifulSoup<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">requests</span><br><span class="line">↓</span><br><span class="line">HTML</span><br><span class="line">↓</span><br><span class="line">BeautifulSoup</span><br></pre></td></tr></table></figure>
 
 <p>插件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(...)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(...)</span><br></pre></td></tr></table></figure>
 
 <p>直接获取。</p>
 <p>例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> title = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.title&quot;</span>)?.<span class="hljs-property">innerText</span>;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> title = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.title&quot;</span>)?.<span class="property">innerText</span>;</span><br></pre></td></tr></table></figure>
 
 <p>简单粗暴。</p>
 <p>当然这里还是有一些问题的 我用一张图来举例</p>
@@ -767,10 +767,10 @@
 <p>内外dom要交互 需要发送message</p>
 <hr>
 <h3 id="获取接口数据更方便"><a href="#获取接口数据更方便" class="headerlink" title="获取接口数据更方便"></a>获取接口数据更方便</h3><p>插件可以 Hook：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">fetch<br>XMLHttpRequest<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fetch</span><br><span class="line">XMLHttpRequest</span><br></pre></td></tr></table></figure>
 
 <p>例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> originFetch = <span class="hljs-variable language_">window</span>.<span class="hljs-property">fetch</span>;<br><br><span class="hljs-variable language_">window</span>.<span class="hljs-property">fetch</span> = <span class="hljs-title function_">async</span> (...args) =&gt; &#123;<br>    <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">originFetch</span>(...args);<br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(args);<br><br>    <span class="hljs-keyword">return</span> res;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> originFetch = <span class="variable language_">window</span>.<span class="property">fetch</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">fetch</span> = <span class="title function_">async</span> (...args) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">originFetch</span>(...args);</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(args);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>很多隐藏接口。</p>
 <p>页面自己就帮你调用了。</p>
@@ -778,10 +778,10 @@
 <p>PS ： 这里其实还有一些问题。比如XHR 和fetch的区别 有兴趣的同学可以加我微信细聊</p>
 <hr>
 <h3 id="资源消耗更低"><a href="#资源消耗更低" class="headerlink" title="资源消耗更低"></a>资源消耗更低</h3><p>如果使用 Playwright：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">启动Chromium<br>≈ 几百MB内存<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">启动Chromium</span><br><span class="line">≈ 几百MB内存</span><br></pre></td></tr></table></figure>
 
 <p>插件：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">浏览器本来就在运行<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">浏览器本来就在运行</span><br></pre></td></tr></table></figure>
 
 <p>几乎没有额外成本。</p>
 <p>尤其适合：</p>
@@ -797,7 +797,7 @@
 <h2 id="插件爬虫的劣势"><a href="#插件爬虫的劣势" class="headerlink" title="插件爬虫的劣势"></a>插件爬虫的劣势</h2><p>当然。</p>
 <p>插件也不是万能的。</p>
 <h3 id="依赖用户浏览器"><a href="#依赖用户浏览器" class="headerlink" title="依赖用户浏览器"></a>依赖用户浏览器</h3><p>无法像服务器一样：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">24小时自动运行<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24小时自动运行</span><br></pre></td></tr></table></figure>
 
 <p>用户关掉浏览器。</p>
 <p>插件也停止工作。</p>
@@ -815,7 +815,7 @@
 <hr>
 <h2 id="WXT：现代浏览器插件开发框架"><a href="#WXT：现代浏览器插件开发框架" class="headerlink" title="WXT：现代浏览器插件开发框架"></a>WXT：现代浏览器插件开发框架</h2><p>以前写插件。</p>
 <p>基本都是：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">manifest.json<br>background.js<br>content.js<br>popup.html<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">manifest.json</span><br><span class="line">background.js</span><br><span class="line">content.js</span><br><span class="line">popup.html</span><br></pre></td></tr></table></figure>
 
 <p>纯手写。项目稍微大一点。维护起来就很痛苦。</p>
 <p>后来接触到了 WXT。</p>
@@ -827,7 +827,7 @@
 <p>浏览器插件领域的 Vite。</p>
 </blockquote>
 <p>官方定位：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">The web extension framework.<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The web extension framework.</span><br></pre></td></tr></table></figure>
 
 <p>它帮我们处理：</p>
 <ul>
@@ -842,21 +842,21 @@
 <hr>
 <h2 id="WXT的优点"><a href="#WXT的优点" class="headerlink" title="WXT的优点"></a>WXT的优点</h2><hr>
 <h3 id="支持主流框架"><a href="#支持主流框架" class="headerlink" title="支持主流框架"></a>支持主流框架</h3><p>支持：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">Vue<br>React<br>Svelte<br>Solid<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue</span><br><span class="line">React</span><br><span class="line">Svelte</span><br><span class="line">Solid</span><br></pre></td></tr></table></figure>
 
 <p>开发 popup 页面体验和正常前端项目一致。</p>
 <hr>
 <h3 id="自动生成-Manifest"><a href="#自动生成-Manifest" class="headerlink" title="自动生成 Manifest"></a>自动生成 Manifest</h3><p>传统插件：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">manifest.json<br></code></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">manifest.json</span><br></pre></td></tr></table></figure>
 
 <p>几百行。</p>
 <p>WXT：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>自动生成。</p>
 <hr>
 <h3 id="开发效率高"><a href="#开发效率高" class="headerlink" title="开发效率高"></a>开发效率高</h3><p>修改代码：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">保存<br>↓<br>自动重新构建<br>↓<br>浏览器刷新<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">保存</span><br><span class="line">↓</span><br><span class="line">自动重新构建</span><br><span class="line">↓</span><br><span class="line">浏览器刷新</span><br></pre></td></tr></table></figure>
 
 <p><img src="http://cdn.hybpjx.cn/uPic/image-20260612185010574.png"></p>
 <p>这一点真的舒服…</p>

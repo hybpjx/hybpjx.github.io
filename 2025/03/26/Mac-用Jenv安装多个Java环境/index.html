@@ -665,10 +665,10 @@
 
   <div class="article-content">
     <h1 id="Mac使用Jenv-安装多个Java环境"><a href="#Mac使用Jenv-安装多个Java环境" class="headerlink" title="Mac使用Jenv 安装多个Java环境"></a>Mac使用Jenv 安装多个Java环境</h1><h1 id="安装Jenv"><a href="#安装Jenv" class="headerlink" title="安装Jenv"></a>安装Jenv</h1><p>通过Homebrew快速安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install jenv<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install jenv</span><br></pre></td></tr></table></figure>
 
 <p>配置环境变量到Shell配置文件（如<code>.zshrc</code>或<code>.bash_profile</code>）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;$HOME/.jenv/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;eval &quot;$(jenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc<br><span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;$HOME/.jenv/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(jenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 
 <h1 id="安装Java环境"><a href="#安装Java环境" class="headerlink" title="安装Java环境"></a>安装Java环境</h1><p><a target="_blank" rel="noopener" href="https://www.azul.com/core-post-download">https://www.azul.com/core-post-download</a></p>
 <p>选择 自己相应的 版本 一键式安装接口</p>

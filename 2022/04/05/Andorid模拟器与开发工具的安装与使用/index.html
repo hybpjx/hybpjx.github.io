@@ -793,7 +793,7 @@
 <h2 id="通过adb命令卸载"><a href="#通过adb命令卸载" class="headerlink" title="通过adb命令卸载"></a>通过adb命令卸载</h2><blockquote>
 <p>我们安装时使用的<strong>文件名</strong>去安装<br>但是卸载需要使用<strong>包名</strong>去卸载</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb -s xxx shell<br><br><span class="hljs-comment"># cd /data/app</span><br><span class="hljs-comment"># ls </span><br><span class="hljs-comment"># exit</span><br><br>$ adb -s 127.0.0.1:62001 uninstall com.jingdong.app.mall<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">adb -s xxx shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># cd /data/app</span></span><br><span class="line"><span class="comment"># ls </span></span><br><span class="line"><span class="comment"># exit</span></span><br><span class="line"></span><br><span class="line">$ adb -s 127.0.0.1:62001 uninstall com.jingdong.app.mall</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://s2.loli.net/2024/09/05/G1nWkZS4AjlPTCz.png"><br><img src="https://s2.loli.net/2024/09/05/2aKSAP7cEdhiZ9x.png"><br>提示success 即代表卸载成功</p>
 <p><strong>注：如果 adb device 没有设备</strong></p>
