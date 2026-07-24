@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>jadx-gui反编译app的时候内存不足</title>
+      <link href="/2026/07/21/jadx-gui%E5%8F%8D%E7%BC%96%E8%AF%91app%E7%9A%84%E6%97%B6%E5%80%99%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3/"/>
+      <url>/2026/07/21/jadx-gui%E5%8F%8D%E7%BC%96%E8%AF%91app%E7%9A%84%E6%97%B6%E5%80%99%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3/</url>
+      
+        <content type="html"><![CDATA[<p>使用记事本或者notpad++打开jadx-gui.bat</p><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-built_in">set</span> DEFAULT_JVM_OPTS=&quot;-Xms128M&quot; &quot;-Xmx8192m&quot; &quot;-XX:MaxRAMPercentage=<span class="hljs-number">70</span>.<span class="hljs-number">0</span>&quot; &quot;-XX:+UseG1GC&quot; &quot;-Dawt.useSystemAAFontSettings=lcd&quot; &quot;-Dswing.aatext=true&quot;<br></code></pre></td></tr></table></figure><p>改8192m 改为8g 或者24g 量力而行</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>安卓逆向面试中经常遇到的几个问题</title>
       <link href="/2026/07/13/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%BB%8F%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/"/>
       <url>/2026/07/13/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%BB%8F%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/</url>

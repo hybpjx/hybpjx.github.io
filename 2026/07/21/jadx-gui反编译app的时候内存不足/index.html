@@ -6,24 +6,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f7f3e9" data-flatpaper-theme-color>
 
-<title>从零实现JSVMP | 始識’s 博客</title>
-<meta name="description" content="从零JSVMPJSCode ——&gt; Ast——&gt; 指令 ——&gt; 执行指令 简单的解释器1console.log(2*5+8) 2*5 10+8 console.log(18) mul 2,5 add 10,8 print 18 栈的形式 push 2 push 5 mul push 8 add print **栈： 先进后出 ** push...">
+<title>jadx-gui反编译app的时候内存不足 | 始識’s 博客</title>
+<meta name="description" content="使用记事本或者notpad++打开jadx-gui.bat 1set DEFAULT_JVM_OPTS&#x3D;&quot;-Xms128M&quot; &quot;-Xmx8192m&quot; &quot;-XX:MaxRAMPercentage&#x3D;70.0&quot; &quot;-XX:+UseG1GC&quot; &quot;-Dawt.useSystemA...">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从零实现JSVMP | 始識’s 博客">
-<meta property="og:url" content="https://hybpjx.cn/2024/08/23/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0JSVMP/">
+<meta property="og:title" content="jadx-gui反编译app的时候内存不足 | 始識’s 博客">
+<meta property="og:url" content="https://hybpjx.cn/2026/07/21/jadx-gui%E5%8F%8D%E7%BC%96%E8%AF%91app%E7%9A%84%E6%97%B6%E5%80%99%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3/">
 <meta property="og:site_name" content="始識’s 博客">
-<meta property="og:description" content="从零JSVMPJSCode ——&gt; Ast——&gt; 指令 ——&gt; 执行指令 简单的解释器1console.log(2*5+8) 2*5 10+8 console.log(18) mul 2,5 add 10,8 print 18 栈的形式 push 2 push 5 mul push 8 add print **栈： 先进后出 ** push...">
+<meta property="og:description" content="使用记事本或者notpad++打开jadx-gui.bat 1set DEFAULT_JVM_OPTS&#x3D;&quot;-Xms128M&quot; &quot;-Xmx8192m&quot; &quot;-XX:MaxRAMPercentage&#x3D;70.0&quot; &quot;-XX:+UseG1GC&quot; &quot;-Dawt.useSystemA...">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-23T14:48:22.000Z">
-<meta property="article:modified_time" content="2026-01-22T02:28:59.000Z">
+<meta property="article:published_time" content="2026-07-21T15:27:08.000Z">
+<meta property="article:modified_time" content="2026-07-21T15:28:42.615Z">
 <meta property="article:author" content="hybpjx">
-<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
-<link rel="canonical" href="https://hybpjx.cn/2024/08/23/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0JSVMP/">
+<link rel="canonical" href="https://hybpjx.cn/2026/07/21/jadx-gui%E5%8F%8D%E7%BC%96%E8%AF%91app%E7%9A%84%E6%97%B6%E5%80%99%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3/">
 
 <link rel="icon" href="/images/fff.jpg">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"从零实现JSVMP","name":"从零实现JSVMP | 始識’s 博客","description":"从零JSVMPJSCode ——&gt; Ast——&gt; 指令 ——&gt; 执行指令 简单的解释器1console.log(2*5+8) 2*5 10+8 console.log(18) mul 2,5 add 10,8 print 18 栈的形式 push 2 push 5 mul push 8 add print **栈： 先进后出 ** push...","url":"https://hybpjx.cn/2024/08/23/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0JSVMP/","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","name":"始識’s 博客","url":"https://hybpjx.cn/"},"mainEntityOfPage":"https://hybpjx.cn/2024/08/23/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0JSVMP/","datePublished":"2024-08-23T14:48:22.000Z","dateModified":"2026-01-22T02:28:59.000Z","author":{"@type":"Person","name":"hybpjx"},"publisher":{"@type":"Organization","name":"始識’s 博客"},"keywords":"JavaScript"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"jadx-gui反编译app的时候内存不足","name":"jadx-gui反编译app的时候内存不足 | 始識’s 博客","description":"使用记事本或者notpad++打开jadx-gui.bat 1set DEFAULT_JVM_OPTS=&quot;-Xms128M&quot; &quot;-Xmx8192m&quot; &quot;-XX:MaxRAMPercentage=70.0&quot; &quot;-XX:+UseG1GC&quot; &quot;-Dawt.useSystemA...","url":"https://hybpjx.cn/2026/07/21/jadx-gui%E5%8F%8D%E7%BC%96%E8%AF%91app%E7%9A%84%E6%97%B6%E5%80%99%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3/","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","name":"始識’s 博客","url":"https://hybpjx.cn/"},"mainEntityOfPage":"https://hybpjx.cn/2026/07/21/jadx-gui%E5%8F%8D%E7%BC%96%E8%AF%91app%E7%9A%84%E6%97%B6%E5%80%99%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3/","datePublished":"2026-07-21T15:27:08.000Z","dateModified":"2026-07-21T15:28:42.615Z","author":{"@type":"Person","name":"hybpjx"},"publisher":{"@type":"Organization","name":"始識’s 博客"}}</script>
 
 <script>
   (function () {
@@ -570,7 +569,7 @@
         </header>
         <div class="toc-content">
           
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6JSVMP"><span class="toc-text">从零JSVMP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-text">简单的解释器</span></a></li></ol>
+            
           
         </div>
       </section>
@@ -581,13 +580,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-history flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-history"></use></svg>
 最新文章</h2>
     <ul class="recent-list">
-      
-        <li>
-          <a class="recent-item" href="/2026/07/21/jadx-gui%E5%8F%8D%E7%BC%96%E8%AF%91app%E7%9A%84%E6%97%B6%E5%80%99%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3/">
-            <strong>jadx-gui反编译app的时候内存不足</strong>
-            <em>2026-07-21</em>
-          </a>
-        </li>
       
         <li>
           <a class="recent-item" href="/2026/07/13/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%BB%8F%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/">
@@ -617,6 +609,13 @@
           </a>
         </li>
       
+        <li>
+          <a class="recent-item" href="/2026/06/09/%E6%9F%90%E8%A7%86%E9%A2%91%E5%8E%BB%E5%B9%BF%E5%91%8A%E5%AE%9E%E6%88%98/">
+            <strong>某视频去广告实战</strong>
+            <em>2026-06-09</em>
+          </a>
+        </li>
+      
     </ul>
   </section>
 
@@ -637,18 +636,11 @@
   
   <header class="article-header">
     
-    <h1>从零实现JSVMP</h1>
+    <h1>jadx-gui反编译app的时候内存不足</h1>
     <div class="meta-line meta-line--article">
       <span class="meta-date">
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-calendar"></use></svg>
-2024-08-23</span>
-      
-        <span class="meta-tags">
-          
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-tag"></use></svg>
-
-          <a class="meta-tag-link" href="/tags/JavaScript/">#JavaScript</a>
-        </span>
+2026-07-21</span>
       
     </div>
   </header>
@@ -657,40 +649,10 @@
 
 
   <div class="article-content">
-    <h1 id="从零JSVMP"><a href="#从零JSVMP" class="headerlink" title="从零JSVMP"></a>从零JSVMP</h1><p>JSCode ——&gt; Ast——&gt; 指令 ——&gt; 执行指令</p>
-<h1 id="简单的解释器"><a href="#简单的解释器" class="headerlink" title="简单的解释器"></a>简单的解释器</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">2</span>*<span class="hljs-number">5</span>+<span class="hljs-number">8</span>)<br></code></pre></td></tr></table></figure>
+    <p>使用记事本或者notpad++打开jadx-gui.bat</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-built_in">set</span> DEFAULT_JVM_OPTS=&quot;-Xms128M&quot; &quot;-Xmx8192m&quot; &quot;-XX:MaxRAMPercentage=<span class="hljs-number">70</span>.<span class="hljs-number">0</span>&quot; &quot;-XX:+UseG1GC&quot; &quot;-Dawt.useSystemAAFontSettings=lcd&quot; &quot;-Dswing.aatext=true&quot;<br></code></pre></td></tr></table></figure>
 
-<ol>
-<li>2*5</li>
-<li>10+8</li>
-<li>console.log(18)</li>
-</ol>
-<p>mul 2,5</p>
-<p>add 10,8</p>
-<p>print 18</p>
-<p><strong>栈的形式</strong></p>
-<blockquote>
-<ol>
-<li>push 2</li>
-<li>push 5</li>
-<li>mul</li>
-<li>push 8</li>
-<li>add</li>
-<li>print</li>
-</ol>
-</blockquote>
-<p>**栈： 先进后出 **</p>
-<blockquote>
-<ol>
-<li>push</li>
-<li>mul</li>
-<li>add</li>
-<li>print</li>
-</ol>
-</blockquote>
-<p>得到指令集 &gt; [1,2,1,5,2,1,8,3,4]</p>
-<p>2*5*8+2*3</p>
-<p>得到指令集 &gt;  [1,2,1,5,2,1,8,2,1,2,1,3,2,3,4]</p>
+<p>改8192m 改为8g 或者24g 量力而行</p>
 
   </div>
 
@@ -720,18 +682,18 @@
 
   <nav class="article-actions">
     
-      <a class="article-action article-action--prev" href="/2024/09/05/%E8%85%BE%E8%AE%AF%E5%A4%A9%E5%BE%A1%E6%BB%91%E5%9D%97%E6%B5%81%E7%A8%8B%E9%80%86%E5%90%91/">
+      <span class="article-action article-action--prev is-disabled" aria-disabled="true">
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-arrow-left"></use></svg>
 
         <span class="action-label">上一篇</span>
-        <span class="action-title">腾讯天御滑块流程逆向</span>
-      </a>
+        <span class="action-title">没有更早的文章了</span>
+      </span>
     
     
-      <a class="article-action article-action--next" href="/2024/08/23/QQ%E9%9F%B3%E4%B9%90/">
+      <a class="article-action article-action--next" href="/2026/07/13/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%BB%8F%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98/">
         <span class="action-label">下一篇</span>
-        <span class="action-title">JSVMP逆向流程——QQ音乐</span>
+        <span class="action-title">安卓逆向面试中经常遇到的几个问题</span>
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-arrow-right"></use></svg>
 
@@ -747,87 +709,6 @@
 
 </button>
 
-
-  <section class="related-paper">
-    <header class="related-paper__head">
-      <h2>
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-link"></use></svg>
-相关文章</h2>
-      <a class="related-paper__more" href="/archives/">
-        <span>查看更多</span>
-        
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-arrow-right"></use></svg>
-
-      </a>
-    </header>
-    <div class="related-paper__grid">
-      
-        <a class="related-card" href="/2025/10/13/hybpjx-JS%E9%80%86%E5%90%91%E5%B8%B8%E7%94%A8%E8%84%9A%E6%9C%AC/">
-          <span class="related-card__thumb">
-            
-<div class="paper-thumb paper-thumb-0 paper-thumb--cover">
-  
-    <img class="paper-thumb__img" src="/images/cover/camera.webp" alt="" loading="lazy" referrerpolicy="no-referrer">
-  
-</div>
-
-          </span>
-          <span class="related-card__body">
-            <strong class="related-card__title">JS逆向常用脚本</strong>
-            <em class="related-card__date">2025-10-13</em>
-          </span>
-        </a>
-      
-        <a class="related-card" href="/2025/10/10/hybpjx-AST-%E9%80%9F%E8%AE%B0/">
-          <span class="related-card__thumb">
-            
-<div class="paper-thumb paper-thumb-1 paper-thumb--cover">
-  
-    <img class="paper-thumb__img" src="/images/cover/mountain.webp" alt="" loading="lazy" referrerpolicy="no-referrer">
-  
-</div>
-
-          </span>
-          <span class="related-card__body">
-            <strong class="related-card__title">AST_通用插件</strong>
-            <em class="related-card__date">2025-10-10</em>
-          </span>
-        </a>
-      
-        <a class="related-card" href="/2025/09/30/hybpjx-JSVMP%E6%8F%92%E6%A1%A9%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/">
-          <span class="related-card__thumb">
-            
-<div class="paper-thumb paper-thumb-2 paper-thumb--cover">
-  
-    <img class="paper-thumb__img" src="/images/cover/notebook.webp" alt="" loading="lazy" referrerpolicy="no-referrer">
-  
-</div>
-
-          </span>
-          <span class="related-card__body">
-            <strong class="related-card__title">JSVMP插桩快捷指令</strong>
-            <em class="related-card__date">2025-09-30</em>
-          </span>
-        </a>
-      
-        <a class="related-card" href="/2025/09/07/Wails-svelte%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/">
-          <span class="related-card__thumb">
-            
-<div class="paper-thumb paper-thumb-0 paper-thumb--cover">
-  
-    <img class="paper-thumb__img" src="/images/cover/port.webp" alt="" loading="lazy" referrerpolicy="no-referrer">
-  
-</div>
-
-          </span>
-          <span class="related-card__body">
-            <strong class="related-card__title">Wails+svelte开发入门</strong>
-            <em class="related-card__date">2025-09-07</em>
-          </span>
-        </a>
-      
-    </div>
-  </section>
 
 
       
